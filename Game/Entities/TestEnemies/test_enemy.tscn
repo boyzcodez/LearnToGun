@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://bkppf2b2pyith"]
+
+[ext_resource type="Texture2D" uid="uid://bm5su8unmtdyu" path="res://Assets/icon.svg" id="1_4gisi"]
+[ext_resource type="Script" uid="uid://nvfnf30y8x8a" path="res://Game/Entities/TestEnemies/TestEnemy.cs" id="1_l6u0g"]
+[ext_resource type="PackedScene" uid="uid://vmtiw08cr30b" path="res://Components/DamageComps/hurtbox.tscn" id="2_w0xgd"]
+[ext_resource type="PackedScene" uid="uid://cokma6r7qkbkm" path="res://Components/DamageComps/health.tscn" id="3_ccun0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_htgvw"]
+radius = 6.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ccun0"]
+radius = 7.0
+height = 14.0
+
+[node name="TestEnemy" type="CharacterBody2D"]
+script = ExtResource("1_l6u0g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_htgvw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -6)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_4gisi")
+
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("healthComponent") instance=ExtResource("2_w0xgd")]
+collision_layer = 4
+healthComponent = NodePath("../Health")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -6)
+shape = SubResource("CapsuleShape2D_ccun0")
+
+[node name="Health" parent="." instance=ExtResource("3_ccun0")]
+maxHealth = 15

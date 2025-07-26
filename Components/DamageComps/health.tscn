@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cokma6r7qkbkm"]
+
+[ext_resource type="Script" uid="uid://dh5kg374unl8e" path="res://Components/DamageComps/Health.cs" id="1_psp7q"]
+
+[node name="Health" type="Node2D"]
+script = ExtResource("1_psp7q")

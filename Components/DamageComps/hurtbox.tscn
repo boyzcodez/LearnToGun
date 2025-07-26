@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://vmtiw08cr30b"]
+
+[ext_resource type="Script" uid="uid://cdwq588qqamsd" path="res://Components/DamageComps/Hurtbox.cs" id="1_gpif6"]
+[ext_resource type="PackedScene" uid="uid://304haxf1nshu" path="res://Components/DamageComps/damage_numbers.tscn" id="2_yg0sr"]
+
+[node name="Hurtbox" type="Area2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_gpif6")
+
+[node name="DamageNumbers" parent="." instance=ExtResource("2_yg0sr")]

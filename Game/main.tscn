@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://clqw4um34fajs"]
+
+[ext_resource type="Script" uid="uid://cdlnphhio2rp2" path="res://Game/Main.cs" id="1_f5lw1"]
+[ext_resource type="PackedScene" uid="uid://chh07uycyoynw" path="res://Game/Player/player.tscn" id="2_gab3r"]
+[ext_resource type="PackedScene" uid="uid://bkppf2b2pyith" path="res://Game/Entities/TestEnemies/test_enemy.tscn" id="3_gab3r"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_f5lw1")
+
+[node name="EntityHandler" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="EntityHandler" instance=ExtResource("2_gab3r")]
+
+[node name="TestEnemy" parent="EntityHandler" instance=ExtResource("3_gab3r")]
+position = Vector2(0, -40)
