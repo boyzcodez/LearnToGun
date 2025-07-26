@@ -35,8 +35,8 @@ public partial class Hitbox : Area2D
         Arrange();
         foreach (var hurtbox in enemiesInRange)
         {
-            hurtbox.Damage(damage, GlobalPosition);
-            await ToSignal(GetTree().CreateTimer(0.1f), "timeout"); // Delay between damage applications
+            hurtbox.Damage(damage, Vector2.FromAngle(GlobalRotation));
+            await ToSignal(GetTree().CreateTimer(0.05f), "timeout"); // Delay between damage applications
         }
     }
 

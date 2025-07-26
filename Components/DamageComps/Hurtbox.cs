@@ -12,18 +12,17 @@ public partial class Hurtbox : Area2D
     {
         DamageNumbers = GetNode<Node2D>("DamageNumbers");
     }
-    public void Damage(int damage, Vector2 attacker_pos)
+    public void Damage(int damage, Vector2 direction)
     {
-        Vector2 knockbackDirection = attacker_pos.DirectionTo(GlobalPosition);
 
         if (healthComponent != null)
         {
-            healthComponent.TakeDamage(damage, knockbackDirection, 200f);
+            healthComponent.TakeDamage(damage, direction, 100f);
             DamageNumbers.Call("DisplayNumber", damage);
         }
         else
         {
-            GD.PrintErr("No health component attached to Hurtbox.");
+            GD.PrintErr("No health component attached to Hurtbox in " + GetParent<Entity>().Name);
         }
     }
 }
