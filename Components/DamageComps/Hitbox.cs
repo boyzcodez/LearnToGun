@@ -7,6 +7,7 @@ using System.Linq;
 public partial class Hitbox : Area2D
 {
     [Export] public int damage = 10;
+    public DamageInfo damageInfo;
     private List<Hurtbox> enemiesInRange = new List<Hurtbox>();
 
     private void OnAreaEntered(Node body)
@@ -30,13 +31,18 @@ public partial class Hitbox : Area2D
         enemiesInRange = enemiesInRange.OrderBy(h => h.GlobalPosition.DistanceTo(GlobalPosition)).ToList();
     }
 
-    public async void ApplyDamage()
+    public void ApplyDamage()
     {
+        if (damageInfo == null)
+        {
+            GD.PrintErr("DamageInfo is not set for Hitbox in " + Name);
+            return;
+        }
         Arrange();
         foreach (var hurtbox in enemiesInRange)
         {
-            hurtbox.Damage(damage, Vector2.FromAngle(GlobalRotation));
-            await ToSignal(GetTree().CreateTimer(0.05f), "timeout"); // Delay between damage applications
+            hurtbox.Damage(damageInfo, Vector2.FromAngle(GlobalRotation));
+            //await ToSignal(GetTree().CreateTimer(0.05f), "timeout"); // Delay between damage applications
         }
     }
 

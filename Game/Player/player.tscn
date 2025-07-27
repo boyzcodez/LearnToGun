@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://chh07uycyoynw"]
+[gd_scene load_steps=56 format=3 uid="uid://chh07uycyoynw"]
 
 [ext_resource type="Script" uid="uid://cccauuo7nkwjv" path="res://Game/Player/Player.cs" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://6fx5ynqopyeo" path="res://Assets/basic_robot_character.png" id="2_s3asc"]
@@ -8,7 +8,9 @@
 [ext_resource type="Script" uid="uid://cjdsjaml44rs2" path="res://Game/Player/LookAt.cs" id="6_4ddeg"]
 [ext_resource type="PackedScene" uid="uid://cokma6r7qkbkm" path="res://Components/DamageComps/health.tscn" id="6_ch4ko"]
 [ext_resource type="PackedScene" uid="uid://dpx5gl0m23p3c" path="res://Components/DamageComps/hitbox.tscn" id="6_vh1aq"]
+[ext_resource type="Script" uid="uid://cs3kobjjcnkdv" path="res://Game/Player/Gun.cs" id="7_db2hk"]
 [ext_resource type="PackedScene" uid="uid://vmtiw08cr30b" path="res://Components/DamageComps/hurtbox.tscn" id="7_vh1aq"]
+[ext_resource type="Resource" uid="uid://deqas63njyows" path="res://Game/Guns/Gun1.tres" id="8_q0m6d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
 radius = 6.0
@@ -363,10 +365,14 @@ script = ExtResource("4_vytja")
 position = Vector2(0, -9)
 script = ExtResource("6_4ddeg")
 
-[node name="Hitbox" parent="LookAt" instance=ExtResource("6_vh1aq")]
+[node name="Gun" type="Node2D" parent="LookAt"]
+script = ExtResource("7_db2hk")
+gun = ExtResource("8_q0m6d")
+
+[node name="Hitbox" parent="LookAt/Gun" instance=ExtResource("6_vh1aq")]
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LookAt/Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LookAt/Gun/Hitbox"]
 position = Vector2(35, 0)
 shape = SubResource("RectangleShape2D_vh1aq")
 

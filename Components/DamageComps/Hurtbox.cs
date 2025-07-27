@@ -12,13 +12,12 @@ public partial class Hurtbox : Area2D
     {
         DamageNumbers = GetNode<Node2D>("DamageNumbers");
     }
-    public void Damage(int damage, Vector2 direction)
+    public void Damage(DamageInfo damageInfo, Vector2 direction)
     {
 
         if (healthComponent != null)
         {
-            healthComponent.TakeDamage(damage, direction, 100f);
-            DamageNumbers.Call("DisplayNumber", damage);
+            healthComponent.TakeDamage(damageInfo, direction, 100f);
         }
         else
         {

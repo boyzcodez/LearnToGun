@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BaseGun" load_steps=3 format=3 uid="uid://deqas63njyows"]
+
+[ext_resource type="Resource" uid="uid://cpfpmhbexu1td" path="res://Game/Guns/Gun1_damageInfo.tres" id="1_e5i3k"]
+[ext_resource type="Script" uid="uid://xcd6gu1ttgur" path="res://Game/Guns/Base/BaseGun.cs" id="1_y6s45"]
+
+[resource]
+script = ExtResource("1_y6s45")
+damageInfo = ExtResource("1_e5i3k")
+ammo = 10
+maxAmmo = 10
+fireRate = 0.5
+metadata/_custom_type_script = "uid://xcd6gu1ttgur"

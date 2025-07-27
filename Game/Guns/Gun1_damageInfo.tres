@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DamageInfo" load_steps=2 format=3 uid="uid://cpfpmhbexu1td"]
+
+[ext_resource type="Script" uid="uid://nnmo7ykkdx0e" path="res://Game/Guns/Base/DamageInfo.cs" id="1_8put0"]
+
+[resource]
+script = ExtResource("1_8put0")
+damage = 10
+knockbackForce = 100.0
+damageType = "Obliterate"
+typeDamage = 5
+metadata/_custom_type_script = "uid://nnmo7ykkdx0e"
