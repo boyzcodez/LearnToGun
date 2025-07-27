@@ -19,6 +19,14 @@ config/icon="res://Assets/icon.svg"
 
 project/assembly_name="testpro"
 
+[file_customization]
+
+folder_colors={
+"res://Assets/": "yellow",
+"res://Components/": "purple",
+"res://Game/": "green"
+}
+
 [input]
 
 dodge={
