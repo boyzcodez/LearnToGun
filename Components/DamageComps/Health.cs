@@ -4,14 +4,15 @@ using System;
 [GlobalClass]
 public partial class Health : Node2D
 {
+    private DamageNumbers damageNumber;
     private Entity owner;
-    [Export]
-    private int maxHealth = 100;
+    [Export] private int maxHealth = 100;
     private int currentHealth;
 
     public override void _Ready()
     {
         owner = GetParent<Entity>();
+        damageNumber = GetNode<DamageNumbers>("DamageNumbers");
         currentHealth = maxHealth;
     }
 
@@ -20,6 +21,7 @@ public partial class Health : Node2D
         currentHealth -= damageInfo.damage;
         owner.Knockback(knockbackDirection, knockbackForce);
         TriggerDamageType("Obliterate", damageInfo.damage);
+        damageNumber.DisplayNumber(damageInfo.damage);
         if (currentHealth <= 0)
         {
             GD.Print("dead");

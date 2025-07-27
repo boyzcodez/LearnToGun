@@ -6,7 +6,7 @@ public partial class DamageNumbers : Node2D
 {
     Font PixelFont = GD.Load<Font>("res://Assets/Fonts/PixelOperator8.ttf");
 
-    private async void DisplayNumber(int damage)
+    public async void DisplayNumber(int damage)
     {
         var number = new Label
         {

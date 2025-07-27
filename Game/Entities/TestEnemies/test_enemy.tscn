@@ -13,6 +13,8 @@ radius = 7.0
 height = 14.0
 
 [node name="TestEnemy" type="CharacterBody2D"]
+motion_mode = 1
+platform_on_leave = 2
 script = ExtResource("1_l6u0g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
