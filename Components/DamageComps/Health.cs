@@ -6,8 +6,9 @@ public partial class Health : Node2D
 {
     private DamageNumbers damageNumber;
     private Entity owner;
-    [Export] private int maxHealth = 100;
     private int currentHealth;
+    [Export] private int maxHealth = 100;
+    
 
     public override void _Ready()
     {

@@ -6,7 +6,7 @@ using System.Linq;
 [GlobalClass]
 public partial class Hitbox : Area2D
 {
-    [Export] public int damage = 10;
+    
     public DamageInfo damageInfo;
     private List<Hurtbox> enemiesInRange = new List<Hurtbox>();
 
