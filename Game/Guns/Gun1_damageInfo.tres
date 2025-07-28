@@ -6,6 +6,6 @@
 script = ExtResource("1_8put0")
 damage = 10
 knockbackForce = 100.0
-damageType = "Obliterate"
+damageType = "Burn"
 typeDamage = 5
 metadata/_custom_type_script = "uid://nnmo7ykkdx0e"

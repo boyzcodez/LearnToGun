@@ -1,17 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://cokma6r7qkbkm"]
+[gd_scene load_steps=7 format=3 uid="uid://cokma6r7qkbkm"]
 
 [ext_resource type="Script" uid="uid://dh5kg374unl8e" path="res://Components/DamageComps/Health.cs" id="1_psp7q"]
+[ext_resource type="Script" uid="uid://hvvbahuvgwfi" path="res://Components/DamageComps/Burn.cs" id="2_2cqca"]
 [ext_resource type="Script" uid="uid://b222ngjpo2m1c" path="res://Components/DamageComps/Obliterate.cs" id="2_sa577"]
 [ext_resource type="PackedScene" uid="uid://304haxf1nshu" path="res://Components/DamageComps/damage_numbers.tscn" id="3_35ijb"]
+[ext_resource type="Script" uid="uid://bdlccgulhaedy" path="res://Components/DamageComps/Cascade.cs" id="4_tv6a8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tv6a8"]
+radius = 50.0
 
 [node name="Health" type="Node2D"]
 script = ExtResource("1_psp7q")
 
 [node name="Burn" type="Node" parent="."]
+script = ExtResource("2_2cqca")
+
+[node name="Timer" type="Timer" parent="Burn"]
+one_shot = true
 
 [node name="Obliterate" type="Node" parent="."]
 script = ExtResource("2_sa577")
 
-[node name="Cascade" type="Node2D" parent="."]
+[node name="Cascade" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("4_tv6a8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cascade"]
+shape = SubResource("CircleShape2D_tv6a8")
+debug_color = Color(0.0292571, 0.633868, 0.427192, 0.42)
 
 [node name="DamageNumbers" parent="." instance=ExtResource("3_35ijb")]
+
+[connection signal="timeout" from="Burn/Timer" to="Burn" method="_on_timer_timeout"]

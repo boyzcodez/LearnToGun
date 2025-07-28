@@ -7,12 +7,12 @@ public partial class Hurtbox : Area2D
     [Export]
     private Health healthComponent;
 
-    public void Damage(DamageInfo damageInfo, Vector2 direction)
+    public void Damage(DamageInfo damageInfo, Vector2 direction = default)
     {
 
         if (healthComponent != null)
         {
-            healthComponent.TakeDamage(damageInfo, direction, 100f);
+            healthComponent.TakeDamage(damageInfo, direction);
         }
         else
         {

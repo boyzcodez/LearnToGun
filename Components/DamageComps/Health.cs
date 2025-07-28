@@ -6,6 +6,9 @@ public partial class Health : Node2D
 {
     private DamageNumbers damageNumber;
     private Entity owner;
+    private Node ObliterateComponent;
+    private Node BurnComponent;
+    private Node2D CascadeComponent;
     private int currentHealth;
     [Export] private int maxHealth = 100;
     
@@ -14,34 +17,46 @@ public partial class Health : Node2D
     {
         owner = GetParent<Entity>();
         damageNumber = GetNode<DamageNumbers>("DamageNumbers");
+        ObliterateComponent = GetNode("Obliterate");
+        BurnComponent = GetNode("Burn");
+        CascadeComponent = GetNode<Node2D>("Cascade");
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage(DamageInfo damageInfo, Vector2 knockbackDirection = default, float knockbackForce = 0f)
+    public void TakeDamage(DamageInfo damageInfo, Vector2 knockbackDirection = default)
     {
         currentHealth -= damageInfo.damage;
-        owner.Knockback(knockbackDirection, knockbackForce);
-        TriggerDamageType("Obliterate", damageInfo.damage);
+        owner.Knockback(knockbackDirection, damageInfo.knockbackForce);
         damageNumber.DisplayNumber(damageInfo.damage);
+
+        TriggerDamageType(damageInfo.damageType, damageInfo.typeDamage);
+
         if (currentHealth <= 0)
         {
             GD.Print("dead");
         }
     }
 
-    private void TriggerDamageType(string damageType, int damageAmount)
+    private void TriggerDamageType(string damageType, int typeAmount)
     {
+        if (typeAmount <= 0)
+        {
+            return;
+        }
         // Handle different damage types here
         switch (damageType)
         {
             case "Obliterate":
-                GD.Print("Obliterate damage");
+                ObliterateComponent.Call("ObliterateBuildUp", typeAmount);
                 break;
             case "Cascade":
-                GD.Print("Cascade damage");
+                CascadeComponent.Call("CascadeBuildUp", typeAmount);
                 break;
             case "Burn":
-                GD.Print("Burn damage");
+                BurnComponent.Call("BurnBuildUp", typeAmount);
+                break;
+            case "None":
+                GD.Print("No damage type specified");
                 break;
             default:
                 GD.Print("Unknown damage type");

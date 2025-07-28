@@ -8,11 +8,18 @@ public partial class Gun : Node2D
 
     public override void _Ready()
     {
-        hitbox = GetChild<Hitbox>(0);
+        hitbox = GetNode<Hitbox>("Hitbox");
         SetGun();
     }
     public void SetGun()
     {
         hitbox.damageInfo = gun.damageInfo;
+    }
+    public override void _Input(InputEvent @event)
+    {
+        if (@event.IsActionPressed("attack"))
+        {
+            hitbox.ApplyDamage();
+        }
     }
 }
