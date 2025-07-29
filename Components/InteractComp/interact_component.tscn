@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://haqfsuv5fmc3"]
+
+[ext_resource type="FontFile" uid="uid://7oq2thvbhisg" path="res://Assets/Fonts/PixelOperator8.ttf" id="1_c8r0c"]
+[ext_resource type="Script" uid="uid://bow50peubo33q" path="res://Components/InteractComp/InteractComponent.cs" id="1_yq2wh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c8r0c"]
+radius = 20.0
+
+[node name="InteractComponent" type="Node2D"]
+script = ExtResource("1_yq2wh")
+
+[node name="InteractRange" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractRange"]
+shape = SubResource("CircleShape2D_c8r0c")
+
+[node name="InteractLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -70.0
+offset_right = 21.0
+offset_bottom = -47.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("1_c8r0c")
+theme_override_font_sizes/font_size = 16
+text = "[E]"
+horizontal_alignment = 1
+vertical_alignment = 2

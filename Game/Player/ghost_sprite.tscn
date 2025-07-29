@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxyy5vw0eiy5e"]
+
+[ext_resource type="Script" uid="uid://cp3j57eo73i1r" path="res://Game/Player/GhostSprite.cs" id="1_hjc0n"]
+[ext_resource type="Material" uid="uid://dpwwu6i43sglf" path="res://Game/Shaders/ghost_sprite.tres" id="2_hjc0n"]
+
+[node name="GhostSprite" type="Node2D"]
+z_index = -1
+script = ExtResource("1_hjc0n")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+material = ExtResource("2_hjc0n")
+
+[node name="Timer" type="Timer" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://chh07uycyoynw"]
+[gd_scene load_steps=59 format=3 uid="uid://chh07uycyoynw"]
 
 [ext_resource type="Script" uid="uid://cccauuo7nkwjv" path="res://Game/Player/Player.cs" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://6fx5ynqopyeo" path="res://Assets/basic_robot_character.png" id="2_s3asc"]
@@ -11,6 +11,9 @@
 [ext_resource type="Script" uid="uid://cs3kobjjcnkdv" path="res://Game/Player/Gun.cs" id="7_db2hk"]
 [ext_resource type="PackedScene" uid="uid://vmtiw08cr30b" path="res://Components/DamageComps/hurtbox.tscn" id="7_vh1aq"]
 [ext_resource type="Resource" uid="uid://deqas63njyows" path="res://Game/Guns/Gun1.tres" id="8_q0m6d"]
+[ext_resource type="Script" uid="uid://c73kpxw2e5ynj" path="res://Game/Player/WarpDash.cs" id="12_qwver"]
+[ext_resource type="PackedScene" uid="uid://bxyy5vw0eiy5e" path="res://Game/Player/ghost_sprite.tscn" id="13_nfw5o"]
+[ext_resource type="PackedScene" uid="uid://haqfsuv5fmc3" path="res://Components/InteractComp/interact_component.tscn" id="14_wlpas"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
 radius = 6.0
@@ -339,7 +342,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vh1aq"]
-size = Vector2(70, 40)
+size = Vector2(85, 40)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ch4ko"]
 radius = 7.0
@@ -375,7 +378,7 @@ gun = ExtResource("8_q0m6d")
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LookAt/Gun/Hitbox"]
-position = Vector2(35, 0)
+position = Vector2(42.5, 0)
 shape = SubResource("RectangleShape2D_vh1aq")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -392,3 +395,14 @@ healthComponent = NodePath("../Health")
 position = Vector2(0, -9)
 shape = SubResource("CapsuleShape2D_ch4ko")
 debug_color = Color(0.883969, 0.263477, 0.526173, 0.42)
+
+[node name="WarpDash" type="Node2D" parent="."]
+position = Vector2(0, -9)
+script = ExtResource("12_qwver")
+ghostScene = ExtResource("13_nfw5o")
+
+[node name="Timer" type="Timer" parent="WarpDash"]
+wait_time = 0.05
+one_shot = true
+
+[node name="InteractComponent" parent="." instance=ExtResource("14_wlpas")]

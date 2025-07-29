@@ -8,6 +8,14 @@ public partial class Cascade : Node2D
     private int buildUpCount = 0;
     private const int maxBuildUp = 15;
     private List<Hurtbox> hurtboxesInRange = new List<Hurtbox>();
+    [Export] private DamageInfo cascadeDamageInfo = new DamageInfo
+    {
+        damage = 150,
+        knockbackForce = 0f,
+        damageType = "Cascade",
+        typeDamage = 0
+    };
+
     public override void _Ready()
     {
         healthComponent = GetParent<Health>();
@@ -29,13 +37,7 @@ public partial class Cascade : Node2D
     {
         foreach (var hurtbox in hurtboxesInRange)
         {
-             hurtbox.Damage(new DamageInfo
-            {
-                damage = 150,
-                knockbackForce = 0f,
-                damageType = "Cascade",
-                typeDamage = 0
-             });
+             hurtbox.Damage(cascadeDamageInfo);
         }
     }
 

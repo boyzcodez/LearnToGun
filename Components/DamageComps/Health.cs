@@ -27,7 +27,7 @@ public partial class Health : Node2D
     {
         currentHealth -= damageInfo.damage;
         owner.Knockback(knockbackDirection, damageInfo.knockbackForce);
-        damageNumber.DisplayNumber(damageInfo.damage);
+        damageNumber.DisplayNumber(damageInfo.damage, damageInfo.damageType);
 
         TriggerDamageType(damageInfo.damageType, damageInfo.typeDamage);
 

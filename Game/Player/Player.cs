@@ -6,10 +6,20 @@ public partial class Player : Entity
     private const float SPEED = 100f;
     private const float DODGE_SPEED = 180f;
     private const float DODGE_DURATION = 0.4f;
-
+    
     private bool isDodging = false;
     private Vector2 dodgeDirection;
     private float dodgeTime = 0f;
+
+    private Hurtbox hurtbox;
+    private Node2D warpDashNode;
+
+    public override void _Ready()
+    {
+        base._Ready();
+        hurtbox = GetNode<Hurtbox>("Hurtbox");
+        warpDashNode = GetNode<Node2D>("WarpDash");
+    }
     public override void _PhysicsProcess(double delta)
     {
         if (KnockbackTime > 0f)
@@ -18,6 +28,7 @@ public partial class Player : Entity
             if (KnockbackTime <= 0f)
             {
                 Velocity = Vector2.Zero; // Stop movement after knockback
+                
             }
             return; // Skip normal movement logic during knockback
         }
@@ -42,9 +53,11 @@ public partial class Player : Entity
         Vector2 direction = Input.GetVector("left", "right", "up", "down");
         Velocity = Velocity.Lerp(direction * SPEED, 22.0f * delta);
 
-        if (Input.IsActionJustPressed("dodge"))
+        if (Input.IsActionJustPressed("dodge") && direction != Vector2.Zero)
         {
             isDodging = true;
+            hurtbox.Monitorable = false;
+            warpDashNode.CallDeferred("Activated");
             DodgeRoll(direction);
         }
     }
@@ -67,6 +80,8 @@ public partial class Player : Entity
             isDodging = false;
             Velocity = Vector2.Zero; // Stop movement after dodge
             dodgeDirection = Vector2.Zero;
+            hurtbox.Monitorable = true; // Re-enable hurtbox monitoring
+            warpDashNode.CallDeferred("Deactivated");
         }
     }
 

@@ -9,6 +9,13 @@ public partial class Burn : Node
     private int burnTriggerCount = 0;
     private const float burnTickInterval = 0.3f;
     private const int maxBuildUp = 15; // Example threshold for obliteration
+    [Export] private DamageInfo burnDamageInfo = new DamageInfo
+    {
+        damage = 5,
+        knockbackForce = 0f,
+        damageType = "Burn",
+        typeDamage = 0
+    };
 
     public override void _Ready()
     {
@@ -40,13 +47,7 @@ public partial class Burn : Node
     {
         if (healthComponent != null)
         {
-            healthComponent.TakeDamage(new DamageInfo
-            {
-                damage = 5,
-                knockbackForce = 0f,
-                damageType = "Burn",
-                typeDamage = 0
-            });
+            healthComponent.TakeDamage(burnDamageInfo);
         }
 
         burnTriggerCount--;

@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dpwwu6i43sglf"]
+
+[ext_resource type="Shader" uid="uid://dolqpcsluddrn" path="res://Game/Shaders/ghost_sprite.gdshader" id="1_gfyvb"]
+
+[resource]
+shader = ExtResource("1_gfyvb")
+shader_parameter/time = 0.0
+shader_parameter/color_tint = Color(0, 0, 0, 1)
