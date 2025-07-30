@@ -24,7 +24,7 @@ public partial class InteractComponent : Node2D
                 interactionLabel.Hide();
 
                 var interactable = interactables[0];
-                interactable.Call("interact");
+                interactable?.Call("interact");
 
                 canInteract = true;
             }

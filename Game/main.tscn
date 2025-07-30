@@ -20,5 +20,5 @@ position = Vector2(15, -60)
 [node name="TestEnemy3" parent="EntityHandler" instance=ExtResource("3_gab3r")]
 position = Vector2(-20, -65)
 
-[node name="TestEnemy4" parent="EntityHandler" instance=ExtResource("3_b0md6")]
-position = Vector2(100, 0)
+[node name="ActiveTestEnemy" parent="EntityHandler" instance=ExtResource("3_b0md6")]
+position = Vector2(90, 0)

@@ -1,12 +1,13 @@
 using Godot;
 using System;
 
+[GlobalClass]
 public partial class Player : Entity
 {
     private const float SPEED = 100f;
     private const float DODGE_SPEED = 180f;
-    private const float DODGE_DURATION = 0.4f;
-    
+    private const float DODGE_DURATION = 0.5f;
+
     private bool isDodging = false;
     private Vector2 dodgeDirection;
     private float dodgeTime = 0f;
@@ -28,7 +29,7 @@ public partial class Player : Entity
             if (KnockbackTime <= 0f)
             {
                 Velocity = Vector2.Zero; // Stop movement after knockback
-                
+
             }
             return; // Skip normal movement logic during knockback
         }

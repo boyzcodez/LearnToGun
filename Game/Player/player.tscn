@@ -348,7 +348,7 @@ size = Vector2(85, 40)
 radius = 7.0
 height = 20.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("1_onrkg")

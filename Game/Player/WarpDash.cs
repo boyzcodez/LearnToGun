@@ -18,9 +18,9 @@ public partial class WarpDash : Node2D
 
         var tintColors = new Color[]
         {
-            new Color("#1eff96ff"), // DodgerBlue
-            new Color("#57dafeff"), // DarkRed
-            new Color("#ff3ed2ff")  // OrangeRed
+            new Color("#18ff74ff"), // DodgerBlue
+            new Color("#4791ffff"), // DarkRed
+            new Color("#ff497dff")  // OrangeRed
         };
         var tint = tintColors[(int)GD.RandRange(0, tintColors.Length - 1)];
 
