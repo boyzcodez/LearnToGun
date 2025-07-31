@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bhb68kqkfragl"]
+[gd_scene load_steps=13 format=3 uid="uid://bhb68kqkfragl"]
 
 [ext_resource type="Script" uid="uid://dexb3awvsef8d" path="res://Game/Entities/TestEnemies/ActiveTestEnemy.cs" id="1_hc5v1"]
 [ext_resource type="Texture2D" uid="uid://bm5su8unmtdyu" path="res://Assets/icon.svg" id="2_hc5v1"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://na4yx06ro3jd" path="res://Game/Entities/StateMachine/state_machine.tscn" id="6_m1e7j"]
 [ext_resource type="Script" uid="uid://c2orrjp6f8iyi" path="res://Game/Entities/StateMachine/States/Idle.cs" id="7_tko4x"]
 [ext_resource type="Script" uid="uid://cbm2bcpra8ll1" path="res://Game/Entities/StateMachine/States/Follow.cs" id="8_i2p2e"]
+[ext_resource type="Script" uid="uid://2sl1ow0g27ob" path="res://Game/Entities/StateMachine/States/Surround.cs" id="9_i2p2e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_htgvw"]
 radius = 6.0
@@ -55,7 +56,7 @@ initialState = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("7_tko4x")
-NextState = "Follow"
+NextState = "Surround"
 PrevState = "Nothing"
 metadata/_custom_type_script = "uid://c2orrjp6f8iyi"
 
@@ -64,3 +65,8 @@ script = ExtResource("8_i2p2e")
 nextRange = 50.0
 NextState = "Nothing"
 metadata/_custom_type_script = "uid://cbm2bcpra8ll1"
+
+[node name="Surround" type="Node" parent="StateMachine"]
+script = ExtResource("9_i2p2e")
+NextState = "Nothing"
+metadata/_custom_type_script = "uid://2sl1ow0g27ob"

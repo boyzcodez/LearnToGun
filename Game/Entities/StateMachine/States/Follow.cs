@@ -5,9 +5,9 @@ using System;
 public partial class Follow : State
 {
     [Export] private float howClose = 20f;
-    [Export] private float speed = 80f;
-    [Export] private float prevRange = 150f;
-    [Export] private float nextRange = 0f;
+    [Export] private float speed = 60f;
+    [Export] private float prevRange = 900f;
+    [Export] private float nextRange = 100f;
     public override void Enter()
     {
         // Optional override

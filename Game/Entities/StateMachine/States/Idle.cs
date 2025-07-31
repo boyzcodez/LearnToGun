@@ -6,8 +6,8 @@ public partial class Idle : State
 {
     private Vector2 moveDirection;
     private float wanderTime;
-    [Export] private float speed = 20f;
-    [Export] private float dedectRange = 50f;
+    [Export] private float speed = 25f;
+    [Export] private float dedectRange = 800f;
 
 
     private void RandomizeWander()

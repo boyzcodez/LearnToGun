@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Threading.Tasks;
 
 [GlobalClass]
 public partial class Health : Node2D
@@ -23,18 +24,27 @@ public partial class Health : Node2D
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage(DamageInfo damageInfo, Vector2 knockbackDirection = default)
+    public async Task TakeDamage(DamageInfo damageInfo, Vector2 knockbackDirection = default)
     {
-        currentHealth -= damageInfo.damage;
-        owner.Knockback(knockbackDirection, damageInfo.knockbackForce);
-        damageNumber.DisplayNumber(damageInfo.damage, damageInfo.damageType);
+        int repeats = Math.Max(1, damageInfo.repeatCount);
 
-        TriggerDamageType(damageInfo.damageType, damageInfo.typeDamage);
-
-        if (currentHealth <= 0)
+        for (int i = 0; i < repeats; i++)
         {
-            GD.Print("dead");
+            currentHealth -= damageInfo.damage;
+            owner.Knockback(knockbackDirection, damageInfo.knockbackForce);
+            damageNumber.DisplayNumber(damageInfo.damage, damageInfo.damageType);
+
+            TriggerDamageType(damageInfo.damageType, damageInfo.typeDamage);
+
+            if (currentHealth <= 0)
+            {
+                GD.Print("dead");
+            }
+
+            if (i < repeats - 1)
+                await ToSignal(GetTree().CreateTimer(0.12f), "timeout"); // 120ms delay between numbers
         }
+        
     }
 
     private void TriggerDamageType(string damageType, int typeAmount)

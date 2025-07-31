@@ -44,6 +44,19 @@ public partial class Hitbox : Area2D
             //await ToSignal(GetTree().CreateTimer(0.05f), "timeout"); // Delay between damage applications
         }
     }
+    public void SetGun(BaseGun newGun)
+    {
+        damageInfo = newGun.damageInfo;
+        SetRange(newGun.RangeX, newGun.RangeY);
+    }
+    public void SetRange(float rangeX, float rangeY)
+    {
+        CollisionShape2D collision = GetChild<CollisionShape2D>(0);
+        var shape = new RectangleShape2D();
+        shape.Size = new Vector2(rangeX, rangeY);
+        collision.Shape = shape;
+        collision.Position = new Vector2(rangeX / 2, 0);
+    }
 
     public override void _Ready()
     {

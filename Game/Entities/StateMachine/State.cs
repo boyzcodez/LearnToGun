@@ -22,6 +22,7 @@ public partial class State : Node
 
     [Export(PropertyHint.Enum, "Idle,Follow,Attack,Surround,Nothing")]
     public string PrevState { get; set; } = "Idle";
+    
     public override void _Ready()
     {
         parent = GetOwner<Entity>();

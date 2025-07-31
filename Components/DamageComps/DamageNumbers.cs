@@ -33,8 +33,8 @@ public partial class DamageNumbers : Node2D
         var tween = CreateTween();
         tween.SetParallel(true);
 
-        tween.TweenProperty(number, "modulate", new Color(1, 1, 1, 0), 0.5f);
-        tween.TweenProperty(number, "position", number.Position + new Vector2(0, -50), 0.5f);
+        tween.TweenProperty(number, "modulate", new Color(1, 1, 1, 0), 0.7f);
+        tween.TweenProperty(number, "position", number.Position + new Vector2(0, -50), 1.0f);
 
         await ToSignal(tween, Tween.SignalName.Finished);
         number.QueueFree();
