@@ -14,8 +14,8 @@ public partial class AnimatedSprite : AnimatedSprite2D
 
     public override void _PhysicsProcess(double delta)
     {
-
-        if (Input.IsActionPressed("run"))
+        Godot.Vector2 direction = Input.GetVector("left", "right", "up", "down");
+        if (direction != Godot.Vector2.Zero )
         {
             Running = "Run";
         } else {

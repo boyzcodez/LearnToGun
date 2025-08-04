@@ -18,7 +18,7 @@ public partial class WarpDash : Node2D
 
         var tintColors = new Color[]
         {
-            new Color("#18ff74ff"), // DodgerBlue
+            new Color("#18ffbaff"), // DodgerBlue
             new Color("#4791ffff"), // DarkRed
             new Color("#ff497dff")  // OrangeRed
         };

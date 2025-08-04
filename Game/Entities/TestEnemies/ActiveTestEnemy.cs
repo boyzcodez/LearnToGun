@@ -14,18 +14,4 @@ public partial class ActiveTestEnemy : Entity
     {
         GetNode<StateMachine>("StateMachine").SetActive();
     }
-    public override void _PhysicsProcess(double delta)
-    {
-        if (KnockbackTime > 0f)
-        {
-            KnockbackTime -= (float)delta;
-            if (KnockbackTime <= 0f)
-            {
-                Velocity = Vector2.Zero; // Stop movement after knockback
-            }
-        }
-
-        MoveAndSlide();
-    }
-
 }

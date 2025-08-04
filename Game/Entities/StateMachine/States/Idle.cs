@@ -30,7 +30,7 @@ public partial class Idle : State
     }
     public override void PhysicsProcess(double delta)
     {
-        parent.Velocity = moveDirection * speed;
+        parent.direction = moveDirection * speed;
 
         var direction = player.GlobalPosition - parent.GlobalPosition;
         if (direction.Length() < dedectRange && NextState != "Nothing")

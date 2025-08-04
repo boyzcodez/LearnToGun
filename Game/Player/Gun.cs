@@ -1,15 +1,18 @@
 using Godot;
 using System;
+//using System.Numerics;
 
 public partial class Gun : Node2D
 {
     private Hitbox hitbox;
     private Sprite2D rangeMarker;
+    private Sprite2D gunSprite;
     [Export] BaseGun gun;
 
     public override void _Ready()
     {
         rangeMarker = GetNode<Sprite2D>("RangeMarker");
+        gunSprite = GetNode<Sprite2D>("GunSprite");
         hitbox = GetNode<Hitbox>("Hitbox");
         SetGun();
     }
@@ -28,4 +31,17 @@ public partial class Gun : Node2D
             hitbox.ApplyDamage();
         }
     }
+    public override void _PhysicsProcess(double delta)
+    {
+        var angle = this.GlobalRotation;
+        if (Math.Abs(angle) > Math.PI / 2)
+        {
+            Scale = new Vector2(1, -1);
+        }
+        else
+        {
+            Scale = new Vector2(1, 1);
+        }
+    }
+
 }

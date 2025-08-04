@@ -5,6 +5,7 @@ using System;
 public partial class BaseGun : Resource
 {
     [Export] public DamageInfo damageInfo;
+    [Export] public PackedScene particalEffect;
     [Export] int ammo = 10;
     [Export] int maxAmmo = 10;
     [Export] float fireRate = 0.5f;

@@ -39,7 +39,7 @@ public partial class Surround : State
         Vector2 desiredVelocity = direction * moveSpeed;
         Vector2 steering = (desiredVelocity - velocity) * delta * 2.5f;
         velocity += steering;
-        parent.Velocity = velocity;
+        parent.direction = velocity;
     }
     public Vector2 GetCirclePosition(float random)
     {

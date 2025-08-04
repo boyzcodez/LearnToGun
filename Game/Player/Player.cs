@@ -20,6 +20,7 @@ public partial class Player : Entity
         base._Ready();
         hurtbox = GetNode<Hurtbox>("Hurtbox");
         warpDashNode = GetNode<Node2D>("WarpDash");
+        //Input.SetMouseMode(Input.MouseModeEnum.Hidden);
     }
     public override void _PhysicsProcess(double delta)
     {

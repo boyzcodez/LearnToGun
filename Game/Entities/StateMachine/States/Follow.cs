@@ -19,10 +19,10 @@ public partial class Follow : State
         
         if (direction.Length() > howClose)
         {
-            parent.Velocity = direction.Normalized() * speed; // Stop moving if too close
+            parent.direction = direction.Normalized() * speed; // Stop moving if too close
         }
         else
-            parent.Velocity = Vector2.Zero; // Stop moving if too close
+            parent.direction = Vector2.Zero; // Stop moving if too close
 
         if (direction.Length() < nextRange && NextState != "Nothing")
         {

@@ -56,7 +56,7 @@ initialState = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("7_tko4x")
-NextState = "Surround"
+NextState = "Follow"
 PrevState = "Nothing"
 metadata/_custom_type_script = "uid://c2orrjp6f8iyi"
 
