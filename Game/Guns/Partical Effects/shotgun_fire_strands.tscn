@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhf3nd7jo3wim"]
+
+[sub_resource type="Curve" id="Curve_4qapi"]
+_data = [Vector2(0, 0.539326), 0.0, 0.0, 0, 0, Vector2(0.431818, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_4qapi"]
+offsets = PackedFloat32Array(0, 0.633333, 1)
+colors = PackedColorArray(0.723288, 0, 0.278436, 1, 0.953156, 0.876646, 0.540014, 1, 1, 1, 1, 0)
+
+[node name="ShotgunFireStrands" type="CPUParticles2D"]
+emitting = false
+amount = 25
+lifetime = 0.2
+one_shot = true
+explosiveness = 0.8
+lifetime_randomness = 0.1
+spread = 5.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 500.0
+initial_velocity_max = 600.0
+angular_velocity_min = -15.0
+angular_velocity_max = 15.0
+linear_accel_max = 15.0
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_4qapi")
+color_ramp = SubResource("Gradient_4qapi")

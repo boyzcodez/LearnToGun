@@ -10,5 +10,5 @@ ammo = 10
 maxAmmo = 10
 fireRate = 0.5
 RangeX = 70.0
-RangeY = 40.0
+RangeY = 20.0
 metadata/_custom_type_script = "uid://xcd6gu1ttgur"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://chh07uycyoynw"]
+[gd_scene load_steps=63 format=3 uid="uid://chh07uycyoynw"]
 
 [ext_resource type="Script" uid="uid://cccauuo7nkwjv" path="res://Game/Player/Player.cs" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://6fx5ynqopyeo" path="res://Assets/basic_robot_character.png" id="2_s3asc"]
@@ -13,6 +13,8 @@
 [ext_resource type="Resource" uid="uid://deqas63njyows" path="res://Game/Guns/Gun1.tres" id="8_q0m6d"]
 [ext_resource type="Texture2D" uid="uid://bm5su8unmtdyu" path="res://Assets/icon.svg" id="10_akrrf"]
 [ext_resource type="Texture2D" uid="uid://diet8ij7y2hpc" path="res://Assets/Guns/basic_weapon_shotgun1.png" id="11_tqhgd"]
+[ext_resource type="PackedScene" uid="uid://bhf3nd7jo3wim" path="res://Game/Guns/Partical Effects/shotgun_fire_strands.tscn" id="12_6v7ly"]
+[ext_resource type="Script" uid="uid://de5s52jqbsy12" path="res://Game/Player/GunSprite.cs" id="12_n4lia"]
 [ext_resource type="Script" uid="uid://c73kpxw2e5ynj" path="res://Game/Player/WarpDash.cs" id="12_qwver"]
 [ext_resource type="PackedScene" uid="uid://bxyy5vw0eiy5e" path="res://Game/Player/ghost_sprite.tscn" id="13_nfw5o"]
 [ext_resource type="PackedScene" uid="uid://haqfsuv5fmc3" path="res://Components/InteractComp/interact_component.tscn" id="14_wlpas"]
@@ -359,6 +361,7 @@ script = ExtResource("1_onrkg")
 shape = SubResource("CircleShape2D_onrkg")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 2
 material = ExtResource("2_segth")
 position = Vector2(0, -9)
 sprite_frames = SubResource("SpriteFrames_fy1n6")
@@ -392,6 +395,10 @@ texture = ExtResource("10_akrrf")
 material = ExtResource("2_segth")
 position = Vector2(9, 2)
 texture = ExtResource("11_tqhgd")
+script = ExtResource("12_n4lia")
+
+[node name="ShotgunFireStrands" parent="LookAt/Gun" instance=ExtResource("12_6v7ly")]
+position = Vector2(20, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)

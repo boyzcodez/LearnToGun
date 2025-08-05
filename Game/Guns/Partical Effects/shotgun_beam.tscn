@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3m2np7p68oaa"]
+
+[ext_resource type="Texture2D" uid="uid://dvffec70m6fmr" path="res://Assets/Line.png" id="1_mnse4"]
+[ext_resource type="Script" uid="uid://df6lb6urcxowd" path="res://Game/Guns/Partical Effects/ShotgunBeam.cs" id="1_yx2td"]
+[ext_resource type="Shader" uid="uid://2xe62ik6tqyi" path="res://Game/Shaders/shotgun_beam.gdshader" id="2_wtbqm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_clkdv"]
+shader = ExtResource("2_wtbqm")
+shader_parameter/time = 0.0
+shader_parameter/beamColor = Color(1, 0.2, 1, 1)
+shader_parameter/scroll_speed = 2.0
+
+[node name="ShotgunBeam" type="Node2D"]
+script = ExtResource("1_yx2td")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_clkdv")
+texture = ExtResource("1_mnse4")
+centered = false

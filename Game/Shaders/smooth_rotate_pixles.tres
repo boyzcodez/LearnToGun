@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dgm487iucl2ye"]
+
+[ext_resource type="Shader" uid="uid://37oyaa5dumjf" path="res://Game/Shaders/smooth_rotate_pixels.gdshader" id="1_rfagr"]
+
+[resource]
+shader = ExtResource("1_rfagr")
+shader_parameter/pixel_size = 1.0
+shader_parameter/mix_sampling = 0

@@ -6,14 +6,17 @@ public partial class Gun : Node2D
 {
     private Hitbox hitbox;
     private Sprite2D rangeMarker;
-    private Sprite2D gunSprite;
+    private GunSprite gunSprite;
+    private CpuParticles2D gunParticles;
     [Export] BaseGun gun;
+
 
     public override void _Ready()
     {
         rangeMarker = GetNode<Sprite2D>("RangeMarker");
-        gunSprite = GetNode<Sprite2D>("GunSprite");
+        gunSprite = GetNode<GunSprite>("GunSprite");
         hitbox = GetNode<Hitbox>("Hitbox");
+        gunParticles = GetNode<CpuParticles2D>("ShotgunFireStrands");
         SetGun();
     }
     public void SetGun()
@@ -29,7 +32,24 @@ public partial class Gun : Node2D
         if (@event.IsActionPressed("attack"))
         {
             hitbox.ApplyDamage();
+            gunSprite.FireAnimation();
+            gunParticles.Emitting = true;
+            //FireBeam(GlobalPosition, rangeMarker.GlobalPosition);
         }
+    }
+    public void FireBeam(Vector2 from, Vector2 to)
+    {
+        var beamScene = GD.Load<PackedScene>("res://Game/Guns/Partical Effects/shotgun_beam.tscn");
+        var beam = (Node2D)beamScene.Instantiate();
+        GetTree().CurrentScene.AddChild(beam);
+
+        beam.Position = from;
+
+        Vector2 dir = to - from;
+        float dist = dir.Length();
+        float angle = dir.Angle();
+
+        beam.Rotation = angle;
     }
     public override void _PhysicsProcess(double delta)
     {
