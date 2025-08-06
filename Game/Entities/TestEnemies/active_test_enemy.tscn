@@ -1,10 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://bhb68kqkfragl"]
+[gd_scene load_steps=19 format=3 uid="uid://bhb68kqkfragl"]
 
 [ext_resource type="Script" uid="uid://dexb3awvsef8d" path="res://Game/Entities/TestEnemies/ActiveTestEnemy.cs" id="1_hc5v1"]
 [ext_resource type="Texture2D" uid="uid://bm5su8unmtdyu" path="res://Assets/icon.svg" id="2_hc5v1"]
 [ext_resource type="PackedScene" uid="uid://vmtiw08cr30b" path="res://Components/DamageComps/hurtbox.tscn" id="3_m1e7j"]
+[ext_resource type="PackedScene" uid="uid://dpx5gl0m23p3c" path="res://Components/DamageComps/hitbox.tscn" id="3_wklgt"]
 [ext_resource type="PackedScene" uid="uid://cokma6r7qkbkm" path="res://Components/DamageComps/health.tscn" id="4_f1b1u"]
+[ext_resource type="Script" uid="uid://nnmo7ykkdx0e" path="res://Game/Guns/Base/DamageInfo.cs" id="4_jyark"]
 [ext_resource type="PackedScene" uid="uid://cugpgubph2sc" path="res://Components/InteractComp/interactable.tscn" id="5_hc5v1"]
+[ext_resource type="PackedScene" uid="uid://mmdnif7mf7f7" path="res://Components/DamageComps/gun_sprite.tscn" id="5_lhyhb"]
+[ext_resource type="Texture2D" uid="uid://diet8ij7y2hpc" path="res://Assets/Guns/basic_weapon_shotgun1.png" id="6_38i84"]
 [ext_resource type="PackedScene" uid="uid://na4yx06ro3jd" path="res://Game/Entities/StateMachine/state_machine.tscn" id="6_m1e7j"]
 [ext_resource type="Script" uid="uid://c2orrjp6f8iyi" path="res://Game/Entities/StateMachine/States/Idle.cs" id="7_tko4x"]
 [ext_resource type="Script" uid="uid://cbm2bcpra8ll1" path="res://Game/Entities/StateMachine/States/Follow.cs" id="8_i2p2e"]
@@ -12,6 +16,18 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_htgvw"]
 radius = 6.0
+
+[sub_resource type="Resource" id="Resource_lhyhb"]
+script = ExtResource("4_jyark")
+damage = 10
+knockbackForce = 100.0
+repeatCount = 1
+damageType = "None"
+typeDamage = 0
+metadata/_custom_type_script = "uid://nnmo7ykkdx0e"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jyark"]
+size = Vector2(100, 20)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ccun0"]
 radius = 7.0
@@ -34,6 +50,22 @@ position = Vector2(0, -6)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_hc5v1")
 
+[node name="LookAt" type="Marker2D" parent="."]
+position = Vector2(0, -6)
+
+[node name="Gun" type="Node2D" parent="LookAt"]
+
+[node name="Hitbox" parent="LookAt/Gun" instance=ExtResource("3_wklgt")]
+damageInfo = SubResource("Resource_lhyhb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LookAt/Gun/Hitbox"]
+position = Vector2(50, 0)
+shape = SubResource("RectangleShape2D_jyark")
+
+[node name="GunSprite" parent="LookAt/Gun" instance=ExtResource("5_lhyhb")]
+position = Vector2(9, 2)
+texture = ExtResource("6_38i84")
+
 [node name="Hurtbox" parent="." node_paths=PackedStringArray("healthComponent") instance=ExtResource("3_m1e7j")]
 collision_layer = 4
 healthComponent = NodePath("../Health")
@@ -47,16 +79,18 @@ maxHealth = 15
 
 [node name="Interactable" parent="." instance=ExtResource("5_hc5v1")]
 interactionName = "Activate"
+isInteractable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
 shape = SubResource("CircleShape2D_m1e7j")
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("initialState") instance=ExtResource("6_m1e7j")]
 initialState = NodePath("Idle")
+Active = true
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("7_tko4x")
-NextState = "Follow"
+NextState = "Surround"
 PrevState = "Nothing"
 metadata/_custom_type_script = "uid://c2orrjp6f8iyi"
 

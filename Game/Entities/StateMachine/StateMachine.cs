@@ -8,10 +8,12 @@ public partial class StateMachine : Node
     private State currentState;
     private Dictionary<string, State> states = new();
     [Export] private State initialState;
+    [Export] private bool Active = false;
 
     public override void _Ready()
     {
-        SetInactive();
+        if (Active != true)
+            SetInactive();
 
         foreach (State child in GetChildren())
         {

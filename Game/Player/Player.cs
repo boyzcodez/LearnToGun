@@ -11,16 +11,21 @@ public partial class Player : Entity
     private bool isDodging = false;
     private Vector2 dodgeDirection;
     private float dodgeTime = 0f;
+    private float dashCooldown = 0.3f;
 
     private Hurtbox hurtbox;
     private Node2D warpDashNode;
+    private Timer dashTimer;
 
     public override void _Ready()
     {
-        base._Ready();
+        
+        dashTimer = GetNode<Timer>("DashCooldown");
         hurtbox = GetNode<Hurtbox>("Hurtbox");
         warpDashNode = GetNode<Node2D>("WarpDash");
         //Input.SetMouseMode(Input.MouseModeEnum.Hidden);
+
+        dashTimer.Connect("timeout", new Callable(this, nameof(OnTimerTimeout)));
     }
     public override void _PhysicsProcess(double delta)
     {
@@ -55,7 +60,7 @@ public partial class Player : Entity
         Vector2 direction = Input.GetVector("left", "right", "up", "down");
         Velocity = Velocity.Lerp(direction * SPEED, 22.0f * delta);
 
-        if (Input.IsActionJustPressed("dodge") && direction != Vector2.Zero)
+        if (Input.IsActionJustPressed("dodge") && direction != Vector2.Zero && isDodging == false)
         {
             isDodging = true;
             hurtbox.Monitorable = false;
@@ -79,12 +84,16 @@ public partial class Player : Entity
 
         if (dodgeTime <= 0f)
         {
-            isDodging = false;
             Velocity = Vector2.Zero; // Stop movement after dodge
             dodgeDirection = Vector2.Zero;
             hurtbox.Monitorable = true; // Re-enable hurtbox monitoring
             warpDashNode.CallDeferred("Deactivated");
+            dashTimer.Start(dashCooldown);
         }
+    }
+    private void OnTimerTimeout()
+    {
+        isDodging = false;
     }
 
 }

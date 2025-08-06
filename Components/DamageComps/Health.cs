@@ -38,7 +38,7 @@ public partial class Health : Node2D
 
             if (currentHealth <= 0)
             {
-                GD.Print("dead");
+                // GD.Print("dead");
             }
 
             if (i < repeats - 1)

@@ -10,7 +10,6 @@ public partial class Gun : Node2D
     private CpuParticles2D gunParticles;
     [Export] BaseGun gun;
 
-
     public override void _Ready()
     {
         rangeMarker = GetNode<Sprite2D>("RangeMarker");
@@ -34,7 +33,6 @@ public partial class Gun : Node2D
             hitbox.ApplyDamage();
             gunSprite.FireAnimation();
             gunParticles.Emitting = true;
-            //FireBeam(GlobalPosition, rangeMarker.GlobalPosition);
         }
     }
     public void FireBeam(Vector2 from, Vector2 to)
