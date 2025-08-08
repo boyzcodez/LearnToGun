@@ -427,3 +427,5 @@ wait_time = 0.05
 one_shot = true
 
 [node name="InteractComponent" parent="." instance=ExtResource("14_wlpas")]
+
+[connection signal="timeout" from="WarpDash/Timer" to="WarpDash" method="_on_timer_timeout"]

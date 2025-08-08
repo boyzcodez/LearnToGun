@@ -9,7 +9,7 @@ public partial class Hitbox : Area2D
     [Export] public DamageInfo damageInfo;
     private List<Hurtbox> enemiesInRange = new List<Hurtbox>();
 
-    private void OnAreaEntered(Node body)
+    public void _on_area_entered(Node body)
     {
         if (body is Hurtbox hurtbox)
         {
@@ -17,7 +17,7 @@ public partial class Hitbox : Area2D
         }
     }
 
-    private void OnAreaExited(Node body)
+    public void _on_area_exited(Node body)
     {
         if (body is Hurtbox hurtbox)
         {
@@ -60,7 +60,7 @@ public partial class Hitbox : Area2D
 
     public override void _Ready()
     {
-        Connect("area_entered", new Callable(this, nameof(OnAreaEntered)));
-        Connect("area_exited", new Callable(this, nameof(OnAreaExited)));
+        //Connect("area_entered", new Callable(this, nameof(OnAreaEntered)));
+        //Connect("area_exited", new Callable(this, nameof(OnAreaExited)));
     }
 }

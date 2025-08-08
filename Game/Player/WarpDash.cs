@@ -38,10 +38,10 @@ public partial class WarpDash : Node2D
     {
         warpTimer = GetNode<Timer>("Timer");
         animatedSprite = GetParent().GetNode<AnimatedSprite2D>("AnimatedSprite");
-        warpTimer.Connect("timeout", new Callable(this, nameof(OnWarpTimeout)));
+        //warpTimer.Connect("timeout", new Callable(this, nameof(OnWarpTimeout)));
     }
 
-    private void OnWarpTimeout()
+    public void _on_timer_timeout()
     {
         SpawnGhost();
 

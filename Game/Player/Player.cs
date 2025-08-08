@@ -6,7 +6,7 @@ public partial class Player : Entity
 {
     private const float SPEED = 100f;
     private const float DODGE_SPEED = 180f;
-    private const float DODGE_DURATION = 0.5f;
+    private const float DODGE_DURATION = 0.3f;
 
     private bool isDodging = false;
     private Vector2 dodgeDirection;
