@@ -11,7 +11,7 @@ public partial class Player : Entity
     private bool isDodging = false;
     private Vector2 dodgeDirection;
     private float dodgeTime = 0f;
-    private float dashCooldown = 0.4f;
+    private float dashCooldown = 0.5f;
 
     private Hurtbox hurtbox;
     private Node2D warpDashNode;
@@ -92,7 +92,7 @@ public partial class Player : Entity
     }
 
     // this function is hooked up through the engine
-    public void _on_dash_cooldown_timeout()
+    private void _on_dash_cooldown_timeout()
     {
         isDodging = false;
     }

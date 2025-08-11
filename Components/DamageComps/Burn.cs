@@ -1,15 +1,12 @@
 using Godot;
-using System;
+using System.Threading.Tasks;
 
 public partial class Burn : Node
 {
-    private Health healthComponent;
-    private Timer burnTimer;
-    private int buildUpCount = 0;
-    private int burnTriggerCount = 0;
-    private const float burnTickInterval = 0.3f;
-    private const int maxBuildUp = 15; // Example threshold for obliteration
-    [Export] private DamageInfo burnDamageInfo = new DamageInfo
+    [Export] private int maxBuildUp = 15;
+    [Export] private float burnTickInterval = 0.3f;
+    [Export] private int burnStackAmount = 5;
+    [Export] private DamageInfo burnDamageInfo = new()
     {
         damage = 5,
         knockbackForce = 0f,
@@ -17,44 +14,55 @@ public partial class Burn : Node
         typeDamage = 0
     };
 
+    private Health healthComponent;
+    private Timer burnTimer;
+    private int buildUpCount;
+    private int burnStacks;
+
     public override void _Ready()
     {
         healthComponent = GetParent<Health>();
         burnTimer = GetNode<Timer>("Timer");
-        burnTimer.Connect("timeout", new Callable(this, nameof(OnTimerTimeout)));
     }
 
     public void BurnBuildUp(int damageAmount)
     {
         buildUpCount += damageAmount;
-        if (buildUpCount >= maxBuildUp)
-        {
-            buildUpCount = 0;
+        
+        if (buildUpCount < maxBuildUp) return;
+        
+        buildUpCount = 0;
+        AddBurnStack();
+    }
 
-            if (burnTriggerCount == 0)
-            {
-                burnTriggerCount += 5;
-                burnTimer.Start(burnTickInterval);
-            }
-            else
-            {
-                burnTriggerCount += 5;  
-            }
-            
+    private void AddBurnStack()
+    {
+        burnStacks += burnStackAmount;
+        
+        if (burnStacks == burnStackAmount)
+        {
+            StartBurnTimer();
         }
     }
-    private void OnTimerTimeout()
+
+    private void StartBurnTimer()
+    {
+        burnTimer.Start(burnTickInterval);
+    }
+
+    // Connected through editor signal
+    private async Task _on_timer_timeout()
     {
         if (healthComponent != null)
         {
-            healthComponent.TakeDamage(burnDamageInfo);
+            await healthComponent.TakeDamage(burnDamageInfo);
         }
 
-        burnTriggerCount--;
+        burnStacks--;
 
-        if (burnTriggerCount > 0)
+        if (burnStacks > 0)
         {
-            burnTimer.Start(burnTickInterval);
+            StartBurnTimer();
         }
     }
 }

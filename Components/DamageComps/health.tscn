@@ -33,3 +33,5 @@ debug_color = Color(0.0292571, 0.633868, 0.427192, 0.42)
 [node name="DamageNumbers" parent="." instance=ExtResource("3_35ijb")]
 
 [connection signal="timeout" from="Burn/Timer" to="Burn" method="_on_timer_timeout"]
+[connection signal="area_entered" from="Cascade" to="Cascade" method="_on_area_entered"]
+[connection signal="area_exited" from="Cascade" to="Cascade" method="_on_area_exited"]

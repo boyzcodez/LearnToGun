@@ -1,14 +1,9 @@
 using Godot;
-using System;
 using System.Collections.Generic;
 
 public partial class Cascade : Node2D
 {
-    private Health healthComponent;
-    private int buildUpCount = 0;
-    private const int maxBuildUp = 15;
-    private List<Hurtbox> hurtboxesInRange = new List<Hurtbox>();
-    [Export] private DamageInfo cascadeDamageInfo = new DamageInfo
+    [Export] private DamageInfo cascadeDamageInfo = new()
     {
         damage = 150,
         knockbackForce = 0f,
@@ -16,32 +11,37 @@ public partial class Cascade : Node2D
         typeDamage = 0
     };
 
+    [Export] private int maxBuildUp = 15;
+
+    private Health healthComponent;
+    private int buildUpCount;
+    private readonly List<Hurtbox> hurtboxesInRange = new();
+
     public override void _Ready()
     {
         healthComponent = GetParent<Health>();
-        Connect("area_entered", new Callable(this, nameof(OnAreaEntered)));
-        Connect("area_exited", new Callable(this, nameof(OnAreaExited)));
     }
 
     public void CascadeBuildUp(int damageAmount)
     {
         buildUpCount += damageAmount;
 
-        if (buildUpCount >= maxBuildUp)
-        {
-            TriggerCascade();
-            buildUpCount = 0;
-        }
+        if (buildUpCount < maxBuildUp) return;
+        
+        TriggerCascade();
+        buildUpCount = 0;
     }
+
     private void TriggerCascade()
     {
         foreach (var hurtbox in hurtboxesInRange)
         {
-             hurtbox.Damage(cascadeDamageInfo);
+            hurtbox?.Damage(cascadeDamageInfo);
         }
     }
 
-    private void OnAreaEntered(Node body)
+    // Connected through editor signal
+    private void _on_area_entered(Node body)
     {
         if (body is Hurtbox hurtbox)
         {
@@ -49,7 +49,8 @@ public partial class Cascade : Node2D
         }
     }
 
-    private void OnAreaExited(Node body)
+    // Connected through editor signal
+    private void _on_area_exited(Node body)
     {
         if (body is Hurtbox hurtbox)
         {

@@ -10,7 +10,7 @@ public partial class Hitbox : Area2D
     private List<Hurtbox> enemiesInRange = new List<Hurtbox>();
 
     // this function is hooked up through the engine
-    public void _on_area_entered(Node body)
+    private void _on_area_entered(Node body)
     {
         if (body is Hurtbox hurtbox)
         {
@@ -19,7 +19,7 @@ public partial class Hitbox : Area2D
     }
 
     // this function is hooked up through the engine
-    public void _on_area_exited(Node body)
+    private void _on_area_exited(Node body)
     {
         if (body is Hurtbox hurtbox)
         {

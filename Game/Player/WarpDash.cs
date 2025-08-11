@@ -41,7 +41,7 @@ public partial class WarpDash : Node2D
     }
 
     // this function is hooked up through the engine
-    public void _on_timer_timeout()
+    private void _on_timer_timeout()
     {
         SpawnGhost();
 
