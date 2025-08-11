@@ -16,7 +16,7 @@ public partial class Entity : CharacterBody2D
         }
         else
         {
-            KnockbackTime = 0.1f;
+            KnockbackTime = 0.2f;
             Velocity = Knockback;
         }
     }

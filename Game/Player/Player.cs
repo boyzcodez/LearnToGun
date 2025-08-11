@@ -6,12 +6,12 @@ public partial class Player : Entity
 {
     private const float SPEED = 100f;
     private const float DODGE_SPEED = 180f;
-    private const float DODGE_DURATION = 0.3f;
+    private const float DODGE_DURATION = 0.5f;
 
     private bool isDodging = false;
     private Vector2 dodgeDirection;
     private float dodgeTime = 0f;
-    private float dashCooldown = 0.3f;
+    private float dashCooldown = 0.4f;
 
     private Hurtbox hurtbox;
     private Node2D warpDashNode;
@@ -24,8 +24,6 @@ public partial class Player : Entity
         hurtbox = GetNode<Hurtbox>("Hurtbox");
         warpDashNode = GetNode<Node2D>("WarpDash");
         //Input.SetMouseMode(Input.MouseModeEnum.Hidden);
-
-        dashTimer.Connect("timeout", new Callable(this, nameof(OnTimerTimeout)));
     }
     public override void _PhysicsProcess(double delta)
     {
@@ -37,6 +35,7 @@ public partial class Player : Entity
                 Velocity = Vector2.Zero; // Stop movement after knockback
 
             }
+            MoveAndSlide();
             return; // Skip normal movement logic during knockback
         }
 
@@ -63,7 +62,7 @@ public partial class Player : Entity
         if (Input.IsActionJustPressed("dodge") && direction != Vector2.Zero && isDodging == false)
         {
             isDodging = true;
-            hurtbox.Monitorable = false;
+            hurtbox.immune = true;
             warpDashNode.CallDeferred("Activated");
             DodgeRoll(direction);
         }
@@ -86,12 +85,14 @@ public partial class Player : Entity
         {
             Velocity = Vector2.Zero; // Stop movement after dodge
             dodgeDirection = Vector2.Zero;
-            hurtbox.Monitorable = true; // Re-enable hurtbox monitoring
+            hurtbox.immune = false;
             warpDashNode.CallDeferred("Deactivated");
             dashTimer.Start(dashCooldown);
         }
     }
-    private void OnTimerTimeout()
+
+    // this function is hooked up through the engine
+    public void _on_dash_cooldown_timeout()
     {
         isDodging = false;
     }

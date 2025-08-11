@@ -428,4 +428,5 @@ one_shot = true
 
 [node name="InteractComponent" parent="." instance=ExtResource("14_wlpas")]
 
+[connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
 [connection signal="timeout" from="WarpDash/Timer" to="WarpDash" method="_on_timer_timeout"]

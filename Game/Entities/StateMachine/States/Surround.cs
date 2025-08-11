@@ -6,6 +6,8 @@ public partial class Surround : State
 {
     private float rngNum;
     private Vector2 velocity = Vector2.Zero;
+    private float arrivalThreshold = 10f;
+    [Export] private DodgeFlag dodgeFlag;
     [Export] private float moveSpeed = 50f;
     [Export] private float howClose = 100f;
     [Export] private float prevRange = 900f;
@@ -20,13 +22,18 @@ public partial class Surround : State
     }
     public override void PhysicsProcess(double delta)
     {
-        Move(GetCirclePosition(rngNum), (float)delta);
+        Vector2 circlePos = GetCirclePosition(rngNum);
+        Vector2 toTargetDistance = circlePos - parent.GlobalPosition;
+
+        Move(circlePos, (float)delta);
 
         Vector2 direction = player.GlobalPosition - parent.GlobalPosition;
 
-        if (direction.Length() < nextRange && NextState != "Nothing")
+        if (toTargetDistance.Length() < arrivalThreshold)
         {
             EmitSignal("Transitioned", this, NextState);
+            if (dodgeFlag != null)
+                dodgeFlag.PlayRandomAnimation();
         }
         else if (direction.Length() > prevRange && PrevState != "Nothing")
         {

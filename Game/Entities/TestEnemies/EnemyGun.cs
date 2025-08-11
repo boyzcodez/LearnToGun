@@ -1,16 +1,20 @@
 using Godot;
 using System;
 
+[GlobalClass]
 public partial class EnemyGun : Node2D
 {
     private Hitbox hitbox;
+    private GunSprite gunSprite;
     public override void _Ready()
     {
         hitbox = GetNode<Hitbox>("Hitbox");
+        gunSprite = GetNode<GunSprite>("GunSprite");
     }
     public void Shoot()
     {
-        hitbox.ApplyDamage();
+        hitbox?.ApplyDamage();
+        gunSprite?.FireAnimation();
     }
     public override void _PhysicsProcess(double delta)
     {

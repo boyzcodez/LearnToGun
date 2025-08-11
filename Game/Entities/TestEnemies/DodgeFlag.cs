@@ -15,6 +15,9 @@ public partial class DodgeFlag : AnimatedSprite2D
 
     public void PlayRandomAnimation()
     {
+        if (IsPlaying())
+            return;
+
         string type = AllowedAnimationTypes[random.Next(AllowedAnimationTypes.Length)];
         string direction = AllowedDirections[random.Next(AllowedDirections.Length)];
         string animationName = $"{type}{direction}";
@@ -24,6 +27,8 @@ public partial class DodgeFlag : AnimatedSprite2D
             Play(animationName);
         }
     }
+
+    // this function is hooked up through the engine
     public void _on_animation_finished()
     {
         if (enemyGun != null)

@@ -436,7 +436,7 @@ typeDamage = 0
 metadata/_custom_type_script = "uid://nnmo7ykkdx0e"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jyark"]
-size = Vector2(100, 20)
+size = Vector2(150, 20)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ccun0"]
 radius = 7.0
@@ -459,12 +459,13 @@ position = Vector2(0, -6)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_hc5v1")
 
-[node name="DodgeFlag" type="AnimatedSprite2D" parent="."]
+[node name="DodgeFlag" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("enemyGun")]
 material = ExtResource("3_bbp8y")
 position = Vector2(0, -30)
 sprite_frames = SubResource("SpriteFrames_wxglr")
 animation = &"NormalLA"
 script = ExtResource("5_oxb72")
+enemyGun = NodePath("../Look/EnemyGun")
 
 [node name="Look" type="Marker2D" parent="."]
 position = Vector2(0, -6)
@@ -478,7 +479,7 @@ collision_mask = 2
 damageInfo = SubResource("Resource_lhyhb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Look/EnemyGun/Hitbox"]
-position = Vector2(50, 0)
+position = Vector2(75, 0)
 shape = SubResource("RectangleShape2D_jyark")
 
 [node name="GunSprite" parent="Look/EnemyGun" instance=ExtResource("5_lhyhb")]
@@ -498,14 +499,12 @@ maxHealth = 15
 
 [node name="Interactable" parent="." instance=ExtResource("5_hc5v1")]
 interactionName = "Activate"
-isInteractable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
 shape = SubResource("CircleShape2D_m1e7j")
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("initialState") instance=ExtResource("6_m1e7j")]
 initialState = NodePath("Idle")
-Active = true
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("7_tko4x")
@@ -519,9 +518,10 @@ nextRange = 50.0
 NextState = "Nothing"
 metadata/_custom_type_script = "uid://cbm2bcpra8ll1"
 
-[node name="Surround" type="Node" parent="StateMachine"]
+[node name="Surround" type="Node" parent="StateMachine" node_paths=PackedStringArray("dodgeFlag")]
 script = ExtResource("9_i2p2e")
-NextState = "Nothing"
+dodgeFlag = NodePath("../../DodgeFlag")
+NextState = "Surround"
 metadata/_custom_type_script = "uid://2sl1ow0g27ob"
 
 [connection signal="animation_finished" from="DodgeFlag" to="DodgeFlag" method="_on_animation_finished"]

@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_8put0")
 damage = 10
-knockbackForce = 100.0
+knockbackForce = 50.0
 repeatCount = 3
 damageType = "Burn"
 typeDamage = 5

@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cxdwrm4mhujrv"]
+
+[node name="WarpingEffect" type="CPUParticles2D"]
+emitting = false
+amount = 100
+lifetime = 1.6
+lifetime_randomness = 0.1
+emission_shape = 5
+emission_points = PackedVector2Array(350, 0, 300, 200, 0, 350, -300, 200, -350, 0, -300, -200, 0, -350, 300, -200)
+emission_normals = PackedVector2Array()
+emission_colors = PackedColorArray()
+gravity = Vector2(0, 0)
+angular_velocity_min = 0.1
+angular_velocity_max = 0.1
+orbit_velocity_min = -0.02
+orbit_velocity_max = 0.02
+linear_accel_max = 1.0
+radial_accel_min = -300.0
+angle_max = 15.0
+scale_amount_min = 5.0
+scale_amount_max = 5.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+show_behind_parent = true
+custom_minimum_size = Vector2(640, 360)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -180.0
+offset_right = 320.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

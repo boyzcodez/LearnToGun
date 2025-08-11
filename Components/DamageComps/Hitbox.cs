@@ -9,6 +9,7 @@ public partial class Hitbox : Area2D
     [Export] public DamageInfo damageInfo;
     private List<Hurtbox> enemiesInRange = new List<Hurtbox>();
 
+    // this function is hooked up through the engine
     public void _on_area_entered(Node body)
     {
         if (body is Hurtbox hurtbox)
@@ -17,6 +18,7 @@ public partial class Hitbox : Area2D
         }
     }
 
+    // this function is hooked up through the engine
     public void _on_area_exited(Node body)
     {
         if (body is Hurtbox hurtbox)
@@ -56,11 +58,5 @@ public partial class Hitbox : Area2D
         shape.Size = new Vector2(rangeX, rangeY);
         collision.Shape = shape;
         collision.Position = new Vector2(rangeX / 2, 0);
-    }
-
-    public override void _Ready()
-    {
-        //Connect("area_entered", new Callable(this, nameof(OnAreaEntered)));
-        //Connect("area_exited", new Callable(this, nameof(OnAreaExited)));
     }
 }
