@@ -15,10 +15,12 @@ public partial class AnimatedSprite : AnimatedSprite2D
     public override void _PhysicsProcess(double delta)
     {
         Godot.Vector2 direction = Input.GetVector("left", "right", "up", "down");
-        if (direction != Godot.Vector2.Zero )
+        if (direction != Godot.Vector2.Zero)
         {
             Running = "Run";
-        } else {
+        }
+        else
+        {
             Running = "";
         }
 
@@ -30,5 +32,15 @@ public partial class AnimatedSprite : AnimatedSprite2D
 
         string directionString = (string)Direction.Call("GetDirection", a);
         Play(directionString + Running);
+    }
+
+    public void PlaySpecificAnimation(string animation)
+    {
+        this.SetPhysicsProcess(false);
+        Play(animation);
+    }
+    public void ReturnNormalAnimations()
+    {
+        this.SetPhysicsProcess(true);
     }
 }
