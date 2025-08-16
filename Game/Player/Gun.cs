@@ -8,7 +8,7 @@ public partial class Gun : Node2D
     private Sprite2D rangeMarker;
     private GunSprite gunSprite;
     private CpuParticles2D gunParticles;
-    [Export] BaseGun gun;
+    [Export] private BaseGun gun;
 
     public override void _Ready()
     {

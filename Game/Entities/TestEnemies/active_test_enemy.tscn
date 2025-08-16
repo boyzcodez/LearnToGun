@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://bhb68kqkfragl"]
+[gd_scene load_steps=72 format=3 uid="uid://bhb68kqkfragl"]
 
 [ext_resource type="Script" uid="uid://dexb3awvsef8d" path="res://Game/Entities/TestEnemies/ActiveTestEnemy.cs" id="1_hc5v1"]
 [ext_resource type="Texture2D" uid="uid://bm5su8unmtdyu" path="res://Assets/icon.svg" id="2_hc5v1"]
@@ -6,9 +6,7 @@
 [ext_resource type="Material" uid="uid://cp2qsph4i46jl" path="res://Game/Shaders/smooth_pixels.tres" id="3_bbp8y"]
 [ext_resource type="PackedScene" uid="uid://vmtiw08cr30b" path="res://Components/DamageComps/hurtbox.tscn" id="3_m1e7j"]
 [ext_resource type="Script" uid="uid://c6vb1yef0nhpa" path="res://Game/Entities/TestEnemies/Look.cs" id="3_q6s24"]
-[ext_resource type="PackedScene" uid="uid://dpx5gl0m23p3c" path="res://Components/DamageComps/hitbox.tscn" id="3_wklgt"]
 [ext_resource type="PackedScene" uid="uid://cokma6r7qkbkm" path="res://Components/DamageComps/health.tscn" id="4_f1b1u"]
-[ext_resource type="Script" uid="uid://nnmo7ykkdx0e" path="res://Game/Guns/Base/DamageInfo.cs" id="4_jyark"]
 [ext_resource type="Script" uid="uid://bp03nkh0uoq1p" path="res://Game/Entities/TestEnemies/EnemyGun.cs" id="4_wxglr"]
 [ext_resource type="PackedScene" uid="uid://cugpgubph2sc" path="res://Components/InteractComp/interactable.tscn" id="5_hc5v1"]
 [ext_resource type="PackedScene" uid="uid://mmdnif7mf7f7" path="res://Components/DamageComps/gun_sprite.tscn" id="5_lhyhb"]
@@ -16,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://diet8ij7y2hpc" path="res://Assets/Guns/basic_weapon_shotgun1.png" id="6_38i84"]
 [ext_resource type="PackedScene" uid="uid://na4yx06ro3jd" path="res://Game/Entities/StateMachine/state_machine.tscn" id="6_m1e7j"]
 [ext_resource type="Script" uid="uid://c2orrjp6f8iyi" path="res://Game/Entities/StateMachine/States/Idle.cs" id="7_tko4x"]
+[ext_resource type="PackedScene" uid="uid://dsmi4i7hhicoq" path="res://Game/Guns/Bullets/basic_bullet.tscn" id="8_bbp8y"]
 [ext_resource type="Script" uid="uid://cbm2bcpra8ll1" path="res://Game/Entities/StateMachine/States/Follow.cs" id="8_i2p2e"]
 [ext_resource type="Script" uid="uid://2sl1ow0g27ob" path="res://Game/Entities/StateMachine/States/Surround.cs" id="9_i2p2e"]
 
@@ -426,18 +425,6 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="Resource" id="Resource_lhyhb"]
-script = ExtResource("4_jyark")
-damage = 10
-knockbackForce = 100.0
-repeatCount = 1
-damageType = "None"
-typeDamage = 0
-metadata/_custom_type_script = "uid://nnmo7ykkdx0e"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jyark"]
-size = Vector2(150, 20)
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ccun0"]
 radius = 7.0
 height = 14.0
@@ -473,18 +460,14 @@ script = ExtResource("3_q6s24")
 
 [node name="EnemyGun" type="Node2D" parent="Look"]
 script = ExtResource("4_wxglr")
-
-[node name="Hitbox" parent="Look/EnemyGun" instance=ExtResource("3_wklgt")]
-collision_mask = 2
-damageInfo = SubResource("Resource_lhyhb")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Look/EnemyGun/Hitbox"]
-position = Vector2(75, 0)
-shape = SubResource("RectangleShape2D_jyark")
+bullet = ExtResource("8_bbp8y")
 
 [node name="GunSprite" parent="Look/EnemyGun" instance=ExtResource("5_lhyhb")]
 position = Vector2(9, 2)
 texture = ExtResource("6_38i84")
+
+[node name="MarkSpot" type="Marker2D" parent="Look/EnemyGun"]
+position = Vector2(20, 0)
 
 [node name="Hurtbox" parent="." node_paths=PackedStringArray("healthComponent") instance=ExtResource("3_m1e7j")]
 collision_layer = 4
@@ -518,9 +501,10 @@ nextRange = 50.0
 NextState = "Nothing"
 metadata/_custom_type_script = "uid://cbm2bcpra8ll1"
 
-[node name="Surround" type="Node" parent="StateMachine" node_paths=PackedStringArray("dodgeFlag")]
+[node name="Surround" type="Node" parent="StateMachine"]
 script = ExtResource("9_i2p2e")
-dodgeFlag = NodePath("../../DodgeFlag")
+moveSpeed = 30.0
+circleRadius = 120.0
 NextState = "Surround"
 metadata/_custom_type_script = "uid://2sl1ow0g27ob"
 

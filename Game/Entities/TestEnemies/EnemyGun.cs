@@ -4,17 +4,27 @@ using System;
 [GlobalClass]
 public partial class EnemyGun : Node2D
 {
-    private Hitbox hitbox;
+    [Export] PackedScene bullet;
     private GunSprite gunSprite;
+    private Marker2D mark;
+
+    private float time = 0f;
+
     public override void _Ready()
     {
-        hitbox = GetNode<Hitbox>("Hitbox");
         gunSprite = GetNode<GunSprite>("GunSprite");
+        mark = GetNode<Marker2D>("MarkSpot");
     }
     public void Shoot()
     {
-        hitbox?.ApplyDamage();
         gunSprite?.FireAnimation();
+
+        var instance = bullet?.Instantiate() as BasicBullet;
+
+        instance.GlobalPosition = mark.GlobalPosition;
+        instance.direction = Vector2.Right.Rotated(GlobalRotation);
+
+        GetTree().CurrentScene.CallDeferred("add_child", instance);
     }
     public override void _PhysicsProcess(double delta)
     {
@@ -26,6 +36,13 @@ public partial class EnemyGun : Node2D
         else
         {
             Scale = new Vector2(1, 1);
+        }
+
+        time += (float)delta;
+        if (time >= 4f)
+        {
+            time = 0f;
+            Shoot();
         }
     }
 }

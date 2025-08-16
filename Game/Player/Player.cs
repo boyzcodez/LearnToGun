@@ -35,22 +35,19 @@ public partial class Player : Entity
                 Velocity = Vector2.Zero; // Stop movement after knockback
 
             }
-            MoveAndSlide();
-            return; // Skip normal movement logic during knockback
-        }
-
-
-        if (dodgeTime > 0f)
-        {
-            DodgeLogic((float)delta);
-
         }
         else
         {
-            Movement((float)delta);
+            if (dodgeTime > 0f)
+            {
+                DodgeLogic((float)delta);
+
+            }
+            else
+            {
+                Movement((float)delta);
+            }
         }
-
-
         MoveAndSlide();
     }
 

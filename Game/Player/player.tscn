@@ -349,8 +349,8 @@ animations = [{
 size = Vector2(85, 40)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ch4ko"]
-radius = 7.0
-height = 20.0
+radius = 5.0
+height = 16.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 motion_mode = 1

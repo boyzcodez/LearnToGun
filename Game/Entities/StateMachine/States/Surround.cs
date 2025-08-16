@@ -7,7 +7,6 @@ public partial class Surround : State
     private Vector2 velocity = Vector2.Zero;
     private Vector2 targetPosition;
     
-    [Export] private DodgeFlag dodgeFlag;
     [Export] private float moveSpeed = 50f;
     [Export] private float circleRadius = 100f;
     [Export] private float arrivalThreshold = 10f;
