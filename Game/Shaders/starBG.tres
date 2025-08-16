@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://guvfil465ydv"]
+
+[ext_resource type="Shader" uid="uid://cjr3743mjgnp" path="res://Game/Shaders/starBG.gdshader" id="1_tvkbi"]
+
+[resource]
+shader = ExtResource("1_tvkbi")
+shader_parameter/stars_speed = Vector2(2, 1.5)
+shader_parameter/stars_density = 0.517

@@ -36,11 +36,18 @@ public partial class BasicBullet : Area2D
     // hooked up on the engine side
     private void _on_area_entered(Hurtbox body)
     {
+        if (hit)
+            return;
         body.Damage(damageInfo, direction);
+        hit = true;
         Kill();
     }
     // hooked up on the engine side
     private void _animation_finished()
+    {
+        QueueFree();
+    }
+    private void _on_timer_timeout()
     {
         QueueFree();
     }
