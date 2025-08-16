@@ -26,6 +26,8 @@ public partial class EnemyGun : Node2D
 
         GetTree().CurrentScene.CallDeferred("add_child", instance);
     }
+
+    // remove the shoot countdown
     public override void _PhysicsProcess(double delta)
     {
         var angle = this.GlobalRotation;
