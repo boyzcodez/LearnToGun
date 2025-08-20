@@ -26,6 +26,9 @@ public partial class Health : Node2D
 
     public async Task TakeDamage(DamageInfo damageInfo, Vector2 knockbackDirection = default)
     {
+        if (currentHealth <= 0)
+            return;
+        
         int repeats = Math.Max(1, damageInfo.repeatCount);
 
         for (int i = 0; i < repeats; i++)
@@ -38,7 +41,8 @@ public partial class Health : Node2D
 
             if (currentHealth <= 0)
             {
-                // GD.Print("dead");
+                GetParent<Entity>().Death();
+                break;
             }
 
             if (i < repeats - 1)

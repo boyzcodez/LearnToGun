@@ -37,4 +37,9 @@ public partial class Entity : CharacterBody2D
 
         MoveAndSlide();
     }
+
+    public virtual void Death()
+    {
+        GD.Print("died");
+    }
 }

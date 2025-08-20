@@ -4,5 +4,5 @@
 
 [resource]
 shader = ExtResource("1_tvkbi")
-shader_parameter/stars_speed = Vector2(2, 1.5)
+shader_parameter/stars_speed = Vector2(4, 1.5)
 shader_parameter/stars_density = 0.517

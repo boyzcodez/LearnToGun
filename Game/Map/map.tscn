@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cda7d5h335dc0"]
+
+[ext_resource type="Script" uid="uid://bnk38ycy2ftrm" path="res://Game/Map/Map.cs" id="1_ab5vn"]
+[ext_resource type="Texture2D" uid="uid://djecgjrnuta8b" path="res://Assets/BG/SpecialStars.png" id="2_ab5vn"]
+
+[node name="Map" type="Node2D" node_paths=PackedStringArray("Lines")]
+script = ExtResource("1_ab5vn")
+MapRadius = 250.0
+PointTexture = ExtResource("2_ab5vn")
+Lines = NodePath("Lines")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Lines" type="Node2D" parent="."]

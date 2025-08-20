@@ -19,11 +19,13 @@ public partial class Player : Entity
 
     public override void _Ready()
     {
-        
+
         dashTimer = GetNode<Timer>("DashCooldown");
         hurtbox = GetNode<Hurtbox>("Hurtbox");
         warpDashNode = GetNode<Node2D>("WarpDash");
         //Input.SetMouseMode(Input.MouseModeEnum.Hidden);
+
+        EventBus.PlayerDied += PlayerReset;
     }
     public override void _PhysicsProcess(double delta)
     {
@@ -87,7 +89,14 @@ public partial class Player : Entity
             dashTimer.Start(dashCooldown);
         }
     }
-
+    public override void Death()
+    {
+        EventBus.Reset();
+    }
+    private void PlayerReset()
+    {
+        GD.Print("Player dead");
+    }
     // this function is hooked up through the engine
     private void _on_dash_cooldown_timeout()
     {
