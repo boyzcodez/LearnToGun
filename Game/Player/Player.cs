@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 [GlobalClass]
 public partial class Player : Entity
@@ -17,6 +16,8 @@ public partial class Player : Entity
     private Node2D warpDashNode;
     private Timer dashTimer;
 
+    private bool disabled = false;
+
     public override void _Ready()
     {
 
@@ -25,7 +26,8 @@ public partial class Player : Entity
         warpDashNode = GetNode<Node2D>("WarpDash");
         //Input.SetMouseMode(Input.MouseModeEnum.Hidden);
 
-        EventBus.PlayerDied += PlayerReset;
+        EventBus.Reset += PlayerReset;
+        EventBus.Lock += Lock;
     }
     public override void _PhysicsProcess(double delta)
     {
@@ -91,11 +93,26 @@ public partial class Player : Entity
     }
     public override void Death()
     {
-        EventBus.Reset();
+        EventBus.PlayerDied();
     }
     private void PlayerReset()
     {
-        GD.Print("Player dead");
+        KnockbackTime = 0f;
+        GlobalPosition = new Vector2(0, 0);
+    }
+    private void Lock()
+    {
+        if (disabled)
+        {
+            disabled = false;
+            SetPhysicsProcess(true);
+        }
+        else
+        {
+            disabled = true;
+            SetPhysicsProcess(false);
+        }
+            
     }
     // this function is hooked up through the engine
     private void _on_dash_cooldown_timeout()

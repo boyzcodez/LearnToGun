@@ -12,7 +12,7 @@ public partial class Health : Node2D
     private Node2D CascadeComponent;
     private int currentHealth;
     [Export] private int maxHealth = 100;
-    
+
 
     public override void _Ready()
     {
@@ -22,6 +22,8 @@ public partial class Health : Node2D
         BurnComponent = GetNode("Burn");
         CascadeComponent = GetNode<Node2D>("Cascade");
         currentHealth = maxHealth;
+
+        EventBus.Reset += ResetHealth;
     }
 
     public async Task TakeDamage(DamageInfo damageInfo, Vector2 knockbackDirection = default)
@@ -78,13 +80,8 @@ public partial class Health : Node2D
         }
     }
 
-    public int GetCurrentHealth()
+    public void ResetHealth()
     {
-        return currentHealth;
-    }
-
-    public int GetMaxHealth()
-    {
-        return maxHealth;
+        currentHealth = maxHealth;
     }
 }

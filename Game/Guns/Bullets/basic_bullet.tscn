@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ba2fd2bympsgj" path="res://Game/Guns/Bullets/BasicBullet.cs" id="1_ugum8"]
 [ext_resource type="Material" uid="uid://cp2qsph4i46jl" path="res://Game/Shaders/smooth_pixels.tres" id="2_3x85h"]
 [ext_resource type="Script" uid="uid://nnmo7ykkdx0e" path="res://Game/Guns/Base/DamageInfo.cs" id="2_8dk0e"]
-[ext_resource type="Texture2D" uid="uid://dkn7tfgfdnij5" path="res://Assets/Bullets/EnemyBullet.png" id="3_8dk0e"]
+[ext_resource type="Texture2D" uid="uid://dkn7tfgfdnij5" path="res://Assets/Guns/Bullets/EnemyBullet.png" id="3_8dk0e"]
 
 [sub_resource type="Resource" id="Resource_fx6sw"]
 script = ExtResource("2_8dk0e")

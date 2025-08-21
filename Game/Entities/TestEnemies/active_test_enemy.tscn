@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dexb3awvsef8d" path="res://Game/Entities/TestEnemies/ActiveTestEnemy.cs" id="1_hc5v1"]
 [ext_resource type="Texture2D" uid="uid://bm5su8unmtdyu" path="res://Assets/icon.svg" id="2_hc5v1"]
-[ext_resource type="Texture2D" uid="uid://1fx4ftdkk1ti" path="res://Assets/DodgeFlags/AttackAnims.png" id="3_b3ga6"]
+[ext_resource type="Texture2D" uid="uid://1fx4ftdkk1ti" path="res://Assets/Entity/Enemy/DodgeFlags/AttackAnims.png" id="3_b3ga6"]
 [ext_resource type="Material" uid="uid://cp2qsph4i46jl" path="res://Game/Shaders/smooth_pixels.tres" id="3_bbp8y"]
 [ext_resource type="PackedScene" uid="uid://vmtiw08cr30b" path="res://Components/DamageComps/hurtbox.tscn" id="3_m1e7j"]
 [ext_resource type="Script" uid="uid://c6vb1yef0nhpa" path="res://Game/Entities/TestEnemies/Look.cs" id="3_q6s24"]
@@ -441,7 +441,6 @@ script = ExtResource("1_hc5v1")
 shape = SubResource("CircleShape2D_htgvw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.995745, 0.52277, 0.670822, 1)
 position = Vector2(0, -6)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_hc5v1")

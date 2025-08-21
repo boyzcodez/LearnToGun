@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqtng3dp4vtsa"]
+
+[ext_resource type="Script" uid="uid://c6vbo4viabeax" path="res://Game/Player/PlayerCamera.cs" id="1_cm6ya"]
+[ext_resource type="PackedScene" uid="uid://c4wotq3cqabch" path="res://Game/GUI/scene_transition.tscn" id="2_xijps"]
+
+[node name="PlayerCamera" type="Camera2D"]
+zoom = Vector2(1.5, 1.5)
+position_smoothing_enabled = true
+script = ExtResource("1_cm6ya")
+
+[node name="Stats" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="Stats"]
+offset_top = 10.0
+offset_right = 51.0
+offset_bottom = 33.0
+text = "Ammo"
+
+[node name="Label2" type="Label" parent="Stats"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -53.0
+offset_top = 10.0
+offset_bottom = 33.0
+grow_horizontal = 0
+text = "Money"
+
+[node name="Label3" type="Label" parent="Stats"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Health"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SceneTransition" parent="." instance=ExtResource("2_xijps")]

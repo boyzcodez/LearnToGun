@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1fx4ftdkk1ti"
-path="res://.godot/imported/AttackAnims.png-9498dfc4f486318190cfbfe1293ce148.ctex"
+uid="uid://d07fof5jb85ec"
+path="res://.godot/imported/Enemy_Intro.png-e2c090220f65b2182c48e6b191858e5b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/DodgeFlags/AttackAnims.png"
-dest_files=["res://.godot/imported/AttackAnims.png-9498dfc4f486318190cfbfe1293ce148.ctex"]
+source_file="res://Assets/Entity/Enemy/Enemy_Intro.png"
+dest_files=["res://.godot/imported/Enemy_Intro.png-e2c090220f65b2182c48e6b191858e5b.ctex"]
 
 [params]
 

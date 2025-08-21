@@ -6,7 +6,8 @@ public partial class Burn : Node
     [Export] private int maxBuildUp = 15;
     [Export] private float burnTickInterval = 0.3f;
     [Export] private int burnStackAmount = 5;
-    [Export] private DamageInfo burnDamageInfo = new()
+    [Export]
+    private DamageInfo burnDamageInfo = new()
     {
         damage = 5,
         knockbackForce = 0f,
@@ -28,9 +29,9 @@ public partial class Burn : Node
     public void BurnBuildUp(int damageAmount)
     {
         buildUpCount += damageAmount;
-        
+
         if (buildUpCount < maxBuildUp) return;
-        
+
         buildUpCount = 0;
         AddBurnStack();
     }
@@ -38,7 +39,7 @@ public partial class Burn : Node
     private void AddBurnStack()
     {
         burnStacks += burnStackAmount;
-        
+
         if (burnStacks == burnStackAmount)
         {
             StartBurnTimer();
@@ -65,4 +66,9 @@ public partial class Burn : Node
             StartBurnTimer();
         }
     }
+}
+
+public class Help
+{
+    public static int Add(int a, int b) => a + b;
 }

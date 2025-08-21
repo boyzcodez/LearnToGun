@@ -1,13 +1,21 @@
-using Godot;
 using System;
 
 public static class EventBus
 {
-    public static event Action PlayerDied;
+    public static event Action Reset;
+    public static event Action Lock;
+    public static event Action Transition;
     public static event Action<int> GainExp;
+    public static event Action<float> ScreenShake;
 
-    public static void Reset() =>
-        PlayerDied?.Invoke();
+    public static void PlayerDied() =>
+        Reset?.Invoke();
     public static void Exp(int amount) =>
         GainExp?.Invoke(amount);
+    public static void TriggerScreenShake(float amount) =>
+        ScreenShake?.Invoke(amount);
+    public static void TriggerLock() =>
+        Lock?.Invoke();
+    public static void TriggerTransition() =>
+        Transition?.Invoke();
 }

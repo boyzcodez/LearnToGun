@@ -402,10 +402,6 @@ texture = ExtResource("11_tqhgd")
 [node name="ShotgunFireStrands" parent="LookAt/Gun" instance=ExtResource("12_6v7ly")]
 position = Vector2(20, 0)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.5, 1.5)
-position_smoothing_enabled = true
-
 [node name="Health" parent="." instance=ExtResource("6_ch4ko")]
 maxHealth = 15
 

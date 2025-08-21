@@ -1,6 +1,4 @@
 using Godot;
-using System;
-using System.Numerics;
 
 public partial class AnimatedSprite : AnimatedSprite2D
 {

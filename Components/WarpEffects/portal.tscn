@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://b4r3enx5kdhvo"]
+
+[ext_resource type="Shader" uid="uid://83eiatm4ehp1" path="res://Game/Shaders/blackhole.gdshader" id="1_tle02"]
+
+[sub_resource type="Gradient" id="Gradient_g57o7"]
+colors = PackedColorArray(1, 0.307918, 0.371246, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kbdqy"]
+gradient = SubResource("Gradient_g57o7")
+
+[sub_resource type="Gradient" id="Gradient_u1wue"]
+offsets = PackedFloat32Array(0.57377, 1)
+colors = PackedColorArray(0.167652, 7.52043e-09, 0.0508876, 1, 1, 0.659467, 0.629246, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ysmlv"]
+gradient = SubResource("Gradient_u1wue")
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_tle02"]
+size = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_27ipv"]
+shader = ExtResource("1_tle02")
+shader_parameter/resolution = Vector2(64, 64)
+shader_parameter/colorResolution = 100.0
+shader_parameter/distortionIntensity = 1.0
+shader_parameter/spiralDistortionIntensity = 1.0
+shader_parameter/holeSize = 0.3
+shader_parameter/holeColor = SubResource("GradientTexture2D_ysmlv")
+shader_parameter/image = SubResource("PlaceholderTexture2D_tle02")
+shader_parameter/rotations = 0.5
+shader_parameter/depth = 4.7
+shader_parameter/spiralIntensity = 3.9
+shader_parameter/shrinkSpeed = 0.2
+shader_parameter/roationSpeed = 0.2
+shader_parameter/haloColor = SubResource("GradientTexture2D_kbdqy")
+
+[node name="Portal" type="ColorRect"]
+material = SubResource("ShaderMaterial_27ipv")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3

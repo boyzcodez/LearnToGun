@@ -6,6 +6,7 @@ public partial class Entity : CharacterBody2D
 {
     public Vector2 direction = Vector2.Zero;
     public float KnockbackTime = 0f;
+
     public void Knockback(Vector2 direction, float force)
     {
         Vector2 Knockback = direction.Normalized() * force;
@@ -40,6 +41,6 @@ public partial class Entity : CharacterBody2D
 
     public virtual void Death()
     {
-        GD.Print("died");
+        QueueFree();
     }
 }
