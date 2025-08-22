@@ -481,12 +481,14 @@ maxHealth = 15
 
 [node name="Interactable" parent="." instance=ExtResource("5_hc5v1")]
 interactionName = "Activate"
+isInteractable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
 shape = SubResource("CircleShape2D_m1e7j")
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("initialState") instance=ExtResource("6_m1e7j")]
 initialState = NodePath("Idle")
+Active = true
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("7_tko4x")

@@ -4,8 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://c4wotq3cqabch" path="res://Game/GUI/scene_transition.tscn" id="2_xijps"]
 
 [node name="PlayerCamera" type="Camera2D"]
-zoom = Vector2(1.5, 1.5)
-position_smoothing_enabled = true
 script = ExtResource("1_cm6ya")
 
 [node name="Stats" type="CanvasLayer" parent="."]

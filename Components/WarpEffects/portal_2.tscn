@@ -37,6 +37,7 @@ shader_parameter/roationSpeed = 0.2
 shader_parameter/haloColor = SubResource("GradientTexture2D_j2i4w")
 
 [node name="Portal2" type="Sprite2D"]
+z_index = 10
 material = SubResource("ShaderMaterial_eujqk")
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("2_em74h")

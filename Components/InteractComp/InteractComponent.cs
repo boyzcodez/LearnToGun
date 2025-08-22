@@ -12,6 +12,7 @@ public partial class InteractComponent : Node2D
 
     public override void _Ready()
     {
+        //EventBus.Lock += LockInteract;
         interactionLabel = GetNode<Label>("InteractLabel");
     }
     public override void _Input(InputEvent @event)
@@ -42,12 +43,12 @@ public partial class InteractComponent : Node2D
                 interactionLabel.Text = nearest.Get("interactionName").ToString();
                 interactionLabel.Show();
             }
-        }    
+        }
         else
         {
             interactionLabel.Hide();
         }
-        
+
     }
     private int SortByNearest(Area2D a, Area2D b)
     {
@@ -68,5 +69,16 @@ public partial class InteractComponent : Node2D
     private void OnAreaExited(Node body)
     {
         interactables.Remove(body as Interactable);
+    }
+    private void LockInteract()
+    {
+        if (canInteract)
+        {
+            canInteract = false;
+        }
+        else
+        {
+            canInteract = true;
+        }
     }
 }

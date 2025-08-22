@@ -1,8 +1,7 @@
-[gd_scene load_steps=63 format=3 uid="uid://chh07uycyoynw"]
+[gd_scene load_steps=62 format=3 uid="uid://chh07uycyoynw"]
 
 [ext_resource type="Script" uid="uid://cccauuo7nkwjv" path="res://Game/Player/Player.cs" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://6fx5ynqopyeo" path="res://Assets/basic_robot_character.png" id="2_s3asc"]
-[ext_resource type="Material" uid="uid://cp2qsph4i46jl" path="res://Game/Shaders/smooth_pixels.tres" id="2_segth"]
 [ext_resource type="Script" uid="uid://lai5akvass2s" path="res://Game/Player/AnimatedSprite.cs" id="3_letr6"]
 [ext_resource type="Script" uid="uid://b1ak4u4c4cm3j" path="res://Game/Player/Direction.cs" id="4_vytja"]
 [ext_resource type="Script" uid="uid://cjdsjaml44rs2" path="res://Game/Player/LookAt.cs" id="6_4ddeg"]
@@ -365,8 +364,6 @@ one_shot = true
 shape = SubResource("CircleShape2D_onrkg")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
-texture_filter = 4
-material = ExtResource("2_segth")
 position = Vector2(0, -9)
 sprite_frames = SubResource("SpriteFrames_fy1n6")
 animation = &"RightFrontRun"

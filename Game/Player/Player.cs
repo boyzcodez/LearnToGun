@@ -26,7 +26,7 @@ public partial class Player : Entity
         warpDashNode = GetNode<Node2D>("WarpDash");
         //Input.SetMouseMode(Input.MouseModeEnum.Hidden);
 
-        EventBus.Reset += PlayerReset;
+        EventBus.MapSwitch += PlayerReset;
         EventBus.Lock += Lock;
     }
     public override void _PhysicsProcess(double delta)
@@ -63,7 +63,7 @@ public partial class Player : Entity
         if (Input.IsActionJustPressed("dodge") && direction != Vector2.Zero && isDodging == false)
         {
             isDodging = true;
-            hurtbox.immune = true;
+            hurtbox.Monitorable = false;
             warpDashNode.CallDeferred("Activated");
             DodgeRoll(direction);
         }
@@ -86,7 +86,7 @@ public partial class Player : Entity
         {
             Velocity = Vector2.Zero; // Stop movement after dodge
             dodgeDirection = Vector2.Zero;
-            hurtbox.immune = false;
+            hurtbox.Monitorable = true;
             warpDashNode.CallDeferred("Deactivated");
             dashTimer.Start(dashCooldown);
         }

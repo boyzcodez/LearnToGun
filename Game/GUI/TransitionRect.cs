@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Godot;
 
 public partial class TransitionRect : ColorRect
@@ -19,7 +20,7 @@ public partial class TransitionRect : ColorRect
         else
             TransitionOut();
     }
-    private void TransitionOut()
+    private async void TransitionOut()
     {
         rectUp = true;
 
@@ -29,8 +30,12 @@ public partial class TransitionRect : ColorRect
         tween = CreateTween();
 
         tween.TweenProperty(
-        myMaterial, "shader_parameter/progress", 1f, 3f
+        myMaterial, "shader_parameter/progress", 1f, 2f
         ).SetTrans(Tween.TransitionType.Cubic).SetEase(Tween.EaseType.Out);
+
+        await ToSignal(GetTree().CreateTimer(2.5f), "timeout");
+
+        EventBus.TriggerMapSwitch();
     }
     private void TransitionIn()
     {
@@ -42,15 +47,9 @@ public partial class TransitionRect : ColorRect
         tween = CreateTween();
 
         tween.TweenProperty(
-        myMaterial, "shader_parameter/progress", 0f, 3f
+        myMaterial, "shader_parameter/progress", 0f, 2f
         ).SetTrans(Tween.TransitionType.Cubic).SetEase(Tween.EaseType.Out);
-    }
-    public override void _Input(InputEvent @event)
-    {
-        if (@event.IsActionPressed("space"))
-        {
-            Transition();
-        }
-    }
 
+        EventBus.TriggerLock();
+    }
 }

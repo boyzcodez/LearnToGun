@@ -41,6 +41,7 @@ public partial class Entity : CharacterBody2D
 
     public virtual void Death()
     {
+        EventBus.OnEnemyDied();
         QueueFree();
     }
 }

@@ -79,7 +79,10 @@ public partial class Health : Node2D
                 break;
         }
     }
-
+    public virtual void OnDeath()
+    {
+        
+    }
     public void ResetHealth()
     {
         currentHealth = maxHealth;

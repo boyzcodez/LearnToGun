@@ -9,7 +9,6 @@ public partial class ActiveTestEnemy : Entity
     {
         interactable = GetNode<Interactable>("Interactable");
         interactable.interactFunction = new Callable(this, nameof(HandleInteraction));
-        EventBus.Reset += Death;
     }
     private void HandleInteraction()
     {
