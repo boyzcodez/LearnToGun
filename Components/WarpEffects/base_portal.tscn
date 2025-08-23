@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://dpgi2e8e4qv82"]
+
+[ext_resource type="Shader" uid="uid://ctjk447biglcu" path="res://Game/Shaders/outline.gdshader" id="1_7k0wa"]
+[ext_resource type="Script" uid="uid://b4batliug1jem" path="res://Components/WarpEffects/BasePortal.cs" id="2_fafxv"]
+[ext_resource type="Texture2D" uid="uid://c5ndf6ekhph7" path="res://Assets/orb.png" id="2_rqeor"]
+[ext_resource type="Texture2D" uid="uid://bp36wvjhcl1jp" path="res://Assets/orb1.png" id="3_6giwr"]
+[ext_resource type="Script" uid="uid://cm0ucepkomsw3" path="res://Components/WarpEffects/Orb2.cs" id="3_rqeor"]
+[ext_resource type="Texture2D" uid="uid://cpjd3f7y71168" path="res://Assets/orb2.png" id="5_4ukal"]
+[ext_resource type="Texture2D" uid="uid://3ko1qkvqg030" path="res://Assets/orb3.png" id="6_htkl6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fafxv"]
+shader = ExtResource("1_7k0wa")
+shader_parameter/line_colour = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 5
+
+[node name="BasePortal" type="CanvasGroup"]
+material = SubResource("ShaderMaterial_fafxv")
+script = ExtResource("2_fafxv")
+Palette = PackedColorArray(0.905084, 0, 0.211995, 1, 1.2514e-06, 0.945104, 0.384841, 1, 0, 0.744507, 0.90337, 1)
+ShaderLineParam = "line_colour"
+TransitionDuration = 0.2
+HoldDuration = 0.2
+
+[node name="Orb" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_rqeor")
+
+[node name="Orb2" type="Sprite2D" parent="."]
+texture = ExtResource("3_6giwr")
+script = ExtResource("3_rqeor")
+
+[node name="Orb3" type="Sprite2D" parent="."]
+texture = ExtResource("5_4ukal")
+script = ExtResource("3_rqeor")
+
+[node name="Orb4" type="Sprite2D" parent="."]
+texture = ExtResource("6_htkl6")
+script = ExtResource("3_rqeor")
+
+[node name="Orb5" type="Sprite2D" parent="."]
+texture = ExtResource("5_4ukal")
+script = ExtResource("3_rqeor")
+
+[node name="Orb6" type="Sprite2D" parent="."]
+texture = ExtResource("6_htkl6")
+script = ExtResource("3_rqeor")
+
+[node name="Orb7" type="Sprite2D" parent="."]
+texture = ExtResource("3_6giwr")
+script = ExtResource("3_rqeor")
+
+[node name="Orb8" type="Sprite2D" parent="."]
+texture = ExtResource("5_4ukal")
+script = ExtResource("3_rqeor")
+
+[node name="Orb9" type="Sprite2D" parent="."]
+texture = ExtResource("6_htkl6")
+script = ExtResource("3_rqeor")
+
+[node name="Orb10" type="Sprite2D" parent="."]
+texture = ExtResource("3_6giwr")
+script = ExtResource("3_rqeor")
+
+[node name="Orb11" type="Sprite2D" parent="."]
+texture = ExtResource("3_6giwr")
+script = ExtResource("3_rqeor")
+
+[node name="Orb12" type="Sprite2D" parent="."]
+texture = ExtResource("5_4ukal")
+script = ExtResource("3_rqeor")
+
+[node name="Orb13" type="Sprite2D" parent="."]
+texture = ExtResource("6_htkl6")
+script = ExtResource("3_rqeor")

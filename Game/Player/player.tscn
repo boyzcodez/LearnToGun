@@ -198,7 +198,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Back",
-"speed": 9.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -221,7 +221,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"BackRun",
-"speed": 9.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -238,7 +238,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Front",
-"speed": 9.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -261,7 +261,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"FrontRun",
-"speed": 9.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -278,7 +278,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"RightBack",
-"speed": 9.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -301,7 +301,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"RightBackRun",
-"speed": 9.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -318,7 +318,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"RightFront",
-"speed": 9.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -341,7 +341,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"RightFrontRun",
-"speed": 9.0
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vh1aq"]
@@ -364,9 +364,9 @@ one_shot = true
 shape = SubResource("CircleShape2D_onrkg")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -9)
+position = Vector2(0, -10)
 sprite_frames = SubResource("SpriteFrames_fy1n6")
-animation = &"RightFrontRun"
+animation = &"FrontRun"
 script = ExtResource("3_letr6")
 
 [node name="Direction" type="Node" parent="AnimatedSprite"]

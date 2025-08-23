@@ -37,7 +37,7 @@ public partial class EntityHandler : Node2D
 
         SpawnWave();
     }
-    private void SpawnWave()
+    private async void SpawnWave()
     {
         rounds -= 1;
         int enemiesToSpawn = Mathf.CeilToInt(4 + _dangerValue * 2);
@@ -57,6 +57,8 @@ public partial class EntityHandler : Node2D
                 GD.RandRange(-100, 100),
                 GD.RandRange(-100, 100)
             );
+
+            await ToSignal(GetTree().CreateTimer(0.2f), "timeout");
         }
     }
 
