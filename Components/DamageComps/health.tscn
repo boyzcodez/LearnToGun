@@ -1,30 +1,117 @@
-[gd_scene load_steps=7 format=3 uid="uid://cokma6r7qkbkm"]
+[gd_scene load_steps=4 format=3 uid="uid://c6regbx2an8qr"]
 
-[ext_resource type="Script" uid="uid://dh5kg374unl8e" path="res://Components/DamageComps/Health.cs" id="1_psp7q"]
-[ext_resource type="Script" uid="uid://hvvbahuvgwfi" path="res://Components/DamageComps/Burn.cs" id="2_2cqca"]
-[ext_resource type="Script" uid="uid://b222ngjpo2m1c" path="res://Components/DamageComps/Obliterate.cs" id="2_sa577"]
 [ext_resource type="PackedScene" uid="uid://304haxf1nshu" path="res://Components/DamageComps/damage_numbers.tscn" id="3_35ijb"]
-[ext_resource type="Script" uid="uid://bdlccgulhaedy" path="res://Components/DamageComps/Cascade.cs" id="4_tv6a8"]
+
+[sub_resource type="CSharpScript" id="CSharpScript_psp7q"]
+script/source = "using Godot;
+using System;
+using System.Threading.Tasks;
+
+[GlobalClass]
+public partial class Health : Node2D
+{
+    private DamageNumbers damageNumber;
+    private Entity owner;
+    private Node ObliterateComponent;
+    private Node BurnComponent;
+    private Node2D CascadeComponent;
+    private int currentHealth;
+    [Export] private int maxHealth = 100;
+
+
+    public override void _Ready()
+    {
+        owner = GetParent<Entity>();
+        damageNumber = GetNode<DamageNumbers>(\"DamageNumbers\");
+        ObliterateComponent = GetNode(\"Obliterate\");
+        BurnComponent = GetNode(\"Burn\");
+        CascadeComponent = GetNode<Node2D>(\"Cascade\");
+        currentHealth = maxHealth;
+
+        EventBus.Reset += ResetHealth;
+    }
+
+    public async Task TakeDamage(DamageInfo damageInfo, Vector2 knockbackDirection = default)
+    {
+        if (currentHealth <= 0)
+            return;
+        
+        int repeats = Math.Max(1, damageInfo.repeatCount);
+
+        for (int i = 0; i < repeats; i++)
+        {
+            currentHealth -= damageInfo.damage;
+            owner.Knockback(knockbackDirection, damageInfo.knockbackForce);
+            damageNumber.DisplayNumber(damageInfo.damage, damageInfo.damageType);
+
+            TriggerDamageType(damageInfo.damageType, damageInfo.typeDamage);
+
+            if (currentHealth <= 0)
+            {
+                GetParent<Entity>().Death();
+                break;
+            }
+
+            if (i < repeats - 1)
+                await ToSignal(GetTree().CreateTimer(0.12f), \"timeout\"); // 120ms delay between numbers
+        }
+        
+    }
+
+    private void TriggerDamageType(string damageType, int typeAmount)
+    {
+        if (typeAmount <= 0)
+        {
+            return;
+        }
+        // Handle different damage types here
+        switch (damageType)
+        {
+            case \"Obliterate\":
+                ObliterateComponent.Call(\"ObliterateBuildUp\", typeAmount);
+                break;
+            case \"Cascade\":
+                CascadeComponent.Call(\"CascadeBuildUp\", typeAmount);
+                break;
+            case \"Burn\":
+                BurnComponent.Call(\"BurnBuildUp\", typeAmount);
+                break;
+            case \"None\":
+                GD.Print(\"No damage type specified\");
+                break;
+            default:
+                GD.Print(\"Unknown damage type\");
+                break;
+        }
+    }
+    public virtual void OnDeath()
+    {
+        
+    }
+    public void ResetHealth()
+    {
+        currentHealth = maxHealth;
+    }
+}
+"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tv6a8"]
 radius = 50.0
 
 [node name="Health" type="Node2D"]
-script = ExtResource("1_psp7q")
+script = SubResource("CSharpScript_psp7q")
+maxHealth = null
 
 [node name="Burn" type="Node" parent="."]
-script = ExtResource("2_2cqca")
 
 [node name="Timer" type="Timer" parent="Burn"]
 one_shot = true
 
 [node name="Obliterate" type="Node" parent="."]
-script = ExtResource("2_sa577")
 
 [node name="Cascade" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 4
-script = ExtResource("4_tv6a8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cascade"]
 shape = SubResource("CircleShape2D_tv6a8")

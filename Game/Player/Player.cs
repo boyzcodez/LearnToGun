@@ -3,6 +3,7 @@ using Godot;
 [GlobalClass]
 public partial class Player : Entity
 {
+    [Export] public PlayerWeaponManager weaponManager;
     private const float SPEED = 100f;
     private const float DODGE_SPEED = 180f;
     private const float DODGE_DURATION = 0.5f;
@@ -52,6 +53,9 @@ public partial class Player : Entity
                 Movement((float)delta);
             }
         }
+
+        if (Input.IsActionJustPressed("attack")) weaponManager.Shoot(this);
+
         MoveAndSlide();
     }
 

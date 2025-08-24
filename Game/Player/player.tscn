@@ -1,19 +1,13 @@
-[gd_scene load_steps=62 format=3 uid="uid://chh07uycyoynw"]
+[gd_scene load_steps=55 format=3 uid="uid://chh07uycyoynw"]
 
 [ext_resource type="Script" uid="uid://cccauuo7nkwjv" path="res://Game/Player/Player.cs" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://6fx5ynqopyeo" path="res://Assets/basic_robot_character.png" id="2_s3asc"]
 [ext_resource type="Script" uid="uid://lai5akvass2s" path="res://Game/Player/AnimatedSprite.cs" id="3_letr6"]
 [ext_resource type="Script" uid="uid://b1ak4u4c4cm3j" path="res://Game/Player/Direction.cs" id="4_vytja"]
 [ext_resource type="Script" uid="uid://cjdsjaml44rs2" path="res://Game/Player/LookAt.cs" id="6_4ddeg"]
-[ext_resource type="PackedScene" uid="uid://cokma6r7qkbkm" path="res://Components/DamageComps/health.tscn" id="6_ch4ko"]
-[ext_resource type="PackedScene" uid="uid://dpx5gl0m23p3c" path="res://Components/DamageComps/hitbox.tscn" id="6_vh1aq"]
-[ext_resource type="Script" uid="uid://cs3kobjjcnkdv" path="res://Game/Player/Gun.cs" id="7_db2hk"]
+[ext_resource type="Script" uid="uid://cvs4foguxsu1" path="res://Game/Player/PlayerWeaponManager.cs" id="6_tqhgd"]
+[ext_resource type="PackedScene" uid="uid://tflokayy1njn" path="res://Game/Guns/Player/Pistol/Pistol.tscn" id="7_q0m6d"]
 [ext_resource type="PackedScene" uid="uid://vmtiw08cr30b" path="res://Components/DamageComps/hurtbox.tscn" id="7_vh1aq"]
-[ext_resource type="Resource" uid="uid://deqas63njyows" path="res://Game/Guns/Gun1.tres" id="8_q0m6d"]
-[ext_resource type="Texture2D" uid="uid://bm5su8unmtdyu" path="res://Assets/icon.svg" id="10_akrrf"]
-[ext_resource type="PackedScene" uid="uid://mmdnif7mf7f7" path="res://Components/DamageComps/gun_sprite.tscn" id="11_6v7ly"]
-[ext_resource type="Texture2D" uid="uid://diet8ij7y2hpc" path="res://Assets/Guns/basic_weapon_shotgun1.png" id="11_tqhgd"]
-[ext_resource type="PackedScene" uid="uid://bhf3nd7jo3wim" path="res://Game/Guns/Partical Effects/shotgun_fire_strands.tscn" id="12_6v7ly"]
 [ext_resource type="Script" uid="uid://c73kpxw2e5ynj" path="res://Game/Player/WarpDash.cs" id="12_qwver"]
 [ext_resource type="PackedScene" uid="uid://bxyy5vw0eiy5e" path="res://Game/Player/ghost_sprite.tscn" id="13_nfw5o"]
 [ext_resource type="PackedScene" uid="uid://haqfsuv5fmc3" path="res://Components/InteractComp/interact_component.tscn" id="14_wlpas"]
@@ -344,17 +338,15 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vh1aq"]
-size = Vector2(85, 40)
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ch4ko"]
 radius = 5.0
 height = 16.0
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("weaponManager") groups=["Player"]]
 motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("1_onrkg")
+weaponManager = NodePath("PlayerWeaponManager")
 
 [node name="DashCooldown" type="Timer" parent="."]
 wait_time = 0.2
@@ -372,39 +364,20 @@ script = ExtResource("3_letr6")
 [node name="Direction" type="Node" parent="AnimatedSprite"]
 script = ExtResource("4_vytja")
 
+[node name="PlayerWeaponManager" type="Node" parent="." node_paths=PackedStringArray("GunSocket")]
+script = ExtResource("6_tqhgd")
+GunSocket = NodePath("../LookAt/GunSpot")
+GunScenes = [ExtResource("7_q0m6d")]
+
 [node name="LookAt" type="Marker2D" parent="."]
 position = Vector2(0, -9)
 script = ExtResource("6_4ddeg")
 
-[node name="Gun" type="Node2D" parent="LookAt"]
-script = ExtResource("7_db2hk")
-gun = ExtResource("8_q0m6d")
+[node name="GunSpot" type="Node2D" parent="LookAt"]
+position = Vector2(6, 2)
 
-[node name="Hitbox" parent="LookAt/Gun" instance=ExtResource("6_vh1aq")]
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LookAt/Gun/Hitbox"]
-position = Vector2(42.5, 0)
-shape = SubResource("RectangleShape2D_vh1aq")
-
-[node name="RangeMarker" type="Sprite2D" parent="LookAt/Gun"]
-position = Vector2(40, 0)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("10_akrrf")
-
-[node name="GunSprite" parent="LookAt/Gun" instance=ExtResource("11_6v7ly")]
-position = Vector2(9, 2)
-texture = ExtResource("11_tqhgd")
-
-[node name="ShotgunFireStrands" parent="LookAt/Gun" instance=ExtResource("12_6v7ly")]
-position = Vector2(20, 0)
-
-[node name="Health" parent="." instance=ExtResource("6_ch4ko")]
-maxHealth = 15
-
-[node name="Hurtbox" parent="." node_paths=PackedStringArray("healthComponent") instance=ExtResource("7_vh1aq")]
+[node name="Hurtbox" parent="." instance=ExtResource("7_vh1aq")]
 collision_layer = 2
-healthComponent = NodePath("../Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, -9)

@@ -33,7 +33,7 @@ public partial class DodgeFlag : AnimatedSprite2D
     {
         if (enemyGun != null)
         {
-            enemyGun.Shoot();
+            //enemyGun.Shoot();
         }
     }
 }

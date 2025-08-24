@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://bhb68kqkfragl"]
+[gd_scene load_steps=44 format=3 uid="uid://bhb68kqkfragl"]
 
 [ext_resource type="Script" uid="uid://dexb3awvsef8d" path="res://Game/Entities/TestEnemies/ActiveTestEnemy.cs" id="1_hc5v1"]
 [ext_resource type="Texture2D" uid="uid://6fx5ynqopyeo" path="res://Assets/basic_robot_character.png" id="2_bbp8y"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://vmtiw08cr30b" path="res://Components/DamageComps/hurtbox.tscn" id="3_m1e7j"]
 [ext_resource type="Texture2D" uid="uid://d07fof5jb85ec" path="res://Assets/Entity/Enemy/Enemy_Intro.png" id="3_oxb72"]
 [ext_resource type="Script" uid="uid://c6vb1yef0nhpa" path="res://Game/Entities/TestEnemies/Look.cs" id="3_q6s24"]
-[ext_resource type="PackedScene" uid="uid://cokma6r7qkbkm" path="res://Components/DamageComps/health.tscn" id="4_f1b1u"]
 [ext_resource type="Script" uid="uid://bp03nkh0uoq1p" path="res://Game/Entities/TestEnemies/EnemyGun.cs" id="4_wxglr"]
 [ext_resource type="Script" uid="uid://jqlj5orjwgch" path="res://Game/Entities/TestEnemies/AnimatedSpriteE.cs" id="5_bbp8y"]
 [ext_resource type="PackedScene" uid="uid://cugpgubph2sc" path="res://Components/InteractComp/interactable.tscn" id="5_hc5v1"]
@@ -14,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://diet8ij7y2hpc" path="res://Assets/Guns/basic_weapon_shotgun1.png" id="6_38i84"]
 [ext_resource type="PackedScene" uid="uid://na4yx06ro3jd" path="res://Game/Entities/StateMachine/state_machine.tscn" id="6_m1e7j"]
 [ext_resource type="Script" uid="uid://c2orrjp6f8iyi" path="res://Game/Entities/StateMachine/States/Idle.cs" id="7_tko4x"]
-[ext_resource type="PackedScene" uid="uid://dsmi4i7hhicoq" path="res://Game/Guns/Bullets/basic_bullet.tscn" id="8_bbp8y"]
+[ext_resource type="PackedScene" uid="uid://dxjpg6l46xs3y" path="res://Game/Guns/Enemy/Pistol/enemy_bullet.tscn" id="8_b3ga6"]
 [ext_resource type="Script" uid="uid://cbm2bcpra8ll1" path="res://Game/Entities/StateMachine/States/Follow.cs" id="8_i2p2e"]
 [ext_resource type="Script" uid="uid://2sl1ow0g27ob" path="res://Game/Entities/StateMachine/States/Surround.cs" id="9_i2p2e"]
 
@@ -211,13 +210,14 @@ script = ExtResource("1_hc5v1")
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_htgvw")
 
-[node name="Spawn" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("stateMachine")]
+[node name="Spawn" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("stateMachine", "hurtbox")]
 sprite_frames = SubResource("SpriteFrames_deekk")
 autoplay = "default"
 frame = 11
 frame_progress = 1.0
 script = ExtResource("3_b3ga6")
 stateMachine = NodePath("../StateMachine")
+hurtbox = NodePath("../Hurtbox")
 
 [node name="Hide" type="Node2D" parent="Spawn"]
 visible = false
@@ -235,7 +235,7 @@ script = ExtResource("3_q6s24")
 
 [node name="EnemyGun" type="Node2D" parent="Spawn/Hide/AnimatedSpriteE/Look"]
 script = ExtResource("4_wxglr")
-bullet = ExtResource("8_bbp8y")
+bullet = ExtResource("8_b3ga6")
 
 [node name="GunSprite" parent="Spawn/Hide/AnimatedSpriteE/Look/EnemyGun" instance=ExtResource("5_lhyhb")]
 position = Vector2(9, -2)
@@ -244,16 +244,13 @@ texture = ExtResource("6_38i84")
 [node name="MarkSpot" type="Marker2D" parent="Spawn/Hide/AnimatedSpriteE/Look/EnemyGun"]
 position = Vector2(20, -4)
 
-[node name="Hurtbox" parent="." node_paths=PackedStringArray("healthComponent") instance=ExtResource("3_m1e7j")]
+[node name="Hurtbox" parent="." instance=ExtResource("3_m1e7j")]
 collision_layer = 4
-healthComponent = NodePath("../Health")
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, -6)
 shape = SubResource("CapsuleShape2D_ccun0")
-
-[node name="Health" parent="." instance=ExtResource("4_f1b1u")]
-maxHealth = 15
 
 [node name="Interactable" parent="." instance=ExtResource("5_hc5v1")]
 interactionName = "Activate"

@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://u1aqua33b3uc"]
+
+[ext_resource type="Script" uid="uid://bskvhomxdhrhy" path="res://Scarecrow.cs" id="1_j5bqv"]
+[ext_resource type="Texture2D" uid="uid://bm5su8unmtdyu" path="res://Assets/icon.svg" id="2_vyfxq"]
+[ext_resource type="PackedScene" uid="uid://vmtiw08cr30b" path="res://Components/DamageComps/hurtbox.tscn" id="3_7idsq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j5bqv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vw1ok"]
+radius = 60.0083
+
+[node name="Scarecrow" type="CharacterBody2D"]
+script = ExtResource("1_j5bqv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_j5bqv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_vyfxq")
+
+[node name="Hurtbox" parent="." instance=ExtResource("3_7idsq")]
+collision_layer = 4
+maxHealth = 1000
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_vw1ok")

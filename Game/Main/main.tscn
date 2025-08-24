@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://clqw4um34fajs"]
+[gd_scene load_steps=7 format=3 uid="uid://clqw4um34fajs"]
 
 [ext_resource type="PackedScene" uid="uid://chh07uycyoynw" path="res://Game/Player/player.tscn" id="1_0nu1h"]
 [ext_resource type="Script" uid="uid://dgrir7xxo4xpx" path="res://Game/Main/EntityHandler.cs" id="1_mxdch"]
 [ext_resource type="Script" uid="uid://xdubo0fshbcy" path="res://Game/Main/MapHandler.cs" id="3_mxdch"]
 [ext_resource type="PackedScene" uid="uid://x3152krac0fs" path="res://Game/Map/Rooms/starting_map.tscn" id="4_gk2dm"]
+[ext_resource type="PackedScene" uid="uid://u1aqua33b3uc" path="res://Game/Entities/TestEnemies/scarecrow.tscn" id="5_mxdch"]
 [ext_resource type="PackedScene" uid="uid://bqtng3dp4vtsa" path="res://Game/Player/player_camera.tscn" id="5_vmwgv"]
 
 [node name="Main" type="Node2D"]
@@ -19,6 +20,9 @@ y_sort_enabled = true
 script = ExtResource("1_mxdch")
 
 [node name="Player" parent="EntityHandler" instance=ExtResource("1_0nu1h")]
+
+[node name="Scarecrow" parent="EntityHandler" instance=ExtResource("5_mxdch")]
+position = Vector2(100, 0)
 
 [node name="PlayerCamera" parent="." node_paths=PackedStringArray("followNode") instance=ExtResource("5_vmwgv")]
 followNode = NodePath("../EntityHandler/Player")

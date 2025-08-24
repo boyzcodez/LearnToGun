@@ -39,7 +39,7 @@ public partial class EntityHandler : Node2D
     }
     private async void SpawnWave()
     {
-        rounds -= 1;
+        rounds--;
         int enemiesToSpawn = Mathf.CeilToInt(4 + _dangerValue * 2);
 
         for (int i = 0; i < enemiesToSpawn; i++)

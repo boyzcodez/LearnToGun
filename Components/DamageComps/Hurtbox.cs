@@ -1,19 +1,27 @@
 using Godot;
-using System;
 
 [GlobalClass]
 public partial class Hurtbox : Area2D
 {
-    public bool immune = false;
-    [Export]
-    private Health healthComponent;
+    [Export] private int maxHealth = 100;
+    private int currentHealth;
+    private Entity owner;
 
-    public async void Damage(DamageInfo damageInfo, Vector2 direction = default)
+    public override void _Ready()
     {
+        owner = GetOwner<Entity>();
+        currentHealth = maxHealth;
+    }
 
-        if (healthComponent != null && immune == false)
+    public void TakeDamage(DamageData damageData, Vector2 direction = default)
+    {
+        currentHealth -= damageData.Damage;
+        owner.Knockback(direction, damageData.Knockback);
+
+        GD.Print("took " + damageData.Damage + " damage");
+        if (currentHealth <= 0)
         {
-            await healthComponent.TakeDamage(damageInfo, direction);
+            owner.Death();
         }
     }
 }
