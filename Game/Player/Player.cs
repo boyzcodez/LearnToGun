@@ -67,7 +67,7 @@ public partial class Player : Entity
         if (Input.IsActionJustPressed("dodge") && direction != Vector2.Zero && isDodging == false)
         {
             isDodging = true;
-            hurtbox.Monitorable = false;
+            hurtbox.immune = true;
             warpDashNode.CallDeferred("Activated");
             DodgeRoll(direction);
         }
@@ -90,7 +90,7 @@ public partial class Player : Entity
         {
             Velocity = Vector2.Zero; // Stop movement after dodge
             dodgeDirection = Vector2.Zero;
-            hurtbox.Monitorable = true;
+            hurtbox.immune = false;
             warpDashNode.CallDeferred("Deactivated");
             dashTimer.Start(dashCooldown);
         }
@@ -116,12 +116,11 @@ public partial class Player : Entity
             disabled = true;
             SetPhysicsProcess(false);
         }
-            
+
     }
     // this function is hooked up through the engine
     private void _on_dash_cooldown_timeout()
     {
         isDodging = false;
     }
-
 }

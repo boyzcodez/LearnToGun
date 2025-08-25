@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://diet8ij7y2hpc"
-path="res://.godot/imported/basic_weapon_shotgun1.png-1dafa6a2834e28f618f158413d1004c2.ctex"
+uid="uid://ovtr78dyes2s"
+path="res://.godot/imported/RobotShadow.png-c6a5e65b6caccf9b5ff235ea77bcfaeb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Guns/basic_weapon_shotgun1.png"
-dest_files=["res://.godot/imported/basic_weapon_shotgun1.png-1dafa6a2834e28f618f158413d1004c2.ctex"]
+source_file="res://Assets/RobotShadow.png"
+dest_files=["res://.godot/imported/RobotShadow.png-c6a5e65b6caccf9b5ff235ea77bcfaeb.ctex"]
 
 [params]
 

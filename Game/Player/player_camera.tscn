@@ -1,20 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqtng3dp4vtsa"]
+[gd_scene load_steps=4 format=3 uid="uid://bqtng3dp4vtsa"]
 
 [ext_resource type="Script" uid="uid://c6vbo4viabeax" path="res://Game/Player/PlayerCamera.cs" id="1_cm6ya"]
+[ext_resource type="Script" uid="uid://bmkmywagf3m2b" path="res://Game/GUI/Ui.cs" id="2_0lmko"]
 [ext_resource type="PackedScene" uid="uid://c4wotq3cqabch" path="res://Game/GUI/scene_transition.tscn" id="2_xijps"]
 
 [node name="PlayerCamera" type="Camera2D"]
 script = ExtResource("1_cm6ya")
 
-[node name="Stats" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("2_0lmko")
 
-[node name="Label" type="Label" parent="Stats"]
+[node name="UIManager" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI/UIManager"]
 offset_top = 10.0
 offset_right = 51.0
 offset_bottom = 33.0
 text = "Ammo"
 
-[node name="Label2" type="Label" parent="Stats"]
+[node name="Label2" type="Label" parent="UI/UIManager"]
+layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -24,12 +35,13 @@ offset_bottom = 33.0
 grow_horizontal = 0
 text = "Money"
 
-[node name="Label3" type="Label" parent="Stats"]
+[node name="Label3" type="Label" parent="UI/UIManager"]
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
+offset_left = -26.0
+offset_right = 26.0
 offset_bottom = 23.0
 grow_horizontal = 2
 text = "Health"

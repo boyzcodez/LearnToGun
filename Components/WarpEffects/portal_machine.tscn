@@ -20,3 +20,4 @@ interactionName = "Enter"
 shape = SubResource("CircleShape2D_vh6nn")
 
 [node name="BasePortal" parent="." instance=ExtResource("4_vh6nn")]
+Palette = PackedColorArray(0.905084, 0, 0.211995, 1, 0.620763, 0.544747, 1, 1, 0.0448697, 0.808634, 0.943821, 1)

@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cemybpxgj5xep" path="res://Game/Guns/Base/Gun.cs" id="1_0utft"]
 [ext_resource type="Resource" uid="uid://du4ihic1fxweh" path="res://Game/Guns/Player/Pistol/PistolData.tres" id="2_bqxg4"]
-[ext_resource type="Texture2D" uid="uid://diet8ij7y2hpc" path="res://Assets/Guns/basic_weapon_shotgun1.png" id="3_6r7bt"]
 [ext_resource type="PackedScene" uid="uid://mmdnif7mf7f7" path="res://Components/DamageComps/gun_sprite.tscn" id="3_bqxg4"]
+[ext_resource type="Texture2D" uid="uid://culo57x4s1pec" path="res://Game/Guns/Player/Pistol/basic_weapon_pistol1.png" id="4_bqxg4"]
 
 [node name="Pistol" type="Node2D" node_paths=PackedStringArray("spot", "sprite")]
 script = ExtResource("1_0utft")
@@ -12,7 +12,7 @@ spot = NodePath("Spot")
 sprite = NodePath("GunSprite")
 
 [node name="GunSprite" parent="." instance=ExtResource("3_bqxg4")]
-texture = ExtResource("3_6r7bt")
+texture = ExtResource("4_bqxg4")
 
 [node name="Spot" type="Marker2D" parent="."]
-position = Vector2(11, -2)
+position = Vector2(7, -3)

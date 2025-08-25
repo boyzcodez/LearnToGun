@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bp3lx4f7c5wd1"]
+
+[ext_resource type="Script" uid="uid://dl5crd2kebgma" path="res://Components/Etc/HitFlash.cs" id="1_p2363"]
+
+[node name="HitFlash" type="Node"]
+script = ExtResource("1_p2363")

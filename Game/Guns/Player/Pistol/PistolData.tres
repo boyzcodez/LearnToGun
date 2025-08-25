@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="GunData" load_steps=3 format=3 uid="uid://du4ihic1fxweh"]
+[gd_resource type="Resource" script_class="GunData" load_steps=4 format=3 uid="uid://du4ihic1fxweh"]
 
 [ext_resource type="PackedScene" uid="uid://c2lf3revdfxi0" path="res://Game/Guns/Bullets/NewBulletBase.tscn" id="1_0ejhw"]
 [ext_resource type="Script" uid="uid://bf05vlwwwrvul" path="res://Game/Guns/Base/GunData.cs" id="1_1ql6e"]
+[ext_resource type="Texture2D" uid="uid://culo57x4s1pec" path="res://Game/Guns/Player/Pistol/basic_weapon_pistol1.png" id="2_0ejhw"]
 
 [resource]
 script = ExtResource("1_1ql6e")
@@ -11,4 +12,5 @@ Knockback = 100.0
 BulletScene = ExtResource("1_0ejhw")
 MaxAmmo = 10
 FireRate = 0.2
+GunSprite = ExtResource("2_0ejhw")
 metadata/_custom_type_script = "uid://bf05vlwwwrvul"

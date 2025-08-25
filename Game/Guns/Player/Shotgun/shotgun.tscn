@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://ci5kdh4eh4lic"]
+
+[ext_resource type="Script" uid="uid://cemybpxgj5xep" path="res://Game/Guns/Base/Gun.cs" id="1_ihkv4"]
+[ext_resource type="Resource" uid="uid://7ce3aqmof3vb" path="res://Game/Guns/Player/Shotgun/ShotgunData.tres" id="2_o4pot"]
+[ext_resource type="PackedScene" uid="uid://mmdnif7mf7f7" path="res://Components/DamageComps/gun_sprite.tscn" id="3_wv254"]
+[ext_resource type="Texture2D" uid="uid://diet8ij7y2hpc" path="res://Game/Guns/Player/Shotgun/basic_weapon_shotgun1.png" id="4_o4pot"]
+
+[node name="Shotgun" type="Node2D" node_paths=PackedStringArray("spot", "sprite")]
+script = ExtResource("1_ihkv4")
+gunData = ExtResource("2_o4pot")
+spot = NodePath("Marker2D")
+sprite = NodePath("GunSprite")
+rotate = true
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(11, -2)
+
+[node name="GunSprite" parent="." instance=ExtResource("3_wv254")]
+texture = ExtResource("4_o4pot")

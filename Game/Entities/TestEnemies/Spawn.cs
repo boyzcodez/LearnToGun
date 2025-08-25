@@ -8,7 +8,7 @@ public partial class Spawn : AnimatedSprite2D
     private void _on_animation_finished()
     {
         GetNode<Node2D>("Hide").Visible = true;
-        hurtbox.Monitorable = true;
+        hurtbox.immune = false;
         stateMachine.SetActive();
     }
 }

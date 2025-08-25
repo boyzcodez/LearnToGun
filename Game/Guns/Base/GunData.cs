@@ -9,4 +9,5 @@ public partial class GunData : Resource
     [Export] public PackedScene BulletScene { get; set; }
     [Export] public int MaxAmmo { get; set; } = 10;
     [Export] public float FireRate { get; set; } = 0.2f;
+    [Export] public Texture2D GunSprite { get; set; }
 }
