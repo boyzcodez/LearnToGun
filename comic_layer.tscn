@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxd8nys6f8fvl"]
+
+[ext_resource type="Texture2D" uid="uid://bm5su8unmtdyu" path="res://Assets/icon.svg" id="1_6ulhv"]
+[ext_resource type="Shader" uid="uid://msllxvepyvqs" path="res://Game/Shaders/comic.gdshader" id="1_w3lyq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6ulhv"]
+shader = ExtResource("1_w3lyq")
+shader_parameter/UseColor = false
+shader_parameter/BlackDot = false
+shader_parameter/AspectRatio = 0.0
+shader_parameter/Dots = 0.0
+shader_parameter/_min = 0.0
+shader_parameter/_max = 0.0
+shader_parameter/UseReshade = false
+
+[node name="ComicLayer" type="CanvasLayer"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(560, 110)
+texture = ExtResource("1_6ulhv")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_6ulhv")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

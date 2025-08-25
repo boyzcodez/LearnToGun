@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6regbx2an8qr"]
+[gd_scene load_steps=4 format=3 uid="uid://cokma6r7qkbkm"]
 
 [ext_resource type="PackedScene" uid="uid://304haxf1nshu" path="res://Components/DamageComps/damage_numbers.tscn" id="3_35ijb"]
 

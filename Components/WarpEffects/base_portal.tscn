@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://dpgi2e8e4qv82"]
+[gd_scene load_steps=11 format=3 uid="uid://dpgi2e8e4qv82"]
 
-[ext_resource type="Shader" uid="uid://ctjk447biglcu" path="res://Game/Shaders/outline.gdshader" id="1_7k0wa"]
+[ext_resource type="Shader" path="res://Game/Shaders/outline.gdshader" id="1_7k0wa"]
 [ext_resource type="Script" uid="uid://b4batliug1jem" path="res://Components/WarpEffects/BasePortal.cs" id="2_fafxv"]
 [ext_resource type="Texture2D" uid="uid://c5ndf6ekhph7" path="res://Assets/orb.png" id="2_rqeor"]
 [ext_resource type="Texture2D" uid="uid://bp36wvjhcl1jp" path="res://Assets/orb1.png" id="3_6giwr"]
@@ -12,6 +12,15 @@
 shader = ExtResource("1_7k0wa")
 shader_parameter/line_colour = Color(1, 1, 1, 1)
 shader_parameter/line_thickness = 5
+
+[sub_resource type="Curve" id="Curve_htkl6"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, -360), 0.0, 0.0, 0, 0, Vector2(0.346591, 343.82), 0.0, 0.0, 0, 0, Vector2(0.977273, 360), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_4ukal"]
+_data = [Vector2(0, 0.651685), 0.0, 0.0, 0, 0, Vector2(0.477273, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [node name="BasePortal" type="CanvasGroup"]
 material = SubResource("ShaderMaterial_fafxv")
@@ -72,3 +81,17 @@ script = ExtResource("3_rqeor")
 [node name="Orb13" type="Sprite2D" parent="."]
 texture = ExtResource("6_htkl6")
 script = ExtResource("3_rqeor")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 25
+texture = ExtResource("6_htkl6")
+lifetime = 1.5
+explosiveness = 0.3
+randomness = 0.1
+direction = Vector2(0, -1)
+spread = 150.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 10.0
+angle_max = 15.0
+angle_curve = SubResource("Curve_htkl6")
+scale_amount_curve = SubResource("Curve_4ukal")
