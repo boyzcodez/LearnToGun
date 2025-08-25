@@ -226,7 +226,6 @@ hurtbox = NodePath("../Hurtbox")
 visible = false
 
 [node name="AnimatedSpriteE" type="AnimatedSprite2D" parent="Spawn/Hide"]
-modulate = Color(0.793513, 0, 0.0567375, 1)
 material = ExtResource("4_6ce44")
 position = Vector2(0, -10)
 sprite_frames = SubResource("SpriteFrames_b3ga6")
