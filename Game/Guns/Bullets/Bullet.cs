@@ -3,7 +3,8 @@ using Godot;
 [GlobalClass]
 public partial class Bullet : Area2D
 {
-    [Export] float speed = 50;
+    [Export]
+    float speed = 80;
     private DamageData _damageData;
     private Vector2 direction;
     private bool check = false;

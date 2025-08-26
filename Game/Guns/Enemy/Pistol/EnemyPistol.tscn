@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://cy8n2i1umi5jp"]
+
+[ext_resource type="Script" uid="uid://cemybpxgj5xep" path="res://Game/Guns/Base/Gun.cs" id="1_sgm38"]
+[ext_resource type="Resource" uid="uid://0mow7g6u66nf" path="res://Game/Guns/Enemy/Pistol/EnemyPistolData.tres" id="2_rp4hu"]
+[ext_resource type="PackedScene" uid="uid://mmdnif7mf7f7" path="res://Components/DamageComps/gun_sprite.tscn" id="2_ws0ye"]
+[ext_resource type="Texture2D" uid="uid://p81l6fvexk0a" path="res://Game/Guns/Enemy/Pistol/EnemyPistol.png" id="4_rp4hu"]
+[ext_resource type="PackedScene" uid="uid://djku7onwfxvyl" path="res://Components/Etc/Hands.tscn" id="5_jhya0"]
+
+[node name="EnemyPistol" type="Node2D" node_paths=PackedStringArray("spot", "sprite")]
+script = ExtResource("1_sgm38")
+gunData = ExtResource("2_rp4hu")
+spot = NodePath("Marker2D")
+sprite = NodePath("GunSprite")
+
+[node name="GunSprite" parent="." instance=ExtResource("2_ws0ye")]
+texture = ExtResource("4_rp4hu")
+
+[node name="Hands" parent="GunSprite" instance=ExtResource("5_jhya0")]
+position = Vector2(-8, 1)
+frame = 1
+
+[node name="Marker2D" type="Marker2D" parent="."]

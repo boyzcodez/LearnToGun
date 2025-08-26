@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="GunData" load_steps=3 format=3 uid="uid://0mow7g6u66nf"]
+
+[ext_resource type="PackedScene" uid="uid://dxjpg6l46xs3y" path="res://Game/Guns/Enemy/Pistol/EnemyPistolBullet.tscn" id="1_i0j6t"]
+[ext_resource type="Script" uid="uid://bf05vlwwwrvul" path="res://Game/Guns/Base/GunData.cs" id="1_xm3rr"]
+
+[resource]
+script = ExtResource("1_xm3rr")
+GunName = "Pistol"
+Damage = 1
+Knockback = 100.0
+BulletScene = ExtResource("1_i0j6t")
+MaxAmmo = 999
+FireRate = 0.0
+metadata/_custom_type_script = "uid://bf05vlwwwrvul"

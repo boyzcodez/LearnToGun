@@ -1,8 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://mmdnif7mf7f7"]
+[gd_scene load_steps=2 format=3 uid="uid://mmdnif7mf7f7"]
 
-[ext_resource type="Material" uid="uid://dgm487iucl2ye" path="res://Game/Shaders/smooth_rotate_pixles.tres" id="1_i7abj"]
 [ext_resource type="Script" uid="uid://de5s52jqbsy12" path="res://Game/Player/GunSprite.cs" id="3_4mptg"]
 
 [node name="GunSprite" type="Sprite2D"]
-material = ExtResource("1_i7abj")
 script = ExtResource("3_4mptg")

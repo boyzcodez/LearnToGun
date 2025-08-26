@@ -4,30 +4,18 @@ using System;
 [GlobalClass]
 public partial class EnemyGun : Node2D
 {
-    [Export] PackedScene bullet;
-    private GunSprite gunSprite;
-    private Marker2D mark;
+    [Export] Gun gun;
+    private RayCast2D rayCast;
 
     private float time = 0f;
+    private bool canShoot = true;
 
-    // public override void _Ready()
-    // {
-    //     gunSprite = GetNode<GunSprite>("GunSprite");
-    //     mark = GetNode<Marker2D>("MarkSpot");
-    // }
-    // public void Shoot()
-    // {
-    //     gunSprite?.FireAnimation();
+    public override void _Ready()
+    {
+        rayCast = GetNode<RayCast2D>("RayCast");
+    }
 
-    //     var instance = bullet?.Instantiate() as BasicBullet;
 
-    //     instance.GlobalPosition = mark.GlobalPosition;
-    //     instance.direction = Vector2.Right.Rotated(GlobalRotation);
-
-    //     GetTree().CurrentScene.CallDeferred("add_child", instance);
-    // }
-
-    // remove the shoot countdown
     public override void _PhysicsProcess(double delta)
     {
         var angle = this.GlobalRotation;
@@ -40,11 +28,22 @@ public partial class EnemyGun : Node2D
             Scale = new Vector2(1, 1);
         }
 
-        // time += (float)delta;
-        // if (time >= 4f)
-        // {
-        //     time = 0f;
-        //     Shoot();
-        // }
+        if (canShoot == false)
+        {
+            time += (float)delta;
+
+            if (time >= 4f)
+            {
+                canShoot = true;
+                time = 0;
+            }
+        }
+        else if (!rayCast.IsColliding())
+        {
+            gun.Shoot(this);
+            canShoot = false;
+        }
+
+
     }
 }

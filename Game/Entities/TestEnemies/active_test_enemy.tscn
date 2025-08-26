@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://bhb68kqkfragl"]
+[gd_scene load_steps=45 format=3 uid="uid://bhb68kqkfragl"]
 
 [ext_resource type="Script" uid="uid://dexb3awvsef8d" path="res://Game/Entities/TestEnemies/ActiveTestEnemy.cs" id="1_hc5v1"]
 [ext_resource type="Script" uid="uid://cdvqcbs4rpfiv" path="res://Game/Entities/TestEnemies/Spawn.cs" id="3_b3ga6"]
@@ -7,15 +7,13 @@
 [ext_resource type="Script" uid="uid://c6vb1yef0nhpa" path="res://Game/Entities/TestEnemies/Look.cs" id="3_q6s24"]
 [ext_resource type="Material" uid="uid://cbu21hu7tbx1s" path="res://Game/Player/HitFlash.tres" id="4_6ce44"]
 [ext_resource type="Script" uid="uid://bp03nkh0uoq1p" path="res://Game/Entities/TestEnemies/EnemyGun.cs" id="4_wxglr"]
+[ext_resource type="Texture2D" uid="uid://bqe25i6ow8vul" path="res://Assets/Entity/Enemy/NewEnemyRobo.png" id="5_6ce44"]
 [ext_resource type="Script" uid="uid://jqlj5orjwgch" path="res://Game/Entities/TestEnemies/AnimatedSpriteE.cs" id="5_bbp8y"]
 [ext_resource type="PackedScene" uid="uid://cugpgubph2sc" path="res://Components/InteractComp/interactable.tscn" id="5_hc5v1"]
-[ext_resource type="PackedScene" uid="uid://mmdnif7mf7f7" path="res://Components/DamageComps/gun_sprite.tscn" id="5_lhyhb"]
-[ext_resource type="Texture2D" uid="uid://drnvmxh1e2u5u" path="res://Assets/NewRobot.png" id="5_oxb72"]
-[ext_resource type="Texture2D" uid="uid://diet8ij7y2hpc" path="res://Game/Guns/Player/Shotgun/basic_weapon_shotgun1.png" id="6_38i84"]
 [ext_resource type="PackedScene" uid="uid://na4yx06ro3jd" path="res://Game/Entities/StateMachine/state_machine.tscn" id="6_m1e7j"]
 [ext_resource type="Script" uid="uid://c2orrjp6f8iyi" path="res://Game/Entities/StateMachine/States/Idle.cs" id="7_tko4x"]
-[ext_resource type="PackedScene" uid="uid://dxjpg6l46xs3y" path="res://Game/Guns/Enemy/Pistol/enemy_bullet.tscn" id="8_b3ga6"]
 [ext_resource type="Script" uid="uid://cbm2bcpra8ll1" path="res://Game/Entities/StateMachine/States/Follow.cs" id="8_i2p2e"]
+[ext_resource type="PackedScene" uid="uid://cy8n2i1umi5jp" path="res://Game/Guns/Enemy/Pistol/EnemyPistol.tscn" id="9_bbp8y"]
 [ext_resource type="Script" uid="uid://2sl1ow0g27ob" path="res://Game/Entities/StateMachine/States/Surround.cs" id="9_i2p2e"]
 [ext_resource type="PackedScene" uid="uid://dyqbl4s13wnxg" path="res://Components/Etc/shadow.tscn" id="11_bbp8y"]
 [ext_resource type="PackedScene" uid="uid://bp3lx4f7c5wd1" path="res://Components/Etc/hit_flash.tscn" id="11_oxb72"]
@@ -115,69 +113,49 @@ animations = [{
 "speed": 7.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bbp8y"]
-atlas = ExtResource("5_oxb72")
-region = Rect2(0, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_oxb72"]
-atlas = ExtResource("5_oxb72")
-region = Rect2(64, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0bosg"]
-atlas = ExtResource("5_oxb72")
-region = Rect2(128, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1pgm1"]
-atlas = ExtResource("5_oxb72")
-region = Rect2(192, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6ce44"]
-atlas = ExtResource("5_oxb72")
-region = Rect2(0, 384, 64, 64)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_iuexv"]
-atlas = ExtResource("5_oxb72")
-region = Rect2(64, 384, 64, 64)
+atlas = ExtResource("5_6ce44")
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_arfx8"]
-atlas = ExtResource("5_oxb72")
-region = Rect2(128, 384, 64, 64)
+atlas = ExtResource("5_6ce44")
+region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_epb28"]
-atlas = ExtResource("5_oxb72")
-region = Rect2(192, 384, 64, 64)
+atlas = ExtResource("5_6ce44")
+region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cudr0"]
-atlas = ExtResource("5_oxb72")
-region = Rect2(256, 384, 64, 64)
+atlas = ExtResource("5_6ce44")
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_koxjg"]
-atlas = ExtResource("5_oxb72")
-region = Rect2(320, 384, 64, 64)
+atlas = ExtResource("5_6ce44")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bosg"]
+atlas = ExtResource("5_6ce44")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1pgm1"]
+atlas = ExtResource("5_6ce44")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtypy"]
+atlas = ExtResource("5_6ce44")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2naml"]
+atlas = ExtResource("5_6ce44")
+region = Rect2(256, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dx1m"]
+atlas = ExtResource("5_6ce44")
+region = Rect2(320, 64, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b3ga6"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bbp8y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oxb72")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0bosg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1pgm1")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 7.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6ce44")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_iuexv")
 }, {
@@ -189,9 +167,29 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cudr0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_koxjg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0bosg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1pgm1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtypy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2naml")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dx1m")
 }],
 "loop": true,
 "name": &"run",
@@ -225,32 +223,32 @@ hurtbox = NodePath("../Hurtbox")
 [node name="Hide" type="Node2D" parent="Spawn"]
 visible = false
 
+[node name="Shadow" parent="Spawn/Hide" instance=ExtResource("11_bbp8y")]
+position = Vector2(0, -1)
+
 [node name="AnimatedSpriteE" type="AnimatedSprite2D" parent="Spawn/Hide"]
 material = ExtResource("4_6ce44")
 position = Vector2(0, -10)
 sprite_frames = SubResource("SpriteFrames_b3ga6")
-animation = &"run"
+animation = &"idle"
 script = ExtResource("5_bbp8y")
 
 [node name="Look" type="Marker2D" parent="Spawn/Hide/AnimatedSpriteE"]
 position = Vector2(0, 4)
 script = ExtResource("3_q6s24")
 
-[node name="EnemyGun" type="Node2D" parent="Spawn/Hide/AnimatedSpriteE/Look"]
+[node name="EnemyGun" type="Node2D" parent="Spawn/Hide/AnimatedSpriteE/Look" node_paths=PackedStringArray("gun")]
+position = Vector2(14, 0)
 script = ExtResource("4_wxglr")
-bullet = ExtResource("8_b3ga6")
+gun = NodePath("EnemyPistol")
 
-[node name="GunSprite" parent="Spawn/Hide/AnimatedSpriteE/Look/EnemyGun" instance=ExtResource("5_lhyhb")]
-position = Vector2(9, -2)
-texture = ExtResource("6_38i84")
+[node name="RayCast" type="RayCast2D" parent="Spawn/Hide/AnimatedSpriteE/Look/EnemyGun"]
+target_position = Vector2(100, 0)
+collision_mask = 0
 
-[node name="MarkSpot" type="Marker2D" parent="Spawn/Hide/AnimatedSpriteE/Look/EnemyGun"]
-position = Vector2(20, -4)
+[node name="EnemyPistol" parent="Spawn/Hide/AnimatedSpriteE/Look/EnemyGun" instance=ExtResource("9_bbp8y")]
 
 [node name="HitFlash" parent="Spawn/Hide/AnimatedSpriteE" instance=ExtResource("11_oxb72")]
-
-[node name="Shadow" parent="Spawn/Hide" instance=ExtResource("11_bbp8y")]
-position = Vector2(0, -1)
 
 [node name="Hurtbox" parent="." node_paths=PackedStringArray("hitFlash") instance=ExtResource("3_m1e7j")]
 collision_layer = 4

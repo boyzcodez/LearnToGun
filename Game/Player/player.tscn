@@ -384,7 +384,7 @@ position = Vector2(0, -9)
 script = ExtResource("6_4ddeg")
 
 [node name="GunSpot" type="Node2D" parent="LookAt"]
-position = Vector2(9, 2)
+position = Vector2(14, 2)
 
 [node name="Hurtbox" parent="." node_paths=PackedStringArray("hitFlash") instance=ExtResource("7_vh1aq")]
 collision_layer = 2

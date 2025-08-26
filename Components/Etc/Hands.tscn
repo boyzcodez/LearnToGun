@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://djku7onwfxvyl"]
+
+[ext_resource type="Texture2D" uid="uid://wpqauhbk2707" path="res://Assets/Entity/RobotHands.png" id="1_hbjuj"]
+
+[node name="Hands" type="Sprite2D"]
+texture = ExtResource("1_hbjuj")
+hframes = 2

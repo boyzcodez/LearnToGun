@@ -17,5 +17,11 @@ public partial class Look : Marker2D
             float targetRotation = directionToPlayer.Angle();
             Rotation = targetRotation;
         }
+        else
+        {
+            Vector2 direction = GetOwner<Entity>().Velocity.Normalized();
+            float targetRotation = direction.Angle();
+            Rotation = targetRotation;
+        }
     }
 }
