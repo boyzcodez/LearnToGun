@@ -8,7 +8,7 @@ public partial class EnemyGun : Node2D
     private RayCast2D rayCast;
 
     private float time = 0f;
-    private bool canShoot = true;
+    private bool canShoot = false;
 
     public override void _Ready()
     {
@@ -40,7 +40,7 @@ public partial class EnemyGun : Node2D
         }
         else if (!rayCast.IsColliding())
         {
-            gun.Shoot(this);
+            if (gun != null) gun.Shoot(this);
             canShoot = false;
         }
 

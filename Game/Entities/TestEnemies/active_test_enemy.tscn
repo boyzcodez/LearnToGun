@@ -250,10 +250,8 @@ collision_mask = 0
 
 [node name="HitFlash" parent="Spawn/Hide/AnimatedSpriteE" instance=ExtResource("11_oxb72")]
 
-[node name="Hurtbox" parent="." node_paths=PackedStringArray("hitFlash") instance=ExtResource("3_m1e7j")]
+[node name="Hurtbox" parent="." instance=ExtResource("3_m1e7j")]
 collision_layer = 4
-isImmune = true
-hitFlash = NodePath("../Spawn/Hide/AnimatedSpriteE/HitFlash")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, -10)

@@ -15,7 +15,7 @@ public partial class Bullet : Area2D
         _damageData = damageData;
         direction = bulletDirection;
     }
-    public override void _PhysicsProcess(double delta)
+    public override void _Process(double delta)
     {
         GlobalPosition += direction * speed * (float)delta;
 

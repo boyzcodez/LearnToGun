@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 [GlobalClass]
 public partial class Gun : Node2D
@@ -10,6 +11,11 @@ public partial class Gun : Node2D
     [Export] public bool rotate = false;
 
     private float _cooldown = 0f;
+
+    public override void _Ready()
+    {
+        base._Ready();
+    }
 
     public override void _Process(double delta)
     {
