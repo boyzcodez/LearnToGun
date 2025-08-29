@@ -3,8 +3,8 @@ using Godot;
 [GlobalClass]
 public partial class Bullet : Area2D
 {
-    [Export]
-    float speed = 80;
+    [Export] public float speed = 110f;
+    public bool IsEnemy { get; private set; }
     private DamageData _damageData;
     private Vector2 direction;
     private bool check = false;
@@ -17,6 +17,7 @@ public partial class Bullet : Area2D
     }
     public override void _Process(double delta)
     {
+
         GlobalPosition += direction * speed * (float)delta;
 
         if (check) ReCheck();

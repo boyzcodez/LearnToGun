@@ -58,6 +58,6 @@ public partial class PlayerWeaponManager : Node
     public void Shoot(Node shooter)
     {
         if (_guns.Count > 0)
-            _guns[_currentGunIndex].Shoot(shooter);
+            _guns[_currentGunIndex].Shoot();
     }
 }

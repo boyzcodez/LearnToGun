@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class AnimatedSpriteE : AnimatedSprite2D
+public partial class AnimatedSpriteE : AnimatedSprite
 {
     private Entity self;
     private Look look;
@@ -11,19 +11,25 @@ public partial class AnimatedSpriteE : AnimatedSprite2D
         self = GetOwner<Entity>();
         look = GetNode<Look>("Look");
     }
-
-    public override void _PhysicsProcess(double delta)
+    public override void Physics(double delta)
     {
         if (self.Velocity != Vector2.Zero)
-            Play("run");
+            PlayAnimation("Run", 1);
         else
-            Play("idle");
+            PlayAnimation("Idle", 1);
 
         if (look.Rotation > -1.5f && look.Rotation < 1.5f)
             FlipH = false;
         else
             FlipH = true;
     }
-
-
+    public override void PlayAnimation(string animation = "", int value = 0)
+    {
+        if (value >= animationValue)
+        {
+            animationValue = value;
+            Play(animation);
+        }
+            
+    }
 }

@@ -1,6 +1,4 @@
 using Godot;
-using System;
-using System.Collections.Generic;
 
 [GlobalClass]
 public partial class Gun : Node2D
@@ -9,13 +7,7 @@ public partial class Gun : Node2D
     [Export] public Marker2D spot { get; set; }
     [Export] public GunSprite sprite { get; set; }
     [Export] public bool rotate = false;
-
     private float _cooldown = 0f;
-
-    public override void _Ready()
-    {
-        base._Ready();
-    }
 
     public override void _Process(double delta)
     {
@@ -23,7 +15,7 @@ public partial class Gun : Node2D
             _cooldown -= (float)delta;
     }
 
-    public void Shoot(Node shooter)
+    public void Shoot()
     {
         if (_cooldown > 0) return; // still cooling down
         if (gunData == null) return;
@@ -33,7 +25,7 @@ public partial class Gun : Node2D
         var bulletInstance = gunData.BulletScene.Instantiate() as Node2D;
         if (bulletInstance is Bullet bullet)
         {
-            bullet.Init(new DamageData(gunData.Damage, gunData.Knockback, shooter), Vector2.Right.Rotated(GlobalRotation));
+            bullet.Init(new DamageData(gunData.Damage, gunData.Knockback), Vector2.Right.Rotated(GlobalRotation));
             bullet.GlobalPosition = spot.GlobalPosition;
             if (rotate) bullet.GlobalRotation = spot.GlobalRotation;
         }

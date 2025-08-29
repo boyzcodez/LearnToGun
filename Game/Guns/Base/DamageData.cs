@@ -6,10 +6,10 @@ public class DamageData
     public float Knockback { get; }
     public Node Source { get; }
 
-    public DamageData(int damage, float knockback, Node source)
+    public DamageData(int damage, float knockback)
     {
         Damage = damage;
         Knockback = knockback;
-        Source = source;
+        //Source = source;
     }
 }

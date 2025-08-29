@@ -40,7 +40,7 @@ public partial class EnemyGun : Node2D
         }
         else if (!rayCast.IsColliding())
         {
-            if (gun != null) gun.Shoot(this);
+            if (gun != null) gun.Shoot();
             canShoot = false;
         }
 

@@ -2,18 +2,18 @@ using Godot;
 
 public partial class Look : Marker2D
 {
-    private Player player;
+    private WarpDash playerCenter;
 
     public override void _Ready()
     {
-        player = GetTree().GetFirstNodeInGroup("Player") as Player;
+        playerCenter = GetTree().GetFirstNodeInGroup("PlayerCenter") as WarpDash;
     }
 
     public override void _PhysicsProcess(double delta)
     {
-        if (player != null)
+        if (playerCenter != null)
         {
-            Vector2 directionToPlayer = (player.GlobalPosition - GlobalPosition).Normalized();
+            Vector2 directionToPlayer = (playerCenter.GlobalPosition - GlobalPosition).Normalized();
             float targetRotation = directionToPlayer.Angle();
             Rotation = targetRotation;
         }

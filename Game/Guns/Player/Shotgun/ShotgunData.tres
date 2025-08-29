@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="GunData" load_steps=4 format=3 uid="uid://7ce3aqmof3vb"]
 
-[ext_resource type="PackedScene" uid="uid://c6mvfh4mlxu4h" path="res://Game/Guns/Player/Shotgun/ShotgunBlast.tscn" id="1_tkpbj"]
+[ext_resource type="PackedScene" path="res://Game/Guns/Player/Shotgun/ShotgunBlast.tscn" id="1_tkpbj"]
 [ext_resource type="Script" uid="uid://bf05vlwwwrvul" path="res://Game/Guns/Base/GunData.cs" id="1_xsbel"]
 [ext_resource type="Texture2D" uid="uid://diet8ij7y2hpc" path="res://Game/Guns/Player/Shotgun/basic_weapon_shotgun1.png" id="2_tkpbj"]
 

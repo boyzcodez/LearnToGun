@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://bhb68kqkfragl"]
+[gd_scene load_steps=49 format=3 uid="uid://bhb68kqkfragl"]
 
 [ext_resource type="Script" uid="uid://dexb3awvsef8d" path="res://Game/Entities/TestEnemies/ActiveTestEnemy.cs" id="1_hc5v1"]
 [ext_resource type="Script" uid="uid://cdvqcbs4rpfiv" path="res://Game/Entities/TestEnemies/Spawn.cs" id="3_b3ga6"]
@@ -113,6 +113,22 @@ animations = [{
 "speed": 7.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbp8y"]
+atlas = ExtResource("5_6ce44")
+region = Rect2(320, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxb72"]
+atlas = ExtResource("5_6ce44")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ce44"]
+atlas = ExtResource("5_6ce44")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eppew"]
+atlas = ExtResource("5_6ce44")
+region = Rect2(0, 0, 64, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_iuexv"]
 atlas = ExtResource("5_6ce44")
 region = Rect2(0, 0, 64, 64)
@@ -157,6 +173,23 @@ region = Rect2(320, 64, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_bbp8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oxb72")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ce44")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eppew")
+}],
+"loop": false,
+"name": &"Hit",
+"speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_iuexv")
 }, {
 "duration": 1.0,
@@ -169,7 +202,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_cudr0")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"Idle",
 "speed": 7.0
 }, {
 "frames": [{
@@ -192,7 +225,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_2dx1m")
 }],
 "loop": true,
-"name": &"run",
+"name": &"Run",
 "speed": 7.0
 }]
 
@@ -230,7 +263,7 @@ position = Vector2(0, -1)
 material = ExtResource("4_6ce44")
 position = Vector2(0, -10)
 sprite_frames = SubResource("SpriteFrames_b3ga6")
-animation = &"idle"
+animation = &"Hit"
 script = ExtResource("5_bbp8y")
 
 [node name="Look" type="Marker2D" parent="Spawn/Hide/AnimatedSpriteE"]
@@ -250,8 +283,9 @@ collision_mask = 0
 
 [node name="HitFlash" parent="Spawn/Hide/AnimatedSpriteE" instance=ExtResource("11_oxb72")]
 
-[node name="Hurtbox" parent="." instance=ExtResource("3_m1e7j")]
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("hitFlash") instance=ExtResource("3_m1e7j")]
 collision_layer = 4
+hitFlash = NodePath("../Spawn/Hide/AnimatedSpriteE/HitFlash")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, -10)
@@ -289,3 +323,4 @@ NextState = "Surround"
 metadata/_custom_type_script = "uid://2sl1ow0g27ob"
 
 [connection signal="animation_finished" from="Spawn" to="Spawn" method="_on_animation_finished"]
+[connection signal="animation_finished" from="Spawn/Hide/AnimatedSpriteE" to="Spawn/Hide/AnimatedSpriteE" method="_on_animation_finished"]

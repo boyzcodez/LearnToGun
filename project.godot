@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 run/max_fps=60
 config/icon="res://Assets/icon.svg"
 
+[autoload]
+
+BulletPool="res://Components/Autoloads/BulletPool.cs"
+
 [display]
 
 window/size/viewport_width=480
@@ -40,6 +44,7 @@ folder_colors={
 [global_group]
 
 Player=""
+PlayerCenter=""
 
 [input]
 
