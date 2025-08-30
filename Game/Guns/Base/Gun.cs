@@ -6,8 +6,18 @@ public partial class Gun : Node2D
     [Export] public GunData gunData { get; set; }
     [Export] public Marker2D spot { get; set; }
     [Export] public GunSprite sprite { get; set; }
+    [Export] public string type = "Nothing";
+    [Export] public int amount = 50;
     [Export] public bool rotate = false;
     private float _cooldown = 0f;
+    private BulletPool pool;
+
+    public override void _Ready()
+    {
+        pool = GetTree().GetFirstNodeInGroup("BulletPool") as BulletPool;
+        type = type + GetInstanceId();
+        pool.PreparePool(type, gunData, amount);
+    }
 
     public override void _Process(double delta)
     {
@@ -17,21 +27,14 @@ public partial class Gun : Node2D
 
     public void Shoot()
     {
-        if (_cooldown > 0) return; // still cooling down
+        if (_cooldown > 0) return;
         if (gunData == null) return;
         if (sprite != null) sprite.FireAnimation();
 
-        // Spawn bullet
-        var bulletInstance = gunData.BulletScene.Instantiate() as Node2D;
-        if (bulletInstance is Bullet bullet)
-        {
-            bullet.Init(new DamageData(gunData.Damage, gunData.Knockback), Vector2.Right.Rotated(GlobalRotation));
-            bullet.GlobalPosition = spot.GlobalPosition;
-            if (rotate) bullet.GlobalRotation = spot.GlobalRotation;
-        }
-        GetTree().CurrentScene.CallDeferred("add_child", bulletInstance);
+        Bullet bullet = pool.GetBullet(type);
+        bullet.GlobalPosition = spot.GlobalPosition;
+        bullet.Activate(Vector2.Right.Rotated(GlobalRotation));
 
-        // Reset cooldown
         _cooldown = gunData.FireRate;
     }
 }

@@ -10,6 +10,8 @@ script = ExtResource("1_ihkv4")
 gunData = ExtResource("2_o4pot")
 spot = NodePath("Marker2D")
 sprite = NodePath("GunSprite")
+type = "Shotgun"
+amount = 20
 rotate = true
 
 [node name="Marker2D" type="Marker2D" parent="."]

@@ -40,7 +40,7 @@ public partial class EntityHandler : Node2D
     private async void SpawnWave()
     {
         rounds--;
-        int enemiesToSpawn = Mathf.CeilToInt(4 + _dangerValue * 2);
+        int enemiesToSpawn = Mathf.CeilToInt(3 + _dangerValue * 2);
 
         for (int i = 0; i < enemiesToSpawn; i++)
         {
@@ -69,7 +69,7 @@ public partial class EntityHandler : Node2D
         {
             GD.Print("All enemies defeated!");
         }
-        else if (_currentEnemyCount <= MIN_ENEMIES && rounds > 0)
+        else if (_currentEnemyCount < MIN_ENEMIES && rounds > 0)
         {
             SpawnWave();
         }

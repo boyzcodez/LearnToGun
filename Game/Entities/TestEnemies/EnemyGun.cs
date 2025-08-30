@@ -38,10 +38,10 @@ public partial class EnemyGun : Node2D
                 time = 0;
             }
         }
-        else if (!rayCast.IsColliding())
+        else if (!rayCast.IsColliding() && canShoot)
         {
-            if (gun != null) gun.Shoot();
             canShoot = false;
+            if (gun != null) gun.Shoot();
         }
 
 

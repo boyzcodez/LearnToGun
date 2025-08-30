@@ -20,6 +20,10 @@ config/icon="res://Assets/icon.svg"
 
 BulletPool="res://Components/Autoloads/BulletPool.cs"
 
+[debug]
+
+settings/stdout/print_fps=true
+
 [display]
 
 window/size/viewport_width=480
@@ -45,6 +49,7 @@ folder_colors={
 
 Player=""
 PlayerCenter=""
+BulletPool=""
 
 [input]
 

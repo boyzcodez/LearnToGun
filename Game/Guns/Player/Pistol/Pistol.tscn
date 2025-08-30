@@ -11,6 +11,8 @@ script = ExtResource("1_0utft")
 gunData = ExtResource("2_bqxg4")
 spot = NodePath("Spot")
 sprite = NodePath("GunSprite")
+type = "Pistol"
+amount = 20
 
 [node name="GunSprite" parent="." instance=ExtResource("3_bqxg4")]
 texture = ExtResource("4_bqxg4")

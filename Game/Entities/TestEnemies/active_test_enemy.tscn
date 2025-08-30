@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://bhb68kqkfragl"]
+[gd_scene load_steps=47 format=3 uid="uid://bhb68kqkfragl"]
 
 [ext_resource type="Script" uid="uid://dexb3awvsef8d" path="res://Game/Entities/TestEnemies/ActiveTestEnemy.cs" id="1_hc5v1"]
 [ext_resource type="Script" uid="uid://cdvqcbs4rpfiv" path="res://Game/Entities/TestEnemies/Spawn.cs" id="3_b3ga6"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" uid="uid://bp03nkh0uoq1p" path="res://Game/Entities/TestEnemies/EnemyGun.cs" id="4_wxglr"]
 [ext_resource type="Texture2D" uid="uid://bqe25i6ow8vul" path="res://Assets/Entity/Enemy/NewEnemyRobo.png" id="5_6ce44"]
 [ext_resource type="Script" uid="uid://jqlj5orjwgch" path="res://Game/Entities/TestEnemies/AnimatedSpriteE.cs" id="5_bbp8y"]
-[ext_resource type="PackedScene" uid="uid://cugpgubph2sc" path="res://Components/InteractComp/interactable.tscn" id="5_hc5v1"]
 [ext_resource type="PackedScene" uid="uid://na4yx06ro3jd" path="res://Game/Entities/StateMachine/state_machine.tscn" id="6_m1e7j"]
 [ext_resource type="Script" uid="uid://c2orrjp6f8iyi" path="res://Game/Entities/StateMachine/States/Idle.cs" id="7_tko4x"]
 [ext_resource type="Script" uid="uid://cbm2bcpra8ll1" path="res://Game/Entities/StateMachine/States/Follow.cs" id="8_i2p2e"]
@@ -233,9 +232,6 @@ animations = [{
 radius = 8.0
 height = 22.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_m1e7j"]
-radius = 89.0
-
 [node name="ActiveTestEnemy" type="CharacterBody2D"]
 motion_mode = 1
 platform_on_leave = 2
@@ -285,21 +281,16 @@ collision_mask = 0
 
 [node name="Hurtbox" parent="." node_paths=PackedStringArray("hitFlash") instance=ExtResource("3_m1e7j")]
 collision_layer = 4
+isImmune = true
 hitFlash = NodePath("../Spawn/Hide/AnimatedSpriteE/HitFlash")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, -10)
 shape = SubResource("CapsuleShape2D_ccun0")
 
-[node name="Interactable" parent="." instance=ExtResource("5_hc5v1")]
-interactionName = "Activate"
-isInteractable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
-shape = SubResource("CircleShape2D_m1e7j")
-
 [node name="StateMachine" parent="." node_paths=PackedStringArray("initialState") instance=ExtResource("6_m1e7j")]
 initialState = NodePath("Idle")
+Active = true
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("7_tko4x")

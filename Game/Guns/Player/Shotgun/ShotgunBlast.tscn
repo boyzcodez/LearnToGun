@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c5ndf6ekhph7" path="res://Assets/orb.png" id="2_nr6d6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nu8hp"]
-size = Vector2(27, 20)
+size = Vector2(73, 46)
 
 [node name="ShotgunBlast" type="Area2D"]
 collision_layer = 0
@@ -13,7 +13,7 @@ script = ExtResource("1_ut5ie")
 speed = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(13.5, 0)
+position = Vector2(36.5, 0)
 shape = SubResource("RectangleShape2D_nu8hp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

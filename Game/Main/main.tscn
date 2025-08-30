@@ -29,5 +29,5 @@ position = Vector2(200, 0)
 [node name="PlayerCamera" parent="." node_paths=PackedStringArray("followNode") instance=ExtResource("5_vmwgv")]
 followNode = NodePath("../EntityHandler/Player")
 
-[node name="BulletPool" type="Node" parent="."]
+[node name="BulletPool" type="Node" parent="." groups=["BulletPool"]]
 script = ExtResource("7_vmwgv")

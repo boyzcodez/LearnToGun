@@ -11,6 +11,8 @@ script = ExtResource("1_sgm38")
 gunData = ExtResource("2_rp4hu")
 spot = NodePath("Marker2D")
 sprite = NodePath("GunSprite")
+type = "EnemyPistol"
+amount = 5
 
 [node name="GunSprite" parent="." instance=ExtResource("2_ws0ye")]
 texture = ExtResource("4_rp4hu")
