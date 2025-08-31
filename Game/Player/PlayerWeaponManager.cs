@@ -15,10 +15,7 @@ public partial class PlayerWeaponManager : Node
         // Instantiate all guns and keep them inactive except the first
         foreach (var gunScene in GunScenes)
         {
-            var gun = gunScene.Instantiate<Gun>();
-            gun.Visible = false;
-            GunSocket.AddChild(gun);
-            _guns.Add(gun);
+            AddGun(gunScene);
         }
 
         if (_guns.Count > 0)
@@ -59,5 +56,12 @@ public partial class PlayerWeaponManager : Node
     {
         if (_guns.Count > 0)
             _guns[_currentGunIndex].Shoot();
+    }
+    public void AddGun(PackedScene newGun)
+    {
+        var gun = newGun.Instantiate<Gun>();
+        gun.Visible = false;
+        GunSocket.AddChild(gun);
+        _guns.Add(gun);
     }
 }
