@@ -9,6 +9,7 @@ public partial class Bullet : Area2D
     public Vector2 direction;
     public string key;
     public bool active;
+    public float timer;
 
     // Behavior stuff
     public void Initialize()
