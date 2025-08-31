@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Normal" load_steps=2 format=3 uid="uid://cmau4tqbmn717"]
+
+[ext_resource type="Script" uid="uid://fv6d3enirc" path="res://Components/BulletComps/BulletBehaviors/Scripts/StraightMovement.cs" id="1_lcj5l"]
+
+[resource]
+script = ExtResource("1_lcj5l")
+metadata/_custom_type_script = "uid://fv6d3enirc"

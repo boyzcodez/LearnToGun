@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="DeleteTimer" load_steps=2 format=3 uid="uid://lw3c1ep3jdap"]
+
+[ext_resource type="Script" uid="uid://m6qnbg2wsa1m" path="res://Components/BulletComps/BulletBehaviors/Scripts/DeleteTimer.cs" id="1_qbm5l"]
+
+[resource]
+script = ExtResource("1_qbm5l")
+metadata/_custom_type_script = "uid://m6qnbg2wsa1m"

@@ -31,9 +31,13 @@ public partial class Gun : Node2D
         if (gunData == null) return;
         if (sprite != null) sprite.FireAnimation();
 
+        
+
         Bullet bullet = pool.GetBullet(type);
         bullet.GlobalPosition = spot.GlobalPosition;
         bullet.Activate(Vector2.Right.Rotated(GlobalRotation));
+
+        if (rotate) bullet.Rotation = GlobalRotation;
 
         _cooldown = gunData.FireRate;
     }

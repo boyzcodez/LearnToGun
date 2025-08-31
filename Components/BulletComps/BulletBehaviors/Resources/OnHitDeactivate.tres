@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="OnHitDeactivate" load_steps=2 format=3 uid="uid://c8bgghlowf6jb"]
+
+[ext_resource type="Script" uid="uid://dhxf1mao5lap8" path="res://Components/BulletComps/BulletBehaviors/Scripts/OnHitDeactivate.cs" id="1_o70be"]
+
+[resource]
+script = ExtResource("1_o70be")
+metadata/_custom_type_script = "uid://dhxf1mao5lap8"

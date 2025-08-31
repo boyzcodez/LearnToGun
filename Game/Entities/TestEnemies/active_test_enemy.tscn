@@ -290,7 +290,6 @@ shape = SubResource("CapsuleShape2D_ccun0")
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("initialState") instance=ExtResource("6_m1e7j")]
 initialState = NodePath("Idle")
-Active = true
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("7_tko4x")
