@@ -14,6 +14,7 @@ public partial class Bullet : Area2D
     // Behavior stuff
     public void Initialize()
     {
+        if (behaviors == null) return;
         foreach (var behavior in behaviors)
         {
             behavior.Initialize(this);
@@ -21,6 +22,7 @@ public partial class Bullet : Area2D
     }
     public override void _PhysicsProcess(double delta)
     {
+        if (behaviors == null) return;
         foreach (var behavior in behaviors)
         {
             behavior.Update(this, delta);
@@ -28,6 +30,7 @@ public partial class Bullet : Area2D
     }
     public void OnHit()
     {
+        if (behaviors == null) return;
         foreach (var behavior in behaviors)
         {
             behavior.OnHit(this);

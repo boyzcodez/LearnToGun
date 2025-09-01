@@ -276,6 +276,8 @@ target_position = Vector2(100, 0)
 collision_mask = 0
 
 [node name="EnemyPistol" parent="Spawn/Hide/AnimatedSpriteE/Look/EnemyGun" instance=ExtResource("9_bbp8y")]
+type = "Nothing"
+amount = 50
 
 [node name="HitFlash" parent="Spawn/Hide/AnimatedSpriteE" instance=ExtResource("11_oxb72")]
 
