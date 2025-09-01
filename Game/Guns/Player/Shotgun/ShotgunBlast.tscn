@@ -12,7 +12,6 @@ collision_layer = 0
 collision_mask = 4
 script = ExtResource("1_ut5ie")
 behaviors = Array[Object]([ExtResource("2_nu8hp")])
-speed = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(36.5, 0)

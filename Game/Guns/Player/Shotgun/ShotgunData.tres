@@ -9,6 +9,7 @@ script = ExtResource("1_xsbel")
 GunName = "Shotgun"
 Damage = 1
 Knockback = 200.0
+BulletSpeed = 0.0
 BulletScene = ExtResource("1_tkpbj")
 MaxAmmo = 10
 FireRate = 0.4

@@ -29,7 +29,7 @@ public partial class BulletPool : Node
         {
             var bullet = gunData.BulletScene.Instantiate<Bullet>();
             bullet.Visible = false;
-            bullet.Init(new DamageData(gunData.Damage, gunData.Knockback), key);
+            bullet.Init(new DamageData(gunData.Damage, gunData.Knockback), key, gunData.BulletSpeed, this);
             CallDeferred("add_child", bullet);
             //AddChild(bullet);
             pool.Enqueue(bullet);

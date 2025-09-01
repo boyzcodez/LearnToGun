@@ -4,12 +4,13 @@ using Godot;
 public partial class Bullet : Area2D
 {
     [Export] public Behavior[] behaviors;
-    [Export] public float speed = 110f;
+    BulletPool pool;
     private DamageData _damageData;
+    public float speed = 80f;
     public Vector2 direction;
     public Area2D area;
     public string key;
-    public bool active;
+    public bool active = false;
     public float timer;
     public bool check = false;
 
@@ -24,6 +25,8 @@ public partial class Bullet : Area2D
     }
     public override void _PhysicsProcess(double delta)
     {
+        if (!active) return;
+
         if (behaviors == null) return;
         foreach (var behavior in behaviors)
         {
@@ -40,27 +43,22 @@ public partial class Bullet : Area2D
     }
 
     // Necissary stuff
-    public override void _Ready()
-    {
-        Deactivate();
-    }
-    public void Init(DamageData damageData, string type)
+    public void Init(DamageData damageData, string type, float newSpeed, BulletPool newPool)
     {
         _damageData = damageData;
         key = type;
+        speed = newSpeed;
+        pool = newPool;
     }
     public void Activate(Vector2 newDirection)
     {
-        active = true;
         Initialize();
         direction = newDirection;
-        SetPhysicsProcess(true);
+        active = true;
     }
     public void Deactivate()
     {
         active = false;
-        SetPhysicsProcess(false);
-        var pool = GetTree().GetFirstNodeInGroup("BulletPool") as BulletPool;
         pool.ReturnBullet(key, this);
     }
     public void _on_area_entered(Node body)
