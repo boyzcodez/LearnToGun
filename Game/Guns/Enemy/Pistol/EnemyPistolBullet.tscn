@@ -1,47 +1,81 @@
-[gd_scene load_steps=10 format=3 uid="uid://dxjpg6l46xs3y"]
+[gd_scene load_steps=14 format=3 uid="uid://dxjpg6l46xs3y"]
 
 [ext_resource type="Script" uid="uid://de44iwnl6kvq1" path="res://Game/Guns/Bullets/Bullet.cs" id="1_txrm2"]
 [ext_resource type="Resource" uid="uid://cmau4tqbmn717" path="res://Components/BulletComps/BulletBehaviors/Resources/StraightMovement.tres" id="2_02r7r"]
-[ext_resource type="Texture2D" uid="uid://dkn7tfgfdnij5" path="res://Assets/Guns/Bullets/EnemyBullet.png" id="2_tg534"]
 [ext_resource type="Resource" uid="uid://c8bgghlowf6jb" path="res://Components/BulletComps/BulletBehaviors/Resources/OnHitDeactivate.tres" id="3_xtjlt"]
 [ext_resource type="Resource" uid="uid://lw3c1ep3jdap" path="res://Components/BulletComps/BulletBehaviors/Resources/DeleteTimer.tres" id="4_lyute"]
+[ext_resource type="Texture2D" uid="uid://dd7r1b2hrw06h" path="res://Assets/Guns/Bullets/NewBullets.png" id="5_02r7r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pnq1u"]
-radius = 4.12311
+radius = 6.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bmoss"]
-atlas = ExtResource("2_tg534")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtjlt"]
+atlas = ExtResource("5_02r7r")
+region = Rect2(0, 64, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c81c6"]
-atlas = ExtResource("2_tg534")
-region = Rect2(32, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_02r7r"]
+atlas = ExtResource("5_02r7r")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lyute"]
+atlas = ExtResource("5_02r7r")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rr0b"]
+atlas = ExtResource("5_02r7r")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dviy"]
+atlas = ExtResource("5_02r7r")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqcc6"]
+atlas = ExtResource("5_02r7r")
+region = Rect2(256, 64, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h0y3f"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bmoss")
+"texture": SubResource("AtlasTexture_xtjlt")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02r7r")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_c81c6")
+"texture": SubResource("AtlasTexture_lyute")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2rr0b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5dviy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kqcc6")
 }],
-"loop": true,
-"name": &"default",
+"loop": false,
+"name": &"hit",
 "speed": 10.0
 }]
 
-[node name="EnemyBullet" type="Area2D"]
+[node name="EnemyBullet" type="Area2D" node_paths=PackedStringArray("animation")]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_txrm2")
 behaviors = Array[Object]([ExtResource("2_02r7r"), ExtResource("3_xtjlt"), ExtResource("4_lyute")])
+animation = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_pnq1u")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_h0y3f")
-autoplay = "default"
+animation = &"hit"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

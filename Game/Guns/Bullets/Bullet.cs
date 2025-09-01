@@ -4,6 +4,7 @@ using Godot;
 public partial class Bullet : Area2D
 {
     [Export] public Behavior[] behaviors;
+    [Export] public AnimatedSprite2D animation;
     BulletPool pool;
     private DamageData _damageData;
     public float speed = 80f;
@@ -25,8 +26,6 @@ public partial class Bullet : Area2D
     }
     public override void _PhysicsProcess(double delta)
     {
-        if (!active) return;
-
         if (behaviors == null) return;
         foreach (var behavior in behaviors)
         {
@@ -43,6 +42,11 @@ public partial class Bullet : Area2D
     }
 
     // Necissary stuff
+    public override void _Ready()
+    {
+        SetPhysicsProcess(false);
+    }
+
     public void Init(DamageData damageData, string type, float newSpeed, BulletPool newPool)
     {
         _damageData = damageData;
@@ -54,11 +58,15 @@ public partial class Bullet : Area2D
     {
         Initialize();
         direction = newDirection;
+        if (animation != null) animation.Play("default");
         active = true;
+        SetPhysicsProcess(true);
     }
     public void Deactivate()
     {
+        if (animation != null) animation.Stop();
         active = false;
+        SetPhysicsProcess(false);
         pool.ReturnBullet(key, this);
     }
     public void _on_area_entered(Node body)
