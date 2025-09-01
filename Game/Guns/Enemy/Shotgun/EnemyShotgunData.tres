@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="GunData" load_steps=4 format=3 uid="uid://d1ps46siei1u"]
+
+[ext_resource type="Script" uid="uid://bf05vlwwwrvul" path="res://Game/Guns/Base/GunData.cs" id="1_1gm1d"]
+[ext_resource type="PackedScene" uid="uid://dxjpg6l46xs3y" path="res://Game/Guns/Enemy/Pistol/EnemyPistolBullet.tscn" id="1_04s0y"]
+[ext_resource type="Texture2D" uid="uid://diet8ij7y2hpc" path="res://Game/Guns/Player/Shotgun/basic_weapon_shotgun1.png" id="2_mvwql"]
+
+[resource]
+script = ExtResource("1_1gm1d")
+GunName = "EnemyShotgun"
+Damage = 1
+Knockback = 50.0
+BulletScene = ExtResource("1_04s0y")
+MaxAmmo = 999
+FireRate = 0.2
+BulletCount = 5
+SpreadAngle = 10.0
+RandomFactor = 0.0
+GunSprite = ExtResource("2_mvwql")
+metadata/_custom_type_script = "uid://bf05vlwwwrvul"

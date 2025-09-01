@@ -7,9 +7,11 @@ public partial class Bullet : Area2D
     [Export] public float speed = 110f;
     private DamageData _damageData;
     public Vector2 direction;
+    public Area2D area;
     public string key;
     public bool active;
     public float timer;
+    public bool check = false;
 
     // Behavior stuff
     public void Initialize()
@@ -63,11 +65,14 @@ public partial class Bullet : Area2D
     }
     public void _on_area_entered(Node body)
     {
-        if (active && body is Hurtbox hurtbox)
+        if (active && body is Hurtbox newHurtbox)
         {
-            hurtbox.TakeDamage(_damageData, direction);
-            OnHit();
+            if (!newHurtbox.immune)
+            {
+                newHurtbox.TakeDamage(_damageData, direction);
+                OnHit();
+            }
         }
-        
+
     }
 }

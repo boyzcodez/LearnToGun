@@ -12,8 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://na4yx06ro3jd" path="res://Game/Entities/StateMachine/state_machine.tscn" id="6_m1e7j"]
 [ext_resource type="Script" uid="uid://c2orrjp6f8iyi" path="res://Game/Entities/StateMachine/States/Idle.cs" id="7_tko4x"]
 [ext_resource type="Script" uid="uid://cbm2bcpra8ll1" path="res://Game/Entities/StateMachine/States/Follow.cs" id="8_i2p2e"]
-[ext_resource type="PackedScene" uid="uid://cy8n2i1umi5jp" path="res://Game/Guns/Enemy/Pistol/EnemyPistol.tscn" id="9_bbp8y"]
 [ext_resource type="Script" uid="uid://2sl1ow0g27ob" path="res://Game/Entities/StateMachine/States/Surround.cs" id="9_i2p2e"]
+[ext_resource type="PackedScene" uid="uid://ckxy3ga6pre8f" path="res://Game/Guns/Enemy/Shotgun/EnemyShotgun.tscn" id="10_b3ga6"]
 [ext_resource type="PackedScene" uid="uid://dyqbl4s13wnxg" path="res://Components/Etc/shadow.tscn" id="11_bbp8y"]
 [ext_resource type="PackedScene" uid="uid://bp3lx4f7c5wd1" path="res://Components/Etc/hit_flash.tscn" id="11_oxb72"]
 
@@ -269,15 +269,13 @@ script = ExtResource("3_q6s24")
 [node name="EnemyGun" type="Node2D" parent="Spawn/Hide/AnimatedSpriteE/Look" node_paths=PackedStringArray("gun")]
 position = Vector2(14, 0)
 script = ExtResource("4_wxglr")
-gun = NodePath("EnemyPistol")
+gun = NodePath("EnemyShtogun")
 
 [node name="RayCast" type="RayCast2D" parent="Spawn/Hide/AnimatedSpriteE/Look/EnemyGun"]
 target_position = Vector2(100, 0)
 collision_mask = 0
 
-[node name="EnemyPistol" parent="Spawn/Hide/AnimatedSpriteE/Look/EnemyGun" instance=ExtResource("9_bbp8y")]
-type = "Nothing"
-amount = 50
+[node name="EnemyShtogun" parent="Spawn/Hide/AnimatedSpriteE/Look/EnemyGun" instance=ExtResource("10_b3ga6")]
 
 [node name="HitFlash" parent="Spawn/Hide/AnimatedSpriteE" instance=ExtResource("11_oxb72")]
 

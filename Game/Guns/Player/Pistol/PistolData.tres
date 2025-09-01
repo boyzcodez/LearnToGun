@@ -12,5 +12,7 @@ Knockback = 100.0
 BulletScene = ExtResource("1_0ejhw")
 MaxAmmo = 10
 FireRate = 0.2
+BulletCount = 1
+SpreadAngle = 0.0
 GunSprite = ExtResource("2_0ejhw")
 metadata/_custom_type_script = "uid://bf05vlwwwrvul"

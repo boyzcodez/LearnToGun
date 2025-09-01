@@ -30,25 +30,28 @@ public partial class BulletPool : Node
             var bullet = gunData.BulletScene.Instantiate<Bullet>();
             bullet.Visible = false;
             bullet.Init(new DamageData(gunData.Damage, gunData.Knockback), key);
-            AddChild(bullet);
+            CallDeferred("add_child", bullet);
+            //AddChild(bullet);
             pool.Enqueue(bullet);
         }
     }
-    public Bullet GetBullet(string key)
+    public Bullet GetBullet(string key, GunData gunData)
     {
         if (!_pools.TryGetValue(key, out var pool) || pool.Count == 0)
         {
             GD.PrintErr("No Bullets to use");
-            //PreparePool(key, gunData, 1);
+            PreparePool(key, gunData, 1);
         }
 
         var bullet = _pools[key].Dequeue();
         bullet.Visible = true;
+        //UniversalStopButton.EnableNode(bullet);
         return bullet;
     }
     public void ReturnBullet(string key, Bullet bullet)
     {
         bullet.Visible = false;
+        //UniversalStopButton.DisableNode(bullet);
         _pools[key].Enqueue(bullet);
     }
     public void DeleteBullets(string oldKey)

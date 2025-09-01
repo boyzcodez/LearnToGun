@@ -31,13 +31,22 @@ public partial class Gun : Node2D
         if (gunData == null) return;
         if (sprite != null) sprite.FireAnimation();
 
-        
+        Vector2 baseDirection = Vector2.Right.Rotated(GlobalRotation);
 
-        Bullet bullet = pool.GetBullet(type);
-        bullet.GlobalPosition = spot.GlobalPosition;
-        bullet.Activate(Vector2.Right.Rotated(GlobalRotation));
+        float spreadRad = Mathf.DegToRad(gunData.SpreadAngle);
+        float angleStep = gunData.BulletCount > 1 ? spreadRad / (gunData.BulletCount - 1) : 0f;
 
-        if (rotate) bullet.Rotation = GlobalRotation;
+        for (int i = 0; i < gunData.BulletCount; i++)
+        {
+            float angleOffset = -spreadRad / 2f + i * angleStep;
+            Vector2 direction = baseDirection.Rotated(angleOffset);
+
+            Bullet bullet = pool.GetBullet(type, gunData);
+            bullet.GlobalPosition = spot.GlobalPosition;
+            bullet.Activate(direction);
+
+            if (rotate) bullet.Rotation = GlobalRotation;
+        }
 
         _cooldown = gunData.FireRate;
     }

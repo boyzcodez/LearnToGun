@@ -13,21 +13,26 @@ public static class UniversalStopButton
     {
         if (node == null) return;
 
-        node.ProcessMode = Node.ProcessModeEnum.Disabled;
+        //node.ProcessMode = Node.ProcessModeEnum.Disabled;
+        node.SetDeferred("process_mode", (int)Node.ProcessModeEnum.Disabled);
 
         // Recursively disable colliders and areas
         foreach (Node child in node.GetChildren())
         {
             if (child is CollisionShape2D shape)
-                shape.Disabled = true;
+                shape.SetDeferred("disabled", true);
+                //shape.Disabled = true;
 
             if (child is CollisionPolygon2D poly)
-                poly.Disabled = true;
+                poly.SetDeferred("disabled", true);
+                //poly.Disabled = true;
 
             if (child is Area2D area)
             {
-                area.Monitoring = false;
-                area.Monitorable = false;
+                area.SetDeferred("monitoring", false);
+                area.SetDeferred("monitorable", false);
+                // area.Monitoring = false;
+                // area.Monitorable = false;
             }
 
             // Recursive call for grandchildren
@@ -42,20 +47,25 @@ public static class UniversalStopButton
     {
         if (node == null) return;
 
-        node.ProcessMode = Node.ProcessModeEnum.Inherit;
+        node.SetDeferred("process_mode", (int)Node.ProcessModeEnum.Inherit);
+        //node.ProcessMode = Node.ProcessModeEnum.Inherit;
 
         foreach (Node child in node.GetChildren())
         {
             if (child is CollisionShape2D shape)
-                shape.Disabled = false;
+                shape.SetDeferred("disabled", false);
+                //shape.Disabled = false;
 
             if (child is CollisionPolygon2D poly)
-                poly.Disabled = false;
+                poly.SetDeferred("disabled", false);
+                //poly.Disabled = false;
 
             if (child is Area2D area)
             {
-                area.Monitoring = true;
-                area.Monitorable = true;
+                area.SetDeferred("monitoring", true);
+                area.SetDeferred("monitorable", true);
+                // area.Monitoring = true;
+                // area.Monitorable = true;
             }
 
             EnableNode(child);
