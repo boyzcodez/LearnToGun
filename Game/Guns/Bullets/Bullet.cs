@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Godot;
 
 [GlobalClass]
@@ -6,7 +9,8 @@ public partial class Bullet : Area2D
     [Export] public Behavior[] behaviors;
     [Export] public AnimatedSprite2D animation;
     BulletPool pool;
-    private DamageData _damageData;
+    public DamageData _damageData;
+    public List<Hurtbox> hurtboxes = new();
     public float speed = 80f;
     public Vector2 direction;
     public Area2D area;
@@ -45,6 +49,8 @@ public partial class Bullet : Area2D
     public override void _Ready()
     {
         SetPhysicsProcess(false);
+        SetDeferred("monitoring", false);
+        SetDeferred("monitorable", false);
     }
 
     public void Init(DamageData damageData, string type, float newSpeed, BulletPool newPool)
@@ -61,6 +67,9 @@ public partial class Bullet : Area2D
         if (animation != null) animation.Play("default");
         active = true;
         SetPhysicsProcess(true);
+
+        SetDeferred("monitoring", true);
+        SetDeferred("monitorable", true);
     }
     public void Deactivate()
     {
@@ -68,17 +77,29 @@ public partial class Bullet : Area2D
         active = false;
         SetPhysicsProcess(false);
         pool.ReturnBullet(key, this);
+
+        SetDeferred("monitoring", false);
+        SetDeferred("monitorable", false);
     }
     public void _on_area_entered(Node body)
     {
-        if (active && body is Hurtbox newHurtbox)
+        if (body is Hurtbox hurtbox)
         {
-            if (!newHurtbox.immune)
-            {
-                newHurtbox.TakeDamage(_damageData, direction);
-                OnHit();
-            }
+            hurtboxes.Add(hurtbox);
+            // if (!newHurtbox.immune)
+            // {
+            //     newHurtbox.TakeDamage(_damageData, direction);
+            //     OnHit();
+            // }
+            OnHit();
         }
-
+    }
+    public void _on_area_exited(Node body)
+    {
+        if (body is Hurtbox hurtbox && hurtboxes.Contains(hurtbox))
+        {
+            hurtboxes.Remove(hurtbox);
+        }
+            
     }
 }

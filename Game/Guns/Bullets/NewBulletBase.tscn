@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://1ohbl7wo63ts" path="res://Game/Guns/Bullets/NewBulletBase.cs" id="1_aw6dg"]
 [ext_resource type="Resource" uid="uid://cmau4tqbmn717" path="res://Components/BulletComps/BulletBehaviors/Resources/StraightMovement.tres" id="2_hhwh4"]
 [ext_resource type="Resource" uid="uid://lw3c1ep3jdap" path="res://Components/BulletComps/BulletBehaviors/Resources/DeleteTimer.tres" id="3_pxm58"]
-[ext_resource type="Resource" uid="uid://c8bgghlowf6jb" path="res://Components/BulletComps/BulletBehaviors/Resources/OnHitDeactivate.tres" id="4_xqkn1"]
+[ext_resource type="Resource" uid="uid://cwb66pmq7dp65" path="res://Components/BulletComps/BulletBehaviors/Resources/SingleHit.tres" id="3_xqkn1"]
 [ext_resource type="Texture2D" uid="uid://dd7r1b2hrw06h" path="res://Assets/Guns/Bullets/NewBullets.png" id="5_xqkn1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sf66s"]
@@ -64,12 +64,11 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="NewBulletBase" type="Area2D" node_paths=PackedStringArray("animation")]
+[node name="NewBulletBase" type="Area2D"]
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("1_aw6dg")
-behaviors = Array[Object]([ExtResource("3_pxm58"), ExtResource("4_xqkn1"), ExtResource("2_hhwh4")])
-animation = NodePath("AnimatedSprite2D")
+behaviors = Array[Object]([ExtResource("3_pxm58"), ExtResource("3_xqkn1"), ExtResource("2_hhwh4")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_sf66s")
@@ -78,3 +77,4 @@ shape = SubResource("CircleShape2D_sf66s")
 sprite_frames = SubResource("SpriteFrames_rt112")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

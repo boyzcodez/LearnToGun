@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="MultiHit" load_steps=2 format=3 uid="uid://ca3v0exbyg8jf"]
+
+[ext_resource type="Script" uid="uid://dwjxvkpk24hv" path="res://Components/BulletComps/BulletBehaviors/Scripts/MultiHit.cs" id="1_4e3cq"]
+
+[resource]
+script = ExtResource("1_4e3cq")
+metadata/_custom_type_script = "uid://dwjxvkpk24hv"
