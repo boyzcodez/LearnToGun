@@ -28,7 +28,7 @@ public partial class BulletPool : Node
         for (int i = pool.Count; i < amount; i++)
         {
             var bullet = gunData.BulletScene.Instantiate<Bullet>();
-            bullet.Visible = false;
+            //bullet.Visible = false;
             bullet.Init(new DamageData(gunData.Damage, gunData.Knockback), key, gunData.BulletSpeed, this);
             CallDeferred("add_child", bullet);
             //AddChild(bullet);
@@ -44,13 +44,13 @@ public partial class BulletPool : Node
         }
 
         var bullet = _pools[key].Dequeue();
-        bullet.Visible = true;
+        //bullet.Visible = true;
         //UniversalStopButton.EnableNode(bullet);
         return bullet;
     }
     public void ReturnBullet(string key, Bullet bullet)
     {
-        bullet.Visible = false;
+        //bullet.Visible = false;
         //UniversalStopButton.DisableNode(bullet);
         _pools[key].Enqueue(bullet);
     }

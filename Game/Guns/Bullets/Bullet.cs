@@ -51,6 +51,7 @@ public partial class Bullet : Area2D
         SetPhysicsProcess(false);
         SetDeferred("monitoring", false);
         SetDeferred("monitorable", false);
+        Hide();
     }
 
     public void Init(DamageData damageData, string type, float newSpeed, BulletPool newPool)
@@ -60,37 +61,37 @@ public partial class Bullet : Area2D
         speed = newSpeed;
         pool = newPool;
     }
-    public void Activate(Vector2 newDirection)
+    public async void Activate(Vector2 newDirection)
     {
-        Initialize();
-        direction = newDirection;
         if (animation != null) animation.Play("default");
+        direction = newDirection;
+
         active = true;
         SetPhysicsProcess(true);
 
         SetDeferred("monitoring", true);
         SetDeferred("monitorable", true);
+
+        Show();
+        await ToSignal(GetTree().CreateTimer(0.1f), "timeout");
+        Initialize();
     }
     public void Deactivate()
     {
-        if (animation != null) animation.Stop();
         active = false;
         SetPhysicsProcess(false);
         pool.ReturnBullet(key, this);
 
         SetDeferred("monitoring", false);
         SetDeferred("monitorable", false);
+
+        HitAnimation();
     }
     public void _on_area_entered(Node body)
     {
         if (body is Hurtbox hurtbox)
         {
             hurtboxes.Add(hurtbox);
-            // if (!newHurtbox.immune)
-            // {
-            //     newHurtbox.TakeDamage(_damageData, direction);
-            //     OnHit();
-            // }
             OnHit();
         }
     }
@@ -100,6 +101,14 @@ public partial class Bullet : Area2D
         {
             hurtboxes.Remove(hurtbox);
         }
-            
+
+    }
+    private async void HitAnimation()
+    {
+        animation.Play("hit");
+
+        await ToSignal(animation, "animation_finished");
+
+        Hide();
     }
 }
