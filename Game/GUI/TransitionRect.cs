@@ -35,6 +35,8 @@ public partial class TransitionRect : ColorRect
 
         await ToSignal(GetTree().CreateTimer(2.5f), "timeout");
 
+        System.GC.Collect();
+
         EventBus.TriggerMapSwitch();
     }
     private void TransitionIn()

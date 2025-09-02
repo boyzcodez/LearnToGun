@@ -1,9 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://x3152krac0fs"]
+[gd_scene load_steps=3 format=3 uid="uid://x3152krac0fs"]
 
 [ext_resource type="Texture2D" uid="uid://ltctnck1i6st" path="res://Assets/Rooms/basic_map_rooms.png" id="1_kc1e3"]
+[ext_resource type="PackedScene" uid="uid://dtl2ydqrnh23i" path="res://Components/WarpEffects/portal_machine.tscn" id="2_e217v"]
 
 [node name="StartingMap" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_kc1e3")
 hframes = 12
+
+[node name="PortalMachine" parent="." instance=ExtResource("2_e217v")]
+position = Vector2(0, -80)

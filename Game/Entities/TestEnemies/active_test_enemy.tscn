@@ -259,7 +259,7 @@ position = Vector2(0, -1)
 material = ExtResource("4_6ce44")
 position = Vector2(0, -10)
 sprite_frames = SubResource("SpriteFrames_b3ga6")
-animation = &"Hit"
+animation = &"Run"
 script = ExtResource("5_bbp8y")
 
 [node name="Look" type="Marker2D" parent="Spawn/Hide/AnimatedSpriteE"]

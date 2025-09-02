@@ -60,7 +60,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"hit",
-"speed": 10.0
+"speed": 11.0
 }]
 
 [node name="ShotgunBlast" type="Area2D" node_paths=PackedStringArray("animation")]
@@ -76,6 +76,7 @@ shape = SubResource("RectangleShape2D_nu8hp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6m0j2")
+animation = &"hit"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

@@ -3,52 +3,57 @@ using Godot;
 [GlobalClass]
 public partial class AnimatedSprite : AnimatedSprite2D
 {
-    private string Running = "";
-    private Node Direction;
-    private string directionString;
-    public int animationValue = 0;
+    private const string RunAnim = "Run";
+
+    private Direction directionNode;
+    private string currentDirection;
+    private string currentAnim = "";
+    public int animationPriority = 0;
 
     public override void _Ready()
     {
-        Direction = GetNode<Node>("Direction");
+        directionNode = GetNode<Direction>("Direction");
     }
 
     public override void _PhysicsProcess(double delta)
     {
-        Physics(delta);
+        Physics(delta); // Always forward to overridable method
     }
+
+    // Virtual so child classes can extend or replace physics behavior
     public virtual void Physics(double delta)
     {
-        Godot.Vector2 direction = Input.GetVector("left", "right", "up", "down");
-        if (direction != Godot.Vector2.Zero)
-        {
-            Running = "Run";
-        }
-        else
-        {
-            Running = "";
-        }
-
-        // Get the mouse position and calculate the direction based on the angle
-        // And set which side of the six sided character is shown
-        Godot.Vector2 mouse = GetLocalMousePosition();
-        int a = (int)(Mathf.Snapped(mouse.Angle(), Mathf.Pi / 4.0f) / (Mathf.Pi / 4.0f));
-        a = Mathf.Wrap(a, 0, 8);
-
-        directionString = (string)Direction.Call("GetDirection", a);
-        PlayAnimation(Running, 1);
+        HandleMovement();
+        HandleAnimation();
     }
-    public virtual void PlayAnimation(string animation = "", int value = 0)
+
+    protected void HandleMovement()
     {
-        if (value >= animationValue)
-        {
-            animationValue = value;
-            Play(directionString + animation);
-        }
-            
+        var inputDir = Input.GetVector("left", "right", "up", "down");
+        currentAnim = inputDir != Vector2.Zero ? RunAnim : "";
     }
+
+    protected void HandleAnimation()
+    {
+        Vector2 mouse = GetLocalMousePosition();
+        int sectionIndex = (int)(Mathf.Snapped(mouse.Angle(), Mathf.Pi / 4.0f) / (Mathf.Pi / 4.0f));
+        sectionIndex = Mathf.Wrap(sectionIndex, 0, 8);
+
+        currentDirection = directionNode.GetDirection(sectionIndex);
+        PlayAnimation(currentAnim, 1);
+    }
+
+    public virtual void PlayAnimation(string animation, int priority = 0)
+    {
+        if (priority >= animationPriority)
+        {
+            animationPriority = priority;
+            Play(currentDirection + animation);
+        }
+    }
+
     private void _on_animation_finished()
     {
-        animationValue = 0;
+        animationPriority = 0;
     }
 }

@@ -28,7 +28,7 @@ public partial class Bullet : Area2D
             behavior.Initialize(this);
         }
     }
-    public override void _PhysicsProcess(double delta)
+    public override void _Process(double delta)
     {
         if (behaviors == null) return;
         foreach (var behavior in behaviors)
@@ -61,8 +61,10 @@ public partial class Bullet : Area2D
         speed = newSpeed;
         pool = newPool;
     }
-    public async void Activate(Vector2 newDirection)
+    public void Activate(Vector2 newDirection)
     {
+        timer = 0f;
+        Show();
         if (animation != null) animation.Play("default");
         direction = newDirection;
 
@@ -72,24 +74,25 @@ public partial class Bullet : Area2D
         SetDeferred("monitoring", true);
         SetDeferred("monitorable", true);
 
-        Show();
-        await ToSignal(GetTree().CreateTimer(0.1f), "timeout");
-        Initialize();
+        //await ToSignal(GetTree().CreateTimer(0.1f), "timeout");
+        //Initialize();
     }
     public void Deactivate()
     {
+        hurtboxes.Clear();
         active = false;
         SetPhysicsProcess(false);
-        pool.ReturnBullet(key, this);
 
         SetDeferred("monitoring", false);
         SetDeferred("monitorable", false);
 
-        HitAnimation();
+        Hide();
+        pool.ReturnBullet(key, this);
+        
     }
     public void _on_area_entered(Node body)
     {
-        if (body is Hurtbox hurtbox)
+        if (body is Hurtbox hurtbox && !hurtbox.immune)
         {
             hurtboxes.Add(hurtbox);
             OnHit();
@@ -102,13 +105,5 @@ public partial class Bullet : Area2D
             hurtboxes.Remove(hurtbox);
         }
 
-    }
-    private async void HitAnimation()
-    {
-        animation.Play("hit");
-
-        await ToSignal(animation, "animation_finished");
-
-        Hide();
     }
 }

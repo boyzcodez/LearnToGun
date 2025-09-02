@@ -27,6 +27,9 @@ public partial class Gun : Node2D
 
     public void Shoot()
     {
+        if (gunData.CurrentAmmo <= 0) return;
+        else gunData.UseBullet();
+
         if (_cooldown > 0) return;
         if (gunData == null) return;
         if (sprite != null) sprite.FireAnimation();

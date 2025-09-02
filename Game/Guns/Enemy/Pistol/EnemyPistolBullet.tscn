@@ -61,7 +61,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"hit",
-"speed": 10.0
+"speed": 11.0
 }]
 
 [node name="EnemyBullet" type="Area2D" node_paths=PackedStringArray("animation")]

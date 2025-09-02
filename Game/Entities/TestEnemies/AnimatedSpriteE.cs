@@ -25,9 +25,9 @@ public partial class AnimatedSpriteE : AnimatedSprite
     }
     public override void PlayAnimation(string animation = "", int value = 0)
     {
-        if (value >= animationValue)
+        if (value >= animationPriority)
         {
-            animationValue = value;
+            animationPriority = value;
             Play(animation);
         }
             

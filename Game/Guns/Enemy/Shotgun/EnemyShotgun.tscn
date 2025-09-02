@@ -12,7 +12,7 @@ gunData = ExtResource("2_d6cxo")
 spot = NodePath("Spot")
 sprite = NodePath("GunSprite")
 type = "EnemyShotgun"
-amount = 10
+amount = 15
 
 [node name="GunSprite" parent="." instance=ExtResource("2_huu3j")]
 texture = ExtResource("3_d6cxo")
