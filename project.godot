@@ -15,10 +15,6 @@ run/main_scene="uid://clqw4um34fajs"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://Assets/icon.svg"
 
-[autoload]
-
-BulletPool="res://Components/Autoloads/BulletPool.cs"
-
 [display]
 
 window/size/viewport_width=480

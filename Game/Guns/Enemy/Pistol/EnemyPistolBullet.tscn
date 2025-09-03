@@ -64,12 +64,12 @@ animations = [{
 "speed": 11.0
 }]
 
-[node name="EnemyBullet" type="Area2D" node_paths=PackedStringArray("animation")]
+[node name="EnemyBullet" type="Area2D" node_paths=PackedStringArray("Animation")]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_txrm2")
-behaviors = Array[Object]([ExtResource("2_02r7r"), ExtResource("3_02r7r"), ExtResource("4_lyute")])
-animation = NodePath("AnimatedSprite2D")
+Behaviors = [ExtResource("3_02r7r"), ExtResource("2_02r7r"), ExtResource("4_lyute")]
+Animation = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_pnq1u")

@@ -1,50 +1,30 @@
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Godot;
 
 [GlobalClass]
 public partial class Bullet : Area2D
 {
-    [Export] public Behavior[] behaviors;
-    [Export] public AnimatedSprite2D animation;
-    BulletPool pool;
-    public DamageData _damageData;
-    public List<Hurtbox> hurtboxes = new();
-    public float speed = 80f;
-    public Vector2 direction;
-    public Area2D area;
-    public string key;
-    public bool active = false;
-    public float timer;
+    #region Fields & Properties
 
-    // Behavior stuff
-    public void Initialize()
-    {
-        if (behaviors == null) return;
-        foreach (var behavior in behaviors)
-        {
-            behavior.Initialize(this);
-        }
-    }
-    public override void _PhysicsProcess(double delta)
-    {
-        if (behaviors == null) return;
-        foreach (var behavior in behaviors)
-        {
-            behavior.Update(this, delta);
-        }
-    }
-    public void OnHit()
-    {
-        if (behaviors == null) return;
-        foreach (var behavior in behaviors)
-        {
-            behavior.OnHit(this);
-        }
-    }
+    [Export] public Behavior[] Behaviors = [];
+    [Export] public AnimatedSprite2D Animation;
 
-    // Necissary stuff
+    private BulletPool _pool;
+    public DamageData DamageData;
+
+    public List<Hurtbox> Hurtboxes { get; private set; } = new();
+    public float Speed { get; private set; } = 80f;
+    public Vector2 Direction { get; private set; }
+    public string Key { get; private set; }
+    public bool Active { get; private set; } = false;
+
+    public float _timer;
+    private int _currentValue = 0;
+
+    #endregion
+
+    #region Godot Lifecycle
+
     public override void _Ready()
     {
         SetPhysicsProcess(false);
@@ -53,56 +33,99 @@ public partial class Bullet : Area2D
         Hide();
     }
 
+    public override void _PhysicsProcess(double delta)
+    {
+        foreach (var behavior in Behaviors)
+        {
+            behavior.Update(this, delta);
+        }
+    }
+
+    #endregion
+
+    #region Initialization & Pooling
+
+    public void Initialize()
+    {
+        foreach (var behavior in Behaviors)
+        {
+            behavior.Initialize(this);
+        }
+    }
+
     public void Init(DamageData damageData, string type, float newSpeed, BulletPool newPool)
     {
-        _damageData = damageData;
-        key = type;
-        speed = newSpeed;
-        pool = newPool;
+        DamageData = damageData;
+        Key = type;
+        Speed = newSpeed;
+        _pool = newPool;
     }
+
     public void Activate(Vector2 newDirection)
     {
-        timer = 0f;
+        _timer = 0f;
+        Direction = newDirection;
+        Active = true;
+
         Show();
-        if (animation != null) animation.Play("default");
-        direction = newDirection;
-
-        active = true;
         SetPhysicsProcess(true);
-
         SetDeferred("monitoring", true);
         SetDeferred("monitorable", true);
 
-        //await ToSignal(GetTree().CreateTimer(0.1f), "timeout");
-        //Initialize();
+        // Optional: Play default animation
+        // Animation?.Play("default");
     }
+
     public void Deactivate()
     {
-        SetPhysicsProcess(false);
-        hurtboxes.Clear();
-        active = false;
+        if (!Active) return;
+        
+        Active = false;
+        Hurtboxes.Clear();
 
+        Hide();
+        SetPhysicsProcess(false);
         SetDeferred("monitoring", false);
         SetDeferred("monitorable", false);
 
-        if (animation != null) animation.Play("hit");
-        pool.ReturnBullet(key, this);
-        GD.Print("deactivate triggered");
+        _pool.ReturnBullet(Key, this);
+
+        // Optional: Play hit animation
+        // Animation?.Play("hit");
     }
-    public void _on_area_entered(Node body)
+
+    #endregion
+
+    #region Behaviors
+
+    public void OnHit()
+    {
+        foreach (var behavior in Behaviors)
+        {
+            behavior.OnHit(this);
+        }
+    }
+
+    #endregion
+
+    #region Signals
+
+    private void _on_area_entered(Node body)
     {
         if (body is Hurtbox hurtbox && !hurtbox.immune)
         {
-            hurtboxes.Add(hurtbox);
+            Hurtboxes.Add(hurtbox);
             OnHit();
         }
     }
-    public void _on_area_exited(Node body)
-    {
-        if (body is Hurtbox hurtbox && hurtboxes.Contains(hurtbox))
-        {
-            hurtboxes.Remove(hurtbox);
-        }
 
+    private void _on_area_exited(Node body)
+    {
+        if (body is Hurtbox hurtbox && Hurtboxes.Contains(hurtbox))
+        {
+            Hurtboxes.Remove(hurtbox);
+        }
     }
+
+    #endregion
 }

@@ -1,16 +1,12 @@
 using Godot;
 using System;
 
+[GlobalClass]
 public partial class ClearBullets : BaseHitEffect
 {
-    private BulletPool pools;
-    public override void Initialize()
-    {
-
-    }
-
     public override void Trigger()
     {
+        EventBus.TriggerClearBullets();
     }
 
 }

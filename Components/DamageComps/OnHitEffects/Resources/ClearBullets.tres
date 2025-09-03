@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="ClearBullets" load_steps=2 format=3 uid="uid://dvm0m7652xkik"]
+
+[ext_resource type="Script" uid="uid://cmmeb7phoe2q3" path="res://Components/DamageComps/OnHitEffects/Scripts/ClearBullets.cs" id="1_52ocm"]
+
+[resource]
+script = ExtResource("1_52ocm")
+metadata/_custom_type_script = "uid://cmmeb7phoe2q3"

@@ -13,6 +13,7 @@ public partial class EnemyGun : Node2D
     public override void _Ready()
     {
         rayCast = GetNode<RayCast2D>("RayCast");
+        EventBus.ClearBullets += ResetTimer;
     }
 
 
@@ -35,7 +36,7 @@ public partial class EnemyGun : Node2D
             if (time >= 4f)
             {
                 canShoot = true;
-                time = 0;
+                ResetTimer();
             }
         }
         else if (!rayCast.IsColliding() && canShoot)
@@ -43,7 +44,10 @@ public partial class EnemyGun : Node2D
             canShoot = false;
             if (gun != null) gun.Shoot();
         }
+    }
 
-
+    public void ResetTimer()
+    {
+        time = 0;
     }
 }

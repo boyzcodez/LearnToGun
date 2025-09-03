@@ -8,7 +8,7 @@ public partial class StraightMovement : Behavior
     }
     public override void Update(Bullet bullet, double delta)
     {
-        bullet.GlobalPosition += bullet.direction * bullet.speed * (float)delta;
+        bullet.GlobalPosition += bullet.Direction * bullet.Speed * (float)delta;
     }
     public override void OnHit(Bullet bullet)
     {

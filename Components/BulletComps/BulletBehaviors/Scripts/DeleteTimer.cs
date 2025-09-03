@@ -9,8 +9,8 @@ public partial class DeleteTimer : Behavior
     }
     public override void Update(Bullet bullet, double delta)
     {
-        bullet.timer += (float)delta;
-        if (bullet.timer >= deleteTime) bullet.Deactivate(); 
+        bullet._timer += (float)delta;
+        if (bullet._timer >= deleteTime) bullet.Deactivate(); 
     }
     public override void OnHit(Bullet bullet)
     {

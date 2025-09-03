@@ -6,6 +6,22 @@ public partial class BulletPool : Node
     private Dictionary<string, Queue<Bullet>> _pools = new();
     private List<Bullet> _enemyBullets = new();
 
+    public override void _Ready()
+    {
+        // Prevent duplicate subscriptions
+        EventBus.ClearBullets -= ClearBullets;
+        EventBus.ClearBullets += ClearBullets;
+        GD.Print($"Subscribed ClearBullets from {Name} ({GetInstanceId()})");
+
+        GD.Print($"BulletPool added: {Name} ({GetInstanceId()}) parent={GetParent()?.Name}");
+    }
+
+    public override void _ExitTree()
+    {
+        EventBus.ClearBullets -= ClearBullets;
+        GD.Print($"Unsubscribed ClearBullets from {Name} ({GetInstanceId()})");
+    }
+
     public void PreparePool(string key, GunData gunData, int amount)
     {
         if (_pools.TryGetValue(key, out var pool))
@@ -15,6 +31,7 @@ public partial class BulletPool : Node
                 foreach (var bullet in pool)
                 {
                     bullet.QueueFree();
+                    if (_enemyBullets.Contains(bullet)) _enemyBullets.Remove(bullet);
                 }
                 pool.Clear();
             }
@@ -55,36 +72,28 @@ public partial class BulletPool : Node
         //UniversalStopButton.DisableNode(bullet);
         _pools[key].Enqueue(bullet);
     }
-    public void DeleteBullets(string oldKey)
-    {
-        if (_pools.ContainsKey(oldKey))
-        {
-            foreach (var bullet in _pools[oldKey])
-                bullet.QueueFree();
-            _pools.Remove(oldKey);
+    //     public void DeleteBullets(string oldKey)
+    // {
+    //     if (_pools.ContainsKey(oldKey))
+    //     {
+    //         foreach (var bullet in _pools[oldKey])
+    //             bullet.QueueFree();
 
-            foreach (var bullet in _enemyBullets)
-            {
-                if (_enemyBullets.Contains(bullet)) _enemyBullets.Remove(bullet);
-            }
-        }
-    }
+    //         _pools.Remove(oldKey);
+    //     }
+
+    //     // Reset the enemy bullet list safely
+    //     _enemyBullets.RemoveAll(b => b.PoolKey == oldKey);
+    // }
     public void ClearBullets()
     {
-        EventBus.TriggerScreenShake(0.3f);
+        EventBus.TriggerScreenShake(0.2f);
+
         foreach (var bullet in _enemyBullets)
         {
-            if (bullet.active) bullet.Deactivate();
+            if (IsInstanceValid(bullet) && bullet.Active)
+                bullet.Deactivate();
         }
-        GD.Print("bullets cleared");
-    }
-    public override void _Input(InputEvent @event)
-    {
-        if (@event.IsActionPressed("space"))
-        {
-            ClearBullets();
-        }
-        
     }
 
 }

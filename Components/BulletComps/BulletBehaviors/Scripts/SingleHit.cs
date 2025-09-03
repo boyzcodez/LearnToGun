@@ -12,7 +12,7 @@ public partial class SingleHit : Behavior
     }
     public override void OnHit(Bullet bullet)
     {
-        bullet.hurtboxes[0].TakeDamage(bullet._damageData, bullet.direction);
+        bullet.Hurtboxes[0].TakeDamage(bullet.DamageData, bullet.Direction);
         bullet.Deactivate();
     }
 }

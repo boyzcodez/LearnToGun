@@ -3,6 +3,7 @@ using Godot;
 [GlobalClass]
 public partial class Hurtbox : Area2D
 {
+    [Export] private BaseHitEffect[] hitEffects = [];
     [Export] private bool isImmune = false;
     [Export] private int maxHealth = 100;
     [Export] private HitFlash hitFlash;
@@ -24,10 +25,17 @@ public partial class Hurtbox : Area2D
 
         if (hitFlash != null) hitFlash.Blink();
 
-        GD.Print("took " + damageData.Damage + " damage");
+        GD.Print("took " + damageData.Damage + " damage, current health " + currentHealth);
         if (currentHealth <= 0)
         {
             owner.Death();
+        }
+        else
+        {
+            foreach (var effect in hitEffects)
+            {
+                effect.Trigger();
+            }
         }
     }
 }

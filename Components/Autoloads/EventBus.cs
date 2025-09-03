@@ -8,6 +8,7 @@ public static class EventBus
     public static event Action MapSwitch;
     public static event Action StartWave;
     public static event Action EnemyDied;
+    public static event Action ClearBullets;
     public static event Action<int> GainExp;
     public static event Action<float> ScreenShake;
 
@@ -29,6 +30,8 @@ public static class EventBus
         MapSwitch?.Invoke();
     public static void TriggerWave() =>
         StartWave?.Invoke();
-        public static void OnEnemyDied() =>
+    public static void OnEnemyDied() =>
         EnemyDied?.Invoke();
+    public static void TriggerClearBullets() =>
+        ClearBullets?.Invoke();
 }
