@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public partial class BulletPool : Node
 {
     private Dictionary<string, Queue<Bullet>> _pools = new();
+    private List<Bullet> _enemyBullets = new();
 
     public void PreparePool(string key, GunData gunData, int amount)
     {
@@ -31,6 +32,8 @@ public partial class BulletPool : Node
             bullet.Init(new DamageData(gunData.Damage, gunData.Knockback), key, gunData.BulletSpeed, this);
             CallDeferred("add_child", bullet);
             pool.Enqueue(bullet);
+
+            if (gunData.isEnemy) _enemyBullets.Add(bullet);
         }
     }
     public Bullet GetBullet(string key, GunData gunData)
@@ -59,6 +62,29 @@ public partial class BulletPool : Node
             foreach (var bullet in _pools[oldKey])
                 bullet.QueueFree();
             _pools.Remove(oldKey);
+
+            foreach (var bullet in _enemyBullets)
+            {
+                if (_enemyBullets.Contains(bullet)) _enemyBullets.Remove(bullet);
+            }
         }
     }
+    public void ClearBullets()
+    {
+        EventBus.TriggerScreenShake(0.3f);
+        foreach (var bullet in _enemyBullets)
+        {
+            if (bullet.active) bullet.Deactivate();
+        }
+        GD.Print("bullets cleared");
+    }
+    public override void _Input(InputEvent @event)
+    {
+        if (@event.IsActionPressed("space"))
+        {
+            ClearBullets();
+        }
+        
+    }
+
 }

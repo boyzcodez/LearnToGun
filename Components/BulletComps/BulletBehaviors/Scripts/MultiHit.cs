@@ -7,7 +7,6 @@ public partial class MultiHit : Behavior
 {
     public override void Initialize(Bullet bullet)
     {
-        
     }
     public override void Update(Bullet bullet, double delta)
     {

@@ -4,12 +4,13 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
         {
             "name": "Run Godot Run",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "C:/Users/Korho/Godots/Godot_v4.4.1-stable_mono_win64/Godot_v4.4.1-stable_mono_win64/Godot_v4.4.1-stable_mono_win64.exe",
+            "program": "C:/Users/Korho/Godots/Godot_v4.4.1-stable_mono_win64/Godot_v4.4.1-stable_mono_win64/GodotNET_v4.4.1.exe",
             "args": ["--path", "${workspaceFolder}"],
             "cwd": "${workspaceFolder}",
             "stopAtEntry": false,
@@ -17,4 +18,5 @@
         }
 
     ]
+    
 }

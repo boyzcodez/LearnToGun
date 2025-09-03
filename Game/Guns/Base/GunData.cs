@@ -17,6 +17,7 @@ public partial class GunData : Resource
     [Export] public float SpreadAngle { get; set; } = 0f;
     [Export] public float RandomFactor { get; set; } = 0f;
     [Export] public Texture2D GunSprite { get; set; }
+    [Export] public bool isEnemy { get; set; } = false;
 
     public void UseBullet()
     {

@@ -17,7 +17,6 @@ public partial class Bullet : Area2D
     public string key;
     public bool active = false;
     public float timer;
-    public bool check = false;
 
     // Behavior stuff
     public void Initialize()
@@ -28,7 +27,7 @@ public partial class Bullet : Area2D
             behavior.Initialize(this);
         }
     }
-    public override void _Process(double delta)
+    public override void _PhysicsProcess(double delta)
     {
         if (behaviors == null) return;
         foreach (var behavior in behaviors)
@@ -79,16 +78,16 @@ public partial class Bullet : Area2D
     }
     public void Deactivate()
     {
+        SetPhysicsProcess(false);
         hurtboxes.Clear();
         active = false;
-        SetPhysicsProcess(false);
 
         SetDeferred("monitoring", false);
         SetDeferred("monitorable", false);
 
-        Hide();
+        if (animation != null) animation.Play("hit");
         pool.ReturnBullet(key, this);
-        
+        GD.Print("deactivate triggered");
     }
     public void _on_area_entered(Node body)
     {

@@ -17,4 +17,5 @@ FireRate = 0.5
 BulletCount = 1
 SpreadAngle = 0.0
 RandomFactor = 0.0
+isEnemy = true
 metadata/_custom_type_script = "uid://bf05vlwwwrvul"

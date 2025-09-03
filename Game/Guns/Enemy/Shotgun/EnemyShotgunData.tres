@@ -19,4 +19,5 @@ BulletCount = 5
 SpreadAngle = 45.0
 RandomFactor = 0.0
 GunSprite = ExtResource("2_mvwql")
+isEnemy = true
 metadata/_custom_type_script = "uid://bf05vlwwwrvul"
