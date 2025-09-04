@@ -8,18 +8,7 @@ public partial class BulletPool : Node
 
     public override void _Ready()
     {
-        // Prevent duplicate subscriptions
-        EventBus.ClearBullets -= ClearBullets;
         EventBus.ClearBullets += ClearBullets;
-        GD.Print($"Subscribed ClearBullets from {Name} ({GetInstanceId()})");
-
-        GD.Print($"BulletPool added: {Name} ({GetInstanceId()}) parent={GetParent()?.Name}");
-    }
-
-    public override void _ExitTree()
-    {
-        EventBus.ClearBullets -= ClearBullets;
-        GD.Print($"Unsubscribed ClearBullets from {Name} ({GetInstanceId()})");
     }
 
     public void PreparePool(string key, GunData gunData, int amount)
@@ -87,7 +76,7 @@ public partial class BulletPool : Node
     // }
     public void ClearBullets()
     {
-        EventBus.TriggerScreenShake(0.2f);
+        EventBus.TriggerScreenShake(0.5f);
 
         foreach (var bullet in _enemyBullets)
         {

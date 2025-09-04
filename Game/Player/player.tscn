@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://chh07uycyoynw"]
+[gd_scene load_steps=84 format=3 uid="uid://chh07uycyoynw"]
 
 [ext_resource type="Script" uid="uid://cccauuo7nkwjv" path="res://Game/Player/Player.cs" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://dyqbl4s13wnxg" path="res://Components/Etc/shadow.tscn" id="2_nfw5o"]
@@ -14,7 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://ci5kdh4eh4lic" path="res://Game/Guns/Player/Shotgun/shotgun.tscn" id="8_nfw5o"]
 [ext_resource type="Script" uid="uid://c73kpxw2e5ynj" path="res://Game/Player/WarpDash.cs" id="12_qwver"]
 [ext_resource type="PackedScene" uid="uid://bxyy5vw0eiy5e" path="res://Game/Player/ghost_sprite.tscn" id="13_nfw5o"]
+[ext_resource type="Resource" uid="uid://dvm0m7652xkik" path="res://Components/DamageComps/OnHitEffects/Resources/ClearBullets.tres" id="13_tqhgd"]
 [ext_resource type="PackedScene" uid="uid://haqfsuv5fmc3" path="res://Components/InteractComp/interact_component.tscn" id="14_wlpas"]
+[ext_resource type="Texture2D" uid="uid://c48h0yfxwlgc6" path="res://Assets/Effects/ParticleEffects.png" id="17_6v7ly"]
+[ext_resource type="Script" uid="uid://wvm80ckdaxft" path="res://Game/Player/Effects.cs" id="18_86ark"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
 radius = 6.0
@@ -277,7 +280,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"BackHit",
-"speed": 11.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -334,7 +337,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"FrontHit",
-"speed": 11.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -391,7 +394,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"RightBackHit",
-"speed": 11.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -448,7 +451,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"RightFrontHit",
-"speed": 11.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -478,6 +481,52 @@ animations = [{
 radius = 5.0
 height = 14.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_lglki"]
+atlas = ExtResource("17_6v7ly")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1j2w"]
+atlas = ExtResource("17_6v7ly")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7ogo"]
+atlas = ExtResource("17_6v7ly")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2aqn"]
+atlas = ExtResource("17_6v7ly")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6s6w"]
+atlas = ExtResource("17_6v7ly")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7cv5i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lglki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1j2w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7ogo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2aqn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6s6w")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("weaponManager") groups=["Player"]]
 motion_mode = 1
 platform_on_leave = 2
@@ -498,7 +547,7 @@ position = Vector2(0, -1)
 material = ExtResource("3_akrrf")
 position = Vector2(0, -10)
 sprite_frames = SubResource("SpriteFrames_fy1n6")
-animation = &"RightFrontRun"
+animation = &"Back"
 script = ExtResource("3_letr6")
 
 [node name="Direction" type="Node" parent="AnimatedSprite"]
@@ -520,6 +569,7 @@ position = Vector2(14, 2)
 
 [node name="Hurtbox" parent="." node_paths=PackedStringArray("hitFlash") instance=ExtResource("7_vh1aq")]
 collision_layer = 2
+hitEffects = [ExtResource("13_tqhgd")]
 hitFlash = NodePath("../AnimatedSprite/HitFlash")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
@@ -537,6 +587,14 @@ wait_time = 0.05
 one_shot = true
 
 [node name="InteractComponent" parent="." instance=ExtResource("14_wlpas")]
+
+[node name="Effects" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -9)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_7cv5i")
+frame = 5
+frame_progress = 1.0
+script = ExtResource("18_86ark")
 
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
 [connection signal="animation_finished" from="AnimatedSprite" to="AnimatedSprite" method="_on_animation_finished"]

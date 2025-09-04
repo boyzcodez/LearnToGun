@@ -73,7 +73,7 @@ public partial class Bullet : Area2D
         SetDeferred("monitorable", true);
 
         // Optional: Play default animation
-        // Animation?.Play("default");
+        Animation?.Play("default");
     }
 
     public void Deactivate()
@@ -83,7 +83,7 @@ public partial class Bullet : Area2D
         Active = false;
         Hurtboxes.Clear();
 
-        Hide();
+        //Hide();
         SetPhysicsProcess(false);
         SetDeferred("monitoring", false);
         SetDeferred("monitorable", false);
@@ -91,7 +91,7 @@ public partial class Bullet : Area2D
         _pool.ReturnBullet(Key, this);
 
         // Optional: Play hit animation
-        // Animation?.Play("hit");
+        Animation?.Play("hit");
     }
 
     #endregion
