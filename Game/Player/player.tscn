@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://chh07uycyoynw"]
+[gd_scene load_steps=75 format=3 uid="uid://chh07uycyoynw"]
 
 [ext_resource type="Script" uid="uid://cccauuo7nkwjv" path="res://Game/Player/Player.cs" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://dyqbl4s13wnxg" path="res://Components/Etc/shadow.tscn" id="2_nfw5o"]
@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://ci5kdh4eh4lic" path="res://Game/Guns/Player/Shotgun/shotgun.tscn" id="8_nfw5o"]
 [ext_resource type="Script" uid="uid://c73kpxw2e5ynj" path="res://Game/Player/WarpDash.cs" id="12_qwver"]
 [ext_resource type="PackedScene" uid="uid://bxyy5vw0eiy5e" path="res://Game/Player/ghost_sprite.tscn" id="13_nfw5o"]
-[ext_resource type="Resource" uid="uid://dvm0m7652xkik" path="res://Components/DamageComps/OnHitEffects/Resources/ClearBullets.tres" id="13_tqhgd"]
 [ext_resource type="PackedScene" uid="uid://haqfsuv5fmc3" path="res://Components/InteractComp/interact_component.tscn" id="14_wlpas"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
@@ -521,7 +520,6 @@ position = Vector2(14, 2)
 
 [node name="Hurtbox" parent="." node_paths=PackedStringArray("hitFlash") instance=ExtResource("7_vh1aq")]
 collision_layer = 2
-hitEffects = [ExtResource("13_tqhgd")]
 hitFlash = NodePath("../AnimatedSprite/HitFlash")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
