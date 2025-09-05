@@ -1,9 +1,9 @@
-[gd_scene load_steps=84 format=3 uid="uid://chh07uycyoynw"]
+[gd_scene load_steps=84 format=3 uid="uid://c6wovvn1o70v5"]
 
 [ext_resource type="Script" uid="uid://cccauuo7nkwjv" path="res://Game/Player/Player.cs" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://dyqbl4s13wnxg" path="res://Components/Etc/shadow.tscn" id="2_nfw5o"]
 [ext_resource type="Texture2D" uid="uid://drnvmxh1e2u5u" path="res://Assets/NewRobot.png" id="2_qwver"]
-[ext_resource type="Material" uid="uid://cbu21hu7tbx1s" path="res://Game/Shaders/HitFlash.tres" id="3_akrrf"]
+[ext_resource type="Material" uid="uid://w5yw3e3gudc3" path="res://Game/Player/HitFlash.tres" id="3_akrrf"]
 [ext_resource type="Script" uid="uid://lai5akvass2s" path="res://Game/Player/AnimatedSprite.cs" id="3_letr6"]
 [ext_resource type="Script" uid="uid://b1ak4u4c4cm3j" path="res://Game/Player/Direction.cs" id="4_vytja"]
 [ext_resource type="Script" uid="uid://cjdsjaml44rs2" path="res://Game/Player/LookAt.cs" id="6_4ddeg"]
@@ -17,7 +17,7 @@
 [ext_resource type="Resource" uid="uid://dvm0m7652xkik" path="res://Components/DamageComps/OnHitEffects/Resources/ClearBullets.tres" id="13_tqhgd"]
 [ext_resource type="PackedScene" uid="uid://haqfsuv5fmc3" path="res://Components/InteractComp/interact_component.tscn" id="14_wlpas"]
 [ext_resource type="Texture2D" uid="uid://c48h0yfxwlgc6" path="res://Assets/Effects/ParticleEffects.png" id="17_6v7ly"]
-[ext_resource type="Script" path="res://Game/Player/Effects.cs" id="18_86ark"]
+[ext_resource type="Script" uid="uid://wvm80ckdaxft" path="res://Game/Player/Effects.cs" id="18_86ark"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
 radius = 6.0
@@ -565,7 +565,7 @@ position = Vector2(0, -9)
 script = ExtResource("6_4ddeg")
 
 [node name="GunSpot" type="Node2D" parent="LookAt"]
-position = Vector2(14, 2)
+position = Vector2(14, 0)
 
 [node name="Hurtbox" parent="." node_paths=PackedStringArray("hitFlash") instance=ExtResource("7_vh1aq")]
 collision_layer = 2
@@ -593,8 +593,6 @@ z_index = 50
 position = Vector2(0, -9)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_7cv5i")
-frame = 5
-frame_progress = 1.0
 script = ExtResource("18_86ark")
 
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]

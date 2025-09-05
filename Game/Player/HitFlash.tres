@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://w5yw3e3gudc3"]
+
+[ext_resource type="Shader" uid="uid://c7ktxcsseqdmw" path="res://Game/Player/HitFlash.gdshader" id="1_iseyq"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_iseyq")
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_intensity = 0.0

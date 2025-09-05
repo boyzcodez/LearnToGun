@@ -21,8 +21,8 @@ public partial class Gun : Node2D
 
     public override void _Process(double delta)
     {
-        if (_cooldown > 0)
-            _cooldown -= (float)delta;
+        if (_cooldown > 0) _cooldown -= (float)delta;
+            
     }
 
     public void Shoot()

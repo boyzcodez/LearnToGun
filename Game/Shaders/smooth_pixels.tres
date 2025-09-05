@@ -1,6 +1,8 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cp2qsph4i46jl"]
 
-[ext_resource type="Shader" uid="uid://cn8yoc8rhthon" path="res://Game/Shaders/Smooth_pixels.gdshader" id="1_and0u"]
+[ext_resource type="Shader" uid="uid://cknjsoyngfwmt" path="res://Components/DamageComps/RotSprite.gdshader" id="1_and0u"]
 
 [resource]
 shader = ExtResource("1_and0u")
+shader_parameter/linear_interp = false
+shader_parameter/interp_sharpness = Vector2i(6, 6)
