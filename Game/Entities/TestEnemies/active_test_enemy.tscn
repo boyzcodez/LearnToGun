@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://vmtiw08cr30b" path="res://Components/DamageComps/hurtbox.tscn" id="3_m1e7j"]
 [ext_resource type="Texture2D" uid="uid://d07fof5jb85ec" path="res://Assets/Entity/Enemy/Enemy_Intro.png" id="3_oxb72"]
 [ext_resource type="Script" uid="uid://c6vb1yef0nhpa" path="res://Game/Entities/TestEnemies/Look.cs" id="3_q6s24"]
-[ext_resource type="Material" uid="uid://cbu21hu7tbx1s" path="res://Game/Player/HitFlash.tres" id="4_6ce44"]
+[ext_resource type="Material" uid="uid://cbu21hu7tbx1s" path="res://Game/Shaders/HitFlash.tres" id="4_6ce44"]
 [ext_resource type="Script" uid="uid://bp03nkh0uoq1p" path="res://Game/Entities/TestEnemies/EnemyGun.cs" id="4_wxglr"]
 [ext_resource type="Texture2D" uid="uid://bqe25i6ow8vul" path="res://Assets/Entity/Enemy/NewEnemyRobo.png" id="5_6ce44"]
 [ext_resource type="Script" uid="uid://jqlj5orjwgch" path="res://Game/Entities/TestEnemies/AnimatedSpriteE.cs" id="5_bbp8y"]
@@ -248,6 +248,7 @@ frame_progress = 1.0
 script = ExtResource("3_b3ga6")
 stateMachine = NodePath("../StateMachine")
 hurtbox = NodePath("../Hurtbox")
+isActive = true
 
 [node name="Hide" type="Node2D" parent="Spawn"]
 visible = false

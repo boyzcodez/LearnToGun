@@ -81,7 +81,7 @@ public partial class Bullet : Area2D
         if (!Active) return;
         
         Active = false;
-        Hurtboxes.Clear();
+        //Hurtboxes.Clear();
 
         //Hide();
         SetPhysicsProcess(false);
