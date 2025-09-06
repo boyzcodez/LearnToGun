@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://clqw4um34fajs"]
+[gd_scene load_steps=9 format=3 uid="uid://clqw4um34fajs"]
 
 [ext_resource type="PackedScene" uid="uid://c6wovvn1o70v5" path="res://Game/Player/Player.tscn" id="1_0nu1h"]
 [ext_resource type="Script" uid="uid://dgrir7xxo4xpx" path="res://Game/Main/EntityHandler.cs" id="1_mxdch"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://x3152krac0fs" path="res://Game/Map/Rooms/starting_map.tscn" id="4_gk2dm"]
 [ext_resource type="PackedScene" uid="uid://u1aqua33b3uc" path="res://Game/Entities/TestEnemies/scarecrow.tscn" id="5_mxdch"]
 [ext_resource type="PackedScene" uid="uid://bqtng3dp4vtsa" path="res://Game/Player/player_camera.tscn" id="5_vmwgv"]
+[ext_resource type="PackedScene" uid="uid://bhb68kqkfragl" path="res://Game/Entities/TestEnemies/active_test_enemy.tscn" id="6_ln7nw"]
 [ext_resource type="Script" uid="uid://cmj0dd4e41aj2" path="res://Components/Autoloads/BulletPool.cs" id="7_vmwgv"]
 
 [node name="Main" type="Node2D"]
@@ -25,6 +26,15 @@ position = Vector2(0, -50)
 
 [node name="Scarecrow" parent="EntityHandler" instance=ExtResource("5_mxdch")]
 position = Vector2(200, 0)
+
+[node name="ActiveTestEnemy" parent="EntityHandler" instance=ExtResource("6_ln7nw")]
+position = Vector2(-50, 50)
+
+[node name="ActiveTestEnemy2" parent="EntityHandler" instance=ExtResource("6_ln7nw")]
+position = Vector2(-50, 0)
+
+[node name="ActiveTestEnemy3" parent="EntityHandler" instance=ExtResource("6_ln7nw")]
+position = Vector2(-50, -50)
 
 [node name="PlayerCamera" parent="." node_paths=PackedStringArray("followNode") instance=ExtResource("5_vmwgv")]
 followNode = NodePath("../EntityHandler/Player")

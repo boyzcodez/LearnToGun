@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using Godot;
 using Godot.Collections;
 
@@ -49,6 +48,8 @@ public partial class EntityHandler : Node2D
 
             enemies.Add(enemy);
 
+            enemy.SetDeferred("process_mode", (int)Node.ProcessModeEnum.Disabled);
+
             CallDeferred(MethodName.AddChild, enemy);
             //AddChild(enemy);
             _currentEnemyCount++;
@@ -84,5 +85,22 @@ public partial class EntityHandler : Node2D
         enemies.Clear();
         _currentEnemyCount = 0;
         rounds = 0;
+    }
+    public override void _Input(InputEvent @event)
+    {
+        if (@event.IsActionPressed("space"))
+        {
+            foreach (var enemy in enemies)
+            {
+                enemy.SetDeferred("process_mode", (int)Node.ProcessModeEnum.Inherit);
+            }
+        }
+        if (@event.IsActionPressed("weapon_wheel"))
+        {
+            foreach (var enemy in enemies)
+            {
+                enemy.SetDeferred("process_mode", (int)Node.ProcessModeEnum.Disabled);
+            }
+        }
     }
 }

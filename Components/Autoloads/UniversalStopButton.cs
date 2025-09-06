@@ -1,5 +1,4 @@
 using Godot;
-using System.Collections.Generic;
 
 public static class UniversalStopButton
 {
@@ -21,11 +20,11 @@ public static class UniversalStopButton
         {
             if (child is CollisionShape2D shape)
                 shape.SetDeferred("disabled", true);
-                //shape.Disabled = true;
+            //shape.Disabled = true;
 
             if (child is CollisionPolygon2D poly)
                 poly.SetDeferred("disabled", true);
-                //poly.Disabled = true;
+            //poly.Disabled = true;
 
             if (child is Area2D area)
             {
@@ -54,11 +53,11 @@ public static class UniversalStopButton
         {
             if (child is CollisionShape2D shape)
                 shape.SetDeferred("disabled", false);
-                //shape.Disabled = false;
+            //shape.Disabled = false;
 
             if (child is CollisionPolygon2D poly)
                 poly.SetDeferred("disabled", false);
-                //poly.Disabled = false;
+            //poly.Disabled = false;
 
             if (child is Area2D area)
             {
@@ -70,5 +69,11 @@ public static class UniversalStopButton
 
             EnableNode(child);
         }
+    }
+
+    public static void Setup(Node node, bool set)
+    {
+        node.SetPhysicsProcess(set);
+        node.SetProcess(set);
     }
 }

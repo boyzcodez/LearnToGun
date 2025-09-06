@@ -11,6 +11,7 @@ public partial class Bullet : Area2D
 
     private BulletPool _pool;
     public DamageData DamageData;
+    private RayCast2D raycast;
 
     public List<Hurtbox> Hurtboxes { get; private set; } = new();
     public float Speed { get; private set; } = 80f;
@@ -31,6 +32,8 @@ public partial class Bullet : Area2D
         SetDeferred("monitoring", false);
         SetDeferred("monitorable", false);
         Hide();
+
+        raycast = GetNode<RayCast2D>("Raycast");
     }
 
     public override void _PhysicsProcess(double delta)
@@ -38,6 +41,11 @@ public partial class Bullet : Area2D
         foreach (var behavior in Behaviors)
         {
             behavior.Update(this, delta);
+        }
+
+        if (raycast.IsColliding() && Hurtboxes.Count > 0)
+        {
+            OnHit();
         }
     }
 
@@ -115,7 +123,7 @@ public partial class Bullet : Area2D
         if (body is Hurtbox hurtbox && !hurtbox.immune)
         {
             Hurtboxes.Add(hurtbox);
-            OnHit();
+            //OnHit();
         }
     }
 

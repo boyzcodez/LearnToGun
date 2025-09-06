@@ -1,6 +1,7 @@
 using Godot;
 using System;
 
+
 [GlobalClass]
 public partial class EnemyGun : Node2D
 {
@@ -15,7 +16,6 @@ public partial class EnemyGun : Node2D
         rayCast = GetNode<RayCast2D>("RayCast");
         EventBus.ClearBullets += ResetTimer;
     }
-
 
     public override void _PhysicsProcess(double delta)
     {
@@ -36,13 +36,13 @@ public partial class EnemyGun : Node2D
             if (time >= 4f)
             {
                 canShoot = true;
-                ResetTimer();
             }
         }
         else if (!rayCast.IsColliding() && canShoot)
         {
             canShoot = false;
             if (gun != null) gun.Shoot();
+            ResetTimer();
         }
     }
 

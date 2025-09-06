@@ -1,9 +1,7 @@
-[gd_scene load_steps=47 format=3 uid="uid://bhb68kqkfragl"]
+[gd_scene load_steps=32 format=3 uid="uid://bhb68kqkfragl"]
 
 [ext_resource type="Script" uid="uid://dexb3awvsef8d" path="res://Game/Entities/TestEnemies/ActiveTestEnemy.cs" id="1_hc5v1"]
-[ext_resource type="Script" uid="uid://cdvqcbs4rpfiv" path="res://Game/Entities/TestEnemies/Spawn.cs" id="3_b3ga6"]
 [ext_resource type="PackedScene" uid="uid://vmtiw08cr30b" path="res://Components/DamageComps/hurtbox.tscn" id="3_m1e7j"]
-[ext_resource type="Texture2D" uid="uid://d07fof5jb85ec" path="res://Assets/Entity/Enemy/Enemy_Intro.png" id="3_oxb72"]
 [ext_resource type="Script" uid="uid://c6vb1yef0nhpa" path="res://Game/Entities/TestEnemies/Look.cs" id="3_q6s24"]
 [ext_resource type="Material" uid="uid://w5yw3e3gudc3" path="res://Game/Player/HitFlash.tres" id="4_6ce44"]
 [ext_resource type="Script" uid="uid://bp03nkh0uoq1p" path="res://Game/Entities/TestEnemies/EnemyGun.cs" id="4_wxglr"]
@@ -20,97 +18,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_htgvw"]
 radius = 6.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tu046"]
-atlas = ExtResource("3_oxb72")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bpjlt"]
-atlas = ExtResource("3_oxb72")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dfc54"]
-atlas = ExtResource("3_oxb72")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ft2ws"]
-atlas = ExtResource("3_oxb72")
-region = Rect2(192, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_52160"]
-atlas = ExtResource("3_oxb72")
-region = Rect2(256, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v57np"]
-atlas = ExtResource("3_oxb72")
-region = Rect2(320, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bttnm"]
-atlas = ExtResource("3_oxb72")
-region = Rect2(384, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h0pgt"]
-atlas = ExtResource("3_oxb72")
-region = Rect2(448, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xj3bg"]
-atlas = ExtResource("3_oxb72")
-region = Rect2(512, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_04vud"]
-atlas = ExtResource("3_oxb72")
-region = Rect2(576, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n18ka"]
-atlas = ExtResource("3_oxb72")
-region = Rect2(640, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fpw3j"]
-atlas = ExtResource("3_oxb72")
-region = Rect2(704, 0, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_deekk"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tu046")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bpjlt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dfc54")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ft2ws")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_52160")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v57np")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bttnm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h0pgt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xj3bg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_04vud")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n18ka")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fpw3j")
-}],
-"loop": false,
-"name": &"default",
-"speed": 7.0
-}]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ccun0"]
+radius = 8.0
+height = 22.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bbp8y"]
 atlas = ExtResource("5_6ce44")
@@ -228,10 +138,6 @@ animations = [{
 "speed": 7.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ccun0"]
-radius = 8.0
-height = 22.0
-
 [node name="ActiveTestEnemy" type="CharacterBody2D"]
 collision_layer = 0
 collision_mask = 0
@@ -242,50 +148,9 @@ script = ExtResource("1_hc5v1")
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_htgvw")
 
-[node name="Spawn" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("stateMachine", "hurtbox")]
-sprite_frames = SubResource("SpriteFrames_deekk")
-autoplay = "default"
-frame = 11
-frame_progress = 1.0
-script = ExtResource("3_b3ga6")
-stateMachine = NodePath("../StateMachine")
-hurtbox = NodePath("../Hurtbox")
-isActive = true
-
-[node name="Hide" type="Node2D" parent="Spawn"]
-visible = false
-
-[node name="Shadow" parent="Spawn/Hide" instance=ExtResource("11_bbp8y")]
-position = Vector2(0, -1)
-
-[node name="AnimatedSpriteE" type="AnimatedSprite2D" parent="Spawn/Hide"]
-material = ExtResource("4_6ce44")
-position = Vector2(0, -10)
-sprite_frames = SubResource("SpriteFrames_b3ga6")
-animation = &"Hit"
-script = ExtResource("5_bbp8y")
-
-[node name="Look" type="Marker2D" parent="Spawn/Hide/AnimatedSpriteE"]
-position = Vector2(0, 4)
-script = ExtResource("3_q6s24")
-
-[node name="EnemyGun" type="Node2D" parent="Spawn/Hide/AnimatedSpriteE/Look" node_paths=PackedStringArray("gun")]
-position = Vector2(14, 0)
-script = ExtResource("4_wxglr")
-gun = NodePath("EnemyShtogun")
-
-[node name="RayCast" type="RayCast2D" parent="Spawn/Hide/AnimatedSpriteE/Look/EnemyGun"]
-target_position = Vector2(100, 0)
-collision_mask = 0
-
-[node name="EnemyShtogun" parent="Spawn/Hide/AnimatedSpriteE/Look/EnemyGun" instance=ExtResource("10_b3ga6")]
-
-[node name="HitFlash" parent="Spawn/Hide/AnimatedSpriteE" instance=ExtResource("11_oxb72")]
-
 [node name="Hurtbox" parent="." node_paths=PackedStringArray("hitFlash") instance=ExtResource("3_m1e7j")]
 collision_layer = 4
-isImmune = true
-hitFlash = NodePath("../Spawn/Hide/AnimatedSpriteE/HitFlash")
+hitFlash = NodePath("../Hide/AnimatedSpriteE/HitFlash")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, -10)
@@ -293,6 +158,7 @@ shape = SubResource("CapsuleShape2D_ccun0")
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("initialState") instance=ExtResource("6_m1e7j")]
 initialState = NodePath("Idle")
+Active = true
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("7_tko4x")
@@ -315,5 +181,34 @@ circleRadius = 90.0
 NextState = "Surround"
 metadata/_custom_type_script = "uid://2sl1ow0g27ob"
 
-[connection signal="animation_finished" from="Spawn" to="Spawn" method="_on_animation_finished"]
-[connection signal="animation_finished" from="Spawn/Hide/AnimatedSpriteE" to="Spawn/Hide/AnimatedSpriteE" method="_on_animation_finished"]
+[node name="Hide" type="Node2D" parent="."]
+visible = false
+
+[node name="Shadow" parent="Hide" instance=ExtResource("11_bbp8y")]
+position = Vector2(0, -1)
+
+[node name="AnimatedSpriteE" type="AnimatedSprite2D" parent="Hide"]
+material = ExtResource("4_6ce44")
+position = Vector2(0, -10)
+sprite_frames = SubResource("SpriteFrames_b3ga6")
+animation = &"Hit"
+script = ExtResource("5_bbp8y")
+
+[node name="Look" type="Marker2D" parent="Hide/AnimatedSpriteE"]
+position = Vector2(0, 4)
+script = ExtResource("3_q6s24")
+
+[node name="EnemyGun" type="Node2D" parent="Hide/AnimatedSpriteE/Look" node_paths=PackedStringArray("gun")]
+position = Vector2(14, 0)
+script = ExtResource("4_wxglr")
+gun = NodePath("EnemyShtogun")
+
+[node name="RayCast" type="RayCast2D" parent="Hide/AnimatedSpriteE/Look/EnemyGun"]
+target_position = Vector2(100, 0)
+collision_mask = 0
+
+[node name="EnemyShtogun" parent="Hide/AnimatedSpriteE/Look/EnemyGun" instance=ExtResource("10_b3ga6")]
+
+[node name="HitFlash" parent="Hide/AnimatedSpriteE" instance=ExtResource("11_oxb72")]
+
+[connection signal="animation_finished" from="Hide/AnimatedSpriteE" to="Hide/AnimatedSpriteE" method="_on_animation_finished"]
