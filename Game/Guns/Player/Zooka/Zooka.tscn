@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://cc8avd18quyok"]
+
+[ext_resource type="Script" uid="uid://cemybpxgj5xep" path="res://Game/Guns/Base/Gun.cs" id="1_uasw2"]
+[ext_resource type="Resource" uid="uid://bs3fdspup1o48" path="res://Game/Guns/Player/Zooka/ZookaData.tres" id="2_gqt03"]
+[ext_resource type="Texture2D" uid="uid://ctvc5jlwlpnox" path="res://Game/Guns/Player/Zooka/Zooka.png" id="3_gqt03"]
+[ext_resource type="PackedScene" uid="uid://bijvgrqbhqt74" path="res://Game/Guns/Base/AnimatedGun.tscn" id="3_tcnvd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqt03"]
+atlas = ExtResource("3_gqt03")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7v35"]
+atlas = ExtResource("3_gqt03")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6kx4"]
+atlas = ExtResource("3_gqt03")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhrma"]
+atlas = ExtResource("3_gqt03")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sf8xc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqt03")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7v35")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6kx4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhrma")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 7.0
+}]
+
+[node name="Zooka" type="Node2D" node_paths=PackedStringArray("spot", "sprite")]
+script = ExtResource("1_uasw2")
+gunData = ExtResource("2_gqt03")
+spot = NodePath("Spot")
+sprite = NodePath("AnimatedGun")
+type = "Rocket"
+rotate = true
+
+[node name="AnimatedGun" parent="." instance=ExtResource("3_tcnvd")]
+position = Vector2(-2, -3)
+sprite_frames = SubResource("SpriteFrames_sf8xc")
+autoplay = "default"
+
+[node name="Spot" type="Marker2D" parent="."]
+position = Vector2(10, -5)

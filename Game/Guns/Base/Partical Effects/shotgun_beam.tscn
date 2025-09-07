@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c3m2np7p68oaa"]
 
 [ext_resource type="Texture2D" uid="uid://dvffec70m6fmr" path="res://Assets/Line.png" id="1_mnse4"]
-[ext_resource type="Script" uid="uid://df6lb6urcxowd" path="res://Game/Guns/Partical Effects/ShotgunBeam.cs" id="1_yx2td"]
+[ext_resource type="Script" uid="uid://df6lb6urcxowd" path="res://Game/Guns/Base/Partical Effects/ShotgunBeam.cs" id="1_yx2td"]
 [ext_resource type="Shader" uid="uid://2xe62ik6tqyi" path="res://Game/Shaders/shotgun_beam.gdshader" id="2_wtbqm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_clkdv"]

@@ -1,0 +1,125 @@
+[gd_scene load_steps=21 format=3 uid="uid://bwg1vr3b8p5a0"]
+
+[ext_resource type="Texture2D" uid="uid://cr503qxhapueh" path="res://Assets/Guns/Bullets/Projectile 19.png" id="1_3rjha"]
+[ext_resource type="Script" uid="uid://de44iwnl6kvq1" path="res://Game/Guns/Base/Bullets/Bullet.cs" id="1_6cbj7"]
+[ext_resource type="PackedScene" uid="uid://n13suu1l2dtt" path="res://Game/Guns/Base/Bullets/raycast.tscn" id="1_l6qct"]
+[ext_resource type="Texture2D" uid="uid://c48h0yfxwlgc6" path="res://Assets/Effects/ParticleEffects.png" id="2_3heoj"]
+[ext_resource type="Resource" uid="uid://cnjlb04ybn80u" path="res://Components/BulletComps/BulletBehaviors/Resources/Explosion.tres" id="3_ibh86"]
+[ext_resource type="Resource" uid="uid://lw3c1ep3jdap" path="res://Components/BulletComps/BulletBehaviors/Resources/DeleteTimer.tres" id="4_b2qw3"]
+[ext_resource type="Resource" uid="uid://b45ph88mhkuy3" path="res://Components/BulletComps/BulletBehaviors/Resources/SpeedUp.tres" id="4_wk315"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cb3qr"]
+radius = 42.0119
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6cbj7"]
+atlas = ExtResource("1_3rjha")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibh86"]
+atlas = ExtResource("1_3rjha")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2qw3"]
+atlas = ExtResource("1_3rjha")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wk315"]
+atlas = ExtResource("1_3rjha")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p25ks"]
+atlas = ExtResource("2_3heoj")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swvb5"]
+atlas = ExtResource("2_3heoj")
+region = Rect2(128, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8kmn"]
+atlas = ExtResource("2_3heoj")
+region = Rect2(256, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gud2f"]
+atlas = ExtResource("2_3heoj")
+region = Rect2(384, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4mn5"]
+atlas = ExtResource("2_3heoj")
+region = Rect2(512, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gro5d"]
+atlas = ExtResource("2_3heoj")
+region = Rect2(640, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bifmc"]
+atlas = ExtResource("2_3heoj")
+region = Rect2(768, 256, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5as0g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6cbj7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibh86")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2qw3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wk315")
+}],
+"loop": true,
+"name": &"default",
+"speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p25ks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swvb5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8kmn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gud2f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4mn5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gro5d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bifmc")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 14.0
+}]
+
+[node name="Rocket" type="Area2D" node_paths=PackedStringArray("Animation")]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_6cbj7")
+Behaviors = [ExtResource("3_ibh86"), ExtResource("4_b2qw3"), ExtResource("4_wk315")]
+Animation = NodePath("AnimatedSprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_cb3qr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5as0g")
+animation = &"hit"
+frame = 6
+frame_progress = 1.0
+
+[node name="Raycast" parent="." instance=ExtResource("1_l6qct")]
+position = Vector2(-7, 0)
+collision_mask = 4
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

@@ -1,24 +1,61 @@
-[gd_scene load_steps=6 format=3 uid="uid://ckxy3ga6pre8f"]
+[gd_scene load_steps=10 format=3 uid="uid://ckxy3ga6pre8f"]
 
 [ext_resource type="Script" uid="uid://cemybpxgj5xep" path="res://Game/Guns/Base/Gun.cs" id="1_usaav"]
 [ext_resource type="Resource" uid="uid://d1ps46siei1u" path="res://Game/Guns/Enemy/Shotgun/EnemyShotgunData.tres" id="2_d6cxo"]
-[ext_resource type="PackedScene" uid="uid://mmdnif7mf7f7" path="res://Components/DamageComps/gun_sprite.tscn" id="2_huu3j"]
+[ext_resource type="PackedScene" uid="uid://bijvgrqbhqt74" path="res://Game/Guns/Base/AnimatedGun.tscn" id="3_a122f"]
 [ext_resource type="Texture2D" uid="uid://diet8ij7y2hpc" path="res://Game/Guns/Player/Shotgun/basic_weapon_shotgun1.png" id="3_d6cxo"]
-[ext_resource type="PackedScene" uid="uid://djku7onwfxvyl" path="res://Components/Etc/Hands.tscn" id="4_4ewrm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_huu3j"]
+atlas = ExtResource("3_d6cxo")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6cxo"]
+atlas = ExtResource("3_d6cxo")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ewrm"]
+atlas = ExtResource("3_d6cxo")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ot8tg"]
+atlas = ExtResource("3_d6cxo")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_huu3j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_huu3j")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6cxo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ewrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ot8tg")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 7.0
+}]
 
 [node name="EnemyShtogun" type="Node2D" node_paths=PackedStringArray("spot", "sprite")]
 script = ExtResource("1_usaav")
 gunData = ExtResource("2_d6cxo")
 spot = NodePath("Spot")
-sprite = NodePath("GunSprite")
+sprite = NodePath("AnimatedGun")
 type = "EnemyShotgun"
-amount = 20
 
-[node name="GunSprite" parent="." instance=ExtResource("2_huu3j")]
-texture = ExtResource("3_d6cxo")
-
-[node name="Hands" parent="GunSprite" instance=ExtResource("4_4ewrm")]
-position = Vector2(-8, 0)
+[node name="AnimatedGun" parent="." instance=ExtResource("3_a122f")]
+sprite_frames = SubResource("SpriteFrames_huu3j")
+autoplay = "default"
 
 [node name="Spot" type="Marker2D" parent="."]
 position = Vector2(11, -2)

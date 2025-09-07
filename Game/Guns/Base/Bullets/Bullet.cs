@@ -47,6 +47,8 @@ public partial class Bullet : Area2D
         {
             OnHit();
         }
+
+        _timer += (float)delta;
     }
 
     #endregion
@@ -123,7 +125,6 @@ public partial class Bullet : Area2D
         if (body is Hurtbox hurtbox && !hurtbox.immune)
         {
             Hurtboxes.Add(hurtbox);
-            //OnHit();
         }
     }
 

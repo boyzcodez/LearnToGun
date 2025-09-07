@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="SpeedUp" load_steps=2 format=3 uid="uid://b45ph88mhkuy3"]
+
+[ext_resource type="Script" uid="uid://deif3j2vh3l3p" path="res://Components/BulletComps/BulletBehaviors/Scripts/SpeedUp.cs" id="1_o7a8p"]
+
+[resource]
+script = ExtResource("1_o7a8p")
+metadata/_custom_type_script = "uid://deif3j2vh3l3p"

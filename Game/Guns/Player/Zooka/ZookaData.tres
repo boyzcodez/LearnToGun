@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="GunData" load_steps=3 format=3 uid="uid://bs3fdspup1o48"]
+
+[ext_resource type="Script" uid="uid://bf05vlwwwrvul" path="res://Game/Guns/Base/GunData.cs" id="1_0ca57"]
+[ext_resource type="PackedScene" uid="uid://bwg1vr3b8p5a0" path="res://Game/Guns/Player/Zooka/Rocket.tscn" id="1_20qpx"]
+
+[resource]
+script = ExtResource("1_0ca57")
+GunName = "Zooka"
+Damage = 1
+Knockback = 100.0
+BulletSpeed = 80.0
+BulletScene = ExtResource("1_20qpx")
+SpawnAmount = 10
+CurrentAmmo = 10
+MaxAmmo = 10
+UsesAmmo = true
+FireRate = 0.7
+BulletCount = 1
+SpreadAngle = 0.0
+RandomFactor = 0.0
+isEnemy = false
+metadata/_custom_type_script = "uid://bf05vlwwwrvul"

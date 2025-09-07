@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cx5bh10h2ko2n"]
+
+[ext_resource type="Shader" uid="uid://busiiog3ossx4" path="res://Game/Shaders/TrueSmooth.gdshader" id="1_22432"]
+
+[resource]
+shader = ExtResource("1_22432")

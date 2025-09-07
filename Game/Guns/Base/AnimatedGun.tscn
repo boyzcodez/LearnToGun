@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bijvgrqbhqt74"]
+
+[ext_resource type="Material" uid="uid://cx5bh10h2ko2n" path="res://Game/Shaders/TrueSmooth.tres" id="1_jop51"]
+[ext_resource type="Script" uid="uid://7hwx3rpv0roe" path="res://Game/Guns/Base/AnimatedGun.cs" id="1_mccvj"]
+
+[node name="AnimatedGun" type="AnimatedSprite2D"]
+texture_filter = 2
+material = ExtResource("1_jop51")
+script = ExtResource("1_mccvj")

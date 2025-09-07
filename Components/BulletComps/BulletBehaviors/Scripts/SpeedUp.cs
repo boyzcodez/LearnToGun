@@ -1,20 +1,16 @@
 using Godot;
 
 [GlobalClass]
-public partial class DeleteTimer : Behavior
+public partial class SpeedUp : Behavior
 {
-    [Export] private float deleteTime = 4f;
     public override void Initialize(Bullet bullet)
     {
     }
     public override void Update(Bullet bullet, double delta)
     {
-        if (bullet._timer >= deleteTime) bullet.Deactivate(); 
+        bullet.GlobalPosition += bullet.Direction * bullet.Speed * (float)delta * (1f + bullet._timer * 3f);
     }
     public override void OnHit(Bullet bullet)
     {
     }
 }
-
-
-        

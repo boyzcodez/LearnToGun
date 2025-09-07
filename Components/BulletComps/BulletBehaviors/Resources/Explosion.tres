@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Explosion" load_steps=2 format=3 uid="uid://cnjlb04ybn80u"]
+
+[ext_resource type="Script" uid="uid://c3gjb4jhvxahf" path="res://Components/BulletComps/BulletBehaviors/Scripts/Explosion.cs" id="1_oqsab"]
+
+[resource]
+script = ExtResource("1_oqsab")
+metadata/_custom_type_script = "uid://c3gjb4jhvxahf"

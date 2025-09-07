@@ -9,6 +9,7 @@ public partial class GunData : Resource
     [Export] public float Knockback { get; set; } = 0f;
     [Export] public float BulletSpeed { get; set; } = 80f;
     [Export] public PackedScene BulletScene { get; set; }
+    [Export] public int SpawnAmount { get; set; } = 20;
     [Export] public int CurrentAmmo { get; set; } = 10;
     [Export] public int MaxAmmo { get; set; } = 10;
     [Export] public bool UsesAmmo { get; set; } = true;
