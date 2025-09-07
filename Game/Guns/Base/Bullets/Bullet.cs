@@ -36,7 +36,7 @@ public partial class Bullet : Area2D
         raycast = GetNode<RayCast2D>("Raycast");
     }
 
-    public override void _PhysicsProcess(double delta)
+    public override void _Process(double delta)
     {
         foreach (var behavior in Behaviors)
         {
@@ -78,7 +78,7 @@ public partial class Bullet : Area2D
         Active = true;
 
         Show();
-        SetPhysicsProcess(true);
+        SetProcess(true);
         SetDeferred("monitoring", true);
         SetDeferred("monitorable", true);
 
@@ -94,7 +94,7 @@ public partial class Bullet : Area2D
         //Hurtboxes.Clear();
 
         //Hide();
-        SetPhysicsProcess(false);
+        SetProcess(false);
         SetDeferred("monitoring", false);
         SetDeferred("monitorable", false);
 

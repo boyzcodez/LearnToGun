@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://ci5kdh4eh4lic"]
+[gd_scene load_steps=15 format=3 uid="uid://ci5kdh4eh4lic"]
 
 [ext_resource type="Script" uid="uid://cemybpxgj5xep" path="res://Game/Guns/Base/Gun.cs" id="1_ggp42"]
 [ext_resource type="Resource" uid="uid://7ce3aqmof3vb" path="res://Game/Guns/Player/Shotgun/ShotgunData.tres" id="2_4ksay"]
 [ext_resource type="PackedScene" uid="uid://bijvgrqbhqt74" path="res://Game/Guns/Base/AnimatedGun.tscn" id="3_ggp42"]
 [ext_resource type="Texture2D" uid="uid://ncm4cwfwfflp" path="res://Game/Guns/Player/Shotgun/ShotgunBoo.png" id="4_ggp42"]
+[ext_resource type="PackedScene" uid="uid://djku7onwfxvyl" path="res://Components/Etc/Hands.tscn" id="5_4ksay"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4ksay"]
 atlas = ExtResource("4_ggp42")
@@ -89,6 +90,12 @@ animation = &"shoot"
 autoplay = "default"
 frame = 3
 frame_progress = 1.0
+
+[node name="Hands" parent="AnimatedGun" instance=ExtResource("5_4ksay")]
+position = Vector2(-9, 0)
+
+[node name="Hands2" parent="AnimatedGun" instance=ExtResource("5_4ksay")]
+position = Vector2(0, 3)
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(11, 0)

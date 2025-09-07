@@ -11,7 +11,7 @@ radius = 30.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0bpo6"]
 atlas = ExtResource("4_nu8hp")
-region = Rect2(0, 64, 64, 64)
+region = Rect2(0, 192, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lbp1c"]
 atlas = ExtResource("4_nu8hp")
@@ -79,8 +79,6 @@ shape = SubResource("CircleShape2D_0bpo6")
 position = Vector2(40, 0)
 sprite_frames = SubResource("SpriteFrames_6m0j2")
 animation = &"hit"
-frame = 4
-frame_progress = 1.0
 
 [node name="Raycast" parent="." instance=ExtResource("5_0bpo6")]
 
