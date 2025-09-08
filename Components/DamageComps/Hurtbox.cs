@@ -3,6 +3,9 @@ using Godot;
 [GlobalClass]
 public partial class Hurtbox : Area2D
 {
+    [Signal]
+    public delegate void HitEventHandler();
+
     [Export] private BaseHitEffect[] hitEffects = [];
     [Export] private bool isImmune = false;
     [Export] private int maxHealth = 100;
@@ -24,6 +27,8 @@ public partial class Hurtbox : Area2D
         owner.Knockback(direction, damageData.Knockback);
 
         if (hitFlash != null) hitFlash.Blink();
+
+        EmitSignal(SignalName.Hit);
 
         GD.Print("took " + damageData.Damage + " damage, current health " + currentHealth);
         if (currentHealth <= 0)

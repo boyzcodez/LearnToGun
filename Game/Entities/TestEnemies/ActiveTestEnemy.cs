@@ -13,7 +13,7 @@ public partial class ActiveTestEnemy : Entity
         stateMachine = GetNode<StateMachine>("StateMachine");
         hurtbox = GetNode<Hurtbox>("Hurtbox");
 
-        neccissary.Visible = true;
+        //neccissary.Visible = true;
     }
 
     public void Activate()

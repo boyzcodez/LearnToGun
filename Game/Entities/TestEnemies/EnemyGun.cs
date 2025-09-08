@@ -33,12 +33,12 @@ public partial class EnemyGun : Node2D
         {
             time += (float)delta;
 
-            if (time >= 4f)
+            if (time >= 2.5f)
             {
                 canShoot = true;
             }
         }
-        else if (!rayCast.IsColliding() && canShoot)
+        else if (rayCast.IsColliding() && canShoot)
         {
             canShoot = false;
             if (gun != null) gun.Shoot();
@@ -49,5 +49,9 @@ public partial class EnemyGun : Node2D
     public void ResetTimer()
     {
         time = 0;
+    }
+    public void _on_hurtbox_hit()
+    {
+        ResetTimer();
     }
 }

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cccauuo7nkwjv" path="res://Game/Player/Player.cs" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://dyqbl4s13wnxg" path="res://Components/Etc/shadow.tscn" id="2_nfw5o"]
 [ext_resource type="Texture2D" uid="uid://drnvmxh1e2u5u" path="res://Assets/NewRobot.png" id="2_qwver"]
-[ext_resource type="Material" path="res://Game/Player/HitFlash.tres" id="3_akrrf"]
+[ext_resource type="Material" uid="uid://w5yw3e3gudc3" path="res://Game/Player/HitFlash.tres" id="3_akrrf"]
 [ext_resource type="Script" uid="uid://lai5akvass2s" path="res://Game/Player/AnimatedSprite.cs" id="3_letr6"]
 [ext_resource type="Script" uid="uid://b1ak4u4c4cm3j" path="res://Game/Player/Direction.cs" id="4_vytja"]
 [ext_resource type="Script" uid="uid://cjdsjaml44rs2" path="res://Game/Player/LookAt.cs" id="6_4ddeg"]
@@ -531,6 +531,7 @@ animations = [{
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("weaponManager") groups=["Player"]]
 motion_mode = 1
 platform_on_leave = 2
+platform_floor_layers = 0
 script = ExtResource("1_onrkg")
 weaponManager = NodePath("PlayerWeaponManager")
 
