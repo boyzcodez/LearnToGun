@@ -47,7 +47,7 @@ public partial class BulletPool : Node
         if (!_pools.TryGetValue(key, out var pool) || pool.Count == 0)
         {
             GD.PrintErr("No Bullets to use");
-            PreparePool(key, gunData, 1);
+            PreparePool(key, gunData, 5);
         }
 
         var bullet = _pools[key].Dequeue();
@@ -61,19 +61,18 @@ public partial class BulletPool : Node
         //UniversalStopButton.DisableNode(bullet);
         _pools[key].Enqueue(bullet);
     }
-    //     public void DeleteBullets(string oldKey)
-    // {
-    //     if (_pools.ContainsKey(oldKey))
-    //     {
-    //         foreach (var bullet in _pools[oldKey])
-    //             bullet.QueueFree();
+    public void NewBullets(string key, GunData gunData, int amount)
+    {
+        if (_pools.ContainsKey(key))
+        {
+            foreach (var bullet in _pools[key])
+                bullet.QueueFree();
 
-    //         _pools.Remove(oldKey);
-    //     }
+            _pools.Remove(key);
+        }
 
-    //     // Reset the enemy bullet list safely
-    //     _enemyBullets.RemoveAll(b => b.PoolKey == oldKey);
-    // }
+        PreparePool(key, gunData, amount);
+    }
     public void ClearBullets()
     {
         EventBus.TriggerScreenShake(0.5f);

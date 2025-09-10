@@ -56,6 +56,16 @@ public partial class Gun : Node2D
         _cooldown = gunData.FireRate;
         GD.Print(gunData.CurrentAmmo);
     }
+    private void LevelUp()
+    {
+        gunData = gunData.NextLevelData;
+
+        pool = GetTree().GetFirstNodeInGroup("BulletPool") as BulletPool;
+        type = type + GetInstanceId();
+
+        pool.NewBullets(type, gunData, gunData.SpawnAmount);
+        pool.PreparePool(type, gunData, gunData.SpawnAmount);
+    }
 
     private async void PlayAnimation()
     {
