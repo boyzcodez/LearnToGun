@@ -18,7 +18,7 @@ public partial class Gun : Node2D
         pool.PreparePool(type, gunData, gunData.SpawnAmount);
 
         sprite.Play(gunData.LVL + "default");
-        XpHandler.AddGun(gunData.GunName, this);
+        if (!gunData.isEnemy) XpHandler.AddGun(gunData.GunName, this);
     }
 
     public override void _Process(double delta)
@@ -62,6 +62,10 @@ public partial class Gun : Node2D
     public void AddXP(int xp)
     {
         gunData.currentXP += xp;
+        CheckXP();
+    }
+    public void CheckXP()
+    {
         if (gunData.currentXP >= gunData.maxXP)
         {
             LevelUp();
@@ -78,6 +82,8 @@ public partial class Gun : Node2D
         pool.NewBullets(type, gunData, gunData.SpawnAmount);
 
         sprite.Play(gunData.LVL + "default");
+
+        CheckXP();
     }
 
     private async void PlayAnimation()

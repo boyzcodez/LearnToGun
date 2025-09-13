@@ -8,7 +8,8 @@ public partial class WarpDash : Node2D
     private bool isWarping = false;
 
     private Timer warpTimer;
-    private AnimatedSprite2D animatedSprite;
+    private AnimatedSprite animatedSprite;
+    private Shadow shadow;
     [Export] private PackedScene ghostScene;
 
 
@@ -37,7 +38,8 @@ public partial class WarpDash : Node2D
     public override void _Ready()
     {
         warpTimer = GetNode<Timer>("Timer");
-        animatedSprite = GetParent().GetNode<AnimatedSprite2D>("AnimatedSprite");
+        animatedSprite = GetParent().GetNode<AnimatedSprite>("AnimatedSprite");
+        shadow = GetParent().GetNode<Shadow>("Shadow");
     }
 
     // this function is hooked up through the engine
@@ -55,6 +57,9 @@ public partial class WarpDash : Node2D
     {
         isWarping = true;
         warpTimer.Start();
+        animatedSprite.PlayAnimation("Glitch", 3);
+        shadow.TriggerShrink();
+
     }
     public void Deactivated()
     {

@@ -219,4 +219,4 @@ sprite_frames = SubResource("SpriteFrames_221aa")
 animation = &"LV3_default"
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(7, 0)
+position = Vector2(12, 0)
