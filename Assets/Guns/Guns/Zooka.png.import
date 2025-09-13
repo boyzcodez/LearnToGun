@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ctvc5jlwlpnox"
-path="res://.godot/imported/Zooka.png-836568605a53523c611762779e01dbae.ctex"
+path="res://.godot/imported/Zooka.png-17671da936eaa5185b43c5071696679b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game/Guns/Player/Zooka/Zooka.png"
-dest_files=["res://.godot/imported/Zooka.png-836568605a53523c611762779e01dbae.ctex"]
+source_file="res://Assets/Guns/Guns/Zooka.png"
+dest_files=["res://.godot/imported/Zooka.png-17671da936eaa5185b43c5071696679b.ctex"]
 
 [params]
 

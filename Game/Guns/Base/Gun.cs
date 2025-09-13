@@ -16,13 +16,14 @@ public partial class Gun : Node2D
         pool = GetTree().GetFirstNodeInGroup("BulletPool") as BulletPool;
         type = type + GetInstanceId();
         pool.PreparePool(type, gunData, gunData.SpawnAmount);
+
+        sprite.Play(gunData.LVL + "default");
+        XpHandler.AddGun(gunData.GunName, this);
     }
 
     public override void _Process(double delta)
     {
         if (_cooldown > 0) _cooldown -= (float)delta;
-        //GD.PrintErr("Game Not Work");
-  
     }
 
     public void Shoot()
@@ -57,25 +58,44 @@ public partial class Gun : Node2D
         _cooldown = gunData.FireRate;
         GD.Print(gunData.CurrentAmmo);
     }
-    private void LevelUp()
-    {
-        gunData = gunData.NextLevelData;
 
-        pool = GetTree().GetFirstNodeInGroup("BulletPool") as BulletPool;
-        type = type + GetInstanceId();
+    public void AddXP(int xp)
+    {
+        gunData.currentXP += xp;
+        if (gunData.currentXP >= gunData.maxXP)
+        {
+            LevelUp();
+        }
+    }
+    public void LevelUp()
+    {
+        if (gunData.NextLevelData == null) return;
+
+        var xp = gunData.currentXP - gunData.maxXP;
+        gunData = gunData.NextLevelData;
+        gunData.currentXP = xp;
 
         pool.NewBullets(type, gunData, gunData.SpawnAmount);
 
+        sprite.Play(gunData.LVL + "default");
     }
 
     private async void PlayAnimation()
     {
-        sprite.Play("shoot");
+        sprite.Play(gunData.LVL + "shoot");
 
         await ToSignal(sprite, "animation_finished");
 
-        sprite.Play("default");
+        sprite.Play(gunData.LVL + "default");
     }
+    public override void _Input(InputEvent @event)
+    {
+        if (@event.IsActionPressed("space"))
+        {
+            LevelUp();
+        }
+    }
+
     
     
 }

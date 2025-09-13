@@ -10,6 +10,7 @@ public partial class Hurtbox : Area2D
     [Export] private bool isImmune = false;
     [Export] private int maxHealth = 100;
     [Export] private HitFlash hitFlash;
+    [Export] private int xpAmount = 1;
     private int currentHealth;
     public bool immune = false;
     private Entity owner;
@@ -29,6 +30,7 @@ public partial class Hurtbox : Area2D
         if (hitFlash != null) hitFlash.Blink();
 
         EmitSignal(SignalName.Hit);
+        XpHandler.AddXP(damageData.WeaponName, xpAmount);
 
         GD.Print("took " + damageData.Damage + " damage, current health " + currentHealth);
         if (currentHealth <= 0)

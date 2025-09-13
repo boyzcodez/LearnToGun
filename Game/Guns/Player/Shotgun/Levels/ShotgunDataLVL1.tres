@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="GunData" load_steps=5 format=3 uid="uid://7ce3aqmof3vb"]
+
+[ext_resource type="PackedScene" uid="uid://c6mvfh4mlxu4h" path="res://Game/Guns/Player/Shotgun/ShotgunBlast.tscn" id="1_lrtv0"]
+[ext_resource type="Texture2D" uid="uid://diet8ij7y2hpc" path="res://Assets/Guns/Guns/basic_weapon_shotgun1.png" id="2_ystmm"]
+[ext_resource type="Resource" uid="uid://chey1on0lao7g" path="res://Game/Guns/Player/Shotgun/Levels/ShotgunDataLVL2.tres" id="3_28w8n"]
+[ext_resource type="Script" uid="uid://bf05vlwwwrvul" path="res://Game/Guns/Base/GunData.cs" id="4_dxuyj"]
+
+[resource]
+script = ExtResource("4_dxuyj")
+GunName = "Shotgun"
+LVL = "LV1_"
+currentXP = 0
+maxXP = 3
+Damage = 1
+Knockback = 200.0
+BulletSpeed = 0.0
+BulletScene = ExtResource("1_lrtv0")
+SpawnAmount = 20
+CurrentAmmo = 30
+MaxAmmo = 30
+UsesAmmo = true
+FireRate = 0.4
+BulletCount = 1
+SpreadAngle = 0.0
+RandomFactor = 0.0
+GunSprite = ExtResource("2_ystmm")
+isEnemy = false
+NextLevelData = ExtResource("3_28w8n")
+metadata/_custom_type_script = "uid://bf05vlwwwrvul"

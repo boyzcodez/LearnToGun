@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="GunData" load_steps=3 format=3 uid="uid://sfukcc8s84k4"]
+
+[ext_resource type="Script" uid="uid://bf05vlwwwrvul" path="res://Game/Guns/Base/GunData.cs" id="1_7s74o"]
+[ext_resource type="PackedScene" uid="uid://c6mvfh4mlxu4h" path="res://Game/Guns/Player/Shotgun/ShotgunBlast.tscn" id="1_jvcln"]
+
+[resource]
+script = ExtResource("1_7s74o")
+GunName = "Shotgun"
+LVL = "LV3_"
+currentXP = 0
+maxXP = 3
+Damage = 3
+Knockback = 200.0
+BulletSpeed = 80.0
+BulletScene = ExtResource("1_jvcln")
+SpawnAmount = 30
+CurrentAmmo = 10
+MaxAmmo = 10
+UsesAmmo = true
+FireRate = 0.2
+BulletCount = 1
+SpreadAngle = 0.0
+RandomFactor = 0.0
+isEnemy = false
+metadata/_custom_type_script = "uid://bf05vlwwwrvul"

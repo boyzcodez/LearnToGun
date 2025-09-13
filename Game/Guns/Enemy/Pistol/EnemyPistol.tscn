@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cy8n2i1umi5jp"]
+[gd_scene load_steps=10 format=3 uid="uid://cy8n2i1umi5jp"]
 
 [ext_resource type="Script" uid="uid://cemybpxgj5xep" path="res://Game/Guns/Base/Gun.cs" id="1_sgm38"]
 [ext_resource type="Resource" uid="uid://0mow7g6u66nf" path="res://Game/Guns/Enemy/Pistol/EnemyPistolData.tres" id="2_rp4hu"]
 [ext_resource type="PackedScene" uid="uid://bijvgrqbhqt74" path="res://Game/Guns/Base/AnimatedGun.tscn" id="3_rp4hu"]
 [ext_resource type="Texture2D" uid="uid://p81l6fvexk0a" path="res://Game/Guns/Enemy/Pistol/EnemyPistol.png" id="4_rp4hu"]
-[ext_resource type="PackedScene" uid="uid://djku7onwfxvyl" path="res://Components/Etc/Hands.tscn" id="5_jhya0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jhya0"]
 atlas = ExtResource("4_rp4hu")
@@ -29,7 +28,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_jhya0")
 }],
 "loop": false,
-"name": &"default",
+"name": &"LV1_default",
 "speed": 5.0
 }, {
 "frames": [{
@@ -43,7 +42,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_6hwjr")
 }],
 "loop": false,
-"name": &"shoot",
+"name": &"LV1_shoot",
 "speed": 7.0
 }]
 
@@ -56,11 +55,7 @@ type = "EnemyPistol"
 
 [node name="AnimatedGun" parent="." instance=ExtResource("3_rp4hu")]
 sprite_frames = SubResource("SpriteFrames_6hwjr")
-animation = &"shoot"
-autoplay = "default"
-
-[node name="Hands" parent="AnimatedGun" instance=ExtResource("5_jhya0")]
-position = Vector2(-8, 1)
+animation = &"LV1_shoot"
 
 [node name="Spot" type="Marker2D" parent="."]
 position = Vector2(9, -1)

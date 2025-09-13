@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 public partial class BulletPool : Node
 {
-    private Dictionary<string, Queue<Bullet>> _pools = new();
-    private List<Bullet> _enemyBullets = new();
+    public Dictionary<string, Queue<Bullet>> _pools = new();
+    public List<Bullet> _enemyBullets = new();
 
     public override void _Ready()
     {
@@ -35,7 +35,7 @@ public partial class BulletPool : Node
         for (int i = pool.Count; i < amount; i++)
         {
             var bullet = gunData.BulletScene.Instantiate<Bullet>();
-            bullet.Init(new DamageData(gunData.Damage, gunData.Knockback), key, gunData.BulletSpeed, this);
+            bullet.Init(new DamageData(gunData.Damage, gunData.Knockback, gunData.GunName), key, gunData.BulletSpeed, this);
             CallDeferred("add_child", bullet);
             pool.Enqueue(bullet);
 

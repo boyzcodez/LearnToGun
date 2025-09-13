@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://tflokayy1njn"]
+[gd_scene load_steps=10 format=3 uid="uid://tflokayy1njn"]
 
 [ext_resource type="Script" uid="uid://cemybpxgj5xep" path="res://Game/Guns/Base/Gun.cs" id="1_0utft"]
-[ext_resource type="Resource" uid="uid://du4ihic1fxweh" path="res://Game/Guns/Player/Pistol/PistolData.tres" id="2_bqxg4"]
+[ext_resource type="Resource" uid="uid://du4ihic1fxweh" path="res://Game/Guns/Player/Pistol/Levels/PistolData.tres" id="2_bqxg4"]
 [ext_resource type="PackedScene" uid="uid://bijvgrqbhqt74" path="res://Game/Guns/Base/AnimatedGun.tscn" id="3_vychm"]
-[ext_resource type="Texture2D" uid="uid://brx2swq0lnw54" path="res://Game/Guns/Player/Pistol/NewPistol.png" id="4_6r7bt"]
-[ext_resource type="PackedScene" uid="uid://djku7onwfxvyl" path="res://Components/Etc/Hands.tscn" id="5_6r7bt"]
+[ext_resource type="Texture2D" uid="uid://brx2swq0lnw54" path="res://Assets/Guns/Guns/NewPistol.png" id="4_6r7bt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vychm"]
 atlas = ExtResource("4_6r7bt")
@@ -29,7 +28,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_vychm")
 }],
 "loop": false,
-"name": &"default",
+"name": &"LV1_default",
 "speed": 5.0
 }, {
 "frames": [{
@@ -43,7 +42,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_uhy3h")
 }],
 "loop": false,
-"name": &"shoot",
+"name": &"LV1_shoot",
 "speed": 7.0
 }]
 
@@ -57,11 +56,7 @@ type = "Pistol"
 [node name="AnimatedGun" parent="." instance=ExtResource("3_vychm")]
 position = Vector2(3, 0)
 sprite_frames = SubResource("SpriteFrames_dhhm1")
-animation = &"shoot"
-autoplay = "default"
-
-[node name="Hands" parent="AnimatedGun" instance=ExtResource("5_6r7bt")]
-position = Vector2(-8, 2)
+animation = &"LV1_shoot"
 
 [node name="Spot" type="Marker2D" parent="."]
-position = Vector2(13, -3)
+position = Vector2(13, -2)
