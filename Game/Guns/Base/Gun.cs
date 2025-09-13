@@ -21,7 +21,8 @@ public partial class Gun : Node2D
     public override void _Process(double delta)
     {
         if (_cooldown > 0) _cooldown -= (float)delta;
-
+        //GD.PrintErr("Game Not Work");
+  
     }
 
     public void Shoot()
@@ -64,7 +65,7 @@ public partial class Gun : Node2D
         type = type + GetInstanceId();
 
         pool.NewBullets(type, gunData, gunData.SpawnAmount);
-        pool.PreparePool(type, gunData, gunData.SpawnAmount);
+
     }
 
     private async void PlayAnimation()

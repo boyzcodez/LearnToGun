@@ -5,6 +5,8 @@ using Godot;
 public partial class GunData : Resource
 {
     [Export] public string GunName { get; set; } = "weapon";
+    [Export(PropertyHint.Enum, "LV1,LV2,LV3,LV4,LV5")]
+    public string LVL { get; set; } = "LV1";
     [Export] public int Damage { get; set; } = 1;
     [Export] public float Knockback { get; set; } = 0f;
     [Export] public float BulletSpeed { get; set; } = 80f;
