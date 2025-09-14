@@ -94,13 +94,6 @@ public partial class Gun : Node2D
 
         sprite.Play(gunData.LVL + "default");
     }
-    public override void _Input(InputEvent @event)
-    {
-        if (@event.IsActionPressed("space"))
-        {
-            LevelUp();
-        }
-    }
 
     
     
