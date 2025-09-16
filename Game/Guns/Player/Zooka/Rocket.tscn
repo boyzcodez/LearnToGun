@@ -7,7 +7,7 @@
 [ext_resource type="Resource" uid="uid://cnjlb04ybn80u" path="res://Components/BulletComps/BulletBehaviors/Resources/Explosion.tres" id="3_ibh86"]
 [ext_resource type="Resource" uid="uid://lw3c1ep3jdap" path="res://Components/BulletComps/BulletBehaviors/Resources/DeleteTimer.tres" id="4_b2qw3"]
 [ext_resource type="Resource" uid="uid://b45ph88mhkuy3" path="res://Components/BulletComps/BulletBehaviors/Resources/SpeedUp.tres" id="4_wk315"]
-[ext_resource type="Resource" uid="uid://xn0p4wisqnkv" path="res://Components/BulletComps/BulletBehaviors/Resources/TowardRotation.tres" id="5_wk315"]
+[ext_resource type="Resource" uid="uid://c1fvuhgii0t5b" path="res://Components/BulletComps/BulletBehaviors/Resources/TowardMouse.tres" id="5_wk315"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cb3qr"]
 radius = 42.0119
