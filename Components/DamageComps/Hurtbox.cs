@@ -9,6 +9,7 @@ public partial class Hurtbox : Area2D
     [Export] private BaseHitEffect[] hitEffects = [];
     [Export] private bool isImmune = false;
     [Export] private int maxHealth = 100;
+    [Export] private float knockbackResist = 0f;
     [Export] private HitFlash hitFlash;
     [Export] private int xpAmount = 1;
     private int currentHealth;
@@ -25,7 +26,7 @@ public partial class Hurtbox : Area2D
     public void TakeDamage(DamageData damageData, Vector2 direction = default)
     {
         currentHealth -= damageData.Damage;
-        owner.Knockback(direction, damageData.Knockback);
+        owner.Knockback(direction, damageData.Knockback - knockbackResist);
 
         if (hitFlash != null) hitFlash.Blink();
 

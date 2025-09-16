@@ -54,9 +54,9 @@ sprite = NodePath("AnimatedGun")
 type = "Pistol"
 
 [node name="AnimatedGun" parent="." instance=ExtResource("3_vychm")]
-position = Vector2(3, 2)
+position = Vector2(3, -1)
 sprite_frames = SubResource("SpriteFrames_dhhm1")
 animation = &"LV1_shoot"
 
 [node name="Spot" type="Marker2D" parent="."]
-position = Vector2(13, 0)
+position = Vector2(13, -3)

@@ -1,17 +1,17 @@
-[gd_scene load_steps=109 format=3 uid="uid://chh07uycyoynw"]
+[gd_scene load_steps=109 format=3 uid="uid://bbjw3fvxlq53q"]
 
 [ext_resource type="Script" uid="uid://cccauuo7nkwjv" path="res://Game/Player/Player.cs" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://dyqbl4s13wnxg" path="res://Components/Etc/shadow.tscn" id="2_nfw5o"]
 [ext_resource type="Texture2D" uid="uid://drnvmxh1e2u5u" path="res://Assets/NewRobot.png" id="2_qwver"]
 [ext_resource type="Material" uid="uid://w5yw3e3gudc3" path="res://Game/Player/HitFlash.tres" id="3_akrrf"]
-[ext_resource type="Script" uid="uid://lai5akvass2s" path="res://Game/Player/AnimatedSprite.cs" id="3_letr6"]
 [ext_resource type="Script" uid="uid://b1ak4u4c4cm3j" path="res://Game/Player/Direction.cs" id="4_vytja"]
+[ext_resource type="Script" uid="uid://c76e6opdvi84r" path="res://Game/Player/AnimatedSpriteC.cs" id="5_wg23h"]
 [ext_resource type="Script" uid="uid://cjdsjaml44rs2" path="res://Game/Player/LookAt.cs" id="6_4ddeg"]
 [ext_resource type="Script" uid="uid://cvs4foguxsu1" path="res://Game/Player/PlayerWeaponManager.cs" id="6_tqhgd"]
 [ext_resource type="PackedScene" uid="uid://bp3lx4f7c5wd1" path="res://Components/Etc/hit_flash.tscn" id="7_akrrf"]
 [ext_resource type="PackedScene" uid="uid://tflokayy1njn" path="res://Game/Guns/Player/Pistol/Pistol.tscn" id="7_q0m6d"]
 [ext_resource type="PackedScene" uid="uid://vmtiw08cr30b" path="res://Components/DamageComps/hurtbox.tscn" id="7_vh1aq"]
-[ext_resource type="PackedScene" uid="uid://ci5kdh4eh4lic" path="res://Game/Guns/Player/Shotgun/shotgun.tscn" id="8_nfw5o"]
+[ext_resource type="PackedScene" uid="uid://ci5kdh4eh4lic" path="res://Game/Guns/Player/Shotgun/Shotgun.tscn" id="8_nfw5o"]
 [ext_resource type="PackedScene" uid="uid://cc8avd18quyok" path="res://Game/Guns/Player/Zooka/Zooka.tscn" id="11_wg23h"]
 [ext_resource type="Script" uid="uid://c73kpxw2e5ynj" path="res://Game/Player/WarpDash.cs" id="12_qwver"]
 [ext_resource type="PackedScene" uid="uid://bxyy5vw0eiy5e" path="res://Game/Player/ghost_sprite.tscn" id="13_nfw5o"]
@@ -360,7 +360,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Back",
-"speed": 7.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -423,7 +423,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"BackRun",
-"speed": 7.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -440,7 +440,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Front",
-"speed": 7.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -503,7 +503,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"FrontRun",
-"speed": 7.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -520,7 +520,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"RightBack",
-"speed": 7.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -583,7 +583,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"RightBackRun",
-"speed": 7.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -600,7 +600,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"RightFront",
-"speed": 7.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -663,7 +663,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"RightFrontRun",
-"speed": 7.0
+"speed": 9.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ch4ko"]
@@ -737,8 +737,8 @@ position = Vector2(0, -1)
 material = ExtResource("3_akrrf")
 position = Vector2(0, -10)
 sprite_frames = SubResource("SpriteFrames_fy1n6")
-animation = &"RightFrontGlitch"
-script = ExtResource("3_letr6")
+animation = &"RightFrontRun"
+script = ExtResource("5_wg23h")
 
 [node name="Direction" type="Node" parent="AnimatedSprite"]
 script = ExtResource("4_vytja")
@@ -753,9 +753,7 @@ GunScenes = [ExtResource("7_q0m6d"), ExtResource("8_nfw5o"), ExtResource("11_wg2
 [node name="LookAt" type="Marker2D" parent="." node_paths=PackedStringArray("gunSpot")]
 position = Vector2(0, -8)
 script = ExtResource("6_4ddeg")
-SnapDegrees = 7.5
 gunSpot = NodePath("GunSpot")
-MinOffset = 6.0
 
 [node name="GunSpot" type="Node2D" parent="LookAt"]
 position = Vector2(14, 0)

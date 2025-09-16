@@ -4,13 +4,13 @@ using Godot;
 public partial class Player : Entity
 {
     [Export] public PlayerWeaponManager weaponManager;
-    private const float SPEED = 100f;
-    private const float DODGE_SPEED = 180f;
+    private const float SPEED = 120f;
+    private const float DODGE_SPEED = 200f;
     private const float DODGE_DURATION = 0.5f;
 
     private bool isDodging = false;
     private Vector2 dodgeDirection;
-    private float dodgeTime = 0f;
+    public float dodgeTime = 0f;
     private float dashCooldown = 0.5f;
 
     private Hurtbox hurtbox;

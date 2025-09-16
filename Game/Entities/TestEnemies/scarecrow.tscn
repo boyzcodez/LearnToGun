@@ -1,26 +1,141 @@
-[gd_scene load_steps=6 format=3 uid="uid://u1aqua33b3uc"]
+[gd_scene load_steps=21 format=3 uid="uid://u1aqua33b3uc"]
 
 [ext_resource type="Script" uid="uid://bskvhomxdhrhy" path="res://Scarecrow.cs" id="1_j5bqv"]
-[ext_resource type="Texture2D" uid="uid://bm5su8unmtdyu" path="res://Assets/icon.svg" id="2_vyfxq"]
+[ext_resource type="Texture2D" uid="uid://bumavqdsqd44w" path="res://Assets/Entity/Enemy/PunchingBag.png" id="2_j5bqv"]
+[ext_resource type="Material" uid="uid://w5yw3e3gudc3" path="res://Game/Player/HitFlash.tres" id="2_vyfxq"]
 [ext_resource type="PackedScene" uid="uid://vmtiw08cr30b" path="res://Components/DamageComps/hurtbox.tscn" id="3_7idsq"]
+[ext_resource type="PackedScene" uid="uid://bp3lx4f7c5wd1" path="res://Components/Etc/hit_flash.tscn" id="4_7idsq"]
+[ext_resource type="Script" uid="uid://6tyv10vknvme" path="res://Game/Entities/TestEnemies/AnimatedSpriteT.cs" id="4_vw1ok"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j5bqv"]
+radius = 7.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vw1ok"]
-radius = 60.0083
+[sub_resource type="AtlasTexture" id="AtlasTexture_vyfxq"]
+atlas = ExtResource("2_j5bqv")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7idsq"]
+atlas = ExtResource("2_j5bqv")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vw1ok"]
+atlas = ExtResource("2_j5bqv")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bw3k6"]
+atlas = ExtResource("2_j5bqv")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0b0te"]
+atlas = ExtResource("2_j5bqv")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nk033"]
+atlas = ExtResource("2_j5bqv")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2sb7l"]
+atlas = ExtResource("2_j5bqv")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k51do"]
+atlas = ExtResource("2_j5bqv")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ev3g6"]
+atlas = ExtResource("2_j5bqv")
+region = Rect2(192, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aif3a"]
+atlas = ExtResource("2_j5bqv")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57cef"]
+atlas = ExtResource("2_j5bqv")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0b0te"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vyfxq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7idsq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vw1ok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bw3k6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0b0te")
+}],
+"loop": false,
+"name": &"HitLeft",
+"speed": 21.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nk033")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2sb7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k51do")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ev3g6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aif3a")
+}],
+"loop": false,
+"name": &"HitRight",
+"speed": 21.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_57cef")
+}],
+"loop": false,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7idsq"]
+radius = 8.0
+height = 34.0
 
 [node name="Scarecrow" type="CharacterBody2D"]
+motion_mode = 1
+platform_on_leave = 2
 script = ExtResource("1_j5bqv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_j5bqv")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_vyfxq")
+[node name="AnimatedSpriteT" type="AnimatedSprite2D" parent="."]
+material = ExtResource("2_vyfxq")
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_0b0te")
+animation = &"HitRight"
+autoplay = "default"
+script = ExtResource("4_vw1ok")
 
-[node name="Hurtbox" parent="." instance=ExtResource("3_7idsq")]
+[node name="HitFlash" parent="AnimatedSpriteT" instance=ExtResource("4_7idsq")]
+
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("hitFlash") instance=ExtResource("3_7idsq")]
 collision_layer = 4
 maxHealth = 1000
+knockbackResist = 1000.0
+hitFlash = NodePath("../AnimatedSpriteT/HitFlash")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-shape = SubResource("CircleShape2D_vw1ok")
+position = Vector2(0, -16)
+shape = SubResource("CapsuleShape2D_7idsq")
+
+[connection signal="animation_finished" from="AnimatedSpriteT" to="AnimatedSpriteT" method="_on_animation_finished"]

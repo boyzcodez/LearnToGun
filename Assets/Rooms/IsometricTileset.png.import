@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brx2swq0lnw54"
-path="res://.godot/imported/NewPistol.png-244620130b4ecb13eb20eee654ae0891.ctex"
+uid="uid://bx8o6d8ml8ipc"
+path="res://.godot/imported/IsometricTileset.png-a7a93e7c362165628c6ce22be9c5d393.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Guns/Guns/NewPistol.png"
-dest_files=["res://.godot/imported/NewPistol.png-244620130b4ecb13eb20eee654ae0891.ctex"]
+source_file="res://Assets/Rooms/IsometricTileset.png"
+dest_files=["res://.godot/imported/IsometricTileset.png-a7a93e7c362165628c6ce22be9c5d393.ctex"]
 
 [params]
 

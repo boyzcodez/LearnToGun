@@ -9,6 +9,7 @@ public partial class Entity : CharacterBody2D
 
     public void Knockback(Vector2 direction, float force)
     {
+        if (force <= 0) return;
         Vector2 Knockback = direction.Normalized() * force;
 
         if (Knockback == Vector2.Zero)

@@ -24,7 +24,7 @@ script = ExtResource("1_mxdch")
 position = Vector2(0, -50)
 
 [node name="Scarecrow" parent="EntityHandler" instance=ExtResource("5_mxdch")]
-position = Vector2(200, 0)
+position = Vector2(150, 0)
 
 [node name="PlayerCamera" parent="." node_paths=PackedStringArray("followNode") instance=ExtResource("5_vmwgv")]
 followNode = NodePath("../EntityHandler/Player")

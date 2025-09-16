@@ -44,7 +44,11 @@ public partial class Bullet : Area2D
             behavior.Update(this, delta);
         }
 
-        if (raycast.IsColliding() && Hurtboxes.Count > 0)
+        // if (raycast.IsColliding() && Hurtboxes.Count > 0)
+        // {
+        //     OnHit();
+        // }
+        if (Hurtboxes.Count > 0)
         {
             OnHit();
         }
