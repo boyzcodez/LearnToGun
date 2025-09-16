@@ -139,8 +139,6 @@ animations = [{
 }]
 
 [node name="ActiveTestEnemy" type="CharacterBody2D"]
-collision_layer = 0
-collision_mask = 0
 motion_mode = 1
 platform_on_leave = 2
 platform_floor_layers = 0
@@ -163,7 +161,7 @@ Active = true
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("7_tko4x")
-NextState = "Surround"
+NextState = "Follow"
 PrevState = "Nothing"
 metadata/_custom_type_script = "uid://c2orrjp6f8iyi"
 
@@ -178,7 +176,7 @@ metadata/_custom_type_script = "uid://cbm2bcpra8ll1"
 [node name="Surround" type="Node" parent="StateMachine"]
 script = ExtResource("9_i2p2e")
 moveSpeed = 30.0
-circleRadius = 90.0
+circleRadius = 50.0
 NextState = "Surround"
 metadata/_custom_type_script = "uid://2sl1ow0g27ob"
 

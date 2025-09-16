@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="TowardsRotation" load_steps=2 format=3 uid="uid://xn0p4wisqnkv"]
+
+[ext_resource type="Script" uid="uid://cv6nt1736ic1o" path="res://Components/BulletComps/BulletBehaviors/Scripts/TowardsRotation.cs" id="1_085mw"]
+
+[resource]
+script = ExtResource("1_085mw")
+metadata/_custom_type_script = "uid://cv6nt1736ic1o"

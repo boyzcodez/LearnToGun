@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bwg1vr3b8p5a0"]
+[gd_scene load_steps=22 format=3 uid="uid://bwg1vr3b8p5a0"]
 
 [ext_resource type="Texture2D" uid="uid://cr503qxhapueh" path="res://Assets/Guns/Bullets/Projectile 19.png" id="1_3rjha"]
 [ext_resource type="Script" uid="uid://de44iwnl6kvq1" path="res://Game/Guns/Base/Bullets/Bullet.cs" id="1_6cbj7"]
@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://cnjlb04ybn80u" path="res://Components/BulletComps/BulletBehaviors/Resources/Explosion.tres" id="3_ibh86"]
 [ext_resource type="Resource" uid="uid://lw3c1ep3jdap" path="res://Components/BulletComps/BulletBehaviors/Resources/DeleteTimer.tres" id="4_b2qw3"]
 [ext_resource type="Resource" uid="uid://b45ph88mhkuy3" path="res://Components/BulletComps/BulletBehaviors/Resources/SpeedUp.tres" id="4_wk315"]
+[ext_resource type="Resource" uid="uid://xn0p4wisqnkv" path="res://Components/BulletComps/BulletBehaviors/Resources/TowardRotation.tres" id="5_wk315"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cb3qr"]
 radius = 42.0119
@@ -105,7 +106,7 @@ animations = [{
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("1_6cbj7")
-Behaviors = [ExtResource("3_ibh86"), ExtResource("4_b2qw3"), ExtResource("4_wk315")]
+Behaviors = [ExtResource("3_ibh86"), ExtResource("4_b2qw3"), ExtResource("4_wk315"), ExtResource("5_wk315")]
 Animation = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -46,13 +46,15 @@ public partial class Gun : Node2D
         for (int i = 0; i < gunData.BulletCount; i++)
         {
             float angleOffset = -spreadRad / 2f + i * angleStep;
-            Vector2 direction = baseDirection.Rotated(angleOffset);
+            //Vector2 direction = baseDirection.Rotated(angleOffset);
+            float rotation = GlobalRotation + angleOffset;
 
             Bullet bullet = pool.GetBullet(type, gunData);
             bullet.GlobalPosition = spot.GlobalPosition;
-            bullet.Activate(direction);
 
-            if (rotate) bullet.Rotation = GlobalRotation;
+            if (rotate) bullet.Rotation = rotation;
+
+            bullet.Activate(rotation);
         }
 
         _cooldown = gunData.FireRate;

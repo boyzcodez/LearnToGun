@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="TowardsMouse" load_steps=2 format=3 uid="uid://c1fvuhgii0t5b"]
+
+[ext_resource type="Script" uid="uid://dlvpea0mxkxta" path="res://Components/BulletComps/BulletBehaviors/Scripts/TowardsMouse.cs" id="1_iuqda"]
+
+[resource]
+script = ExtResource("1_iuqda")
+metadata/_custom_type_script = "uid://dlvpea0mxkxta"

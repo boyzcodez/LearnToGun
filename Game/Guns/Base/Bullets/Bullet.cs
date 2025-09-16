@@ -11,11 +11,12 @@ public partial class Bullet : Area2D
 
     private BulletPool _pool;
     public DamageData DamageData;
-    private RayCast2D raycast;
+    public RayCast2D raycast;
 
     public List<Hurtbox> Hurtboxes { get; private set; } = new();
     public float Speed { get; private set; } = 80f;
-    public Vector2 Direction { get; private set; }
+    public Vector2 Direction { get; set; }
+    public float rotation { get; set; }
     public string Key { get; private set; }
     public bool Active { get; private set; } = false;
 
@@ -71,10 +72,14 @@ public partial class Bullet : Area2D
         _pool = newPool;
     }
 
-    public void Activate(Vector2 newDirection)
+    public void Activate(float newRotation)
     {
+        rotation = newRotation;
+        raycast.Rotation = newRotation;
+
+        Initialize();
+
         _timer = 0f;
-        Direction = newDirection;
         Active = true;
 
         Show();
