@@ -3,6 +3,7 @@ using Godot;
 [GlobalClass]
 public partial class Explosion : Behavior
 {
+    [Export] private PackedScene _explosion;
     public override void Initialize(Bullet bullet)
     {
     }
@@ -11,11 +12,12 @@ public partial class Explosion : Behavior
     }
     public override void OnHit(Bullet bullet)
     {
-        foreach (var hurtbox in bullet.Hurtboxes)
-        {
-            Vector2 direction = (hurtbox.GlobalPosition - bullet.GlobalPosition).Normalized();
-            hurtbox.TakeDamage(bullet.DamageData, direction * 100f);
+        if (_explosion != null) {
+            var explosion = _explosion.Instantiate<Area2D>();
+            explosion.GlobalPosition = bullet.GlobalPosition;
+            bullet.GetTree().CurrentScene.CallDeferred("add_child", explosion);
         }
+        
         bullet.Deactivate();
     }
 }

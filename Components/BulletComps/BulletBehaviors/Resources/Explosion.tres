@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="Explosion" load_steps=2 format=3 uid="uid://cnjlb04ybn80u"]
+[gd_resource type="Resource" script_class="Explosion" load_steps=3 format=3 uid="uid://cnjlb04ybn80u"]
 
+[ext_resource type="PackedScene" uid="uid://cpx4u71qc4u1q" path="res://Game/Guns/DamageEffects/ModularSmallExplosion.tscn" id="1_fhiw5"]
 [ext_resource type="Script" uid="uid://c3gjb4jhvxahf" path="res://Components/BulletComps/BulletBehaviors/Scripts/Explosion.cs" id="1_oqsab"]
 
 [resource]
 script = ExtResource("1_oqsab")
+_explosion = ExtResource("1_fhiw5")
 metadata/_custom_type_script = "uid://c3gjb4jhvxahf"

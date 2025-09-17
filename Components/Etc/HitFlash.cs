@@ -24,7 +24,7 @@ public partial class HitFlash : Node
 
         tween.TweenMethod(
             Callable.From<float>(SetShader_BlinkIntensity),
-            1.0f,   // from
+            2.0f,   // from
             0.0f,   // to
             0.4f    // duration
         );

@@ -12,6 +12,10 @@ public partial class Hurtbox : Area2D
     [Export] private float knockbackResist = 0f;
     [Export] private HitFlash hitFlash;
     [Export] private int xpAmount = 1;
+
+    private CpuParticles2D particles;
+    private AnimatedSprite2D animation;
+
     private int currentHealth;
     public bool immune = false;
     private Entity owner;
@@ -19,6 +23,10 @@ public partial class Hurtbox : Area2D
     public override void _Ready()
     {
         owner = GetOwner<Entity>();
+
+        particles = GetNode<CpuParticles2D>("HitParticle");
+        animation = GetNode<AnimatedSprite2D>("HitAnimation");
+
         currentHealth = maxHealth;
         immune = isImmune;
     }
@@ -34,6 +42,9 @@ public partial class Hurtbox : Area2D
         XpHandler.AddXP(damageData.WeaponName, xpAmount);
 
         GD.Print("took " + damageData.Damage + " damage, current health " + currentHealth);
+
+        Effects();
+
         if (currentHealth <= 0)
         {
             owner.Death();
@@ -45,5 +56,11 @@ public partial class Hurtbox : Area2D
                 effect.Trigger();
             }
         }
+    }
+
+    private void Effects()
+    {
+        animation.Play("default");
+        particles.Emitting = true;
     }
 }

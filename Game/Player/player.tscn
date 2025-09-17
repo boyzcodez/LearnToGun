@@ -718,6 +718,7 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("weaponManager") groups=["Player"]]
 motion_mode = 1
+wall_min_slide_angle = 0.17453292
 platform_on_leave = 2
 platform_floor_layers = 0
 script = ExtResource("1_onrkg")

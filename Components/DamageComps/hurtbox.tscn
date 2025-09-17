@@ -1,8 +1,68 @@
-[gd_scene load_steps=2 format=3 uid="uid://vmtiw08cr30b"]
+[gd_scene load_steps=11 format=3 uid="uid://vmtiw08cr30b"]
 
 [ext_resource type="Script" uid="uid://cdwq588qqamsd" path="res://Components/DamageComps/Hurtbox.cs" id="1_gpif6"]
+[ext_resource type="PackedScene" uid="uid://cqym5yesoexfg" path="res://Components/Etc/HitParticle.tscn" id="2_yg0sr"]
+[ext_resource type="Texture2D" uid="uid://c48h0yfxwlgc6" path="res://Assets/Effects/ParticleEffects.png" id="3_6j4wj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wq5lt"]
+atlas = ExtResource("3_6j4wj")
+region = Rect2(512, 512, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgltd"]
+atlas = ExtResource("3_6j4wj")
+region = Rect2(0, 512, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmn4l"]
+atlas = ExtResource("3_6j4wj")
+region = Rect2(128, 512, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gx8b5"]
+atlas = ExtResource("3_6j4wj")
+region = Rect2(256, 512, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35ylm"]
+atlas = ExtResource("3_6j4wj")
+region = Rect2(384, 512, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vx1yh"]
+atlas = ExtResource("3_6j4wj")
+region = Rect2(640, 512, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mdlb4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wq5lt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgltd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmn4l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gx8b5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35ylm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vx1yh")
+}],
+"loop": false,
+"name": &"default",
+"speed": 21.0
+}]
 
 [node name="Hurtbox" type="Area2D"]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_gpif6")
+
+[node name="HitParticle" parent="." instance=ExtResource("2_yg0sr")]
+lifetime = 0.15000000000000002
+
+[node name="HitAnimation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_mdlb4")
+frame = 5
+frame_progress = 1.0

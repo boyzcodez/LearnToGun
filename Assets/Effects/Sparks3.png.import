@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c48h0yfxwlgc6"
-path="res://.godot/imported/ParticleEffects.png-c8ec192bdfcba921846fc27d62ccef95.ctex"
+uid="uid://cag0d3cq4ky60"
+path="res://.godot/imported/Sparks3.png-b0715a42d6d50140c269282b2869e1ab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Effects/ParticleEffects.png"
-dest_files=["res://.godot/imported/ParticleEffects.png-c8ec192bdfcba921846fc27d62ccef95.ctex"]
+source_file="res://Assets/Effects/Sparks3.png"
+dest_files=["res://.godot/imported/Sparks3.png-b0715a42d6d50140c269282b2869e1ab.ctex"]
 
 [params]
 

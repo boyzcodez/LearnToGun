@@ -11,7 +11,6 @@ public partial class Bullet : Area2D
 
     private BulletPool _pool;
     public DamageData DamageData;
-    public RayCast2D raycast;
 
     public List<Hurtbox> Hurtboxes { get; private set; } = new();
     public float Speed { get; private set; } = 80f;
@@ -19,6 +18,7 @@ public partial class Bullet : Area2D
     public float rotation { get; set; }
     public string Key { get; private set; }
     public bool Active { get; private set; } = false;
+    public bool hasHit = false;
 
     public float _timer;
     private int _currentValue = 0;
@@ -33,8 +33,6 @@ public partial class Bullet : Area2D
         SetDeferred("monitoring", false);
         SetDeferred("monitorable", false);
         Hide();
-
-        raycast = GetNode<RayCast2D>("Raycast");
     }
 
     public override void _Process(double delta)
@@ -43,13 +41,9 @@ public partial class Bullet : Area2D
         {
             behavior.Update(this, delta);
         }
-
-        // if (raycast.IsColliding() && Hurtboxes.Count > 0)
-        // {
-        //     OnHit();
-        // }
-        if (Hurtboxes.Count > 0)
+        if (Hurtboxes.Count > 0 && !hasHit)
         {
+            hasHit = true;
             OnHit();
         }
 
@@ -79,12 +73,12 @@ public partial class Bullet : Area2D
     public void Activate(float newRotation)
     {
         rotation = newRotation;
-        raycast.Rotation = newRotation;
 
         Initialize();
 
         _timer = 0f;
         Active = true;
+        hasHit = false;
 
         Show();
         SetProcess(true);
