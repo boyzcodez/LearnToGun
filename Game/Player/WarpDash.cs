@@ -57,7 +57,7 @@ public partial class WarpDash : Node2D
     {
         isWarping = true;
         warpTimer.Start();
-        animatedSprite.PlayAnimation("Glitch", 3);
+        //animatedSprite.PlayAnimation("Glitch", 3);
         shadow.TriggerShrink();
 
     }

@@ -736,13 +736,15 @@ position = Vector2(0, -1)
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 material = ExtResource("3_akrrf")
-position = Vector2(0, -10)
 sprite_frames = SubResource("SpriteFrames_fy1n6")
 animation = &"RightFrontRun"
+offset = Vector2(0, -10)
 script = ExtResource("5_wg23h")
 
-[node name="Direction" type="Node" parent="AnimatedSprite"]
+[node name="Direction" type="Node" parent="AnimatedSprite" node_paths=PackedStringArray("lookAt", "animatedSprite")]
 script = ExtResource("4_vytja")
+lookAt = NodePath("../../LookAt")
+animatedSprite = NodePath("..")
 
 [node name="HitFlash" parent="AnimatedSprite" instance=ExtResource("7_akrrf")]
 

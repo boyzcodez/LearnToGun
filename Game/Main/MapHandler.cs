@@ -5,7 +5,9 @@ public partial class MapHandler : Node2D
 {
     [Export] private PackedScene startingMap;
     [Export] public PackedScene[] maps { get; set; } = Array.Empty<PackedScene>();
+    [Export] private Node2D ysort;
     private RandomNumberGenerator rng = new RandomNumberGenerator();
+    private Node2D child;
 
     public override void _Ready()
     {
@@ -17,8 +19,9 @@ public partial class MapHandler : Node2D
     {
         ClearMap();
 
-        var instance = startingMap.Instantiate();
-        CallDeferred(MethodName.AddChild, instance);
+        var instance = startingMap.Instantiate() as Node2D;
+        ysort.CallDeferred(MethodName.AddChild, instance);
+        child = instance;
     }
     private void SpawnRoom()
     {
@@ -35,7 +38,7 @@ public partial class MapHandler : Node2D
             if (scene != null)
             {
                 var instance = scene.Instantiate();
-                AddChild(instance);
+                ysort.AddChild(instance);
             }
         }
 
@@ -46,10 +49,8 @@ public partial class MapHandler : Node2D
     }
     private void ClearMap()
     {
-        foreach (var child in GetChildren())
-        {
-            child.QueueFree();
-        }
+        if (child == null) return;
+        child.QueueFree();
     }
 
 }

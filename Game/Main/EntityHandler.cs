@@ -3,6 +3,7 @@ using Godot.Collections;
 
 public partial class EntityHandler : Node2D
 {
+    [Export] private Node2D ysort;
     private float _dangerValue = EventBus.dangerValue;
     private int _currentEnemyCount = 0;
     private const int MIN_ENEMIES = 3;
@@ -50,7 +51,7 @@ public partial class EntityHandler : Node2D
 
             enemy.SetDeferred("process_mode", (int)Node.ProcessModeEnum.Disabled);
 
-            CallDeferred(MethodName.AddChild, enemy);
+            ysort.CallDeferred(MethodName.AddChild, enemy);
             //AddChild(enemy);
             _currentEnemyCount++;
 

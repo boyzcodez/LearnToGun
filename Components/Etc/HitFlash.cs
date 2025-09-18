@@ -26,7 +26,7 @@ public partial class HitFlash : Node
             Callable.From<float>(SetShader_BlinkIntensity),
             2.0f,   // from
             0.0f,   // to
-            0.4f    // duration
+            0.3f    // duration
         );
     }
 

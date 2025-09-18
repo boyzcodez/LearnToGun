@@ -10,22 +10,26 @@
 
 [node name="Main" type="Node2D"]
 
-[node name="MapHandler" type="Node2D" parent="."]
+[node name="MapHandler" type="Node2D" parent="." node_paths=PackedStringArray("ysort")]
 script = ExtResource("3_mxdch")
 startingMap = ExtResource("4_gk2dm")
 maps = [ExtResource("4_gk2dm"), ExtResource("4_gk2dm"), ExtResource("4_gk2dm")]
+ysort = NodePath("../YSort")
 
-[node name="EntityHandler" type="Node2D" parent="."]
-y_sort_enabled = true
+[node name="EntityHandler" type="Node2D" parent="." node_paths=PackedStringArray("ysort")]
 script = ExtResource("1_mxdch")
-
-[node name="Scarecrow" parent="EntityHandler" instance=ExtResource("5_mxdch")]
-position = Vector2(160, 0)
-
-[node name="Player" parent="EntityHandler" instance=ExtResource("5_gk2dm")]
-
-[node name="PlayerCamera" parent="." node_paths=PackedStringArray("followNode") instance=ExtResource("5_vmwgv")]
-followNode = NodePath("../EntityHandler/Player")
+ysort = NodePath("../YSort")
 
 [node name="BulletPool" type="Node" parent="." groups=["BulletPool"]]
 script = ExtResource("7_vmwgv")
+
+[node name="PlayerCamera" parent="." node_paths=PackedStringArray("followNode") instance=ExtResource("5_vmwgv")]
+followNode = NodePath("../YSort/Player")
+
+[node name="YSort" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Scarecrow" parent="YSort" instance=ExtResource("5_mxdch")]
+position = Vector2(160, 0)
+
+[node name="Player" parent="YSort" instance=ExtResource("5_gk2dm")]

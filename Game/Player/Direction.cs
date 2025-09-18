@@ -4,8 +4,8 @@ using System;
 public partial class Direction : Node
 {
     private string currentDirection = "Front";
-    private Marker2D lookAt;
-    private AnimatedSprite2D animatedSprite;
+    [Export]private Marker2D lookAt;
+    [Export]private AnimatedSprite2D animatedSprite;
 
     private readonly (bool showBehind, bool flipH, string dir)[] sectionMap =
     {
@@ -19,11 +19,11 @@ public partial class Direction : Node
         (true,  false, "RightBack"),  // 7
     };
 
-    public override void _Ready()
-    {
-        lookAt = GetNode<Marker2D>("../../LookAt");
-        animatedSprite = GetNode<AnimatedSprite2D>("..");
-    }
+    // public override void _Ready()
+    // {
+    //     lookAt = GetNode<Marker2D>("../../../LookAt");
+    //     animatedSprite = GetNode<AnimatedSprite2D>("../..");
+    // }
 
     public string GetDirection(int section)
     {
