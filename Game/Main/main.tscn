@@ -20,9 +20,6 @@ ysort = NodePath("../YSort")
 script = ExtResource("1_mxdch")
 ysort = NodePath("../YSort")
 
-[node name="BulletPool" type="Node" parent="." groups=["BulletPool"]]
-script = ExtResource("7_vmwgv")
-
 [node name="PlayerCamera" parent="." node_paths=PackedStringArray("followNode") instance=ExtResource("5_vmwgv")]
 followNode = NodePath("../YSort/Player")
 
@@ -33,3 +30,7 @@ y_sort_enabled = true
 position = Vector2(160, 0)
 
 [node name="Player" parent="YSort" instance=ExtResource("5_gk2dm")]
+
+[node name="BulletPool" type="Node2D" parent="YSort" groups=["BulletPool"]]
+y_sort_enabled = true
+script = ExtResource("7_vmwgv")

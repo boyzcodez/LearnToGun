@@ -1,7 +1,7 @@
 using Godot;
 using System.Collections.Generic;
 
-public partial class BulletPool : Node
+public partial class BulletPool : Node2D
 {
     public Dictionary<string, Queue<Bullet>> _pools = new();
     public List<Bullet> _enemyBullets = new();

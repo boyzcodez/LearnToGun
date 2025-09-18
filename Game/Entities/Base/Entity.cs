@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 [GlobalClass]
 public partial class Entity : CharacterBody2D
@@ -7,6 +6,7 @@ public partial class Entity : CharacterBody2D
 
     public Vector2 direction = Vector2.Zero;
     public float KnockbackTime = 0f;
+    public Vector2 KnockbackVelocity;
 
     public void Knockback(Vector2 direction, float force)
     {
@@ -20,7 +20,7 @@ public partial class Entity : CharacterBody2D
         else
         {
             KnockbackTime = 0.2f;
-            Velocity = Knockback;
+            KnockbackVelocity = Knockback;
         }
     }
 

@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://c6mvfh4mlxu4h"]
+[gd_scene load_steps=15 format=3 uid="uid://c6mvfh4mlxu4h"]
 
 [ext_resource type="Script" uid="uid://de44iwnl6kvq1" path="res://Game/Guns/Base/Bullets/Bullet.cs" id="1_ut5ie"]
 [ext_resource type="Resource" uid="uid://lw3c1ep3jdap" path="res://Components/BulletComps/BulletBehaviors/Resources/DeleteTimer.tres" id="2_nu8hp"]
 [ext_resource type="Resource" uid="uid://ca3v0exbyg8jf" path="res://Components/BulletComps/BulletBehaviors/Resources/MultiHit.tres" id="3_nu8hp"]
 [ext_resource type="Resource" uid="uid://xn0p4wisqnkv" path="res://Components/BulletComps/BulletBehaviors/Resources/TowardRotation.tres" id="4_lbp1c"]
 [ext_resource type="Texture2D" uid="uid://dd7r1b2hrw06h" path="res://Assets/Guns/Bullets/NewBullets.png" id="4_nu8hp"]
+[ext_resource type="PackedScene" uid="uid://dxuhx0d1ijw6p" path="res://Components/Etc/WallDetect.tscn" id="6_lbp1c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0bpo6"]
 radius = 30.0
@@ -80,9 +81,7 @@ position = Vector2(40, 0)
 sprite_frames = SubResource("SpriteFrames_6m0j2")
 animation = &"hit"
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(10, 0)
-collision_mask = 0
+[node name="RayCast2D" parent="." instance=ExtResource("6_lbp1c")]
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

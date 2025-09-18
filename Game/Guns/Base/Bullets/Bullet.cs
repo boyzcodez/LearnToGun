@@ -32,6 +32,7 @@ public partial class Bullet : Area2D
     {
         raycast = GetNode<RayCast2D>("RayCast2D");
         raycast.Position = new Vector2(-5, 0);
+
         SetPhysicsProcess(false);
         SetDeferred("monitoring", false);
         SetDeferred("monitorable", false);
@@ -49,10 +50,11 @@ public partial class Bullet : Area2D
             hasHit = true;
             OnHit();
         }
-        if (raycast.IsColliding())
-        {
-            Deactivate();
-        }
+        // if (raycast.IsColliding() && Active)
+        // {
+        //     GlobalPosition += Direction * 5;
+        //     Deactivate();
+        // }
 
         _timer += (float)delta;
     }

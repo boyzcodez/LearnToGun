@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://ckxy3ga6pre8f" path="res://Game/Guns/Enemy/Shotgun/EnemyShotgun.tscn" id="10_b3ga6"]
 [ext_resource type="PackedScene" uid="uid://dyqbl4s13wnxg" path="res://Components/Etc/shadow.tscn" id="11_bbp8y"]
 [ext_resource type="PackedScene" uid="uid://bp3lx4f7c5wd1" path="res://Components/Etc/hit_flash.tscn" id="11_oxb72"]
-[ext_resource type="Script" uid="uid://c75v23bsjb46j" path="res://Game/Entities/TestEnemies/Positioning.cs" id="15_wxglr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_htgvw"]
 radius = 3.0
@@ -139,7 +138,12 @@ animations = [{
 radius = 8.0
 height = 22.0
 
-[node name="ActiveTestEnemy" type="CharacterBody2D" node_paths=PackedStringArray("gun")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_wxglr"]
+radius = 29.017237
+
+[node name="ActiveTestEnemy" type="CharacterBody2D" node_paths=PackedStringArray("gun", "separationArea")]
+collision_layer = 0
+collision_mask = 0
 motion_mode = 1
 wall_min_slide_angle = 0.08726646
 platform_on_leave = 2
@@ -147,8 +151,9 @@ platform_floor_layers = 0
 script = ExtResource("1_hc5v1")
 Speed = 40.0
 ShootingRange = 100.0
-FireCooldown = 3.0
+FireCooldown = 5.0
 gun = NodePath("Hide/AnimatedSpriteE/Look/EnemyGun/EnemyShtogun")
+separationArea = NodePath("Area2D")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_htgvw")
@@ -225,8 +230,10 @@ debug_enabled = true
 [node name="NavTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="Positioning" type="Node2D" parent="."]
-script = ExtResource("15_wxglr")
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_wxglr")
 
 [connection signal="animation_finished" from="Hide/AnimatedSpriteE" to="Hide/AnimatedSpriteE" method="_on_animation_finished"]
 [connection signal="Hit" from="Hurtbox" to="Hide/AnimatedSpriteE/Look/EnemyGun" method="_on_hurtbox_hit"]

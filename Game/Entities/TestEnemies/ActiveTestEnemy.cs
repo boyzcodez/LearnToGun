@@ -8,9 +8,10 @@ public partial class ActiveTestEnemy : Entity
     [Export] public float FireCooldown = 1.0f;
     [Export] public Gun gun;
 
+    [Export] private Area2D separationArea;
     private NavigationAgent2D navAgent;
     private Node2D player;
-    private double fireTimer = 0.0;
+    private double fireTimer = 5.0;
 
     public override void _Ready()
     {
@@ -21,6 +22,16 @@ public partial class ActiveTestEnemy : Entity
     public override void _PhysicsProcess(double delta)
     {
         if (player == null) return;
+
+        if (KnockbackTime > 0f)
+        {
+            KnockbackTime -= (float)delta;
+            if (KnockbackTime <= 0f)
+            {
+                Velocity = Vector2.Zero; // Stop movement after knockback
+            }
+            return;
+        }
 
         fireTimer -= delta;
 
@@ -50,8 +61,12 @@ public partial class ActiveTestEnemy : Entity
         if (navAgent.IsNavigationFinished()) return;
 
         Vector2 nextPos = navAgent.GetNextPathPosition();
-        Vector2 dir = (nextPos - GlobalPosition).Normalized();
-        Velocity = Velocity.Lerp(dir * Speed, 0.2f);
+        Vector2 dir = (nextPos - GlobalPosition).Normalized() * Speed;
+
+        dir = AvoidWalls(dir); // dont know if needed
+        dir = SeparateFromEnemies(dir); // dont know if needed
+
+        Velocity = Velocity.Lerp(dir, 0.2f);
         MoveAndSlide();
     }
     private bool HasLineOfSight(Vector2 target)
@@ -82,6 +97,54 @@ public partial class ActiveTestEnemy : Entity
         GD.Print("Shooting now");
         gun.Shoot();
         fireTimer = FireCooldown;
+    }
+
+
+
+    // dont know if needed
+    private Vector2 AvoidWalls(Vector2 desiredVel)
+    {
+        var space = GetWorld2D().DirectSpaceState;
+
+        var query = PhysicsRayQueryParameters2D.Create(
+            GlobalPosition,
+            GlobalPosition + desiredVel.Normalized() * 20f
+        );
+        query.Exclude = new Godot.Collections.Array<Rid> { GetRid() };
+
+        var result = space.IntersectRay(query);
+        if (result.Count > 0)
+        {
+            Vector2 normal = ((Vector2)result["normal"]).Normalized();
+            desiredVel = desiredVel.Slide(normal);
+        }
+
+        return desiredVel;
+    }
+
+    // dont know if needed
+    private Vector2 SeparateFromEnemies(Vector2 desiredVel)
+    {
+        float separationRadius = 32f;
+        Vector2 push = Vector2.Zero;
+
+        foreach (var body in separationArea.GetOverlappingBodies())
+        {
+            if (body is Hurtbox other && other != this.GetNode<Hurtbox>("Hurtbox"))
+            {
+                float dist = GlobalPosition.DistanceTo(other.GlobalPosition);
+                if (dist < separationRadius && dist > 0)
+                {
+                    Vector2 away = (GlobalPosition - other.GlobalPosition).Normalized();
+                    push += away * (separationRadius - dist);
+                }
+            }
+        }
+
+        if (push != Vector2.Zero)
+            desiredVel += push.Normalized() * 50f;
+
+        return desiredVel;
     }
 
 }
