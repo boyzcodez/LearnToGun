@@ -11,11 +11,11 @@ public partial class EnemyGun : Node2D
     private float time = 0f;
     private bool canShoot = false;
 
-    public override void _Ready()
-    {
-        rayCast = GetNode<RayCast2D>("RayCast");
-        EventBus.ClearBullets += ResetTimer;
-    }
+    // public override void _Ready()
+    // {
+    //     rayCast = GetNode<RayCast2D>("RayCast");
+    //     EventBus.ClearBullets += ResetTimer;
+    // }
 
     public override void _PhysicsProcess(double delta)
     {
@@ -29,29 +29,29 @@ public partial class EnemyGun : Node2D
             Scale = new Vector2(1, 1);
         }
 
-        if (canShoot == false)
-        {
-            time += (float)delta;
+        // if (canShoot == false)
+        // {
+        //     time += (float)delta;
 
-            if (time >= 2.5f)
-            {
-                canShoot = true;
-            }
-        }
-        else if (rayCast.IsColliding() && canShoot)
-        {
-            canShoot = false;
-            if (gun != null) gun.Shoot();
-            ResetTimer();
-        }
+        //     if (time >= 2.5f)
+        //     {
+        //         canShoot = true;
+        //     }
+        // }
+        // else if (rayCast.IsColliding() && canShoot)
+        // {
+        //     canShoot = false;
+        //     if (gun != null) gun.Shoot();
+        //     ResetTimer();
+        // }
     }
 
-    public void ResetTimer()
-    {
-        time = 0;
-    }
-    public void _on_hurtbox_hit()
-    {
-        ResetTimer();
-    }
+    // public void ResetTimer()
+    // {
+    //     time = 0;
+    // }
+    // public void _on_hurtbox_hit()
+    // {
+    //     ResetTimer();
+    // }
 }

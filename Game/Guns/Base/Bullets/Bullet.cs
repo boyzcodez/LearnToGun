@@ -9,6 +9,7 @@ public partial class Bullet : Area2D
     [Export] public Behavior[] Behaviors = [];
     [Export] public AnimatedSprite2D Animation;
 
+    private RayCast2D raycast;
     private BulletPool _pool;
     public DamageData DamageData;
 
@@ -29,6 +30,8 @@ public partial class Bullet : Area2D
 
     public override void _Ready()
     {
+        raycast = GetNode<RayCast2D>("RayCast2D");
+        raycast.Position = new Vector2(-5, 0);
         SetPhysicsProcess(false);
         SetDeferred("monitoring", false);
         SetDeferred("monitorable", false);
@@ -45,6 +48,10 @@ public partial class Bullet : Area2D
         {
             hasHit = true;
             OnHit();
+        }
+        if (raycast.IsColliding())
+        {
+            Deactivate();
         }
 
         _timer += (float)delta;
@@ -73,6 +80,7 @@ public partial class Bullet : Area2D
     public void Activate(float newRotation)
     {
         rotation = newRotation;
+        raycast.Rotation = newRotation;
 
         Initialize();
 

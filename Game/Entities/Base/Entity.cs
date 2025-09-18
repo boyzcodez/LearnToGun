@@ -4,6 +4,7 @@ using System;
 [GlobalClass]
 public partial class Entity : CharacterBody2D
 {
+
     public Vector2 direction = Vector2.Zero;
     public float KnockbackTime = 0f;
 
@@ -22,27 +23,13 @@ public partial class Entity : CharacterBody2D
             Velocity = Knockback;
         }
     }
-    public override void _PhysicsProcess(double delta)
-    {
-        if (KnockbackTime > 0f)
-        {
-            KnockbackTime -= (float)delta;
-            if (KnockbackTime <= 0f)
-            {
-                Velocity = Vector2.Zero; // Stop movement after knockback
-            }
-        }
-        else
-        {
-            Velocity = direction;
-        }
-
-        MoveAndSlide();
-    }
 
     public virtual void Death()
     {
         EventBus.OnEnemyDied();
         QueueFree();
     }
+    
+
+    
 }
