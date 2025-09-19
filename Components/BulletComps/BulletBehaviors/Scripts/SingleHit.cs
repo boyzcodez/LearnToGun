@@ -11,7 +11,8 @@ public partial class SingleHit : Behavior
     }
     public override void OnHit(Bullet bullet)
     {
-        bullet.Hurtboxes[0].TakeDamage(bullet.DamageData, bullet.Direction);
+        if (bullet.Hurtboxes.Count > 0)
+            bullet.Hurtboxes[0].TakeDamage(bullet.DamageData, bullet.Direction);
         bullet.Deactivate();
     }
 }

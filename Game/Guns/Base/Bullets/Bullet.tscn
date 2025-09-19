@@ -3,4 +3,6 @@
 [ext_resource type="Script" uid="uid://de44iwnl6kvq1" path="res://Game/Guns/Base/Bullets/Bullet.cs" id="1_u4v11"]
 
 [node name="Bullet" type="Area2D"]
+collision_layer = 0
+collision_mask = 16
 script = ExtResource("1_u4v11")
