@@ -88,8 +88,10 @@ public partial class Player : Entity
 
         if (dodgeTime <= 0f)
         {
-            Velocity = Vector2.Zero; // Stop movement after dodge
-            dodgeDirection = Vector2.Zero;
+            var dodgeSpeed = Mathf.Lerp(currentSpeed, SPEED, delta * 8f);
+            Velocity = dodgeDirection * dodgeSpeed;
+            // Velocity = Vector2.Zero; // Stop movement after dodge
+            // dodgeDirection = Vector2.Zero;
             hurtbox.immune = false;
             warpDashNode.CallDeferred("Deactivated");
             dashTimer.Start(dashCooldown);

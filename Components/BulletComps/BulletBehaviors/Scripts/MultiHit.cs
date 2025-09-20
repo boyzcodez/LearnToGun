@@ -8,18 +8,21 @@ public partial class MultiHit : Behavior
     }
     public override void Update(Bullet bullet, double delta)
     {
+        if (bullet._timer >= 0.05f)
+        {
+            var overlaps = bullet.GetOverlappingAreas();
+
+            foreach (var area in overlaps)
+            {
+                if (area is Hurtbox hurtbox && !hurtbox.immune)
+                {
+                    hurtbox.TakeDamage(bullet.DamageData, bullet.Direction);
+                }
+            }
+            bullet.Deactivate();
+        }
     }
     public override void OnHit(Bullet bullet)
     {
-        var overlaps = bullet.GetOverlappingAreas();
-
-        foreach (var area in overlaps)
-        {
-            if (area is Hurtbox hurtbox && !hurtbox.immune)
-            {
-                hurtbox.TakeDamage(bullet.DamageData, bullet.Direction);
-            }
-        }
-        bullet.Deactivate();
     }
 }
