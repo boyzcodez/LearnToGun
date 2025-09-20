@@ -30,6 +30,10 @@ public partial class ActiveTestEnemy : Entity
             {
                 Velocity = Vector2.Zero; // Stop movement after knockback
             }
+
+            Velocity = KnockbackVelocity;
+            MoveAndSlide();
+
             return;
         }
 

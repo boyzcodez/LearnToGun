@@ -6,20 +6,8 @@
 [resource]
 script = ExtResource("1_0ca57")
 GunName = "Zooka"
-LVL = "LV1_"
-currentXP = 0
-maxXP = 10
-Damage = 1
 Knockback = 100.0
-BulletSpeed = 80.0
 BulletScene = ExtResource("1_20qpx")
 SpawnAmount = 20
-CurrentAmmo = 10
-MaxAmmo = 10
-UsesAmmo = true
 FireRate = 0.7
-BulletCount = 1
-SpreadAngle = 0.0
-RandomFactor = 0.0
-isEnemy = false
 metadata/_custom_type_script = "uid://bf05vlwwwrvul"

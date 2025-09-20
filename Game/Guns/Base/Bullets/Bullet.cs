@@ -36,17 +36,27 @@ public partial class Bullet : Area2D
         Hide();
     }
 
-    public override void _Process(double delta)
+    public override void _PhysicsProcess(double delta)
     {
         foreach (var behavior in Behaviors)
         {
             behavior.Update(this, delta);
         }
-        // if (Hurtboxes.Count > 0 && !hasHit)
-        // {
-        //     hasHit = true;
-            
-        // }
+
+        if (Active)
+        {
+
+            if (GetOverlappingAreas().Count > 0)
+            {
+                OnHit();
+            }
+            if (GetOverlappingBodies().Count > 0)
+            {
+                Deactivate();
+            }
+        }
+
+        
 
         _timer += (float)delta;
     }
@@ -82,7 +92,7 @@ public partial class Bullet : Area2D
         hasHit = false;
 
         Show();
-        SetProcess(true);
+        SetPhysicsProcess(true);
         SetDeferred("monitoring", true);
         SetDeferred("monitorable", true);
 
@@ -98,7 +108,7 @@ public partial class Bullet : Area2D
         //Hurtboxes.Clear();
 
         //Hide();
-        SetProcess(false);
+        SetPhysicsProcess(false);
         SetDeferred("monitoring", false);
         SetDeferred("monitorable", false);
 
@@ -117,29 +127,6 @@ public partial class Bullet : Area2D
         foreach (var behavior in Behaviors)
         {
             behavior.OnHit(this);
-        }
-    }
-
-    #endregion
-
-    #region Signals
-
-    private void _on_area_entered(Node body)
-    {
-        if (body is Hurtbox hurtbox && !hurtbox.immune)
-        {
-            Hurtboxes.Add(hurtbox);
-            OnHit();
-        }
-        else if (body is not Hurtbox)
-            OnHit();
-    }
-
-    private void _on_area_exited(Node body)
-    {
-        if (body is Hurtbox hurtbox && Hurtboxes.Contains(hurtbox))
-        {
-            Hurtboxes.Remove(hurtbox);
         }
     }
 
