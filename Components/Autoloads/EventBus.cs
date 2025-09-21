@@ -10,6 +10,8 @@ public static class EventBus
     public static event Action EnemyDied;
     public static event Action ClearBullets;
     public static event Action<int> GainExp;
+    public static event Action<int> GainMoney;
+    public static event Action<int, int> UpdateAmmo;
     public static event Action<float> ScreenShake;
 
     public static int dangerValue = 0;
@@ -34,4 +36,8 @@ public static class EventBus
         EnemyDied?.Invoke();
     public static void TriggerClearBullets() =>
         ClearBullets?.Invoke();
+    public static void Money(int amount) =>
+        GainMoney?.Invoke(amount);
+    public static void Ammo(int current, int max) =>
+        UpdateAmmo?.Invoke(current, max);
 }

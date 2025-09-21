@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://bx73yqqn1gwtr"]
+
+[ext_resource type="Script" uid="uid://dxedwkmqel4ef" path="res://Components/Etc/Coin.cs" id="1_8nuy0"]
+[ext_resource type="Texture2D" uid="uid://bd4ya04op24m7" path="res://Assets/Particles/coins.png" id="1_a8e1a"]
+[ext_resource type="Script" uid="uid://dba3bep1dlryx" path="res://Components/Etc/Tail.cs" id="1_tgx53"]
+
+[sub_resource type="Curve" id="Curve_8nuy0"]
+_data = [Vector2(0, 0.9999999), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_a8e1a"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[node name="Coin" type="Sprite2D"]
+texture = ExtResource("1_a8e1a")
+hframes = 4
+script = ExtResource("1_8nuy0")
+
+[node name="Tail" type="Line2D" parent="."]
+z_index = -1
+width_curve = SubResource("Curve_8nuy0")
+gradient = SubResource("Gradient_a8e1a")
+script = ExtResource("1_tgx53")

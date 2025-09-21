@@ -42,7 +42,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 10.0
+"speed": 0.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -77,4 +77,3 @@ shape = SubResource("CircleShape2D_pnq1u")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_h0y3f")
-animation = &"hit"

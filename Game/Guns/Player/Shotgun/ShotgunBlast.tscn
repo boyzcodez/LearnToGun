@@ -34,7 +34,7 @@ animations = [{
 "frames": [],
 "loop": false,
 "name": &"default",
-"speed": 10.0
+"speed": 0.0
 }, {
 "frames": [{
 "duration": 1.0,

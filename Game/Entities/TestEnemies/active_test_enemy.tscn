@@ -234,5 +234,4 @@ one_shot = true
 shape = SubResource("CircleShape2D_wxglr")
 
 [connection signal="animation_finished" from="Hide/AnimatedSpriteE" to="Hide/AnimatedSpriteE" method="_on_animation_finished"]
-[connection signal="Hit" from="Hurtbox" to="Hide/AnimatedSpriteE/Look/EnemyGun" method="_on_hurtbox_hit"]
 [connection signal="timeout" from="NavTimer" to="." method="_on_nav_timer_timeout"]

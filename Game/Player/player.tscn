@@ -753,6 +753,10 @@ script = ExtResource("6_tqhgd")
 GunSocket = NodePath("../LookAt/GunSpot")
 GunScenes = [ExtResource("7_q0m6d"), ExtResource("8_nfw5o"), ExtResource("11_wg23h")]
 
+[node name="Timer" type="Timer" parent="PlayerWeaponManager"]
+wait_time = 0.1
+one_shot = true
+
 [node name="LookAt" type="Marker2D" parent="." node_paths=PackedStringArray("gunSpot")]
 position = Vector2(0, -8)
 script = ExtResource("6_4ddeg")

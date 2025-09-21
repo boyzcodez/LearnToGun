@@ -8,6 +8,7 @@ public partial class Gun : Node2D
     [Export] public AnimatedGun sprite { get; set; }
     [Export] public string type = "Nothing";
     [Export] public bool rotate = false;
+    public bool active = false;
     private float _cooldown = 0f;
     private BulletPool pool;
 
@@ -58,7 +59,7 @@ public partial class Gun : Node2D
         }
 
         _cooldown = gunData.FireRate;
-        GD.Print(gunData.CurrentAmmo);
+        if (active) EventBus.Ammo(gunData.CurrentAmmo, gunData.MaxAmmo);
     }
 
     public void AddXP(int xp)
@@ -80,6 +81,7 @@ public partial class Gun : Node2D
         var xp = gunData.currentXP - gunData.maxXP;
         gunData = gunData.NextLevelData;
         gunData.currentXP = xp;
+        EventBus.Ammo(gunData.CurrentAmmo, gunData.MaxAmmo);
 
         pool.NewBullets(type, gunData, gunData.SpawnAmount);
 
@@ -95,6 +97,19 @@ public partial class Gun : Node2D
         await ToSignal(sprite, "animation_finished");
 
         sprite.Play(gunData.LVL + "default");
+    }
+    public void Activate()
+    {
+        active = true;
+        EventBus.Ammo(gunData.CurrentAmmo, gunData.MaxAmmo);
+        // SetProcess(true);
+        // sprite.Play(gunData.LVL + "default");
+    }
+    public void Deactivate()
+    {
+        active = false;
+        // SetProcess(false);
+        // sprite.Stop();
     }
 
     

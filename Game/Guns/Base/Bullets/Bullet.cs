@@ -29,11 +29,12 @@ public partial class Bullet : Area2D
 
     public override void _Ready()
     {
-
         SetPhysicsProcess(false);
         SetDeferred("monitoring", false);
         SetDeferred("monitorable", false);
         Hide();
+
+        Animation.AnimationFinished += Hide;
     }
 
     public override void _PhysicsProcess(double delta)
