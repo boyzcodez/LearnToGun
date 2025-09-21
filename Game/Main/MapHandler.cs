@@ -37,10 +37,13 @@ public partial class MapHandler : Node2D
             var scene = maps[index];
             if (scene != null)
             {
-                var instance = scene.Instantiate();
+                var instance = scene.Instantiate() as Node2D;
+                child = instance;
                 ysort.AddChild(instance);
             }
         }
+
+        GC.Collect();
 
         ToSignal(GetTree().CreateTimer(0.5f), "timeout");
 
