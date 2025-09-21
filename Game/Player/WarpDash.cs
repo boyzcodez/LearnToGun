@@ -64,5 +64,6 @@ public partial class WarpDash : Node2D
     public void Deactivated()
     {
         isWarping = false;
+        GC.Collect();
     }
 }

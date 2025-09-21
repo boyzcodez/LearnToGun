@@ -21,3 +21,5 @@ z_index = -1
 width_curve = SubResource("Curve_8nuy0")
 gradient = SubResource("Gradient_a8e1a")
 script = ExtResource("1_tgx53")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

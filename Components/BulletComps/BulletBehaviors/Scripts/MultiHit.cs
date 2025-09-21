@@ -19,6 +19,7 @@ public partial class MultiHit : Behavior
                     hurtbox.TakeDamage(bullet.DamageData, bullet.Direction);
                 }
             }
+
             bullet.Deactivate();
         }
     }

@@ -5,4 +5,4 @@
 [resource]
 shader = ExtResource("1_and0u")
 shader_parameter/linear_interp = true
-shader_parameter/interp_sharpness = Vector2i(128, 128)
+shader_parameter/interp_sharpness = Vector2i(64, 64)

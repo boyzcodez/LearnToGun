@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bvxn3ktcjjnn6"]
+
+[ext_resource type="Shader" uid="uid://decgudiemgaw5" path="res://Game/Shaders/BetterSmoothpixels.gdshader" id="1_rk1ay"]
+
+[resource]
+shader = ExtResource("1_rk1ay")

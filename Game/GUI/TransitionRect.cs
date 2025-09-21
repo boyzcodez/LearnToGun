@@ -1,5 +1,5 @@
-using System.Threading.Tasks;
 using Godot;
+using System;
 
 public partial class TransitionRect : ColorRect
 {
@@ -35,7 +35,7 @@ public partial class TransitionRect : ColorRect
 
         await ToSignal(GetTree().CreateTimer(2.5f), "timeout");
 
-        System.GC.Collect();
+        GC.Collect();
 
         EventBus.TriggerMapSwitch();
     }

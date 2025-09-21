@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://biyioow7m1un5"]
+
+[ext_resource type="Texture2D" uid="uid://cvq10mtrugqo8" path="res://Assets/Particles/Crates.png" id="1_wlhj7"]
+[ext_resource type="Script" uid="uid://tll7kdsg6nvt" path="res://Components/Etc/CrateBody.cs" id="2_y66ac"]
+
+[node name="Crate" type="Sprite2D"]
+texture = ExtResource("1_wlhj7")
+offset = Vector2(0, -4)
+hframes = 2
+
+[node name="CrateBody" type="StaticBody2D" parent="."]
+position = Vector2(0, -4)
+collision_layer = 17
+collision_mask = 17
+script = ExtResource("2_y66ac")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CrateBody"]
+polygon = PackedVector2Array(12, 6, 0, 1, -12, 6, 0, 11)

@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=4 uid="uid://x3152krac0fs"]
 
 [ext_resource type="TileSet" uid="uid://mnog6di1hrb2" path="res://Game/Map/TilsetData/TestTileSet.tres" id="1_e217v"]
-[ext_resource type="PackedScene" uid="uid://dtl2ydqrnh23i" path="res://Components/WarpEffects/portal_machine.tscn" id="2_e217v"]
 [ext_resource type="Script" uid="uid://beyvg3tfxd6cr" path="res://Game/Map/AutoCollisionWalls.cs" id="2_owkgx"]
+[ext_resource type="PackedScene" uid="uid://biyioow7m1un5" path="res://Components/Etc/Crate.tscn" id="4_84hcq"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_owkgx"]
 vertices = PackedVector2Array(0, -154.57813, 10.6328125, -149.27344, 314.6328, 2.7265625, 325.15625, 7.9921875, 308, 16.578125, 96, -5.421875, -84, -32.578125, -84, -47.421875, -10.6328125, -149.27344, 308, 31.421875, 330.6328, 42.726563, 256, 42.578125, 156, 39.421875, 156, 24.578125, -52, 79.421875, 36, 39.421875, 58.632813, 50.726563, 74.63281, 58.726563, 96, 69.421875, 10.6328125, 165.27344, 0, 170.57813, -10.6328125, 165.27344, -80, 93.421875, 348, 104.578125, 330.82813, 96, 332, 95.421875, 360.77344, 134.1875, 339.52344, 123.64844, 348, 119.421875, 384, 122.578125, 452, 87.421875, 469.15625, 96, 452, 104.578125, -234.63281, 53.273438, -245.15625, 48, -234.63281, 42.726563, -202.63281, 26.726563, -108, 79.421875, -202.63281, -10.7265625, -234.63281, -26.726563, -245.15625, -32, -234.63281, -37.273438, -172, -47.421875, -172, -32.578125, -180, 0.578125, 436.89063, 58.96875, 457.64844, 69.75, 452, 72.578125, 416, 69.421875, 452, 119.421875, 466.35156, 126.59375, 444, 139.14063, 444, 136.57813, -52, 64.578125, 36, 24.578125, 133.36719, 13.2734375, 117.36719, 5.2734375, 416, 122.578125, -106.63281, -58.726563, -128, -69.421875, 384, 69.421875, 362.6328, 58.726563, -149.36719, -58.726563, -108, 64.578125, -180, 15.421875, -149.36719, -21.273438, -128, -10.578125, -80, 50.578125, 400, 61.40625, 400, 130.57813, 332, 80.578125, 309.3672, 69.27344, 277.3672, 53.273438, 74.63281, 5.2734375, 58.632813, 13.2734375, -106.63281, -21.273438, 117.36719, 58.726563, 133.36719, 50.726563, 234.63281, 53.273438)
@@ -38,6 +38,11 @@ y_sort_enabled = true
 tile_map_data = PackedByteArray("AAD3/wAAAAABAAEAAAD//wUAAAAAAAEAAAA=")
 tile_set = ExtResource("1_e217v")
 
-[node name="PortalMachine" parent="." instance=ExtResource("2_e217v")]
-z_index = 10
-position = Vector2(0, -80)
+[node name="Crate" parent="." instance=ExtResource("4_84hcq")]
+position = Vector2(78, -105)
+
+[node name="Crate2" parent="." instance=ExtResource("4_84hcq")]
+position = Vector2(90, -99)
+
+[node name="Crate3" parent="." instance=ExtResource("4_84hcq")]
+position = Vector2(102, -93)

@@ -53,6 +53,10 @@ public partial class Bullet : Area2D
             }
             if (GetOverlappingBodies().Count > 0)
             {
+                foreach (var body in GetOverlappingBodies())
+                {
+                    if (body is CrateBody crate) crate.Break();
+                }
                 Deactivate();
             }
         }
