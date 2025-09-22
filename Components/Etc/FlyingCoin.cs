@@ -13,7 +13,7 @@ public partial class FlyingCoin : AnimatedSprite2D
 
     public override void _PhysicsProcess(double delta)
     {
-        Rotation += (float)(delta * 4.0); // Adjust 1.0 to change rotation speed
+        Rotation += (float)(delta * 16.0); // Adjust 1.0 to change rotation speed
 
         Vector2 dir = (playr.GlobalPosition - GlobalPosition).Normalized();
         vel = vel.MoveToward(dir * 200f, (float)delta * 400f);
