@@ -1,6 +1,33 @@
 using Godot;
 using System;
 
+[GlobalClass]
 public partial class DestructibleCrate : Node2D
 {
+    [Export] public PackedScene shardScene;
+    private int numShards = 6;
+
+    public Area2D area;
+    public override void _Ready()
+    {
+        area = GetNode<Area2D>("DestructionArea");
+
+        area.BodyEntered += Break;
+        area.AreaEntered += Break;
+    }
+    public void Break(Node2D body)
+    {
+        for (int i = 0; i < numShards; i++)
+        {
+            if (shardScene == null) continue;
+
+            var shard = shardScene.Instantiate<Shard>();
+            shard.GlobalPosition = GlobalPosition;
+
+            GetTree().CurrentScene.CallDeferred("add_child", shard);
+        }
+
+        QueueFree();
+    }
+
 }

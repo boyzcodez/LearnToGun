@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfeyq7nvte55i"]
+
+[ext_resource type="Script" uid="uid://ot7l62gpxmcb" path="res://Components/Etc/Shard.cs" id="1_361em"]
+[ext_resource type="Texture2D" uid="uid://dftjcfl6022qr" path="res://Assets/Particles/Shards.png" id="2_qy7gy"]
+
+[node name="Shard" type="Sprite2D"]
+texture = ExtResource("2_qy7gy")
+hframes = 3
+script = ExtResource("1_361em")

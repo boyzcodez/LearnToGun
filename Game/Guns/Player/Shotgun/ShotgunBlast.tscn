@@ -58,8 +58,8 @@ animations = [{
 }]
 
 [node name="ShotgunBlast" type="Area2D" node_paths=PackedStringArray("Animation")]
-collision_layer = 0
-collision_mask = 20
+collision_layer = 32
+collision_mask = 4
 script = ExtResource("1_ut5ie")
 Behaviors = [ExtResource("3_nu8hp"), ExtResource("2_nu8hp"), ExtResource("4_lbp1c")]
 Animation = NodePath("AnimatedSprite2D")
