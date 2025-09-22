@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=3 uid="uid://doulm4cnf4c77"]
+
+[ext_resource type="Texture2D" uid="uid://bn1o7q5jvihy8" path="res://Assets/Particles/coinsSpin.png" id="1_p7kkm"]
+[ext_resource type="Material" uid="uid://cx5bh10h2ko2n" path="res://Game/Shaders/TrueSmooth.tres" id="1_vhg8u"]
+[ext_resource type="Script" uid="uid://b34u0dibmjcnh" path="res://Components/Etc/FlyingCoin.cs" id="2_vhg8u"]
+[ext_resource type="PackedScene" uid="uid://bgkqmmqtwxk4u" path="res://Components/Etc/Tail.tscn" id="4_gibrn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gibrn"]
+atlas = ExtResource("1_p7kkm")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8f5vs"]
+atlas = ExtResource("1_p7kkm")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wr3ts"]
+atlas = ExtResource("1_p7kkm")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6ljk"]
+atlas = ExtResource("1_p7kkm")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o0la2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gibrn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8f5vs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wr3ts")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6ljk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 14.0
+}]
+
+[node name="FlyingCoin" type="AnimatedSprite2D"]
+texture_filter = 2
+material = ExtResource("1_vhg8u")
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_o0la2")
+autoplay = "default"
+frame_progress = 0.53963006
+script = ExtResource("2_vhg8u")
+
+[node name="Tail" parent="." instance=ExtResource("4_gibrn")]
+width = 5.0

@@ -3,13 +3,13 @@ using System;
 
 public partial class Tail : Line2D
 {
-    private Sprite2D parent;
+    private AnimatedSprite2D parent;
     private int length = 10;
     private Vector2 offset;
 
     public override void _Ready()
     {
-        parent = GetOwner<Sprite2D>();
+        parent = GetOwner<AnimatedSprite2D>();
         offset = Position;
         TopLevel = true;
     }

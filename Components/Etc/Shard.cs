@@ -23,7 +23,7 @@ public partial class Shard : Sprite2D
         rng.Randomize(); // Makes results less predictable (seeded with system time)
         int value = rng.RandiRange(0, 2);
 
-        FrameCoords = new Vector2I(value,0);
+        FrameCoords = new Vector2I(value, 0);
 
         _bouncesLeft = MaxBounces;
 
@@ -40,6 +40,8 @@ public partial class Shard : Sprite2D
 
         // Random rotation speed
         _rotationSpeed = (float)GD.RandRange(MinRotationSpeed, MaxRotationSpeed);
+
+        EventBus.MapSwitch += QueueFree;
     }
 
     public override void _PhysicsProcess(double delta)

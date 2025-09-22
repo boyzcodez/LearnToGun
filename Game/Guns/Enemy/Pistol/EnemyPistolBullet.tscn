@@ -66,7 +66,7 @@ animations = [{
 }]
 
 [node name="EnemyBullet" type="Area2D" node_paths=PackedStringArray("Animation")]
-collision_layer = 0
+collision_layer = 32
 collision_mask = 18
 script = ExtResource("1_txrm2")
 Behaviors = [ExtResource("3_02r7r"), ExtResource("2_02r7r"), ExtResource("4_lyute"), ExtResource("5_lyute")]

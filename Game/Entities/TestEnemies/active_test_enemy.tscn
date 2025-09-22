@@ -138,17 +138,16 @@ animations = [{
 radius = 8.0
 height = 22.0
 
-[node name="ActiveTestEnemy" type="CharacterBody2D" node_paths=PackedStringArray("gun", "separationArea")]
+[node name="ActiveTestEnemy" type="CharacterBody2D" node_paths=PackedStringArray("gun")]
 motion_mode = 1
 wall_min_slide_angle = 0.08726646
 platform_on_leave = 2
 platform_floor_layers = 0
 script = ExtResource("1_hc5v1")
-Speed = 40.0
-ShootingRange = 120.0
-FireCooldown = 5.0
+Speed = 50.0
+ShootingRange = 150.0
+FireCooldown = 4.0
 gun = NodePath("Hide/AnimatedSpriteE/Look/EnemyGun/EnemyShtogun")
-separationArea = NodePath("")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_htgvw")

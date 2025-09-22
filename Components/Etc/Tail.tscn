@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgkqmmqtwxk4u"]
+
+[ext_resource type="Script" uid="uid://dba3bep1dlryx" path="res://Components/Etc/Tail.cs" id="1_ejxvx"]
+
+[sub_resource type="Curve" id="Curve_8nuy0"]
+_data = [Vector2(0, 0.9999999), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_a8e1a"]
+offsets = PackedFloat32Array(0, 0.6635071)
+colors = PackedColorArray(0.8895496, 0.7653802, 0.37615559, 1, 0.91345596, 0.94553035, 1, 0)
+
+[node name="Tail" type="Line2D"]
+z_index = -1
+width_curve = SubResource("Curve_8nuy0")
+default_color = Color(0.58789223, 0.72869617, 1, 1)
+gradient = SubResource("Gradient_a8e1a")
+script = ExtResource("1_ejxvx")

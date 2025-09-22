@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://c03wc70tgc418"]
+[gd_scene load_steps=5 format=3 uid="uid://c03wc70tgc418"]
 
 [ext_resource type="Texture2D" uid="uid://c4g4c5ak6hq65" path="res://Assets/Particles/Crate.png" id="1_03ijl"]
 [ext_resource type="Script" uid="uid://rncx1sjriq7h" path="res://Components/Etc/DestructibleCrate.cs" id="1_w8pyh"]
 [ext_resource type="PackedScene" uid="uid://bfeyq7nvte55i" path="res://Components/Etc/Shard.tscn" id="2_vjwpo"]
+[ext_resource type="PackedScene" uid="uid://doulm4cnf4c77" path="res://Components/Etc/FlyingCoin.tscn" id="3_8m76r"]
 
 [node name="DestructibleCrate" type="Node2D"]
 script = ExtResource("1_w8pyh")
 shardScene = ExtResource("2_vjwpo")
+coinScene = ExtResource("3_8m76r")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -4)
