@@ -33,6 +33,8 @@ public partial class Hurtbox : Area2D
 
     public void TakeDamage(DamageData damageData, Vector2 direction = default)
     {
+        if (currentHealth <= 0) return;
+        
         currentHealth -= damageData.Damage;
         owner.Knockback(direction, damageData.Knockback - knockbackResist);
 

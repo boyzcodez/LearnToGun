@@ -17,13 +17,19 @@ public partial class DestructibleCrate : Node2D
 
         area.BodyEntered += Break;
         area.AreaEntered += Break;
+
+        EventBus.EndWave += WorkAround;
     }
     public void Break(Node2D body)
+    {
+        WorkAround();
+    }
+    private void WorkAround()
     {
         for (int i = 0; i < numShards; i++)
         {
             if (shardScene == null) continue;
-            
+
             var shard = shardScene.Instantiate<Shard>();
             shard.GlobalPosition = GlobalPosition;
 
@@ -34,7 +40,12 @@ public partial class DestructibleCrate : Node2D
         coin.GlobalPosition = GlobalPosition;
         ysort.CallDeferred("add_child", coin);
 
+        EventBus.EndWave -= WorkAround;
         QueueFree();
+    }
+    public override void _ExitTree()
+    {
+        EventBus.EndWave -= WorkAround;
     }
 
 }

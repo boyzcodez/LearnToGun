@@ -49,7 +49,7 @@ public partial class EntityHandler : Node2D
 
             enemies.Add(enemy);
 
-            enemy.SetDeferred("process_mode", (int)Node.ProcessModeEnum.Disabled);
+            //enemy.SetDeferred("process_mode", (int)Node.ProcessModeEnum.Disabled);
 
             ysort.CallDeferred(MethodName.AddChild, enemy);
             //AddChild(enemy);
@@ -70,6 +70,7 @@ public partial class EntityHandler : Node2D
         if (rounds <= 0 && _currentEnemyCount <= 0)
         {
             GD.Print("All enemies defeated!");
+            EventBus.TriggerEndOfWave();
         }
         else if (_currentEnemyCount < MIN_ENEMIES && rounds > 0)
         {
@@ -87,21 +88,21 @@ public partial class EntityHandler : Node2D
         _currentEnemyCount = 0;
         rounds = 0;
     }
-    public override void _Input(InputEvent @event)
-    {
-        if (@event.IsActionPressed("space"))
-        {
-            foreach (var enemy in enemies)
-            {
-                enemy.SetDeferred("process_mode", (int)Node.ProcessModeEnum.Inherit);
-            }
-        }
-        if (@event.IsActionPressed("weapon_wheel"))
-        {
-            foreach (var enemy in enemies)
-            {
-                enemy.SetDeferred("process_mode", (int)Node.ProcessModeEnum.Disabled);
-            }
-        }
-    }
+    // public override void _Input(InputEvent @event)
+    // {
+    //     if (@event.IsActionPressed("space"))
+    //     {
+    //         foreach (var enemy in enemies)
+    //         {
+    //             enemy.SetDeferred("process_mode", (int)Node.ProcessModeEnum.Inherit);
+    //         }
+    //     }
+    //     if (@event.IsActionPressed("weapon_wheel"))
+    //     {
+    //         foreach (var enemy in enemies)
+    //         {
+    //             enemy.SetDeferred("process_mode", (int)Node.ProcessModeEnum.Disabled);
+    //         }
+    //     }
+    // }
 }

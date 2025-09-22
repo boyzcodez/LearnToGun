@@ -187,6 +187,7 @@ collide_with_bodies = false
 [node name="Hurtbox" parent="." node_paths=PackedStringArray("hitFlash") instance=ExtResource("3_m1e7j")]
 position = Vector2(0, -11)
 collision_layer = 4
+maxHealth = 3
 hitFlash = NodePath("../Hide/AnimatedSpriteE/HitFlash")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]

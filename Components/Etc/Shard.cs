@@ -86,4 +86,8 @@ public partial class Shard : Sprite2D
     {
         SetPhysicsProcess(false);
     }
+    public override void _ExitTree()
+    {
+        EventBus.MapSwitch -= QueueFree;
+    }
 }
