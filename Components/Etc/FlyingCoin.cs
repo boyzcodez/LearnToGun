@@ -8,7 +8,6 @@ public partial class FlyingCoin : AnimatedSprite2D
     public override void _Ready()
     {
         playr = GetTree().GetFirstNodeInGroup("Player") as Player;
-        GD.Print("coin spawned");
     }
 
     public override void _PhysicsProcess(double delta)
@@ -23,7 +22,7 @@ public partial class FlyingCoin : AnimatedSprite2D
         float distanceToPlayer = GlobalPosition.DistanceTo(playr.GlobalPosition);
         if (distanceToPlayer < 20f)
         {
-            GD.Print("coin despawned");
+            EventBus.Money(1);
             QueueFree();
         } 
     }
