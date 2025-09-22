@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://u1aqua33b3uc"]
 
-[ext_resource type="Script" uid="uid://bskvhomxdhrhy" path="res://Scarecrow.cs" id="1_j5bqv"]
+[ext_resource type="Script" uid="uid://bskvhomxdhrhy" path="res://Game/Entities/TestEnemies/Scarecrow.cs" id="1_j5bqv"]
 [ext_resource type="Texture2D" uid="uid://bumavqdsqd44w" path="res://Assets/Entity/Enemy/PunchingBag.png" id="2_j5bqv"]
 [ext_resource type="Material" uid="uid://w5yw3e3gudc3" path="res://Game/Player/HitFlash.tres" id="2_vyfxq"]
 [ext_resource type="PackedScene" uid="uid://vmtiw08cr30b" path="res://Components/DamageComps/hurtbox.tscn" id="3_7idsq"]
