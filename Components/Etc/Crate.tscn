@@ -8,7 +8,7 @@ texture = ExtResource("1_wlhj7")
 offset = Vector2(0, -4)
 hframes = 2
 
-[node name="CrateBody" type="StaticBody2D" parent="."]
+[node name="CrateBody" type="Area2D" parent="."]
 position = Vector2(0, -4)
 collision_layer = 17
 collision_mask = 17

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bhb68kqkfragl"]
+[gd_scene load_steps=32 format=3 uid="uid://bhb68kqkfragl"]
 
 [ext_resource type="Script" uid="uid://dexb3awvsef8d" path="res://Game/Entities/TestEnemies/ActiveTestEnemy.cs" id="1_hc5v1"]
 [ext_resource type="PackedScene" uid="uid://vmtiw08cr30b" path="res://Components/DamageComps/hurtbox.tscn" id="3_m1e7j"]
@@ -138,9 +138,6 @@ animations = [{
 radius = 8.0
 height = 22.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wxglr"]
-radius = 29.017237
-
 [node name="ActiveTestEnemy" type="CharacterBody2D" node_paths=PackedStringArray("gun", "separationArea")]
 motion_mode = 1
 wall_min_slide_angle = 0.08726646
@@ -151,7 +148,7 @@ Speed = 40.0
 ShootingRange = 120.0
 FireCooldown = 5.0
 gun = NodePath("Hide/AnimatedSpriteE/Look/EnemyGun/EnemyShtogun")
-separationArea = NodePath("Area2D")
+separationArea = NodePath("")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_htgvw")
@@ -227,11 +224,6 @@ debug_enabled = true
 
 [node name="NavTimer" type="Timer" parent="."]
 one_shot = true
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_wxglr")
 
 [connection signal="animation_finished" from="Hide/AnimatedSpriteE" to="Hide/AnimatedSpriteE" method="_on_animation_finished"]
 [connection signal="timeout" from="NavTimer" to="." method="_on_nav_timer_timeout"]

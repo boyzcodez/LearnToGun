@@ -8,10 +8,6 @@ public partial class AnimatedSpriteT : AnimatedSprite
     {
         random = new Random();
     }
-    public override void Physics(double delta)
-    {
-        base.Physics(delta);
-    }
 
     public override void PlayAnimation(string animation = "", int value = 0)
     {

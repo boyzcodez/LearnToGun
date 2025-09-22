@@ -14,7 +14,7 @@ public partial class AnimatedSpriteC : AnimatedSprite
     {
         directionNode = GetNode<Direction>("Direction");
     }
-    public override void Physics(double delta)
+    public override void _PhysicsProcess(double delta)
     {
         HandleMovement();
         HandleAnimation();
