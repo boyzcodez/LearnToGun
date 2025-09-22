@@ -7,9 +7,11 @@ public partial class DestructibleCrate : Node2D
     [Export] public PackedScene shardScene;
     private int numShards = 6;
 
+    private Node2D ysort;
     public Area2D area;
     public override void _Ready()
     {
+        ysort = GetTree().GetFirstNodeInGroup("YSort") as Node2D;
         area = GetNode<Area2D>("DestructionArea");
 
         area.BodyEntered += Break;
@@ -24,7 +26,7 @@ public partial class DestructibleCrate : Node2D
             var shard = shardScene.Instantiate<Shard>();
             shard.GlobalPosition = GlobalPosition;
 
-            GetTree().CurrentScene.CallDeferred("add_child", shard);
+            ysort.CallDeferred("add_child", shard);
         }
 
         QueueFree();

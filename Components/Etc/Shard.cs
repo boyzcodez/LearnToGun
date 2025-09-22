@@ -8,14 +8,23 @@ public partial class Shard : Sprite2D
     [Export] public float Damping = 0.5f;      // Reduces bounce height
     [Export] public int MaxBounces = 2;        // Number of bounces
     [Export] public float GroundRandomRange = 12f; // Range for random Y landing offset
+    [Export] public float MinRotationSpeed = -6f;  // radians per second
+    [Export] public float MaxRotationSpeed = 6f;   // radians per second
 
     private Vector2 _velocity;
     private int _bouncesLeft;
     private float _groundY;
     private bool _done;
+    private float _rotationSpeed;
 
     public override void _Ready()
     {
+        var rng = new RandomNumberGenerator();
+        rng.Randomize(); // Makes results less predictable (seeded with system time)
+        int value = rng.RandiRange(0, 2);
+
+        FrameCoords = new Vector2I(value,0);
+
         _bouncesLeft = MaxBounces;
 
         // Randomize final ground position for isometric depth
@@ -28,6 +37,9 @@ public partial class Shard : Sprite2D
         float xKick = (float)GD.RandRange(-InitialForce * 0.5f, InitialForce * 0.5f);
 
         _velocity = new Vector2(xKick, yKick);
+
+        // Random rotation speed
+        _rotationSpeed = (float)GD.RandRange(MinRotationSpeed, MaxRotationSpeed);
     }
 
     public override void _PhysicsProcess(double delta)
@@ -40,6 +52,9 @@ public partial class Shard : Sprite2D
 
         // Move
         GlobalPosition += _velocity * (float)delta;
+
+        // Rotate while flying
+        Rotation += _rotationSpeed * (float)delta;
 
         // Check ground hit
         if (GlobalPosition.Y >= _groundY)
@@ -56,9 +71,10 @@ public partial class Shard : Sprite2D
             }
             else
             {
-                // Stop moving
+                // Stop moving and freeze rotation
                 GlobalPosition = new Vector2(GlobalPosition.X, _groundY);
                 _velocity = Vector2.Zero;
+                _rotationSpeed = 0f;
                 _done = true;
             }
         }
