@@ -51,6 +51,7 @@ public partial class Bullet : Area2D
             
         if (overlaps.Count > 0)
         {
+            hasHit = true;
             if (overlaps[0] is CrateBody)
             {
                 foreach (var body in overlaps)
@@ -65,9 +66,8 @@ public partial class Bullet : Area2D
                 OnHit();
             }
         }
-        if (GetOverlappingBodies().Count > 0)
+        if (GetOverlappingBodies().Count > 0 && !hasHit)
         {
-            
             Deactivate();
         }
 

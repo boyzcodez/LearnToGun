@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://x3152krac0fs"]
+[gd_scene load_steps=6 format=4 uid="uid://x3152krac0fs"]
 
 [ext_resource type="TileSet" uid="uid://mnog6di1hrb2" path="res://Game/Map/TilsetData/TestTileSet.tres" id="1_e217v"]
 [ext_resource type="Script" uid="uid://beyvg3tfxd6cr" path="res://Game/Map/AutoCollisionWalls.cs" id="2_owkgx"]
+[ext_resource type="PackedScene" uid="uid://dtl2ydqrnh23i" path="res://Components/WarpEffects/portal_machine.tscn" id="4_2ufwp"]
 [ext_resource type="PackedScene" uid="uid://biyioow7m1un5" path="res://Components/Etc/Crate.tscn" id="4_84hcq"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_owkgx"]
@@ -46,3 +47,6 @@ position = Vector2(90, -99)
 
 [node name="Crate3" parent="." instance=ExtResource("4_84hcq")]
 position = Vector2(102, -93)
+
+[node name="PortalMachine" parent="." instance=ExtResource("4_2ufwp")]
+position = Vector2(0, -50)

@@ -10,8 +10,8 @@ hframes = 2
 
 [node name="CrateBody" type="Area2D" parent="."]
 position = Vector2(0, -4)
-collision_layer = 17
-collision_mask = 17
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("2_y66ac")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CrateBody"]
