@@ -78,6 +78,7 @@ public partial class Shard : Sprite2D
                 _velocity = Vector2.Zero;
                 _rotationSpeed = 0f;
                 _done = true;
+                ZIndex = -1;
                 Disable();
             }
         }
