@@ -13,7 +13,12 @@ config_version=5
 config/name="testpro"
 run/main_scene="uid://clqw4um34fajs"
 config/features=PackedStringArray("4.5", "C#", "Forward Plus")
+run/max_fps=120
 config/icon="res://Assets/icon.svg"
+
+[debug]
+
+settings/stdout/print_fps=true
 
 [display]
 
@@ -23,6 +28,7 @@ window/size/window_width_override=1440
 window/size/window_height_override=810
 window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
+window/vsync/vsync_mode=0
 
 [dotnet]
 
