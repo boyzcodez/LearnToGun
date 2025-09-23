@@ -7,6 +7,7 @@ public partial class Entity : CharacterBody2D
     public Vector2 direction = Vector2.Zero;
     public float KnockbackTime = 0f;
     public Vector2 KnockbackVelocity;
+    public bool Dead = false;
 
     public void Knockback(Vector2 direction, float force)
     {
@@ -27,7 +28,7 @@ public partial class Entity : CharacterBody2D
     public virtual void Death()
     {
         EventBus.OnEnemyDied();
-        QueueFree();
+        Dead = true;
     }
     
 

@@ -12,6 +12,8 @@ public partial class DestructibleCrate : Node2D
     private Sprite2D sprite;
     private Node2D ysort;
     public Area2D area;
+
+    private bool broken = false;
     public override void _Ready()
     {
         ysort = GetTree().GetFirstNodeInGroup("YSort") as Node2D;
@@ -30,15 +32,9 @@ public partial class DestructibleCrate : Node2D
     }
     private void WorkAround()
     {
-        // for (int i = 0; i < numShards; i++)
-        // {
-        //     if (shardScene == null) continue;
-
-        //     var shard = shardScene.Instantiate<Shard>();
-        //     shard.GlobalPosition = GlobalPosition;
-
-        //     ysort.CallDeferred("add_child", shard);
-        // }
+        if (broken) return;
+        broken = true;
+        
         shardHandler.Show();
         shardHandler.Trigger();
         sprite.Hide();

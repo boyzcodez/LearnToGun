@@ -10,7 +10,6 @@ GunName = "Pistol"
 Knockback = 50.0
 BulletSpeed = 220.0
 BulletScene = ExtResource("1_0ejhw")
-SpawnAmount = 20
 CurrentAmmo = 30
 MaxAmmo = 30
 FireRate = 0.2

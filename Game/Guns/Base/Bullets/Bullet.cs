@@ -35,6 +35,7 @@ public partial class Bullet : Area2D
         Hide();
 
         Animation.AnimationFinished += Hide;
+        BodyEntered += WallHit;
     }
 
     public override void _PhysicsProcess(double delta)
@@ -54,10 +55,10 @@ public partial class Bullet : Area2D
             hasHit = true;
             OnHit();
         }
-        if (GetOverlappingBodies().Count > 0 && !hasHit)
-        {
-            Deactivate();
-        }
+        // if (GetOverlappingBodies().Count > 0 && !hasHit)
+        // {
+        //     Deactivate();
+        // }
 
         _timer += (float)delta;
     }
@@ -117,6 +118,10 @@ public partial class Bullet : Area2D
 
         // Optional: Play hit animation
         Animation?.Play("hit");
+    }
+    private void WallHit(Node body)
+    {
+        Deactivate();
     }
 
     #endregion
