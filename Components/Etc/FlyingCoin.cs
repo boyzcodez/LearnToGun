@@ -5,6 +5,7 @@ public partial class FlyingCoin : AnimatedSprite2D
 {
     private Player playr;
     private Vector2 vel;
+    private float increment = 1.0f;
     public override void _Ready()
     {
         playr = GetTree().GetFirstNodeInGroup("Player") as Player;
@@ -15,12 +16,13 @@ public partial class FlyingCoin : AnimatedSprite2D
         Rotation += (float)(delta * 16.0); // Adjust 1.0 to change rotation speed
 
         Vector2 dir = (playr.GlobalPosition - GlobalPosition).Normalized();
-        vel = vel.MoveToward(dir * 200f, (float)delta * 400f);
+        vel = vel.MoveToward(dir * 200f, (float)delta * 400f * increment);
 
+        increment += 0.1f;
         GlobalPosition += vel * (float)delta;
 
         float distanceToPlayer = GlobalPosition.DistanceTo(playr.GlobalPosition);
-        if (distanceToPlayer < 20f)
+        if (distanceToPlayer < 5f)
         {
             EventBus.Money(1);
             QueueFree();

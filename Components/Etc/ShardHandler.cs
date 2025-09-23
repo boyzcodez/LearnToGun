@@ -9,7 +9,7 @@ public partial class ShardHandler : Node2D
         {
             if (child is Shard shard)
             {
-                shard.GlobalPosition = GlobalPosition;
+                //shard.GlobalPosition = GlobalPosition;
                 shard.Start();
                 shard.Activate();
             } 

@@ -12,6 +12,7 @@ colors = PackedColorArray(0.8895496, 0.7653802, 0.37615559, 1, 0.91345596, 0.945
 
 [node name="Tail" type="Line2D"]
 z_index = -1
+width = 5.0
 width_curve = SubResource("Curve_8nuy0")
 default_color = Color(0.58789223, 0.72869617, 1, 1)
 gradient = SubResource("Gradient_a8e1a")

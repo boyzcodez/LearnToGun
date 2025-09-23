@@ -39,6 +39,9 @@ public partial class DestructibleCrate : Node2D
         shardHandler.Trigger();
         sprite.Hide();
 
+        area.SetDeferred("monitoring", false);
+        area.SetDeferred("monitorable", false);
+
         var coin = coinScene.Instantiate<AnimatedSprite2D>();
         coin.GlobalPosition = GlobalPosition;
         ysort.CallDeferred("add_child", coin);

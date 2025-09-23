@@ -4,7 +4,7 @@ using System;
 public partial class Tail : Line2D
 {
     private AnimatedSprite2D parent;
-    private int length = 10;
+    [Export] private int length = 20;
     private Vector2 offset;
 
     public override void _Ready()
