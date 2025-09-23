@@ -19,6 +19,11 @@ public partial class Shard : Sprite2D
 
     public override void _Ready()
     {
+        SetPhysicsProcess(false);
+    }
+
+    public void Start()
+    {
         var rng = new RandomNumberGenerator();
         rng.Randomize(); // Makes results less predictable (seeded with system time)
         int value = rng.RandiRange(0, 2);
@@ -40,8 +45,6 @@ public partial class Shard : Sprite2D
 
         // Random rotation speed
         _rotationSpeed = (float)GD.RandRange(MinRotationSpeed, MaxRotationSpeed);
-
-        EventBus.MapSwitch += QueueFree;
     }
 
     public override void _PhysicsProcess(double delta)
@@ -83,16 +86,12 @@ public partial class Shard : Sprite2D
             }
         }
     }
-    private void Disable()
+    public void Disable()
     {
         SetPhysicsProcess(false);
     }
-    private void Activate()
+    public void Activate()
     {
         SetPhysicsProcess(true);
-    }
-    public override void _ExitTree()
-    {
-        EventBus.MapSwitch -= QueueFree;
     }
 }

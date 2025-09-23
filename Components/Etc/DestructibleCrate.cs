@@ -8,12 +8,16 @@ public partial class DestructibleCrate : Node2D
     [Export] public PackedScene coinScene;
     private int numShards = 4;
 
+    private ShardHandler shardHandler;
+    private Sprite2D sprite;
     private Node2D ysort;
     public Area2D area;
     public override void _Ready()
     {
         ysort = GetTree().GetFirstNodeInGroup("YSort") as Node2D;
         area = GetNode<Area2D>("DestructionArea");
+        shardHandler = GetNode<ShardHandler>("ShardHandler");
+        sprite = GetNode<Sprite2D>("Sprite2D");
 
         area.BodyEntered += Break;
         area.AreaEntered += Break;
@@ -26,22 +30,22 @@ public partial class DestructibleCrate : Node2D
     }
     private void WorkAround()
     {
-        for (int i = 0; i < numShards; i++)
-        {
-            if (shardScene == null) continue;
+        // for (int i = 0; i < numShards; i++)
+        // {
+        //     if (shardScene == null) continue;
 
-            var shard = shardScene.Instantiate<Shard>();
-            shard.GlobalPosition = GlobalPosition;
+        //     var shard = shardScene.Instantiate<Shard>();
+        //     shard.GlobalPosition = GlobalPosition;
 
-            ysort.CallDeferred("add_child", shard);
-        }
+        //     ysort.CallDeferred("add_child", shard);
+        // }
+        shardHandler.Show();
+        shardHandler.Trigger();
+        sprite.Hide();
 
         var coin = coinScene.Instantiate<AnimatedSprite2D>();
         coin.GlobalPosition = GlobalPosition;
         ysort.CallDeferred("add_child", coin);
-
-        EventBus.EndWave -= WorkAround;
-        QueueFree();
     }
     public override void _ExitTree()
     {
