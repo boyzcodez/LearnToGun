@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://ch0frdduncrs1"]
+
+[ext_resource type="TileSet" uid="uid://mnog6di1hrb2" path="res://Game/Map/TilsetData/TestTileSet.tres" id="1_wnt3w"]
+
+[node name="RoomBase" type="Node2D"]
+y_sort_enabled = true
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+
+[node name="Collision" type="TileMapLayer" parent="NavigationRegion2D"]
+tile_set = ExtResource("1_wnt3w")
+
+[node name="Map" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Ground" type="TileMapLayer" parent="Map"]
+z_index = -2
+tile_set = ExtResource("1_wnt3w")
+
+[node name="Walls" type="TileMapLayer" parent="Map"]
+y_sort_enabled = true
+tile_set = ExtResource("1_wnt3w")
+
+[node name="Crates" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Spawnpoints" type="Node2D" parent="."]
+y_sort_enabled = true

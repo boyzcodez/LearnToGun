@@ -8,7 +8,7 @@ public static class EventBus
     public static event Action MapSwitch;
     public static event Action StartWave;
     public static event Action EndWave;
-    public static event Action EnemyDied;
+    public static event Action<string, Entity> EnemyDied;
     public static event Action ClearBullets;
     public static event Action<int> GainExp;
     public static event Action<int> GainMoney;
@@ -35,8 +35,8 @@ public static class EventBus
         StartWave?.Invoke();
     public static void TriggerEndOfWave() =>
         EndWave?.Invoke();
-    public static void OnEnemyDied() =>
-        EnemyDied?.Invoke();
+    public static void OnEnemyDied(string name, Entity enemy) =>
+        EnemyDied?.Invoke(name, enemy);
     public static void TriggerClearBullets() =>
         ClearBullets?.Invoke();
     public static void Money(int amount) =>

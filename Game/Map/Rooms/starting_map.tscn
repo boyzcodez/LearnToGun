@@ -1,21 +1,16 @@
 [gd_scene load_steps=6 format=4 uid="uid://x3152krac0fs"]
 
+[ext_resource type="NavigationPolygon" uid="uid://bqu67g6soqouh" path="res://Game/Map/TilsetData/NavMesh.tres" id="1_2ufwp"]
 [ext_resource type="TileSet" uid="uid://mnog6di1hrb2" path="res://Game/Map/TilsetData/TestTileSet.tres" id="1_e217v"]
 [ext_resource type="Script" uid="uid://beyvg3tfxd6cr" path="res://Game/Map/AutoCollisionWalls.cs" id="2_owkgx"]
 [ext_resource type="PackedScene" uid="uid://dtl2ydqrnh23i" path="res://Components/WarpEffects/portal_machine.tscn" id="4_2ufwp"]
 [ext_resource type="PackedScene" uid="uid://c03wc70tgc418" path="res://Components/Etc/DestructibleCrate.tscn" id="4_84hcq"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_owkgx"]
-vertices = PackedVector2Array(0, -154.57813, 10.6328125, -149.27344, 314.6328, 2.7265625, 325.15625, 7.9921875, 308, 16.578125, 96, -5.421875, -84, -32.578125, -84, -47.421875, -10.6328125, -149.27344, 308, 31.421875, 330.6328, 42.726563, 256, 42.578125, 156, 39.421875, 156, 24.578125, -52, 79.421875, 36, 39.421875, 58.632813, 50.726563, 74.63281, 58.726563, 96, 69.421875, 10.6328125, 165.27344, 0, 170.57813, -10.6328125, 165.27344, -80, 93.421875, 348, 104.578125, 330.82813, 96, 332, 95.421875, 360.77344, 134.1875, 339.52344, 123.64844, 348, 119.421875, 384, 122.578125, 452, 87.421875, 469.15625, 96, 452, 104.578125, -234.63281, 53.273438, -245.15625, 48, -234.63281, 42.726563, -202.63281, 26.726563, -108, 79.421875, -202.63281, -10.7265625, -234.63281, -26.726563, -245.15625, -32, -234.63281, -37.273438, -172, -47.421875, -172, -32.578125, -180, 0.578125, 436.89063, 58.96875, 457.64844, 69.75, 452, 72.578125, 416, 69.421875, 452, 119.421875, 466.35156, 126.59375, 444, 139.14063, 444, 136.57813, -52, 64.578125, 36, 24.578125, 133.36719, 13.2734375, 117.36719, 5.2734375, 416, 122.578125, -106.63281, -58.726563, -128, -69.421875, 384, 69.421875, 362.6328, 58.726563, -149.36719, -58.726563, -108, 64.578125, -180, 15.421875, -149.36719, -21.273438, -128, -10.578125, -80, 50.578125, 400, 61.40625, 400, 130.57813, 332, 80.578125, 309.3672, 69.27344, 277.3672, 53.273438, 74.63281, 5.2734375, 58.632813, 13.2734375, -106.63281, -21.273438, 117.36719, 58.726563, 133.36719, 50.726563, 234.63281, 53.273438)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7, 8), PackedInt32Array(9, 10, 11, 12, 13), PackedInt32Array(14, 15, 16, 17, 18, 19, 20, 21, 22), PackedInt32Array(23, 24, 25), PackedInt32Array(26, 27, 28, 29), PackedInt32Array(30, 31, 32), PackedInt32Array(21, 33, 34, 35, 36, 37), PackedInt32Array(38, 39, 40, 41, 42, 43, 44), PackedInt32Array(45, 46, 47, 48), PackedInt32Array(49, 50, 51, 52), PackedInt32Array(15, 14, 53, 54), PackedInt32Array(4, 9, 13, 55, 56, 5), PackedInt32Array(32, 49, 52, 57, 48), PackedInt32Array(8, 7, 58, 59), PackedInt32Array(60, 29, 28, 23, 61), PackedInt32Array(41, 8, 59, 62, 42), PackedInt32Array(63, 64, 44, 43, 65, 66, 67), PackedInt32Array(48, 47, 30), PackedInt32Array(48, 30, 32), PackedInt32Array(68, 48, 57, 69, 29, 60), PackedInt32Array(61, 23, 25, 70), PackedInt32Array(10, 61, 70, 71, 72, 11), PackedInt32Array(73, 74, 54, 53, 67, 66, 75, 6, 5), PackedInt32Array(76, 77, 12, 11, 78, 19, 18), PackedInt32Array(36, 64, 63, 37), PackedInt32Array(21, 37, 22)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-372, 13, 14, -194, 373, -17, 329, 23, 380, 48, 411, 32, 540, 99, 410, 172, 287, 111, 310, 88, 255, 66, 4, 210)])
-agent_radius = 12.0
-
 [node name="StartingMap" type="Node2D"]
 y_sort_enabled = true
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-navigation_polygon = SubResource("NavigationPolygon_owkgx")
+navigation_polygon = ExtResource("1_2ufwp")
 
 [node name="Collision" type="TileMapLayer" parent="NavigationRegion2D"]
 visible = false

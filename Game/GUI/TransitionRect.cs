@@ -33,7 +33,7 @@ public partial class TransitionRect : ColorRect
         myMaterial, "shader_parameter/progress", 1f, 2f
         ).SetTrans(Tween.TransitionType.Cubic).SetEase(Tween.EaseType.Out);
 
-        await ToSignal(GetTree().CreateTimer(2.5f), "timeout");
+        await ToSignal(GetTree().CreateTimer(2.1f), "timeout");
 
         EventBus.TriggerMapSwitch();
     }

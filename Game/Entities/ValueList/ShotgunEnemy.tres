@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Enemy" load_steps=3 format=3 uid="uid://deq3e1hpm875b"]
+
+[ext_resource type="PackedScene" uid="uid://bhb68kqkfragl" path="res://Game/Entities/TestEnemies/active_test_enemy.tscn" id="1_fp4cv"]
+[ext_resource type="Script" uid="uid://bosj4dr7i34es" path="res://Game/Entities/ValueList/Enemy.cs" id="1_u8nju"]
+
+[resource]
+script = ExtResource("1_u8nju")
+name = "ShotgunEnemy"
+enemyScene = ExtResource("1_fp4cv")
+value = 2
+metadata/_custom_type_script = "uid://bosj4dr7i34es"

@@ -66,7 +66,11 @@ public partial class BulletPool : Node2D
         if (_pools.ContainsKey(key))
         {
             foreach (var bullet in _pools[key])
+            {
+                if (_enemyBullets.Contains(bullet)) _enemyBullets.Remove(bullet);
                 bullet.QueueFree();
+            }
+                
 
             _pools.Remove(key);
         }

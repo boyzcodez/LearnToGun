@@ -13,9 +13,9 @@ public partial class EntityHandler : Node2D
 
     public override void _Ready()
     {
-        EventBus.StartWave += CalculateRounds;
-        EventBus.EnemyDied += OnEnemyDied;
-        EventBus.Reset += ClearEnemies;
+        // EventBus.StartWave += CalculateRounds;
+        // EventBus.EnemyDied += OnEnemyDied;
+        // EventBus.Reset += ClearEnemies;
         LoadEnemyTypes();
     }
 

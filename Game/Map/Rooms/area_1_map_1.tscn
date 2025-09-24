@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpunp2lu00d25"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_meyss"]
+vertices = PackedVector2Array(164.47656, -116.67969, 500.72656, 175.03906, -7.9296875, 243.63281, -201.53906, 130.53125, -186.11719, -69.03906, -151.20313, -176.53125)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-158, -188, 169, -126, 524, 182, -10, 254, -212, 136, -196, -71)])
+
+[node name="Area1Map1" type="Node2D"]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_meyss")
+
+[node name="Collision" type="TileMapLayer" parent="NavigationRegion2D"]

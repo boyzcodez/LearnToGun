@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Godot;
 
 [GlobalClass]
@@ -12,12 +13,12 @@ public partial class Explosion : Behavior
     }
     public override void OnHit(Bullet bullet)
     {
-        if (_explosion != null) {
+        if (_explosion != null)
+        {
             var explosion = _explosion.Instantiate<Area2D>();
             explosion.GlobalPosition = bullet.GlobalPosition;
             bullet.GetTree().CurrentScene.CallDeferred("add_child", explosion);
         }
-        
         bullet.Deactivate();
     }
 }
