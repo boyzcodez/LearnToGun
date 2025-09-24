@@ -19,6 +19,6 @@ public partial class Speedlines : TextureRect
         _tween = CreateTween();
         _tween.SetLoops();
         _tween.TweenProperty(_material, "shader_parameter/sample_radius", 1.0f, 0.5f);
-        _tween.TweenProperty(_material, "shader_parameter/sample_radius", 0.6f, 0.5f);
+        _tween.TweenProperty(_material, "shader_parameter/sample_radius", 0.6f, 0.05f);
     }
 }
