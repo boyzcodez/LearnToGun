@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ch0frdduncrs1"]
+[gd_scene load_steps=3 format=3 uid="uid://ch0frdduncrs1"]
 
 [ext_resource type="TileSet" uid="uid://mnog6di1hrb2" path="res://Game/Map/TilsetData/TestTileSet.tres" id="1_wnt3w"]
+[ext_resource type="Script" uid="uid://drdotiwirfef3" path="res://Game/Map/TilsetData/Spawnpoints.cs" id="2_rqtfm"]
 
 [node name="RoomBase" type="Node2D"]
 y_sort_enabled = true
@@ -26,3 +27,4 @@ y_sort_enabled = true
 
 [node name="Spawnpoints" type="Node2D" parent="."]
 y_sort_enabled = true
+script = ExtResource("2_rqtfm")

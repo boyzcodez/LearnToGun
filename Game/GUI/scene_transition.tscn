@@ -1,12 +1,50 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4wotq3cqabch"]
+[gd_scene load_steps=17 format=3 uid="uid://c4wotq3cqabch"]
 
 [ext_resource type="Shader" uid="uid://u2c7kcdrwjin" path="res://Game/Shaders/scene_transition.gdshader" id="1_bep11"]
 [ext_resource type="Script" uid="uid://cvyn2hbg1lg3l" path="res://Game/GUI/TransitionRect.cs" id="2_ygnt7"]
+[ext_resource type="Material" uid="uid://bxhygf21dc7r4" path="res://Game/Shaders/PortalShader.tres" id="3_5ii03"]
+[ext_resource type="Shader" uid="uid://cv5qhux54m6bq" path="res://Game/Shaders/CenterGradient.gdshader" id="3_psh4j"]
+[ext_resource type="Texture2D" uid="uid://bp36wvjhcl1jp" path="res://Assets/orb1.png" id="4_h8y1q"]
+[ext_resource type="Material" uid="uid://dhfqei1rnaiwm" path="res://Game/Shaders/Outline.tres" id="4_ol3xl"]
+[ext_resource type="Shader" uid="uid://yhsouqnvopys" path="res://Game/Shaders/SpeedLines.gdshader" id="4_xdrie"]
+[ext_resource type="Script" uid="uid://drfc7ott1ccd" path="res://Game/GUI/Speedlines.cs" id="5_7qy6r"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ygnt7"]
 shader = ExtResource("1_bep11")
 shader_parameter/progress = 0.0
 shader_parameter/diamondPixelSize = 10.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ol3xl"]
+shader = ExtResource("3_psh4j")
+shader_parameter/color_center = Color(0, 0, 0, 1)
+shader_parameter/color_edge = Color(0.7900826, 0, 0.3081948, 1)
+shader_parameter/radius = 1.16800005548
+shader_parameter/softness = 0.800000038
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xdrie"]
+noise_type = 2
+fractal_lacunarity = 5.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7qy6r"]
+noise = SubResource("FastNoiseLite_xdrie")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7qy6r"]
+shader = ExtResource("4_xdrie")
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/noise = SubResource("NoiseTexture2D_7qy6r")
+shader_parameter/sample_radius = 0.6000000285
+shader_parameter/line_color = Color(0.90076196, 0.00013784647, 0.7454439, 1)
+shader_parameter/center_radius = 0.8030000381425
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ehcuq"]
+fractal_lacunarity = 5.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cprqh"]
+noise = SubResource("FastNoiseLite_ehcuq")
+
+[sub_resource type="Curve" id="Curve_h8y1q"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="SceneTransition" type="CanvasLayer"]
 
@@ -17,5 +55,71 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+color = Color(0.63932955, 0.029905297, 0.2428729, 1)
 script = ExtResource("2_ygnt7")
+
+[node name="Bg" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ol3xl")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Speedlines" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_7qy6r")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -256.0
+offset_right = 256.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_cprqh")
+script = ExtResource("5_7qy6r")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasGroup" type="CanvasGroup" parent="Control"]
+material = ExtResource("4_ol3xl")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Control/CanvasGroup"]
+emitting = false
+amount = 150
+texture = ExtResource("4_h8y1q")
+preprocess = 0.5
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 250.0
+initial_velocity_max = 250.0
+scale_amount_max = 1.5
+scale_amount_curve = SubResource("Curve_h8y1q")
+
+[node name="Portal" type="ColorRect" parent="."]
+material = ExtResource("3_5ii03")
+custom_minimum_size = Vector2(64, 64)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
