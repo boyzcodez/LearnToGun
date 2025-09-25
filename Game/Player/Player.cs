@@ -27,11 +27,13 @@ public partial class Player : Entity
         warpDashNode = GetNode<Node2D>("WarpDash");
         //Input.SetMouseMode(Input.MouseModeEnum.Hidden);
 
-        EventBus.MapSwitch += PlayerReset;
+        //EventBus.MapSwitch += PlayerReset;
         EventBus.Lock += Lock;
     }
     public override void _PhysicsProcess(double delta)
     {
+        if (disabled) return;
+
         if (KnockbackTime > 0f)
         {
             KnockbackTime -= (float)delta;
@@ -111,12 +113,10 @@ public partial class Player : Entity
         if (disabled)
         {
             disabled = false;
-            SetPhysicsProcess(true);
         }
         else
         {
             disabled = true;
-            SetPhysicsProcess(false);
         }
 
     }

@@ -29,8 +29,9 @@ public partial class Entity : CharacterBody2D
     public virtual void Death()
     {
         EventBus.OnEnemyDied(name, this);
+        GetNode<Hurtbox>("Hurtbox").ResetHealth();
+        KnockbackVelocity = Vector2.Zero;
         Dead = true;
-        QueueFree();
     }
     
 

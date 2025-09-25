@@ -61,3 +61,14 @@ text = "fps 60"
 script = ExtResource("3_0lmko")
 
 [node name="SceneTransition" parent="." instance=ExtResource("2_xijps")]
+
+[node name="BG" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="ColorRect" type="ColorRect" parent="BG"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.051970966, 0.05197096, 0.05197095, 1)

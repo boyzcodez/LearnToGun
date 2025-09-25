@@ -10,19 +10,18 @@ public partial class TransitionRect : ColorRect
     public override void _Ready()
     {
         myMaterial = this.Material;
-        EventBus.Transition += Transition;
+        //EventBus.Transition += Transition;
     }
 
-    private void Transition()
+    public void Transition()
     {
         if (rectUp)
             TransitionIn();
         else
             TransitionOut();
     }
-    private async void TransitionOut()
+    public async void TransitionOut()
     {
-        rectUp = true;
 
         if (tween != null)
             tween.Kill();
@@ -33,13 +32,12 @@ public partial class TransitionRect : ColorRect
         myMaterial, "shader_parameter/progress", 1f, 2f
         ).SetTrans(Tween.TransitionType.Cubic).SetEase(Tween.EaseType.Out);
 
-        await ToSignal(GetTree().CreateTimer(2.1f), "timeout");
+        await ToSignal(tween, "finished");
 
         EventBus.TriggerMapSwitch();
     }
-    private void TransitionIn()
+    public void TransitionIn()
     {
-        rectUp = false;
 
         if (tween != null)
             tween.Kill();
@@ -50,6 +48,6 @@ public partial class TransitionRect : ColorRect
         myMaterial, "shader_parameter/progress", 0f, 2f
         ).SetTrans(Tween.TransitionType.Cubic).SetEase(Tween.EaseType.Out);
 
-        EventBus.TriggerLock();
+        //EventBus.TriggerLock();
     }
 }

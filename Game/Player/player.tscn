@@ -768,6 +768,7 @@ position = Vector2(14, 0)
 [node name="Hurtbox" parent="." node_paths=PackedStringArray("hitFlash") instance=ExtResource("7_vh1aq")]
 collision_layer = 2
 hitEffects = [ExtResource("13_tqhgd")]
+maxHealth = 3
 hitFlash = NodePath("../AnimatedSprite/HitFlash")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]

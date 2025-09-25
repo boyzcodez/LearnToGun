@@ -1,23 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://dtl2ydqrnh23i"]
+[gd_scene load_steps=4 format=3 uid="uid://dtl2ydqrnh23i"]
 
 [ext_resource type="Script" uid="uid://diio3lnul1bfe" path="res://Components/WarpEffects/PortalMachine.cs" id="1_ljuca"]
-[ext_resource type="PackedScene" uid="uid://blk7mubdurbn0" path="res://Components/WarpEffects/portal_2.tscn" id="2_ljuca"]
-[ext_resource type="PackedScene" uid="uid://cugpgubph2sc" path="res://Components/InteractComp/interactable.tscn" id="3_lmepp"]
 [ext_resource type="PackedScene" uid="uid://dpgi2e8e4qv82" path="res://Components/WarpEffects/base_portal.tscn" id="4_vh6nn"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vh6nn"]
-radius = 30.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_3n8ar"]
+radius = 17.0
 
 [node name="PortalMachine" type="Node2D"]
+z_index = 10
 script = ExtResource("1_ljuca")
 
-[node name="Portal" parent="." instance=ExtResource("2_ljuca")]
-
-[node name="Interactable" parent="." instance=ExtResource("3_lmepp")]
-interactionName = "Enter"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
-shape = SubResource("CircleShape2D_vh6nn")
-
 [node name="BasePortal" parent="." instance=ExtResource("4_vh6nn")]
+visible = false
 Palette = PackedColorArray(0.905084, 0, 0.211995, 1, 0.620763, 0.544747, 1, 1, 0.0448697, 0.808634, 0.943821, 1)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_3n8ar")

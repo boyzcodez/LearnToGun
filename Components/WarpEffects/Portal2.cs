@@ -13,8 +13,22 @@ public partial class Portal2 : Sprite2D
 
         // await ToSignal(tween, Tween.SignalName.Finished);
 
-        await ToSignal(GetTree().CreateTimer(0.6f), "timeout");
+        await ToSignal(tween, "finished");
 
-        EventBus.TriggerTransition();
+        //EventBus.TriggerTransition();
+    }
+    public async void ShrinkPortal()
+    {
+        if (tween != null)
+            tween.Kill();
+        tween = CreateTween();
+
+        tween.TweenProperty(this, "scale", new Vector2(0, 0), 0.3f).SetEase(Tween.EaseType.Out);
+
+        // await ToSignal(tween, Tween.SignalName.Finished);
+
+        await ToSignal(tween, "finished");
+
+        //EventBus.TriggerTransition();
     }
 }

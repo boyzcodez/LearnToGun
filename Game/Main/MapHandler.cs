@@ -8,9 +8,12 @@ public partial class MapHandler : Node2D
     [Export] private Node2D ysort;
     private RandomNumberGenerator rng = new RandomNumberGenerator();
     private Node2D child;
+    private Player player;
 
     public override void _Ready()
     {
+        player = GetTree().GetFirstNodeInGroup("Player") as Player;
+
         EventBus.Reset += SpawnStartingMap;
         EventBus.MapSwitch += SpawnRoom;
         SpawnStartingMap();
@@ -38,6 +41,7 @@ public partial class MapHandler : Node2D
             if (scene != null)
             {
                 var instance = scene.Instantiate() as Node2D;
+                instance.GlobalPosition = player.GlobalPosition;
                 child = instance;
                 ysort.AddChild(instance);
             }
@@ -47,8 +51,8 @@ public partial class MapHandler : Node2D
 
         ToSignal(GetTree().CreateTimer(0.5f), "timeout");
 
-        EventBus.TriggerTransition();
-        EventBus.TriggerWave();
+        //EventBus.TriggerTransition();
+        //EventBus.TriggerWave();
     }
     private void ClearMap()
     {

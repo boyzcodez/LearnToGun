@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Speedlines : TextureRect
+public partial class Speedlines : ColorRect
 {
     private Tween _tween;
     private ShaderMaterial _material;
@@ -9,7 +9,7 @@ public partial class Speedlines : TextureRect
     public override void _Ready()
     {
         _material = (ShaderMaterial)Material;
-        Speed();
+        //Speed();
     }
 
 
@@ -17,8 +17,8 @@ public partial class Speedlines : TextureRect
     {
         _tween?.Kill();
         _tween = CreateTween();
-        _tween.SetLoops();
-        _tween.TweenProperty(_material, "shader_parameter/sample_radius", 1.0f, 0.5f);
-        _tween.TweenProperty(_material, "shader_parameter/sample_radius", 0.6f, 0.05f);
+        _tween.TweenProperty(_material, "shader_parameter/sample_radius", 1.0f, 4.0f);
+
+        _tween.TweenProperty(_material, "shader_parameter/sample_radius", 0.3f, 0.1f);
     }
 }

@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://clqw4um34fajs"]
+[gd_scene load_steps=10 format=3 uid="uid://clqw4um34fajs"]
 
 [ext_resource type="Script" uid="uid://xdubo0fshbcy" path="res://Game/Main/MapHandler.cs" id="3_mxdch"]
 [ext_resource type="PackedScene" uid="uid://x3152krac0fs" path="res://Game/Map/Rooms/starting_map.tscn" id="4_gk2dm"]
 [ext_resource type="PackedScene" uid="uid://bbjw3fvxlq53q" path="res://Game/Player/Player.tscn" id="5_gk2dm"]
-[ext_resource type="PackedScene" uid="uid://u1aqua33b3uc" path="res://Game/Entities/TestEnemies/scarecrow.tscn" id="5_mxdch"]
 [ext_resource type="PackedScene" uid="uid://bqtng3dp4vtsa" path="res://Game/Player/player_camera.tscn" id="5_vmwgv"]
 [ext_resource type="PackedScene" uid="uid://dij2unasvwyoh" path="res://Game/Map/Rooms/Area1Room1.tscn" id="7_bhrp5"]
 [ext_resource type="Script" uid="uid://cmj0dd4e41aj2" path="res://Components/Autoloads/BulletPool.cs" id="7_vmwgv"]
@@ -35,8 +34,5 @@ y_sort_enabled = true
 y_sort_enabled = true
 position = Vector2(-500, 0)
 script = ExtResource("7_vmwgv")
-
-[node name="Scarecrow" parent="YSort" instance=ExtResource("5_mxdch")]
-position = Vector2(160, 0)
 
 [node name="Player" parent="YSort" instance=ExtResource("5_gk2dm")]

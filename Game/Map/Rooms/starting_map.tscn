@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=4 uid="uid://x3152krac0fs"]
+[gd_scene load_steps=7 format=4 uid="uid://x3152krac0fs"]
 
 [ext_resource type="NavigationPolygon" uid="uid://bqu67g6soqouh" path="res://Game/Map/TilsetData/NavMesh.tres" id="1_2ufwp"]
 [ext_resource type="TileSet" uid="uid://mnog6di1hrb2" path="res://Game/Map/TilsetData/TestTileSet.tres" id="1_e217v"]
 [ext_resource type="Script" uid="uid://beyvg3tfxd6cr" path="res://Game/Map/AutoCollisionWalls.cs" id="2_owkgx"]
 [ext_resource type="PackedScene" uid="uid://dtl2ydqrnh23i" path="res://Components/WarpEffects/portal_machine.tscn" id="4_2ufwp"]
 [ext_resource type="PackedScene" uid="uid://c03wc70tgc418" path="res://Components/Etc/DestructibleCrate.tscn" id="4_84hcq"]
+[ext_resource type="PackedScene" uid="uid://u1aqua33b3uc" path="res://Game/Entities/TestEnemies/scarecrow.tscn" id="6_wk4oc"]
 
 [node name="StartingMap" type="Node2D"]
 y_sort_enabled = true
@@ -68,4 +69,7 @@ position = Vector2(-6, 81)
 position = Vector2(6, 87)
 
 [node name="PortalMachine" parent="." instance=ExtResource("4_2ufwp")]
-position = Vector2(0, -50)
+position = Vector2(0, -80)
+
+[node name="Scarecrow" parent="." instance=ExtResource("6_wk4oc")]
+position = Vector2(192, -25)

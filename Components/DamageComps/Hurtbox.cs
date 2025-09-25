@@ -34,18 +34,15 @@ public partial class Hurtbox : Area2D
     public void TakeDamage(DamageData damageData, Vector2 direction = default)
     {
         if (currentHealth <= 0) return;
-        
+
         currentHealth -= damageData.Damage;
         owner.Knockback(direction, damageData.Knockback - knockbackResist);
-
-        if (hitFlash != null) hitFlash.Blink();
 
         EmitSignal(SignalName.Hit);
         XpHandler.AddXP(damageData.WeaponName, xpAmount);
 
         GD.Print("took " + damageData.Damage + " damage, current health " + currentHealth);
 
-        Effects();
 
         if (currentHealth <= 0)
         {
@@ -53,6 +50,7 @@ public partial class Hurtbox : Area2D
         }
         else
         {
+            Effects();
             foreach (var effect in hitEffects)
             {
                 effect.Trigger();
@@ -64,5 +62,10 @@ public partial class Hurtbox : Area2D
     {
         animation.Play("default");
         particles.Emitting = true;
+        if (hitFlash != null) hitFlash.Blink();
+    }
+    public void ResetHealth()
+    {
+        currentHealth = maxHealth;
     }
 }

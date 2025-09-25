@@ -2,23 +2,45 @@ using Godot;
 
 public partial class PortalMachine : Node2D
 {
-    private Interactable interactable;
+    [Export] private bool active = true;
+
     private bool triggered = false;
+    private CanvasGroup sprite;
+    private Area2D area;
     public override void _Ready()
     {
-        interactable = GetNode<Interactable>("Interactable");
-        interactable.interactFunction = new Callable(this, nameof(Trigger));
+        area = GetNode<Area2D>("Area2D");
+        sprite = GetNode<CanvasGroup>("BasePortal");
+        area.AreaEntered += Trigger;
+
+        EventBus.EndWave += Activate;
+
+        if (active) Activate();
     }
-    private void Trigger()
+
+
+    private void Trigger(Node body)
     {
-        if (triggered)
+        if (!active)
             return;
 
         triggered = true;
-        EventBus.TriggerLock();
+        //EventBus.TriggerLock();
         EventBus.TriggerScreenShake(0.6f);
 
-        var portal = FindChild("Portal") as Portal2;
-        portal.GrowPortal();
+        EventBus.TriggerMapSwitch();
+
+        // var portal = FindChild("Portal") as Portal2;
+        // portal.GrowPortal();
     }
+    private void Activate()
+    {
+        sprite.Show();
+        active = true;
+    }
+    public override void _ExitTree()
+    {
+        EventBus.EndWave -= Activate;
+    }
+
 }
