@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://dij2unasvwyoh"]
+[gd_scene load_steps=8 format=4 uid="uid://dij2unasvwyoh"]
 
 [ext_resource type="TileSet" uid="uid://mnog6di1hrb2" path="res://Game/Map/TilsetData/TestTileSet.tres" id="1_egjpj"]
 [ext_resource type="PackedScene" uid="uid://c03wc70tgc418" path="res://Components/Etc/DestructibleCrate.tscn" id="2_fcbw8"]
 [ext_resource type="PackedScene" uid="uid://8b0q45ntah7g" path="res://Components/Etc/Spawnpoint.tscn" id="3_264xr"]
-[ext_resource type="Script" uid="uid://drdotiwirfef3" path="res://Game/Map/TilsetData/Spawnpoints.cs" id="3_alm34"]
+[ext_resource type="Script" uid="uid://7bvcy80ljd54" path="res://Game/Map/Rooms/Rounds.cs" id="3_wq4m2"]
+[ext_resource type="PackedScene" uid="uid://chw3mi6a4pbhu" path="res://Game/Map/Rooms/Spawnpoints.tscn" id="4_1mht2"]
 [ext_resource type="PackedScene" uid="uid://dtl2ydqrnh23i" path="res://Components/WarpEffects/portal_machine.tscn" id="5_1mht2"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ru6ok"]
@@ -77,25 +78,37 @@ position = Vector2(-402, -9)
 [node name="DestructibleCrate13" parent="Crates" instance=ExtResource("2_fcbw8")]
 position = Vector2(-390, -15)
 
-[node name="Spawnpoints" type="Node2D" parent="."]
-script = ExtResource("3_alm34")
+[node name="Rounds" type="Node2D" parent="."]
+script = ExtResource("3_wq4m2")
 
-[node name="Spawnpoint" parent="Spawnpoints" instance=ExtResource("3_264xr")]
-position = Vector2(-186, 31)
+[node name="Spawnpoints" parent="Rounds" instance=ExtResource("4_1mht2")]
 
-[node name="Spawnpoint2" parent="Spawnpoints" instance=ExtResource("3_264xr")]
-position = Vector2(110, 52)
+[node name="Spawnpoint" parent="Rounds/Spawnpoints" instance=ExtResource("3_264xr")]
+position = Vector2(-37, -142)
 
-[node name="Spawnpoint3" parent="Spawnpoints" instance=ExtResource("3_264xr")]
-position = Vector2(-54, -140)
+[node name="Spawnpoint2" parent="Rounds/Spawnpoints" instance=ExtResource("3_264xr")]
+position = Vector2(94, 99)
+
+[node name="Spawnpoint3" parent="Rounds/Spawnpoints" instance=ExtResource("3_264xr")]
+position = Vector2(-238, 80)
 Enemy = "ShotgunEnemy"
 
-[node name="Spawnpoint4" parent="Spawnpoints" instance=ExtResource("3_264xr")]
-position = Vector2(-27, 184)
+[node name="Spawnpoints2" parent="Rounds" instance=ExtResource("4_1mht2")]
 
-[node name="Spawnpoint5" parent="Spawnpoints" instance=ExtResource("3_264xr")]
-position = Vector2(229, -81)
+[node name="Spawnpoint" parent="Rounds/Spawnpoints2" instance=ExtResource("3_264xr")]
+position = Vector2(-215, -71)
 Enemy = "ShotgunEnemy"
+
+[node name="Spawnpoint2" parent="Rounds/Spawnpoints2" instance=ExtResource("3_264xr")]
+position = Vector2(191, -50)
+
+[node name="Spawnpoints3" parent="Rounds" instance=ExtResource("4_1mht2")]
+
+[node name="Spawnpoint" parent="Rounds/Spawnpoints3" instance=ExtResource("3_264xr")]
+position = Vector2(276, 40)
+
+[node name="Spawnpoint2" parent="Rounds/Spawnpoints3" instance=ExtResource("3_264xr")]
+position = Vector2(-119, 32)
 
 [node name="PortalMachine" parent="." instance=ExtResource("5_1mht2")]
 active = false

@@ -42,13 +42,6 @@ public partial class EnemySpawner : Node2D
             }
         }
     }
-    private void ClearCurrentEnemies()
-    {
-        foreach (var enemy in currentEnemies)
-        {
-            enemy.Death();
-        }
-    }
     public void SummonEnemy(Vector2 spot, string enemy)
     {
         if (!_pools.TryGetValue(enemy, out var pool) || pool.Count == 0)
@@ -77,6 +70,6 @@ public partial class EnemySpawner : Node2D
 
         if (currentEnemies.Contains(enemy)) currentEnemies.Remove(enemy);
 
-        if (activeEnemies <= 0) EventBus.TriggerEndOfWave();
+        if (activeEnemies <= 0 && EventBus.gameOn) EventBus.TriggerEndOfWave();
     }
 }

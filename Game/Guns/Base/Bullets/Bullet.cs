@@ -37,7 +37,6 @@ public partial class Bullet : Area2D
 
         Animation.AnimationFinished += Hide;
         BodyEntered += WallHit;
-        AreaEntered += OnHit;
 
         Collision = GetNode<CollisionShape2D>("CollisionShape2D");
     }
@@ -54,11 +53,11 @@ public partial class Bullet : Area2D
         
         // var overlaps = GetOverlappingAreas();
             
-        // if (overlaps.Count > 0)
-        // {
-        //     hasHit = true;
-        //     OnHit();
-        // }
+        if (GetOverlappingAreas().Count > 0)
+        {
+            hasHit = true;
+            OnHit();
+        }
         // if (GetOverlappingBodies().Count > 0 && !hasHit)
         // {
         //     Deactivate();
@@ -133,7 +132,7 @@ public partial class Bullet : Area2D
 
     #region Behaviors
 
-    public void OnHit(Node body)
+    public void OnHit()
     {
         foreach (var behavior in Behaviors)
         {

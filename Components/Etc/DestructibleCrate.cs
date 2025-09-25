@@ -24,7 +24,7 @@ public partial class DestructibleCrate : Node2D
         area.BodyEntered += Break;
         area.AreaEntered += Break;
 
-        EventBus.EndWave += WorkAround;
+        EventBus.EndRound += WorkAround;
     }
     public void Break(Node2D body)
     {
@@ -48,7 +48,7 @@ public partial class DestructibleCrate : Node2D
     }
     public override void _ExitTree()
     {
-        EventBus.EndWave -= WorkAround;
+        EventBus.EndRound -= WorkAround;
     }
 
 }

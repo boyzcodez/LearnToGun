@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://chw3mi6a4pbhu"]
+
+[ext_resource type="Script" uid="uid://drdotiwirfef3" path="res://Game/Map/TilsetData/Spawnpoints.cs" id="1_qharg"]
+
+[node name="Spawnpoints" type="Node2D"]
+script = ExtResource("1_qharg")

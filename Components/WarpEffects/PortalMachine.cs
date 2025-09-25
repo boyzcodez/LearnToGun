@@ -13,7 +13,7 @@ public partial class PortalMachine : Node2D
         sprite = GetNode<CanvasGroup>("BasePortal");
         area.AreaEntered += Trigger;
 
-        EventBus.EndWave += Activate;
+        EventBus.EndRound += Activate;
 
         if (active) Activate();
     }
@@ -40,7 +40,7 @@ public partial class PortalMachine : Node2D
     }
     public override void _ExitTree()
     {
-        EventBus.EndWave -= Activate;
+        EventBus.EndRound -= Activate;
     }
 
 }

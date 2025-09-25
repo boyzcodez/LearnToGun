@@ -8,6 +8,7 @@ public static class EventBus
     public static event Action MapSwitch;
     public static event Action StartWave;
     public static event Action EndWave;
+    public static event Action EndRound;
     public static event Action<string, Entity> EnemyDied;
     public static event Action ClearBullets;
     public static event Action<int> GainExp;
@@ -16,6 +17,8 @@ public static class EventBus
     public static event Action<float> ScreenShake;
 
     public static int dangerValue = 0;
+    public static bool gameOn = false;
+    public static int room = 0;
 
     public static void PlayerDied()
     {
@@ -35,6 +38,8 @@ public static class EventBus
         StartWave?.Invoke();
     public static void TriggerEndOfWave() =>
         EndWave?.Invoke();
+    public static void TriggerEndOfRound() =>
+        EndRound?.Invoke();
     public static void OnEnemyDied(string name, Entity enemy) =>
         EnemyDied?.Invoke(name, enemy);
     public static void TriggerClearBullets() =>

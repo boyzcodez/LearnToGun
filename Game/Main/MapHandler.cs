@@ -32,6 +32,10 @@ public partial class MapHandler : Node2D
         ClearMap();
         rng.Randomize();
 
+        EventBus.room += 1;
+
+        if (EventBus.room == 1) EventBus.gameOn = true;
+
         if (maps.Length > 0)
         {
             // Pick a random index

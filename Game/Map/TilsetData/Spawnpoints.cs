@@ -3,7 +3,7 @@ using System;
 
 public partial class Spawnpoints : Node2D
 {
-    public override void _Ready()
+    public void SpawnEnemies()
     {
         foreach (AnimatedSprite2D child in GetChildren())
         {
