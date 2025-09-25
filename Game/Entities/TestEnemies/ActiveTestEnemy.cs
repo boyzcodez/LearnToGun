@@ -11,12 +11,14 @@ public partial class ActiveTestEnemy : Entity
     [Export] private Area2D separationArea;
     private NavigationAgent2D navAgent;
     private Node2D player;
-    private double fireTimer = 5.0;
+    private double fireTimer = 3.0;
 
     public override void _Ready()
     {
         navAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");
         player = GetTree().GetFirstNodeInGroup("Player") as Node2D;
+
+        EventBus.Reset += Death;
     }
 
     public override void _PhysicsProcess(double delta)

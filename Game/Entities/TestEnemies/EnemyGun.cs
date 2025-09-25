@@ -5,18 +5,6 @@ using System;
 [GlobalClass]
 public partial class EnemyGun : Node2D
 {
-    [Export] Gun gun;
-    private RayCast2D rayCast;
-
-    private float time = 0f;
-    private bool canShoot = false;
-
-    // public override void _Ready()
-    // {
-    //     rayCast = GetNode<RayCast2D>("RayCast");
-    //     EventBus.ClearBullets += ResetTimer;
-    // }
-
     public override void _PhysicsProcess(double delta)
     {
         var angle = this.GlobalRotation;
@@ -29,29 +17,5 @@ public partial class EnemyGun : Node2D
             Scale = new Vector2(1, 1);
         }
 
-        // if (canShoot == false)
-        // {
-        //     time += (float)delta;
-
-        //     if (time >= 2.5f)
-        //     {
-        //         canShoot = true;
-        //     }
-        // }
-        // else if (rayCast.IsColliding() && canShoot)
-        // {
-        //     canShoot = false;
-        //     if (gun != null) gun.Shoot();
-        //     ResetTimer();
-        // }
     }
-
-    // public void ResetTimer()
-    // {
-    //     time = 0;
-    // }
-    // public void _on_hurtbox_hit()
-    // {
-    //     ResetTimer();
-    // }
 }

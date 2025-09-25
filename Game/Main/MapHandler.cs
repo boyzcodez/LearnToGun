@@ -23,6 +23,7 @@ public partial class MapHandler : Node2D
         ClearMap();
 
         var instance = startingMap.Instantiate() as Node2D;
+        instance.GlobalPosition = player.GlobalPosition;
         ysort.CallDeferred(MethodName.AddChild, instance);
         child = instance;
     }

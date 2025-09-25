@@ -9,6 +9,7 @@ public partial class BulletPool : Node2D
     public override void _Ready()
     {
         EventBus.ClearBullets += ClearBullets;
+        EventBus.Reset += ClearBullets;
     }
 
     public void PreparePool(string key, GunData gunData, int amount)

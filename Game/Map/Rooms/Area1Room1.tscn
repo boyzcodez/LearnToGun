@@ -88,12 +88,14 @@ position = Vector2(110, 52)
 
 [node name="Spawnpoint3" parent="Spawnpoints" instance=ExtResource("3_264xr")]
 position = Vector2(-54, -140)
+Enemy = "ShotgunEnemy"
 
 [node name="Spawnpoint4" parent="Spawnpoints" instance=ExtResource("3_264xr")]
 position = Vector2(-27, 184)
 
 [node name="Spawnpoint5" parent="Spawnpoints" instance=ExtResource("3_264xr")]
 position = Vector2(229, -81)
+Enemy = "ShotgunEnemy"
 
 [node name="PortalMachine" parent="." instance=ExtResource("5_1mht2")]
 active = false

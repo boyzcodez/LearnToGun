@@ -39,7 +39,6 @@ public partial class EnemySpawner : Node2D
                 ysort.CallDeferred("add_child", instance);
 
                 pool.Enqueue(instance);
-                currentEnemies.Add(instance);
             }
         }
     }
@@ -47,8 +46,7 @@ public partial class EnemySpawner : Node2D
     {
         foreach (var enemy in currentEnemies)
         {
-            currentEnemies.Remove(enemy);
-            if (IsInstanceValid(enemy)) enemy.QueueFree();
+            enemy.Death();
         }
     }
     public void SummonEnemy(Vector2 spot, string enemy)
@@ -61,6 +59,9 @@ public partial class EnemySpawner : Node2D
         activeEnemies += 1;
 
         var selected = _pools[enemy].Dequeue();
+
+        if (!currentEnemies.Contains(selected)) currentEnemies.Add(selected);
+
         selected.GlobalPosition = spot;
         selected.SetDeferred("process_mode", (int)Node.ProcessModeEnum.Inherit);
         selected.Show();
@@ -73,6 +74,8 @@ public partial class EnemySpawner : Node2D
         enemy.Hide();
         enemy.GlobalPosition = new Vector2(500, 0);
         _pools[name].Enqueue(enemy);
+
+        if (currentEnemies.Contains(enemy)) currentEnemies.Remove(enemy);
 
         if (activeEnemies <= 0) EventBus.TriggerEndOfWave();
     }
