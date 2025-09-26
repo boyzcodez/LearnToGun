@@ -16,6 +16,11 @@ public partial class PortalMachine : Node2D
         EventBus.EndRound += Activate;
 
         if (active) Activate();
+        else
+        {
+            area.SetDeferred("monitoring", false);
+            area.SetDeferred("monitorable", false);
+        }
     }
 
 
@@ -37,6 +42,9 @@ public partial class PortalMachine : Node2D
     {
         sprite.Show();
         active = true;
+
+        area.SetDeferred("monitoring", true);
+        area.SetDeferred("monitorable", true);
     }
     public override void _ExitTree()
     {

@@ -15,8 +15,8 @@ visible = false
 Palette = PackedColorArray(0.905084, 0, 0.211995, 1, 0.620763, 0.544747, 1, 1, 0.0448697, 0.808634, 0.943821, 1)
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_3n8ar")

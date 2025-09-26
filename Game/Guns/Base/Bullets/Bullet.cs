@@ -11,9 +11,7 @@ public partial class Bullet : Area2D
 
     private BulletPool _pool;
     public DamageData DamageData;
-    public CollisionShape2D Collision;
 
-    public List<Hurtbox> Hurtboxes { get; private set; } = new();
     public float Speed { get; private set; } = 80f;
     public Vector2 Direction { get; set; }
     public float rotation { get; set; }
@@ -22,7 +20,6 @@ public partial class Bullet : Area2D
     public bool hasHit = false;
 
     public float _timer;
-    private int _currentValue = 0;
 
     #endregion
 
@@ -38,7 +35,6 @@ public partial class Bullet : Area2D
         Animation.AnimationFinished += Hide;
         BodyEntered += WallHit;
 
-        Collision = GetNode<CollisionShape2D>("CollisionShape2D");
     }
 
     public override void _PhysicsProcess(double delta)
