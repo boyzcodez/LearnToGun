@@ -108,9 +108,7 @@ public partial class Bullet : Area2D
         if (!Active) return;
         
         Active = false;
-        //Hurtboxes.Clear();
 
-        //Hide();
         SetPhysicsProcess(false);
         SetDeferred("monitoring", false);
         SetDeferred("monitorable", false);
