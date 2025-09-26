@@ -12,7 +12,7 @@ public partial class MapHandler : Node2D
     private Queue<string> preloadPaths = new();
     private Random random = new();
 
-    private const int PRELOAD_BUFFER_SIZE = 3;
+    private const int PRELOAD_BUFFER_SIZE = 1;
 
     private RandomNumberGenerator rng = new RandomNumberGenerator();
     private Node2D child;
@@ -64,7 +64,7 @@ public partial class MapHandler : Node2D
             }
         }
     }
-    public Node SpawnNextRoom()
+    public Node2D SpawnNextRoom()
     {
         if (preloadQueue.Count == 0)
         {
@@ -73,7 +73,7 @@ public partial class MapHandler : Node2D
         }
 
         var packed = preloadQueue.Dequeue();
-        var instance = packed.Instantiate();
+        var instance = packed.Instantiate() as Node2D;
 
         QueueRandomRoom();
         ProcessLoading();
@@ -98,32 +98,12 @@ public partial class MapHandler : Node2D
 
         if (EventBus.room == 1) EventBus.gameOn = true;
 
-        Node nextRoom = SpawnNextRoom();
+        Node2D nextRoom = SpawnNextRoom();
+        nextRoom.GlobalPosition = player.GlobalPosition;
         ysort.CallDeferred("add_child", nextRoom);
         child = nextRoom as Node2D;
 
-        // if (maps.Length > 0)
-        // {
-        //     // Pick a random index
-        //     int index = rng.RandiRange(0, maps.Length - 1);
-
-        //     // Get the scene and instance it
-        //     var scene = maps[index];
-        //     if (scene != null)
-        //     {
-        //         var instance = scene.Instantiate() as Node2D;
-        //         instance.GlobalPosition = player.GlobalPosition;
-        //         child = instance;
-        //         ysort.AddChild(instance);
-        //     }
-        // }
-
         GC.Collect();
-
-        //ToSignal(GetTree().CreateTimer(0.5f), "timeout");
-
-        //EventBus.TriggerTransition();
-        //EventBus.TriggerWave();
     }
     private void ClearMap()
     {

@@ -88,6 +88,8 @@ public partial class Bullet : Area2D
 
     public void Activate(float newRotation)
     {
+        if (Active) return;
+        
         rotation = newRotation;
 
         Initialize();
