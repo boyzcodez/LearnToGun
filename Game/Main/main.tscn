@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://xdubo0fshbcy" path="res://Game/Main/MapHandler.cs" id="3_mxdch"]
 [ext_resource type="PackedScene" uid="uid://x3152krac0fs" path="res://Game/Map/Rooms/starting_map.tscn" id="4_gk2dm"]
-[ext_resource type="PackedScene" uid="uid://bbjw3fvxlq53q" path="res://Game/Player/Player.tscn" id="5_gk2dm"]
+[ext_resource type="PackedScene" uid="uid://bbjw3fvxlq53q" path="res://Game/Player/player.tscn" id="5_gk2dm"]
 [ext_resource type="PackedScene" uid="uid://bqtng3dp4vtsa" path="res://Game/Player/player_camera.tscn" id="5_vmwgv"]
 [ext_resource type="PackedScene" uid="uid://dij2unasvwyoh" path="res://Game/Map/Rooms/Area1Room1.tscn" id="7_bhrp5"]
 [ext_resource type="Script" uid="uid://cmj0dd4e41aj2" path="res://Components/Autoloads/BulletPool.cs" id="7_vmwgv"]
