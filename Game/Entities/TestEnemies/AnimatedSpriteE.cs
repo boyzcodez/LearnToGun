@@ -11,7 +11,7 @@ public partial class AnimatedSpriteE : AnimatedSprite
         self = GetOwner<Entity>();
         look = GetNode<Look>("Look");
     }
-    public override void _PhysicsProcess(double delta)
+    public override void _Process(double delta)
     {
         if (self.Velocity != Vector2.Zero)
             PlayAnimation("Run", 1);

@@ -14,7 +14,6 @@ public partial class MapHandler : Node2D
 
     private const int PRELOAD_BUFFER_SIZE = 1;
 
-    private RandomNumberGenerator rng = new RandomNumberGenerator();
     private Node2D child;
     private Player player;
 
@@ -84,32 +83,28 @@ public partial class MapHandler : Node2D
     {
         ClearMap();
 
-        var instance = startingMap.Instantiate() as Node2D;
-        instance.GlobalPosition = player.GlobalPosition;
-        ysort.CallDeferred(MethodName.AddChild, instance);
-        child = instance;
-
         EventBus.room = 0;
     }
     private void SpawnRoom()
     {
         ClearMap();
-        rng.Randomize();
 
         EventBus.room += 1;
 
         if (EventBus.room == 1) EventBus.gameOn = true;
 
         Node2D nextRoom = SpawnNextRoom();
-        nextRoom.GlobalPosition = player.GlobalPosition;
+        nextRoom.GlobalPosition = new Vector2(0, -500);
         ysort.CallDeferred("add_child", nextRoom);
-        child = nextRoom as Node2D;
+        child = nextRoom;
+
+        player.GlobalPosition = nextRoom.GlobalPosition;
 
         GC.Collect();
     }
     private void ClearMap()
     {
-        if (child == null) return;
+        if (!IsInstanceValid(child) || child == null) return;
         child.QueueFree();
     }
 

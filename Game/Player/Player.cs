@@ -104,6 +104,8 @@ public partial class Player : Entity
         EventBus.gameOn = false;
         EventBus.PlayerDied();
         GetNode<Hurtbox>("Hurtbox").ResetHealth();
+
+        GlobalPosition = new Vector2(0, 0);
     }
     private void PlayerReset()
     {
