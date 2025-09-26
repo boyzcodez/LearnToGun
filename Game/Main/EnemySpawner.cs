@@ -18,6 +18,7 @@ public partial class EnemySpawner : Node2D
     {
         PreparePool(DifficultyOne);
         EventBus.EnemyDied += OnEnemyDied;
+        EventBus.Reset += Reset;
     }
 
 
@@ -49,7 +50,7 @@ public partial class EnemySpawner : Node2D
             GD.PrintErr("No Such Enemy");
             return;
         }
-        activeEnemies += 1;
+        if (EventBus.gameOn) activeEnemies += 1;
 
         var selected = _pools[enemy].Dequeue();
 
@@ -61,7 +62,7 @@ public partial class EnemySpawner : Node2D
     }
     private void OnEnemyDied(string name, Entity enemy)
     {
-        activeEnemies -= 1;
+        if (EventBus.gameOn) activeEnemies -= 1;
 
         enemy.SetDeferred("process_mode", (int)Node.ProcessModeEnum.Disabled);
         enemy.Hide();
@@ -71,5 +72,9 @@ public partial class EnemySpawner : Node2D
         if (currentEnemies.Contains(enemy)) currentEnemies.Remove(enemy);
 
         if (activeEnemies <= 0 && EventBus.gameOn) EventBus.TriggerEndOfWave();
+    }
+    private void Reset()
+    {
+        activeEnemies = 0;
     }
 }

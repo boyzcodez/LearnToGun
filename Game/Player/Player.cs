@@ -102,7 +102,6 @@ public partial class Player : Entity
     public override void Death()
     {
         EventBus.gameOn = false;
-        EventBus.room = 0;
         EventBus.PlayerDied();
         GetNode<Hurtbox>("Hurtbox").ResetHealth();
     }

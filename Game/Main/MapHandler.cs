@@ -88,6 +88,8 @@ public partial class MapHandler : Node2D
         instance.GlobalPosition = player.GlobalPosition;
         ysort.CallDeferred(MethodName.AddChild, instance);
         child = instance;
+
+        EventBus.room = 0;
     }
     private void SpawnRoom()
     {
