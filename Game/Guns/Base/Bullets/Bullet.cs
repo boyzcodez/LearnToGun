@@ -34,6 +34,7 @@ public partial class Bullet : Area2D
 
         Animation.AnimationFinished += Hide;
         BodyEntered += WallHit;
+        AreaEntered += BodyHit;
 
     }
 
@@ -46,20 +47,8 @@ public partial class Bullet : Area2D
             behavior.Update(this, delta);
         }
 
-        
-        // var overlaps = GetOverlappingAreas();
-            
-        if (GetOverlappingAreas().Count > 0)
-        {
-            hasHit = true;
-            OnHit();
-        }
-        // if (GetOverlappingBodies().Count > 0 && !hasHit)
-        // {
-        //     Deactivate();
-        // }
-
         _timer += (float)delta;
+        if (_timer >= 4f) Deactivate();
     }
 
     #endregion
@@ -122,6 +111,11 @@ public partial class Bullet : Area2D
     {
         if (hasHit) return;
         Deactivate();
+    }
+    private void BodyHit(Node body)
+    {
+        hasHit = true;
+        OnHit();
     }
 
     #endregion

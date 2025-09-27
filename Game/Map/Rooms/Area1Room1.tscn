@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=4 uid="uid://dij2unasvwyoh"]
+[gd_scene load_steps=8 format=4 uid="uid://dij2unasvwyoh"]
 
 [ext_resource type="TileSet" uid="uid://mnog6di1hrb2" path="res://Game/Map/TilsetData/TestTileSet.tres" id="1_egjpj"]
+[ext_resource type="PackedScene" uid="uid://c03wc70tgc418" path="res://Components/Etc/Crate/DestructibleCrate.tscn" id="2_wq4m2"]
 [ext_resource type="PackedScene" uid="uid://8b0q45ntah7g" path="res://Components/Etc/Spawner/Spawnpoint.tscn" id="3_264xr"]
 [ext_resource type="Script" uid="uid://7bvcy80ljd54" path="res://Game/Map/Rooms/Rounds.cs" id="3_wq4m2"]
 [ext_resource type="PackedScene" uid="uid://chw3mi6a4pbhu" path="res://Game/Map/Rooms/Spawnpoints.tscn" id="4_1mht2"]
@@ -10,6 +11,7 @@
 vertices = PackedVector2Array(68.46875, 208.9375, 90, 198.17969, 473.64844, 16, 11.53125, 247.0625, 48, 219.17969, -224, 35.179688, -203.53125, 24.9375, -182, 14.1796875, 86, -1.8203125, 107.53125, 8.9375, 128, 19.179688, -32, 76.82031, 6, 198.17969, 27.53125, 208.9375, 0, 252.82031, -11.53125, 247.0625, -473.64844, 16, 90, 185.82031, 10, 110.17969, 10, 97.82031, 352, 35.179688, 68.46875, 175.0625, 48, 164.82031, -11.53125, 120.9375, 27.53125, 175.0625, 6, 185.82031, -32, 131.17969, -182, 1.8203125, 86, -14.1796875, 394, 14.1796875, 394, 1.8203125, 170, -1.8203125, 170, -14.1796875, 310, 1.8203125, 310, 14.1796875, -54, -49.820313, -54, -62.179688, 352, -19.179688, 128, -35.179688, -52.46875, 120.9375, -74, 110.17969, -74, 97.82031, 90, -137.82031, 90, -150.17969, 11.53125, -215.0625, 68.46875, -160.9375, 48, -171.17969, -11.53125, -215.0625, 0, -220.82031, 27.53125, -160.9375, 6, -150.17969, 6, -137.82031, 48, -116.82031, 68.46875, -127.0625, 27.53125, -127.0625, -96, -83.17969, -52.46875, 87.0625, 331.53125, -8.9375, 148.46875, -24.9375, 148.46875, 8.9375, 331.53125, 24.9375, 107.53125, -24.9375, -203.53125, -8.9375, -224, -19.179688, -96, -28.820313, 372.46875, 24.9375, -75.53125, -39.0625, -116.46875, -39.0625, -138, -49.820313, -138, -62.179688, -11.53125, 87.0625, -244.46875, 24.9375, -266, 14.1796875, -266, 1.8203125, -244.46875, -8.9375, -75.53125, -72.9375, 372.46875, -8.9375, -116.46875, -72.9375)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8, 9, 10, 11), PackedInt32Array(12, 13, 4, 3, 14, 15, 16), PackedInt32Array(2, 1, 17), PackedInt32Array(18, 19, 20, 2, 17, 21, 22), PackedInt32Array(23, 18, 22, 24, 25, 26), PackedInt32Array(8, 7, 27, 28), PackedInt32Array(2, 29, 30), PackedInt32Array(31, 32, 33, 34), PackedInt32Array(35, 36, 37, 38), PackedInt32Array(39, 26, 25, 12, 16, 40), PackedInt32Array(41, 40, 16), PackedInt32Array(2, 42, 43), PackedInt32Array(44, 2, 43, 45, 46), PackedInt32Array(47, 48, 44, 46, 49, 50, 16), PackedInt32Array(16, 50, 51), PackedInt32Array(52, 53, 42, 2, 37), PackedInt32Array(16, 51, 54, 55), PackedInt32Array(11, 56, 41, 16, 5), PackedInt32Array(37, 57, 33, 32, 58, 38), PackedInt32Array(10, 59, 31, 34, 60, 20, 19), PackedInt32Array(38, 61, 28, 27, 62, 63, 64), PackedInt32Array(65, 29, 2, 20), PackedInt32Array(66, 35, 38, 64), PackedInt32Array(67, 64, 63, 68), PackedInt32Array(69, 68, 63, 16), PackedInt32Array(10, 19, 70, 11), PackedInt32Array(71, 5, 16, 72), PackedInt32Array(73, 72, 16), PackedInt32Array(74, 73, 16, 63), PackedInt32Array(37, 36, 75, 55, 52), PackedInt32Array(2, 30, 76, 37), PackedInt32Array(77, 69, 16, 55), PackedInt32Array(54, 52, 55)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-2, -241, 517, 24, 2, 293, -513, 20)])
+parsed_collision_mask = 17
 
 [node name="RoomBase" type="Node2D"]
 y_sort_enabled = true
@@ -38,16 +40,52 @@ tile_set = ExtResource("1_egjpj")
 [node name="Crates" type="Node2D" parent="."]
 y_sort_enabled = true
 
+[node name="DestructibleCrate" parent="Crates" instance=ExtResource("2_wq4m2")]
+position = Vector2(-82, -41)
+
+[node name="DestructibleCrate5" parent="Crates" instance=ExtResource("2_wq4m2")]
+position = Vector2(160, 48)
+
+[node name="DestructibleCrate6" parent="Crates" instance=ExtResource("2_wq4m2")]
+position = Vector2(148, 54)
+
+[node name="DestructibleCrate7" parent="Crates" instance=ExtResource("2_wq4m2")]
+position = Vector2(136, 60)
+
+[node name="DestructibleCrate8" parent="Crates" instance=ExtResource("2_wq4m2")]
+position = Vector2(172, 42)
+
+[node name="DestructibleCrate2" parent="Crates" instance=ExtResource("2_wq4m2")]
+position = Vector2(-70, -47)
+
+[node name="DestructibleCrate9" parent="Crates" instance=ExtResource("2_wq4m2")]
+position = Vector2(-66, -161)
+
+[node name="DestructibleCrate10" parent="Crates" instance=ExtResource("2_wq4m2")]
+position = Vector2(-54, -155)
+
+[node name="DestructibleCrate11" parent="Crates" instance=ExtResource("2_wq4m2")]
+position = Vector2(-66, -149)
+
+[node name="DestructibleCrate12" parent="Crates" instance=ExtResource("2_wq4m2")]
+position = Vector2(-78, -155)
+
+[node name="DestructibleCrate3" parent="Crates" instance=ExtResource("2_wq4m2")]
+position = Vector2(-66, 95)
+
+[node name="DestructibleCrate4" parent="Crates" instance=ExtResource("2_wq4m2")]
+position = Vector2(-54, 89)
+
 [node name="Rounds" type="Node2D" parent="."]
 script = ExtResource("3_wq4m2")
 
 [node name="Spawnpoints" parent="Rounds" instance=ExtResource("4_1mht2")]
 
 [node name="Spawnpoint" parent="Rounds/Spawnpoints" instance=ExtResource("3_264xr")]
-position = Vector2(-37, -142)
+position = Vector2(15, -89)
 
 [node name="Spawnpoint2" parent="Rounds/Spawnpoints" instance=ExtResource("3_264xr")]
-position = Vector2(94, 99)
+position = Vector2(124, 126)
 
 [node name="Spawnpoint3" parent="Rounds/Spawnpoints" instance=ExtResource("3_264xr")]
 position = Vector2(-238, 80)
@@ -68,7 +106,7 @@ position = Vector2(191, -50)
 position = Vector2(276, 40)
 
 [node name="Spawnpoint2" parent="Rounds/Spawnpoints3" instance=ExtResource("3_264xr")]
-position = Vector2(-119, 32)
+position = Vector2(-151, 138)
 
 [node name="PortalMachine" parent="." instance=ExtResource("5_1mht2")]
 active = false
