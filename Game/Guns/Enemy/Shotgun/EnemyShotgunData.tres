@@ -7,18 +7,14 @@
 [resource]
 script = ExtResource("1_1gm1d")
 GunName = "EnemyShotgun"
-Damage = 1
 Knockback = 50.0
 BulletSpeed = 90.0
 BulletScene = ExtResource("1_04s0y")
 SpawnAmount = 20
-CurrentAmmo = 10
-MaxAmmo = 10
 UsesAmmo = false
 FireRate = 0.2
 BulletCount = 5
 SpreadAngle = 60.0
-RandomFactor = 0.0
 GunSprite = ExtResource("2_mvwql")
 isEnemy = true
 metadata/_custom_type_script = "uid://bf05vlwwwrvul"
