@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bfeyq7nvte55i"]
 
-[ext_resource type="Script" uid="uid://ot7l62gpxmcb" path="res://Components/Etc/Shard.cs" id="1_361em"]
+[ext_resource type="Script" uid="uid://ot7l62gpxmcb" path="res://Components/Etc/Crate/Shard.cs" id="1_361em"]
 [ext_resource type="Material" uid="uid://cx5bh10h2ko2n" path="res://Game/Shaders/TrueSmooth.tres" id="1_lapij"]
 [ext_resource type="Texture2D" uid="uid://dftjcfl6022qr" path="res://Assets/Particles/Shards.png" id="2_qy7gy"]
 

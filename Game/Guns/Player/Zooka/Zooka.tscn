@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://cc8avd18quyok"]
 
-[ext_resource type="Script" uid="uid://cemybpxgj5xep" path="res://Game/Guns/Base/Gun.cs" id="1_uasw2"]
+[ext_resource type="Script" uid="uid://cemybpxgj5xep" path="res://Game/Guns/Base/Parts/Gun.cs" id="1_uasw2"]
 [ext_resource type="Resource" uid="uid://bs3fdspup1o48" path="res://Game/Guns/Player/Zooka/Levels/ZookaData.tres" id="2_gqt03"]
 [ext_resource type="Texture2D" uid="uid://ctvc5jlwlpnox" path="res://Assets/Guns/Guns/Zooka.png" id="3_gqt03"]
-[ext_resource type="PackedScene" uid="uid://bijvgrqbhqt74" path="res://Game/Guns/Base/AnimatedGun.tscn" id="3_tcnvd"]
+[ext_resource type="PackedScene" uid="uid://bijvgrqbhqt74" path="res://Game/Guns/Base/Parts/AnimatedGun.tscn" id="3_tcnvd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gqt03"]
 atlas = ExtResource("3_gqt03")

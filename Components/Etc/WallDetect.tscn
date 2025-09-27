@@ -1,7 +1,0 @@
-[gd_scene format=3 uid="uid://dxuhx0d1ijw6p"]
-
-[node name="RayCast2D" type="RayCast2D"]
-position = Vector2(-5, 0)
-target_position = Vector2(10, 0)
-collision_mask = 16
-hit_from_inside = true

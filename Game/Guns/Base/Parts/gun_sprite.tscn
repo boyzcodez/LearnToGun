@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://mmdnif7mf7f7"]
 
 [ext_resource type="Material" uid="uid://cx5bh10h2ko2n" path="res://Game/Shaders/TrueSmooth.tres" id="1_ibr2d"]
-[ext_resource type="Script" uid="uid://de5s52jqbsy12" path="res://Game/Player/GunSprite.cs" id="2_yqd24"]
+[ext_resource type="Script" uid="uid://de5s52jqbsy12" path="res://Game/Entities/Player/GunSprite.cs" id="2_yqd24"]
 
 [node name="GunSprite" type="Sprite2D"]
 texture_filter = 2

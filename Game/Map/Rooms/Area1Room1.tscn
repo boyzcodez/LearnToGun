@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://dij2unasvwyoh"]
 
 [ext_resource type="TileSet" uid="uid://mnog6di1hrb2" path="res://Game/Map/TilsetData/TestTileSet.tres" id="1_egjpj"]
-[ext_resource type="PackedScene" uid="uid://8b0q45ntah7g" path="res://Components/Etc/Spawnpoint.tscn" id="3_264xr"]
+[ext_resource type="PackedScene" uid="uid://8b0q45ntah7g" path="res://Components/Etc/Spawner/Spawnpoint.tscn" id="3_264xr"]
 [ext_resource type="Script" uid="uid://7bvcy80ljd54" path="res://Game/Map/Rooms/Rounds.cs" id="3_wq4m2"]
 [ext_resource type="PackedScene" uid="uid://chw3mi6a4pbhu" path="res://Game/Map/Rooms/Spawnpoints.tscn" id="4_1mht2"]
 [ext_resource type="PackedScene" uid="uid://dtl2ydqrnh23i" path="res://Components/WarpEffects/portal_machine.tscn" id="5_1mht2"]

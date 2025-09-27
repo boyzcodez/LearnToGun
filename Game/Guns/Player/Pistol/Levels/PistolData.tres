@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="GunData" load_steps=4 format=3 uid="uid://du4ihic1fxweh"]
 
 [ext_resource type="PackedScene" uid="uid://c2lf3revdfxi0" path="res://Game/Guns/Base/Bullets/NewBulletBase.tscn" id="1_0ejhw"]
-[ext_resource type="Script" uid="uid://bf05vlwwwrvul" path="res://Game/Guns/Base/GunData.cs" id="1_1ql6e"]
+[ext_resource type="Script" uid="uid://bf05vlwwwrvul" path="res://Game/Guns/Base/Parts/GunData.cs" id="1_1ql6e"]
 [ext_resource type="Texture2D" uid="uid://culo57x4s1pec" path="res://Assets/Guns/Guns/basic_weapon_pistol1.png" id="2_0ejhw"]
 
 [resource]

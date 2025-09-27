@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqtng3dp4vtsa"]
+[gd_scene load_steps=5 format=3 uid="uid://bqtng3dp4vtsa"]
 
-[ext_resource type="Script" uid="uid://c6vbo4viabeax" path="res://Game/Player/PlayerCamera.cs" id="1_cm6ya"]
+[ext_resource type="Script" uid="uid://c6vbo4viabeax" path="res://Game/Entities/Player/PlayerCamera.cs" id="1_cm6ya"]
 [ext_resource type="Script" uid="uid://bmkmywagf3m2b" path="res://Game/GUI/Ui.cs" id="2_0lmko"]
-[ext_resource type="PackedScene" uid="uid://c4wotq3cqabch" path="res://Game/GUI/scene_transition.tscn" id="2_xijps"]
 [ext_resource type="Script" uid="uid://c2fyb5a13hqow" path="res://Components/Etc/FpsLabel.cs" id="3_0lmko"]
-[ext_resource type="Script" uid="uid://i8uaafigka8e" path="res://Game/Player/UiManager.cs" id="3_re3xe"]
+[ext_resource type="Script" uid="uid://i8uaafigka8e" path="res://Game/Entities/Player/UiManager.cs" id="3_re3xe"]
 
 [node name="PlayerCamera" type="Camera2D"]
 limit_enabled = false
@@ -59,8 +58,6 @@ offset_bottom = 23.0
 scale = Vector2(0.7, 0.7)
 text = "fps 60"
 script = ExtResource("3_0lmko")
-
-[node name="SceneTransition" parent="." instance=ExtResource("2_xijps")]
 
 [node name="BG" type="CanvasLayer" parent="."]
 layer = -10

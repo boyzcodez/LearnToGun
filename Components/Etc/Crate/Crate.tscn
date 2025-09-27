@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://biyioow7m1un5"]
 
 [ext_resource type="Texture2D" uid="uid://cvq10mtrugqo8" path="res://Assets/Particles/Crates.png" id="1_wlhj7"]
-[ext_resource type="Script" uid="uid://tll7kdsg6nvt" path="res://Components/Etc/CrateBody.cs" id="2_y66ac"]
+[ext_resource type="Script" uid="uid://tll7kdsg6nvt" path="res://Components/Etc/Crate/CrateBody.cs" id="2_y66ac"]
 
 [node name="Crate" type="Sprite2D"]
 texture = ExtResource("1_wlhj7")

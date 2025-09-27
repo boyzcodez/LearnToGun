@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://8b0q45ntah7g"]
 
 [ext_resource type="Texture2D" uid="uid://c48h0yfxwlgc6" path="res://Assets/Effects/ParticleEffects.png" id="1_cndia"]
-[ext_resource type="Script" uid="uid://bav77dvp4185k" path="res://Components/Etc/Spawnpoint.cs" id="2_mxr2y"]
+[ext_resource type="Script" uid="uid://bav77dvp4185k" path="res://Components/Etc/Spawner/Spawnpoint.cs" id="2_mxr2y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mxr2y"]
 atlas = ExtResource("1_cndia")

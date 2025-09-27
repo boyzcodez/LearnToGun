@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://tflokayy1njn"]
 
-[ext_resource type="Script" uid="uid://cemybpxgj5xep" path="res://Game/Guns/Base/Gun.cs" id="1_0utft"]
+[ext_resource type="Script" uid="uid://cemybpxgj5xep" path="res://Game/Guns/Base/Parts/Gun.cs" id="1_0utft"]
 [ext_resource type="Resource" uid="uid://du4ihic1fxweh" path="res://Game/Guns/Player/Pistol/Levels/PistolData.tres" id="2_bqxg4"]
-[ext_resource type="PackedScene" uid="uid://bijvgrqbhqt74" path="res://Game/Guns/Base/AnimatedGun.tscn" id="3_vychm"]
+[ext_resource type="PackedScene" uid="uid://bijvgrqbhqt74" path="res://Game/Guns/Base/Parts/AnimatedGun.tscn" id="3_vychm"]
 [ext_resource type="Texture2D" uid="uid://brx2swq0lnw54" path="res://Assets/Guns/Guns/NewPistol.png" id="4_6r7bt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vychm"]

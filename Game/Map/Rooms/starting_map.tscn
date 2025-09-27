@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://mnog6di1hrb2" path="res://Game/Map/TilsetData/TestTileSet.tres" id="1_e217v"]
 [ext_resource type="Script" uid="uid://beyvg3tfxd6cr" path="res://Game/Map/AutoCollisionWalls.cs" id="2_owkgx"]
 [ext_resource type="PackedScene" uid="uid://dtl2ydqrnh23i" path="res://Components/WarpEffects/portal_machine.tscn" id="4_2ufwp"]
-[ext_resource type="PackedScene" uid="uid://c03wc70tgc418" path="res://Components/Etc/DestructibleCrate.tscn" id="4_84hcq"]
+[ext_resource type="PackedScene" uid="uid://c03wc70tgc418" path="res://Components/Etc/Crate/DestructibleCrate.tscn" id="4_84hcq"]
 [ext_resource type="PackedScene" uid="uid://u1aqua33b3uc" path="res://Game/Entities/TestEnemies/scarecrow.tscn" id="6_wk4oc"]
 
 [node name="StartingMap" type="Node2D"]

@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://c03wc70tgc418"]
 
 [ext_resource type="Texture2D" uid="uid://c4g4c5ak6hq65" path="res://Assets/Particles/Crate.png" id="1_03ijl"]
-[ext_resource type="Script" uid="uid://rncx1sjriq7h" path="res://Components/Etc/DestructibleCrate.cs" id="1_w8pyh"]
-[ext_resource type="PackedScene" uid="uid://bfeyq7nvte55i" path="res://Components/Etc/Shard.tscn" id="2_vjwpo"]
-[ext_resource type="PackedScene" uid="uid://doulm4cnf4c77" path="res://Components/Etc/FlyingCoin.tscn" id="3_8m76r"]
-[ext_resource type="Script" uid="uid://ca2m01eg825w1" path="res://Components/Etc/ShardHandler.cs" id="5_chde7"]
+[ext_resource type="Script" uid="uid://rncx1sjriq7h" path="res://Components/Etc/Crate/DestructibleCrate.cs" id="1_w8pyh"]
+[ext_resource type="PackedScene" uid="uid://bfeyq7nvte55i" path="res://Components/Etc/Crate/Shard.tscn" id="2_vjwpo"]
+[ext_resource type="PackedScene" uid="uid://doulm4cnf4c77" path="res://Components/Etc/Coins/FlyingCoin.tscn" id="3_8m76r"]
+[ext_resource type="Script" uid="uid://ca2m01eg825w1" path="res://Components/Etc/Crate/ShardHandler.cs" id="5_chde7"]
 
 [node name="DestructibleCrate" type="Node2D"]
 script = ExtResource("1_w8pyh")

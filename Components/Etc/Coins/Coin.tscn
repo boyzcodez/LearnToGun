@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://bx73yqqn1gwtr"]
 
-[ext_resource type="Script" uid="uid://dxedwkmqel4ef" path="res://Components/Etc/Coin.cs" id="1_8nuy0"]
+[ext_resource type="Script" uid="uid://dxedwkmqel4ef" path="res://Components/Etc/Coins/Coin.cs" id="1_8nuy0"]
 [ext_resource type="Texture2D" uid="uid://bd4ya04op24m7" path="res://Assets/Particles/coins.png" id="1_a8e1a"]
-[ext_resource type="PackedScene" uid="uid://bgkqmmqtwxk4u" path="res://Components/Etc/Tail.tscn" id="3_a8e1a"]
+[ext_resource type="PackedScene" uid="uid://bgkqmmqtwxk4u" path="res://Components/Etc/Coins/Tail.tscn" id="3_a8e1a"]
 
 [node name="Coin" type="Sprite2D"]
 texture = ExtResource("1_a8e1a")
