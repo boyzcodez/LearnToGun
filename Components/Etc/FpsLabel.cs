@@ -3,9 +3,9 @@ using System;
 
 public partial class FpsLabel : Label
 {
-    public override void _Process(double delta)
-    {
-        Text = "fps: " + Engine.GetFramesPerSecond().ToString();
-    }
+    // public override void _Process(double delta)
+    // {
+    //     Text = "fps: " + Engine.GetFramesPerSecond().ToString();
+    // }
 
 }
