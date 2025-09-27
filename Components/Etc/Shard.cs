@@ -19,7 +19,7 @@ public partial class Shard : Sprite2D
 
     public override void _Ready()
     {
-        SetProcess(false);
+        SetPhysicsProcess(false);
     }
 
     public void Start()
@@ -45,9 +45,11 @@ public partial class Shard : Sprite2D
 
         // Random rotation speed
         _rotationSpeed = (float)GD.RandRange(MinRotationSpeed, MaxRotationSpeed);
+
+        SetPhysicsProcess(true);
     }
 
-    public override void _Process(double delta)
+    public override void _PhysicsProcess(double delta)
     {
         if (_done)
             return;
@@ -88,10 +90,6 @@ public partial class Shard : Sprite2D
     }
     public void Disable()
     {
-        SetProcess(false);
-    }
-    public void Activate()
-    {
-        SetProcess(true);
+        SetPhysicsProcess(false);
     }
 }

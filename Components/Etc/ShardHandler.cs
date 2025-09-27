@@ -11,7 +11,6 @@ public partial class ShardHandler : Node2D
             {
                 //shard.GlobalPosition = GlobalPosition;
                 shard.Start();
-                shard.Activate();
             } 
         }
     }
