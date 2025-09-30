@@ -168,13 +168,6 @@ script = ExtResource("3_q6s24")
 position = Vector2(14, 0)
 script = ExtResource("4_wxglr")
 
-[node name="RayCast" type="RayCast2D" parent="Hide/AnimatedSpriteE/Look/EnemyGun"]
-target_position = Vector2(10, 0)
-collision_mask = 2
-hit_from_inside = true
-collide_with_areas = true
-collide_with_bodies = false
-
 [node name="EnemyShtogun" parent="Hide/AnimatedSpriteE/Look/EnemyGun" instance=ExtResource("10_b3ga6")]
 
 [node name="HitFlash" parent="Hide/AnimatedSpriteE" instance=ExtResource("11_oxb72")]
