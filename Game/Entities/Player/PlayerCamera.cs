@@ -6,7 +6,6 @@ public partial class PlayerCamera : Camera2D
     [Export] private float decay = 0.8f;
     [Export] private Vector2 maxOffset = new Vector2(100, 75);
     [Export] private float maxRoll = 0.1f;
-    [Export] private Player followNode;
 
     private float trauma = 0.0f;
     private int traumaPower = 2;
@@ -16,11 +15,8 @@ public partial class PlayerCamera : Camera2D
         EventBus.ScreenShake += AddTrauma;
         GD.Randomize();
     }
-    public override void _Process(double delta)
+    public override void _PhysicsProcess(double delta)
     {
-        if (followNode != null)
-            GlobalPosition = followNode.GlobalPosition;
-
         if (trauma > 0f)
         {
             trauma = Math.Max(trauma - decay * (float)delta, 0f);

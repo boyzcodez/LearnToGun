@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://clqw4um34fajs"]
+[gd_scene load_steps=9 format=3 uid="uid://clqw4um34fajs"]
 
 [ext_resource type="Script" uid="uid://xdubo0fshbcy" path="res://Game/Main/MapHandler.cs" id="3_mxdch"]
 [ext_resource type="PackedScene" uid="uid://x3152krac0fs" path="res://Game/Map/Rooms/starting_map.tscn" id="4_gk2dm"]
 [ext_resource type="PackedScene" uid="uid://bbjw3fvxlq53q" path="res://Game/Entities/Player/Player.tscn" id="5_gk2dm"]
-[ext_resource type="PackedScene" uid="uid://bqtng3dp4vtsa" path="res://Game/Entities/Player/player_camera.tscn" id="5_vmwgv"]
 [ext_resource type="PackedScene" uid="uid://dij2unasvwyoh" path="res://Game/Map/Rooms/Area1Room1.tscn" id="7_bhrp5"]
 [ext_resource type="Script" uid="uid://cmj0dd4e41aj2" path="res://Components/Autoloads/BulletPool.cs" id="7_vmwgv"]
 [ext_resource type="Script" uid="uid://dfkmxtii76h6l" path="res://Game/Main/EnemySpawner.cs" id="8_ln7nw"]
@@ -23,9 +22,6 @@ script = ExtResource("3_mxdch")
 startingMap = ExtResource("4_gk2dm")
 maps = [ExtResource("7_bhrp5"), ExtResource("7_bhrp5"), ExtResource("7_bhrp5")]
 ysort = NodePath("../YSort")
-
-[node name="PlayerCamera" parent="." node_paths=PackedStringArray("followNode") instance=ExtResource("5_vmwgv")]
-followNode = NodePath("../YSort/Player")
 
 [node name="YSort" type="Node2D" parent="." groups=["YSort"]]
 y_sort_enabled = true

@@ -42,7 +42,8 @@ enabled=PackedStringArray("res://addons/color-palette/plugin.cfg")
 folder_colors={
 "res://Assets/": "yellow",
 "res://Components/": "purple",
-"res://Game/": "green"
+"res://Game/": "green",
+"res://addons/": "red"
 }
 
 [global_group]

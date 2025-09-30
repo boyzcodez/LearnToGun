@@ -25,12 +25,12 @@ public partial class MapHandler : Node2D
         EventBus.MapSwitch += SpawnRoom;
         SpawnStartingMap();
 
-        // for (int i = 0; i < PRELOAD_BUFFER_SIZE; i++)
-        // {
-        //     QueueRandomRoom();
-        // }
+        for (int i = 0; i < PRELOAD_BUFFER_SIZE; i++)
+        {
+            QueueRandomRoom();
+        }
 
-        // ProcessLoading();
+        ProcessLoading();
     }
     private void QueueRandomRoom()
     {
@@ -93,8 +93,7 @@ public partial class MapHandler : Node2D
 
         if (EventBus.room == 1) EventBus.gameOn = true;
 
-        // Node2D nextRoom = SpawnNextRoom();
-        var nextRoom = maps[0].Instantiate() as Node2D;
+        Node2D nextRoom = SpawnNextRoom();
         nextRoom.GlobalPosition = new Vector2(0, -500);
         
         ysort.CallDeferred("add_child", nextRoom);
