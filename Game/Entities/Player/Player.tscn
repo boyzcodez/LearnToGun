@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=3 uid="uid://bbjw3fvxlq53q"]
+[gd_scene load_steps=108 format=3 uid="uid://bbjw3fvxlq53q"]
 
 [ext_resource type="Script" uid="uid://cccauuo7nkwjv" path="res://Game/Entities/Player/Player.cs" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://dyqbl4s13wnxg" path="res://Game/Entities/Components/shadow.tscn" id="2_nfw5o"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://cjdsjaml44rs2" path="res://Game/Entities/Player/LookAt.cs" id="6_4ddeg"]
 [ext_resource type="PackedScene" uid="uid://bp3lx4f7c5wd1" path="res://Components/Etc/hit_flash.tscn" id="7_akrrf"]
 [ext_resource type="PackedScene" uid="uid://vmtiw08cr30b" path="res://Components/DamageComps/hurtbox.tscn" id="7_vh1aq"]
+[ext_resource type="Resource" uid="uid://du4ihic1fxweh" path="res://Game/Guns/Player/Pistol/Levels/PistolData.tres" id="10_iwdm0"]
 [ext_resource type="Script" uid="uid://c73kpxw2e5ynj" path="res://Game/Entities/Player/WarpDash.cs" id="12_qwver"]
 [ext_resource type="PackedScene" uid="uid://mg8q0xeodew0" path="res://Game/Guns/Base/Guns.tscn" id="13_2gvph"]
 [ext_resource type="PackedScene" uid="uid://bxyy5vw0eiy5e" path="res://Game/Entities/Player/ghost_sprite.tscn" id="13_nfw5o"]
@@ -714,13 +715,12 @@ animations = [{
 "speed": 14.0
 }]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("weaponManager") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 motion_mode = 1
 wall_min_slide_angle = 0.17453292
 platform_on_leave = 2
 platform_floor_layers = 0
 script = ExtResource("1_onrkg")
-weaponManager = NodePath("")
 
 [node name="DashCooldown" type="Timer" parent="."]
 wait_time = 0.2
@@ -746,14 +746,15 @@ animatedSprite = NodePath("..")
 
 [node name="HitFlash" parent="AnimatedSprite" instance=ExtResource("7_akrrf")]
 
-[node name="LookAt" type="Marker2D" parent="." node_paths=PackedStringArray("gunSpot")]
+[node name="LookAt" type="Marker2D" parent="."]
 position = Vector2(0, -8)
 script = ExtResource("6_4ddeg")
 SnapDegrees = 10.0
-gunSpot = NodePath("")
 
 [node name="Guns" parent="LookAt" instance=ExtResource("13_2gvph")]
 position = Vector2(14, 0)
+guns = Array[Object]([ExtResource("10_iwdm0")])
+active = true
 
 [node name="Hurtbox" parent="." node_paths=PackedStringArray("hitFlash") instance=ExtResource("7_vh1aq")]
 collision_layer = 2

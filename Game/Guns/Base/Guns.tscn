@@ -188,7 +188,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_6edwi")
 }],
 "loop": false,
-"name": &"EnemyPistol_LVL_1",
+"name": &"EnemyPistol_LV1_",
 "speed": 5.0
 }, {
 "frames": [{
@@ -205,7 +205,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_io5qt")
 }],
 "loop": false,
-"name": &"EnemyPistol_LVL_1_Shoot",
+"name": &"EnemyPistol_LV1_Shoot",
 "speed": 7.0
 }, {
 "frames": [{
@@ -213,7 +213,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_21tnl")
 }],
 "loop": false,
-"name": &"EnemyShotgun_LVL_1",
+"name": &"EnemyShotgun_LV1_",
 "speed": 5.0
 }, {
 "frames": [{
@@ -230,7 +230,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_h7hvy")
 }],
 "loop": false,
-"name": &"EnemyShotgun_LVL_1_Shoot",
+"name": &"EnemyShotgun_LV1_Shoot",
 "speed": 7.0
 }, {
 "frames": [{
@@ -238,7 +238,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_wlfwf")
 }],
 "loop": false,
-"name": &"Pistol_LVL_1",
+"name": &"Pistol_LV1_",
 "speed": 5.0
 }, {
 "frames": [{
@@ -255,7 +255,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_5ibri")
 }],
 "loop": false,
-"name": &"Pistol_LVL_1_Shoot",
+"name": &"Pistol_LV1_Shoot",
 "speed": 7.0
 }, {
 "frames": [{
@@ -272,7 +272,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_qd27a")
 }],
 "loop": true,
-"name": &"Shotgun_LVL_1",
+"name": &"Shotgun_LV1_",
 "speed": 3.0
 }, {
 "frames": [{
@@ -289,7 +289,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_jnupt")
 }],
 "loop": false,
-"name": &"Shotgun_LVL_1_Shoot",
+"name": &"Shotgun_LV1_Shoot",
 "speed": 11.0
 }, {
 "frames": [{
@@ -306,7 +306,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_jaqb4")
 }],
 "loop": true,
-"name": &"Shotgun_LVL_2",
+"name": &"Shotgun_LV2_",
 "speed": 3.0
 }, {
 "frames": [{
@@ -323,7 +323,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_gqoso")
 }],
 "loop": false,
-"name": &"Shotgun_LVL_2_Shoot",
+"name": &"Shotgun_LV2_Shoot",
 "speed": 11.0
 }, {
 "frames": [{
@@ -340,7 +340,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_tba4u")
 }],
 "loop": true,
-"name": &"Shotgun_LVL_3",
+"name": &"Shotgun_LV3_",
 "speed": 3.0
 }, {
 "frames": [{
@@ -357,7 +357,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_ex8id")
 }],
 "loop": false,
-"name": &"Shotgun_LVL_3_Shoot",
+"name": &"Shotgun_LV3_Shoot",
 "speed": 11.0
 }, {
 "frames": [{
@@ -365,7 +365,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_bg7kt")
 }],
 "loop": false,
-"name": &"Zooka_LVL_1",
+"name": &"Zooka_LV1_",
 "speed": 5.0
 }, {
 "frames": [{
@@ -379,7 +379,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_aog1l")
 }],
 "loop": false,
-"name": &"Zooka_LVL_1_Shoot",
+"name": &"Zooka_LV1_Shoot",
 "speed": 7.0
 }]
 
@@ -389,5 +389,5 @@ script = ExtResource("1_wlfwf")
 [node name="GunAnimation" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_nw0vf")
 sprite_frames = SubResource("SpriteFrames_yy3x0")
-animation = &"Shotgun_LVL_2_Shoot"
+animation = &"Zooka_LV1_Shoot"
 script = ExtResource("7_rpglb")

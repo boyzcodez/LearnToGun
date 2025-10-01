@@ -4,6 +4,7 @@ using System;
 public partial class Guns : Node2D
 {
     [Export] public GunData[] guns { get; set; } = [];
+    [Export] public bool active = false;
     public AnimatedGun sprite { get; set; }
 
     private BulletPool pool;
@@ -12,7 +13,6 @@ public partial class Guns : Node2D
 
     private int _currentGunIndex = 0;
     private float _cooldown = 0f;
-    public bool active = false;
     public string type;
     
     public override void _Ready()
@@ -27,7 +27,7 @@ public partial class Guns : Node2D
             pool?.PreparePool(type, gunData, gunData.SpawnAmount);
         }
 
-        currentGun = guns[0];
+        EquipGun(0);
         sprite?.Play(currentGun.GunName + "_" + currentGun.LVL);
         //if (!guns[_currentGunIndex].isEnemy) XpHandler.AddGun(guns[_currentGunIndex].GunName, this);
     }
@@ -42,7 +42,7 @@ public partial class Guns : Node2D
     public void EquipGun(int index)
     {
         currentGun = guns[index];
-        EventBus.Ammo(currentGun.CurrentAmmo, currentGun.MaxAmmo);
+        if (active) EventBus.Ammo(currentGun.CurrentAmmo, currentGun.MaxAmmo);
     }
 
     public override void _Process(double delta)
@@ -91,7 +91,7 @@ public partial class Guns : Node2D
     }
     private async void PlayAnimation()
     {
-        sprite.Play(currentGun.GunName + "_" + currentGun.LVL + "_Shoot");
+        sprite.Play(currentGun.GunName + "_" + currentGun.LVL + "Shoot");
 
         await ToSignal(sprite, "animation_finished");
 
