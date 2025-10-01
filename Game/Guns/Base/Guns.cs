@@ -4,10 +4,11 @@ using System;
 public partial class Guns : Node2D
 {
     [Export] public GunData[] guns { get; set; } = [];
-    [Export] public AnimatedGun sprite { get; set; }
+    public AnimatedGun sprite { get; set; }
 
     private BulletPool pool;
     private GunData currentGun;
+    private ShaderMaterial shaderMaterial;
 
     private int _currentGunIndex = 0;
     private float _cooldown = 0f;
@@ -17,6 +18,8 @@ public partial class Guns : Node2D
     public override void _Ready()
     {
         pool = GetTree().GetFirstNodeInGroup("BulletPool") as BulletPool;
+        sprite = GetNode<AnimatedGun>("GunAnimation");
+        shaderMaterial = sprite.Material as ShaderMaterial;
 
         foreach (var gunData in guns)
         {
@@ -45,6 +48,11 @@ public partial class Guns : Node2D
     public override void _Process(double delta)
     {
         if (_cooldown > 0) _cooldown -= (float)delta;
+
+        if (GlobalRotation > -1.5f && GlobalRotation < 1.5f)
+            shaderMaterial.SetShaderParameter("flip_v", false);
+        else
+            shaderMaterial.SetShaderParameter("flip_v", true);
     }
 
     public void Shoot()

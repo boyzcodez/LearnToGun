@@ -26,10 +26,10 @@ public partial class LookAt : Marker2D
         Rotation = snappedAngle;
         //toMouse.Angle();
 
-        if (Rotation > -1.5f && Rotation < 1.5f)
-            Scale = new Vector2(1, 1);
-        else
-            Scale = new Vector2(1, -1);
+        // if (Rotation > -1.5f && Rotation < 1.5f)
+        //     Scale = new Vector2(1, 1);
+        // else
+        //     Scale = new Vector2(1, -1);
 
         if (gunSpot != null)
         {
