@@ -387,5 +387,5 @@ script = ExtResource("1_wlfwf")
 [node name="GunAnimation" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_nw0vf")
 sprite_frames = SubResource("SpriteFrames_yy3x0")
-animation = &"Pistol_LV1_Shoot"
+animation = &"Shotgun_LV1_Shoot"
 script = ExtResource("7_rpglb")

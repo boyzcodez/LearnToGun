@@ -6,7 +6,7 @@ public partial class ActiveTestEnemy : Entity
     [Export] public float Speed = 100f;
     [Export] public float ShootingRange = 400f;
     [Export] public float FireCooldown = 1.0f;
-    [Export] public Gun gun;
+    [Export] public Guns gun;
 
     [Export] private Area2D separationArea;
     private NavigationAgent2D navAgent;

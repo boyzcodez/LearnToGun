@@ -6,9 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://bqe25i6ow8vul" path="res://Assets/Entity/Enemy/NewEnemyRobo.png" id="4_4dabi"]
 [ext_resource type="Script" uid="uid://jqlj5orjwgch" path="res://Game/Entities/TestEnemies/AnimatedSpriteE.cs" id="5_t40k4"]
 [ext_resource type="Script" uid="uid://c6vb1yef0nhpa" path="res://Game/Entities/TestEnemies/Look.cs" id="6_vm8uv"]
-[ext_resource type="Script" uid="uid://bp03nkh0uoq1p" path="res://Game/Entities/TestEnemies/EnemyGun.cs" id="7_v2v3a"]
-[ext_resource type="PackedScene" uid="uid://cy8n2i1umi5jp" path="res://Game/Guns/Enemy/Pistol/EnemyPistol.tscn" id="8_fv8ny"]
+[ext_resource type="PackedScene" uid="uid://mg8q0xeodew0" path="res://Game/Guns/Base/Guns.tscn" id="8_oh53k"]
 [ext_resource type="PackedScene" uid="uid://bp3lx4f7c5wd1" path="res://Components/Etc/hit_flash.tscn" id="9_3wam0"]
+[ext_resource type="Resource" uid="uid://0mow7g6u66nf" path="res://Game/Guns/Enemy/Pistol/EnemyPistolData.tres" id="9_ofxb3"]
 [ext_resource type="PackedScene" uid="uid://vmtiw08cr30b" path="res://Components/DamageComps/hurtbox.tscn" id="10_xs1h7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_htgvw"]
@@ -143,7 +143,7 @@ script = ExtResource("1_hm5e5")
 Speed = 50.0
 ShootingRange = 200.0
 FireCooldown = 2.0
-gun = NodePath("Hide/AnimatedSpriteE/Look/EnemyGun/EnemyPistol")
+gun = NodePath("Hide/AnimatedSpriteE/Look/Guns")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_htgvw")
@@ -164,11 +164,9 @@ script = ExtResource("5_t40k4")
 position = Vector2(0, 4)
 script = ExtResource("6_vm8uv")
 
-[node name="EnemyGun" type="Node2D" parent="Hide/AnimatedSpriteE/Look"]
+[node name="Guns" parent="Hide/AnimatedSpriteE/Look" instance=ExtResource("8_oh53k")]
 position = Vector2(14, 0)
-script = ExtResource("7_v2v3a")
-
-[node name="EnemyPistol" parent="Hide/AnimatedSpriteE/Look/EnemyGun" instance=ExtResource("8_fv8ny")]
+guns = Array[Object]([ExtResource("9_ofxb3")])
 
 [node name="HitFlash" parent="Hide/AnimatedSpriteE" instance=ExtResource("9_3wam0")]
 
@@ -185,7 +183,6 @@ shape = SubResource("CapsuleShape2D_ccun0")
 path_desired_distance = 12.0
 target_desired_distance = 8.0
 path_max_distance = 50.0
-debug_enabled = true
 
 [node name="NavTimer" type="Timer" parent="."]
 one_shot = true

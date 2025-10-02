@@ -754,6 +754,8 @@ script = ExtResource("8_3ylnx")
 guns = NodePath("../LookAt/Guns")
 
 [node name="Timer" type="Timer" parent="GunsHandler"]
+wait_time = 0.1
+one_shot = true
 
 [node name="LookAt" type="Marker2D" parent="."]
 position = Vector2(0, -8)

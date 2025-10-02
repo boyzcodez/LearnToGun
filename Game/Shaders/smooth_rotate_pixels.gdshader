@@ -39,7 +39,7 @@ void fragment() {
         (floor(rotation * ((UV - 0.5) / block_size)) + 0.5) * block_size + 0.5;
 
     // --- MIRROR AFTER SNAPPING ---
-    if (flip_h) snapped_uv.x = 1.0 - snapped_uv.x;
+    //if (flip_h) snapped_uv.x = 1.0 - snapped_uv.x;
     if (flip_v) snapped_uv.y = 1.0 - snapped_uv.y;
     // -----------------------------
 
