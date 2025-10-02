@@ -30,7 +30,17 @@ public partial class GunsHandler : Node
                 timer.Start();
             }
         }
+        
     }
+    public override void _Input(InputEvent @event)
+    {
+        if (@event.IsActionPressed("attack"))
+        {
+            guns?.Shoot();
+        }
+    }
+
+
     public void CanSwitch()
     {
         canSwitch = true;

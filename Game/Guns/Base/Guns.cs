@@ -42,6 +42,7 @@ public partial class Guns : Node2D
     public void EquipGun(int index)
     {
         currentGun = guns[index];
+        type = currentGun.GunName + currentGun.LVL + GetInstanceId();
         if (active) EventBus.Ammo(currentGun.CurrentAmmo, currentGun.MaxAmmo);
         sprite?.Play(currentGun.GunName + "_" + currentGun.LVL);
 
