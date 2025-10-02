@@ -43,6 +43,9 @@ public partial class Guns : Node2D
     {
         currentGun = guns[index];
         if (active) EventBus.Ammo(currentGun.CurrentAmmo, currentGun.MaxAmmo);
+        sprite?.Play(currentGun.GunName + "_" + currentGun.LVL);
+
+        GD.Print("This triggered");
     }
 
     public override void _Process(double delta)

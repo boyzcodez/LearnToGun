@@ -1,13 +1,18 @@
-[gd_scene load_steps=53 format=3 uid="uid://mg8q0xeodew0"]
+[gd_scene load_steps=58 format=3 uid="uid://mg8q0xeodew0"]
 
 [ext_resource type="Texture2D" uid="uid://brx2swq0lnw54" path="res://Assets/Guns/Guns/NewPistol.png" id="1_qf56k"]
 [ext_resource type="Script" uid="uid://cr48lni3g5d8a" path="res://Game/Guns/Base/Guns.cs" id="1_wlfwf"]
 [ext_resource type="Material" uid="uid://dgm487iucl2ye" path="res://Game/Shaders/smooth_rotate_pixles.tres" id="2_nw0vf"]
 [ext_resource type="Texture2D" uid="uid://p81l6fvexk0a" path="res://Assets/Guns/Guns/EnemyPistol.png" id="2_yy3x0"]
 [ext_resource type="Texture2D" uid="uid://diet8ij7y2hpc" path="res://Assets/Guns/Guns/basic_weapon_shotgun1.png" id="3_rpglb"]
-[ext_resource type="Texture2D" uid="uid://blvr4oxf185m1" path="res://Assets/Guns/Guns/ShotgunBoo.png" id="5_nw0vf"]
 [ext_resource type="Texture2D" uid="uid://ctvc5jlwlpnox" path="res://Assets/Guns/Guns/Zooka.png" id="6_0e7gx"]
+[ext_resource type="Texture2D" uid="uid://dbdowrg4ui4c6" path="res://Assets/Guns/Guns/Shotgun/Shotgun1.png" id="6_4xwd0"]
+[ext_resource type="Texture2D" uid="uid://cav22dosxg5m8" path="res://Assets/Guns/Guns/Shotgun/Shotgun1shoot.png" id="7_io5qt"]
 [ext_resource type="Script" uid="uid://7hwx3rpv0roe" path="res://Game/Guns/Base/Parts/AnimatedGun.cs" id="7_rpglb"]
+[ext_resource type="Texture2D" uid="uid://do8na63fveryk" path="res://Assets/Guns/Guns/Shotgun/Shotgu2.png" id="8_21tnl"]
+[ext_resource type="Texture2D" uid="uid://dc3evkxk57dno" path="res://Assets/Guns/Guns/Shotgun/Shotgu2shoot.png" id="9_glwbl"]
+[ext_resource type="Texture2D" uid="uid://cx0fqp06y34wx" path="res://Assets/Guns/Guns/Shotgun/Shotgun3.png" id="10_03i64"]
+[ext_resource type="Texture2D" uid="uid://d1y3f0q13nphv" path="res://Assets/Guns/Guns/Shotgun/Shotgun3shoot.png" id="11_kbio5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6edwi"]
 atlas = ExtResource("2_yy3x0")
@@ -70,100 +75,100 @@ atlas = ExtResource("1_qf56k")
 region = Rect2(192, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lqsee"]
-atlas = ExtResource("5_nw0vf")
+atlas = ExtResource("6_4xwd0")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3gr1p"]
-atlas = ExtResource("5_nw0vf")
+atlas = ExtResource("6_4xwd0")
 region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rmftb"]
-atlas = ExtResource("5_nw0vf")
+atlas = ExtResource("6_4xwd0")
 region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qd27a"]
-atlas = ExtResource("5_nw0vf")
+atlas = ExtResource("6_4xwd0")
 region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bfy6u"]
-atlas = ExtResource("5_nw0vf")
-region = Rect2(0, 64, 64, 64)
+atlas = ExtResource("7_io5qt")
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dcf1y"]
-atlas = ExtResource("5_nw0vf")
-region = Rect2(64, 64, 64, 64)
+atlas = ExtResource("7_io5qt")
+region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_00x4u"]
-atlas = ExtResource("5_nw0vf")
-region = Rect2(128, 64, 64, 64)
+atlas = ExtResource("7_io5qt")
+region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jnupt"]
-atlas = ExtResource("5_nw0vf")
-region = Rect2(192, 64, 64, 64)
+atlas = ExtResource("7_io5qt")
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7ndsb"]
-atlas = ExtResource("5_nw0vf")
-region = Rect2(0, 128, 64, 64)
+atlas = ExtResource("8_21tnl")
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t8u0e"]
-atlas = ExtResource("5_nw0vf")
-region = Rect2(64, 128, 64, 64)
+atlas = ExtResource("8_21tnl")
+region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mx0ue"]
-atlas = ExtResource("5_nw0vf")
-region = Rect2(128, 128, 64, 64)
+atlas = ExtResource("8_21tnl")
+region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jaqb4"]
-atlas = ExtResource("5_nw0vf")
-region = Rect2(192, 128, 64, 64)
+atlas = ExtResource("8_21tnl")
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bnodr"]
-atlas = ExtResource("5_nw0vf")
-region = Rect2(0, 192, 64, 64)
+atlas = ExtResource("9_glwbl")
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4lxos"]
-atlas = ExtResource("5_nw0vf")
-region = Rect2(64, 192, 64, 64)
+atlas = ExtResource("9_glwbl")
+region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s8emn"]
-atlas = ExtResource("5_nw0vf")
-region = Rect2(128, 192, 64, 64)
+atlas = ExtResource("9_glwbl")
+region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gqoso"]
-atlas = ExtResource("5_nw0vf")
-region = Rect2(192, 192, 64, 64)
+atlas = ExtResource("9_glwbl")
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ew4bg"]
-atlas = ExtResource("5_nw0vf")
-region = Rect2(0, 256, 64, 64)
+atlas = ExtResource("10_03i64")
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jsxeo"]
-atlas = ExtResource("5_nw0vf")
-region = Rect2(64, 256, 64, 64)
+atlas = ExtResource("10_03i64")
+region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s5sjm"]
-atlas = ExtResource("5_nw0vf")
-region = Rect2(128, 256, 64, 64)
+atlas = ExtResource("10_03i64")
+region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tba4u"]
-atlas = ExtResource("5_nw0vf")
-region = Rect2(192, 256, 64, 64)
+atlas = ExtResource("10_03i64")
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mw5cc"]
-atlas = ExtResource("5_nw0vf")
-region = Rect2(0, 320, 64, 64)
+atlas = ExtResource("11_kbio5")
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_108c7"]
-atlas = ExtResource("5_nw0vf")
-region = Rect2(64, 320, 64, 64)
+atlas = ExtResource("11_kbio5")
+region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5y3ey"]
-atlas = ExtResource("5_nw0vf")
-region = Rect2(128, 320, 64, 64)
+atlas = ExtResource("11_kbio5")
+region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ex8id"]
-atlas = ExtResource("5_nw0vf")
-region = Rect2(192, 320, 64, 64)
+atlas = ExtResource("11_kbio5")
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bg7kt"]
 atlas = ExtResource("6_0e7gx")
@@ -389,5 +394,5 @@ script = ExtResource("1_wlfwf")
 [node name="GunAnimation" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_nw0vf")
 sprite_frames = SubResource("SpriteFrames_yy3x0")
-animation = &"Zooka_LV1_Shoot"
+animation = &"Shotgun_LV2_"
 script = ExtResource("7_rpglb")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=108 format=3 uid="uid://bbjw3fvxlq53q"]
+[gd_scene load_steps=111 format=3 uid="uid://bbjw3fvxlq53q"]
 
 [ext_resource type="Script" uid="uid://cccauuo7nkwjv" path="res://Game/Entities/Player/Player.cs" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://dyqbl4s13wnxg" path="res://Game/Entities/Components/shadow.tscn" id="2_nfw5o"]
@@ -9,11 +9,14 @@
 [ext_resource type="Script" uid="uid://cjdsjaml44rs2" path="res://Game/Entities/Player/LookAt.cs" id="6_4ddeg"]
 [ext_resource type="PackedScene" uid="uid://bp3lx4f7c5wd1" path="res://Components/Etc/hit_flash.tscn" id="7_akrrf"]
 [ext_resource type="PackedScene" uid="uid://vmtiw08cr30b" path="res://Components/DamageComps/hurtbox.tscn" id="7_vh1aq"]
+[ext_resource type="Script" uid="uid://bgxp42213x1kw" path="res://Game/Entities/Player/GunsHandler.cs" id="8_3ylnx"]
 [ext_resource type="Resource" uid="uid://du4ihic1fxweh" path="res://Game/Guns/Player/Pistol/Levels/PistolData.tres" id="10_iwdm0"]
+[ext_resource type="Resource" uid="uid://7ce3aqmof3vb" path="res://Game/Guns/Player/Shotgun/Levels/ShotgunDataLVL1.tres" id="12_2gvph"]
 [ext_resource type="Script" uid="uid://c73kpxw2e5ynj" path="res://Game/Entities/Player/WarpDash.cs" id="12_qwver"]
 [ext_resource type="PackedScene" uid="uid://mg8q0xeodew0" path="res://Game/Guns/Base/Guns.tscn" id="13_2gvph"]
 [ext_resource type="PackedScene" uid="uid://bxyy5vw0eiy5e" path="res://Game/Entities/Player/ghost_sprite.tscn" id="13_nfw5o"]
 [ext_resource type="Resource" uid="uid://dvm0m7652xkik" path="res://Components/DamageComps/OnHitEffects/Resources/ClearBullets.tres" id="13_tqhgd"]
+[ext_resource type="Resource" uid="uid://bs3fdspup1o48" path="res://Game/Guns/Player/Zooka/Levels/ZookaData.tres" id="13_vcc71"]
 [ext_resource type="PackedScene" uid="uid://haqfsuv5fmc3" path="res://Components/InteractComp/interact_component.tscn" id="14_wlpas"]
 [ext_resource type="Texture2D" uid="uid://c48h0yfxwlgc6" path="res://Assets/Effects/ParticleEffects.png" id="17_6v7ly"]
 [ext_resource type="Script" uid="uid://wvm80ckdaxft" path="res://Game/Entities/Player/Effects.cs" id="18_86ark"]
@@ -746,6 +749,12 @@ animatedSprite = NodePath("..")
 
 [node name="HitFlash" parent="AnimatedSprite" instance=ExtResource("7_akrrf")]
 
+[node name="GunsHandler" type="Node" parent="." node_paths=PackedStringArray("guns")]
+script = ExtResource("8_3ylnx")
+guns = NodePath("../LookAt/Guns")
+
+[node name="Timer" type="Timer" parent="GunsHandler"]
+
 [node name="LookAt" type="Marker2D" parent="."]
 position = Vector2(0, -8)
 script = ExtResource("6_4ddeg")
@@ -753,7 +762,7 @@ SnapDegrees = 10.0
 
 [node name="Guns" parent="LookAt" instance=ExtResource("13_2gvph")]
 position = Vector2(14, 0)
-guns = Array[Object]([ExtResource("10_iwdm0")])
+guns = Array[Object]([ExtResource("10_iwdm0"), ExtResource("12_2gvph"), ExtResource("13_vcc71")])
 active = true
 
 [node name="Hurtbox" parent="." node_paths=PackedStringArray("hitFlash") instance=ExtResource("7_vh1aq")]
