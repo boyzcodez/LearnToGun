@@ -47,6 +47,12 @@ public partial class Bullet : Area2D
             behavior.Update(this, delta);
         }
 
+        // this is for if the player is dodging and the dodge ends with the player on top of the bullet
+        // if (GetOverlappingAreas().Count > 0)
+        // {
+        //     OnHit();
+        // }
+
         _timer += (float)delta;
         if (_timer >= 4f) Deactivate();
     }
