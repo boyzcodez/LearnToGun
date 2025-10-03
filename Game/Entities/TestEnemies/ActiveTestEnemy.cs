@@ -1,4 +1,6 @@
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 using Godot;
 
 public partial class ActiveTestEnemy : Entity
@@ -6,6 +8,8 @@ public partial class ActiveTestEnemy : Entity
     [Export] public float Speed = 100f;
     [Export] public float ShootingRange = 400f;
     [Export] public float FireCooldown = 1.0f;
+    [Export] public int FireTimes = 1;
+    [Export] public float FireRate = 0.5f;
     [Export] public Guns gun;
 
     [Export] private Area2D separationArea;
@@ -96,13 +100,17 @@ public partial class ActiveTestEnemy : Entity
 
         return false;
     }
-    private void ShootAtPlayer()
+    private async void ShootAtPlayer()
     {
         if (fireTimer > 0) return;
-
-        GD.Print("Shooting now");
-        gun.Shoot();
         fireTimer = FireCooldown;
+
+        for (int i = 0; i < FireTimes; i++)
+        {
+            gun.Shoot();
+
+            await ToSignal(GetTree().CreateTimer(FireRate), "timeout");
+        }
     }
 
 

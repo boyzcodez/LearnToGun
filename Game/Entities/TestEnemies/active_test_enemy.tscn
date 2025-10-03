@@ -143,6 +143,8 @@ script = ExtResource("1_hc5v1")
 Speed = 50.0
 ShootingRange = 130.0
 FireCooldown = 4.0
+FireTimes = 2
+FireRate = 0.5
 gun = NodePath("Hide/AnimatedSpriteE/Look/Guns")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
