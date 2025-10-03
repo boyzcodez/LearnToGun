@@ -1,8 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://vmtiw08cr30b"]
+[gd_scene load_steps=13 format=3 uid="uid://vmtiw08cr30b"]
 
 [ext_resource type="Script" uid="uid://cdwq588qqamsd" path="res://Components/DamageComps/Hurtbox.cs" id="1_gpif6"]
 [ext_resource type="PackedScene" uid="uid://cqym5yesoexfg" path="res://Components/Etc/HitParticle.tscn" id="2_yg0sr"]
 [ext_resource type="Texture2D" uid="uid://c48h0yfxwlgc6" path="res://Assets/Effects/ParticleEffects.png" id="3_6j4wj"]
+[ext_resource type="Shader" uid="uid://37oyaa5dumjf" path="res://Game/Shaders/smooth_rotate_pixels.gdshader" id="3_cgltd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wq5lt"]
+resource_local_to_scene = true
+shader = ExtResource("3_cgltd")
+shader_parameter/pixel_size = 1.0
+shader_parameter/mix_sampling = 2
+shader_parameter/flip_h = false
+shader_parameter/flip_v = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wq5lt"]
 atlas = ExtResource("3_6j4wj")
@@ -51,7 +60,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 21.0
+"speed": 17.0
 }]
 
 [node name="Hurtbox" type="Area2D"]
@@ -60,9 +69,8 @@ collision_mask = 0
 script = ExtResource("1_gpif6")
 
 [node name="HitParticle" parent="." instance=ExtResource("2_yg0sr")]
+material = SubResource("ShaderMaterial_wq5lt")
 lifetime = 0.15000000000000002
 
 [node name="HitAnimation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_mdlb4")
-frame = 5
-frame_progress = 1.0

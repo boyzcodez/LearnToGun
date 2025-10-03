@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dm1fl7xf7jysr"]
+
+[ext_resource type="Texture2D" uid="uid://bv2pyo6ibay8l" path="res://Assets/Entity/Shadows.png" id="1_luvgl"]
+
+[node name="Shadows" type="Sprite2D"]
+modulate = Color(1, 1, 1, 0.21960784)
+show_behind_parent = true
+texture = ExtResource("1_luvgl")
+hframes = 4

@@ -362,7 +362,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Back",
-"speed": 9.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -442,7 +442,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Front",
-"speed": 9.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -522,7 +522,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"RightBack",
-"speed": 9.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -602,7 +602,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"RightFront",
-"speed": 9.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -738,7 +738,7 @@ position = Vector2(0, -1)
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 material = ExtResource("3_akrrf")
 sprite_frames = SubResource("SpriteFrames_fy1n6")
-animation = &"RightFrontRun"
+animation = &"RightFront"
 offset = Vector2(0, -10)
 script = ExtResource("5_wg23h")
 

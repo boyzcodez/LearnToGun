@@ -5,6 +5,7 @@ public partial class AnimatedSpriteC : AnimatedSprite
 {
     
     private const string RunAnim = "Run";
+    private Player player;
 
     private Direction directionNode;
     private string currentDirection;
@@ -13,6 +14,7 @@ public partial class AnimatedSpriteC : AnimatedSprite
     public override void _Ready()
     {
         directionNode = GetNode<Direction>("Direction");
+        player = GetOwner<Player>();
     }
     public override void _Process(double delta)
     {
@@ -34,9 +36,8 @@ public partial class AnimatedSpriteC : AnimatedSprite
 
         currentDirection = directionNode.GetDirection(sectionIndex);
 
-        PlayAnimation(currentAnim, 1);
-        
-        
+        if (player.dodgeTime > 0) PlayAnimation("Glitch", 5);
+        else PlayAnimation(currentAnim, 1);
     }
 
     public override void PlayAnimation(string animation, int priority = 0)

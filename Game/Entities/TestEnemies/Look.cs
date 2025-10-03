@@ -27,7 +27,6 @@ public partial class Look : Marker2D
 
 
             Rotation = snappedAngle;
-            Rotation = targetRotation;
         }
         else
         {

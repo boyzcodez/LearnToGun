@@ -60,6 +60,8 @@ public partial class Hurtbox : Area2D
 
     private void Effects()
     {
+        animation.Rotation = (float)GD.RandRange(0, Mathf.Tau);
+        
         animation.Play("default");
         particles.Emitting = true;
         if (hitFlash != null) hitFlash.Blink();

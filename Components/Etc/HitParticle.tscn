@@ -1,14 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqym5yesoexfg"]
+[gd_scene load_steps=4 format=3 uid="uid://cqym5yesoexfg"]
 
-[ext_resource type="Material" uid="uid://dgm487iucl2ye" path="res://Game/Shaders/smooth_rotate_pixles.tres" id="1_uw45b"]
-[ext_resource type="Texture2D" uid="uid://cag0d3cq4ky60" path="res://Assets/Effects/Sparks3.png" id="2_tdsuq"]
+[ext_resource type="Texture2D" uid="uid://cxomvehvix2dm" path="res://Assets/Effects/Particle.png" id="2_uw45b"]
+
+[sub_resource type="Curve" id="Curve_tdsuq"]
+_data = [Vector2(0, 0.30337083), 0.0, 0.0, 0, 0, Vector2(0.5274261, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_f3rxe"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, -0.43820226), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="HitParticle" type="CPUParticles2D"]
-material = ExtResource("1_uw45b")
 emitting = false
-amount = 5
-texture = ExtResource("2_tdsuq")
-lifetime = 0.5
+amount = 10
+texture = ExtResource("2_uw45b")
 one_shot = true
 explosiveness = 0.7
 particle_flag_align_y = true
@@ -16,3 +22,6 @@ spread = 180.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 100.0
 initial_velocity_max = 100.0
+scale_amount_curve = SubResource("Curve_tdsuq")
+color = Color(0.40392157, 0.78039217, 0.9764706, 1)
+hue_variation_curve = SubResource("Curve_f3rxe")
