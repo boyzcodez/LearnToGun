@@ -144,7 +144,6 @@ Speed = 50.0
 ShootingRange = 130.0
 FireCooldown = 4.0
 FireTimes = 2
-FireRate = 0.5
 gun = NodePath("Hide/AnimatedSpriteE/Look/Guns")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
@@ -187,6 +186,9 @@ target_desired_distance = 8.0
 path_max_distance = 50.0
 
 [node name="NavTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="FireRate" type="Timer" parent="."]
 one_shot = true
 
 [connection signal="animation_finished" from="Hide/AnimatedSpriteE" to="Hide/AnimatedSpriteE" method="_on_animation_finished"]

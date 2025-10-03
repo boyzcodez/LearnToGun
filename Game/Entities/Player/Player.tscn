@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://vmtiw08cr30b" path="res://Components/DamageComps/hurtbox.tscn" id="7_vh1aq"]
 [ext_resource type="Script" uid="uid://bgxp42213x1kw" path="res://Game/Entities/Player/GunsHandler.cs" id="8_3ylnx"]
 [ext_resource type="Resource" uid="uid://du4ihic1fxweh" path="res://Game/Guns/Player/Pistol/Levels/PistolData.tres" id="10_iwdm0"]
-[ext_resource type="Resource" uid="uid://7ce3aqmof3vb" path="res://Game/Guns/Player/Shotgun/Levels/ShotgunDataLVL1.tres" id="12_2gvph"]
+[ext_resource type="Resource" uid="uid://sfukcc8s84k4" path="res://Game/Guns/Player/Shotgun/Levels/ShotgunDataLVL3.tres" id="12_2gvph"]
 [ext_resource type="Script" uid="uid://c73kpxw2e5ynj" path="res://Game/Entities/Player/WarpDash.cs" id="12_qwver"]
 [ext_resource type="PackedScene" uid="uid://mg8q0xeodew0" path="res://Game/Guns/Base/Guns.tscn" id="13_2gvph"]
 [ext_resource type="PackedScene" uid="uid://bxyy5vw0eiy5e" path="res://Game/Entities/Player/ghost_sprite.tscn" id="13_nfw5o"]

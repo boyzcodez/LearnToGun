@@ -142,7 +142,9 @@ platform_floor_layers = 0
 script = ExtResource("1_hm5e5")
 Speed = 50.0
 ShootingRange = 200.0
-FireCooldown = 2.0
+FireCooldown = 8.0
+FireTimes = 8
+FireRate = 0.3
 gun = NodePath("Hide/AnimatedSpriteE/Look/Guns")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
@@ -185,6 +187,9 @@ target_desired_distance = 8.0
 path_max_distance = 50.0
 
 [node name="NavTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="FireRate" type="Timer" parent="."]
 one_shot = true
 
 [connection signal="animation_finished" from="Hide/AnimatedSpriteE" to="Hide/AnimatedSpriteE" method="_on_animation_finished"]

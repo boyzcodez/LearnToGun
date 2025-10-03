@@ -14,13 +14,16 @@ public partial class ActiveTestEnemy : Entity
 
     [Export] private Area2D separationArea;
     private NavigationAgent2D navAgent;
+    private Godot.Timer FireRateTimer;
     private Node2D player;
     private double fireTimer = 3.0;
+    private bool isShooting = false;
 
     public override void _Ready()
     {
         navAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");
         player = GetTree().GetFirstNodeInGroup("Player") as Node2D;
+        FireRateTimer = GetNode<Godot.Timer>("FireRate");
 
         EventBus.Reset += Death;
     }
@@ -57,7 +60,8 @@ public partial class ActiveTestEnemy : Entity
         if (hasLineOfSight)
         {
             Velocity = Vector2.Zero;
-            ShootAtPlayer();
+            if (fireTimer < 0)
+                ShootAtPlayer();
         }
         else
         {
@@ -102,15 +106,19 @@ public partial class ActiveTestEnemy : Entity
     }
     private async void ShootAtPlayer()
     {
-        if (fireTimer > 0) return;
-        fireTimer = FireCooldown;
+        if (isShooting) return;
+        isShooting = true;
 
         for (int i = 0; i < FireTimes; i++)
         {
             gun.Shoot();
 
-            await ToSignal(GetTree().CreateTimer(FireRate), "timeout");
+            FireRateTimer.Start(FireRate);
+            await ToSignal(FireRateTimer, "timeout");
         }
+
+        fireTimer = FireCooldown;
+        isShooting = false;
     }
 
 

@@ -12,4 +12,5 @@ Damage = 3
 Knockback = 200.0
 BulletScene = ExtResource("1_jvcln")
 FireRate = 0.2
+rotate = true
 metadata/_custom_type_script = "uid://bf05vlwwwrvul"

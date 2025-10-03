@@ -49,7 +49,7 @@ public partial class Guns : Node2D
 
     public override void _Process(double delta)
     {
-        if (_cooldown > 0) _cooldown -= (float)delta;
+        //if (_cooldown > 0) _cooldown -= (float)delta;
 
         if (GlobalRotation > -1.5f && GlobalRotation < 1.5f)
             shaderMaterial.SetShaderParameter("flip_v", false);
@@ -59,7 +59,7 @@ public partial class Guns : Node2D
 
     public void Shoot()
     {
-        if (_cooldown > 0 || currentGun.CurrentAmmo <= 0) return;
+        if (currentGun.CurrentAmmo <= 0) return;
         else currentGun.UseBullet();
 
         if (currentGun == null) return;

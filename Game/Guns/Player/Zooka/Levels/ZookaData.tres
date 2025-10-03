@@ -10,4 +10,5 @@ Knockback = 100.0
 BulletScene = ExtResource("1_20qpx")
 SpawnAmount = 20
 FireRate = 0.7
+rotate = true
 metadata/_custom_type_script = "uid://bf05vlwwwrvul"
