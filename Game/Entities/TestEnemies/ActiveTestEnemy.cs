@@ -1,29 +1,20 @@
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 using Godot;
 
 public partial class ActiveTestEnemy : Entity
 {
-    [Export] public float Speed = 100f;
     [Export] public float ShootingRange = 400f;
     [Export] public float FireCooldown = 1.0f;
     [Export] public int FireTimes = 1;
     [Export] public float FireRate = 0.5f;
     [Export] public Guns gun;
 
-    [Export] private Area2D separationArea;
-    private NavigationAgent2D navAgent;
     private Godot.Timer FireRateTimer;
     private Node2D player;
     private double fireTimer = 3.0;
     private bool isShooting = false;
-    private Vector2 positionPlus = new Vector2(0, -11);
 
     public override void _Ready()
     {
-        navAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");
-        player = GetTree().GetFirstNodeInGroup("Player") as Node2D;
         FireRateTimer = GetNode<Godot.Timer>("FireRate");
 
         EventBus.Reset += Death;
@@ -31,160 +22,26 @@ public partial class ActiveTestEnemy : Entity
 
     public override void _PhysicsProcess(double delta)
     {
-        if (player == null) return;
-
-        if (KnockbackTime > 0f)
-        {
-            KnockbackTime -= (float)delta;
-            if (KnockbackTime <= 0f)
-            {
-                Velocity = Vector2.Zero; // Stop movement after knockback
-            }
-
-            Velocity = KnockbackVelocity;
-            MoveAndSlide();
-
-            return;
-        }
-
-        fireTimer -= delta;
-
-        float distanceToPlayer = GlobalPosition.DistanceTo(player.GlobalPosition + positionPlus);
-        if (distanceToPlayer > ShootingRange)
-        {
-            navAgent.TargetPosition = player.GlobalPosition;
-            MoveAlongPath(delta);
-            return;
-        }
-
-        bool hasLineOfSight = HasLineOfSight(player.GlobalPosition);
-        if (hasLineOfSight)
-        {
-            Velocity = Vector2.Zero;
-            if (fireTimer < 0)
-                ShootAtPlayer();
-        }
-        else
-        {
-            Vector2 offsetTarget = player.GlobalPosition + (GlobalPosition.DirectionTo(player.GlobalPosition)).Orthogonal() * 100;
-            navAgent.TargetPosition = offsetTarget;
-            MoveAlongPath(delta);
-        }
-    }
-    private void MoveAlongPath(double delta)
-    {
-        if (navAgent.IsNavigationFinished()) return;
-
-        Vector2 nextPos = navAgent.GetNextPathPosition();
-        Vector2 dir = (nextPos - GlobalPosition).Normalized() * Speed;
-
-        //dir = AvoidWalls(dir); // dont know if needed
-        dir = SeparateFromEnemies(dir); // dont know if needed
-
-        Velocity = Velocity.Lerp(dir, 0.2f);
         MoveAndSlide();
     }
-    private bool HasLineOfSight(Vector2 target)
-    {
-        var spaceState = GetWorld2D().DirectSpaceState;
 
-        // Approximate player's "body" by offset rays
-        var bodyOffsets = new Vector2[]
-        {
-            Vector2.Zero,
-            new Vector2(8, 0),    // right shoulder
-            new Vector2(-8, 0),   // left shoulder
-            new Vector2(0, -8),   // head
-            new Vector2(0, 8),    // feet
-        };
+    
 
-        foreach (var offset in bodyOffsets)
-        {
-            var targetP = target + offset;
-            var query = PhysicsRayQueryParameters2D.Create(GlobalPosition, targetP);
-            query.Exclude = new Godot.Collections.Array<Rid> { GetRid() };
-            query.CollideWithAreas = true;
-            query.CollideWithBodies = true;
-
-            var result = spaceState.IntersectRay(query);
-
-            // ✅ If no collision or collision is the player, we have LoS
-            if (result.Count == 0)
-                return true;
-
-            if (result.TryGetValue("collider", out var colliderVar))
-            {
-                var colliderObj = colliderVar.AsGodotObject();
-                if (colliderObj == player)
-                    return true;
-            }
-        }
-
-        return false;
-    }
-    private async void ShootAtPlayer()
-    {
-        if (isShooting) return;
-        isShooting = true;
-
-        for (int i = 0; i < FireTimes; i++)
-        {
-            gun.Shoot();
-
-            FireRateTimer.Start(FireRate);
-            await ToSignal(FireRateTimer, "timeout");
-        }
-
-        fireTimer = FireCooldown;
-        isShooting = false;
-    }
-
-
-
-    // dont know if needed
-    // private Vector2 AvoidWalls(Vector2 desiredVel)
+    // private async void ShootAtPlayer()
     // {
-    //     var space = GetWorld2D().DirectSpaceState;
+    //     if (isShooting) return;
+    //     isShooting = true;
 
-    //     var query = PhysicsRayQueryParameters2D.Create(
-    //         GlobalPosition,
-    //         GlobalPosition + desiredVel.Normalized() * 20f
-    //     );
-    //     query.Exclude = new Godot.Collections.Array<Rid> { GetRid() };
-
-    //     var result = space.IntersectRay(query);
-    //     if (result.Count > 0)
+    //     for (int i = 0; i < FireTimes; i++)
     //     {
-    //         Vector2 normal = ((Vector2)result["normal"]).Normalized();
-    //         desiredVel = desiredVel.Slide(normal);
+    //         gun.Shoot();
+
+    //         FireRateTimer.Start(FireRate);
+    //         await ToSignal(FireRateTimer, "timeout");
     //     }
 
-    //     return desiredVel;
+    //     fireTimer = FireCooldown;
+    //     isShooting = false;
     // }
-
-    // dont know if needed
-    private Vector2 SeparateFromEnemies(Vector2 desiredVel)
-    {
-        float separationRadius = 32f;
-        Vector2 push = Vector2.Zero;
-
-        foreach (var body in separationArea.GetOverlappingAreas())
-        {
-            if (body is Hurtbox other && other != this.GetNode<Hurtbox>("Hurtbox"))
-            {
-                float dist = GlobalPosition.DistanceTo(other.GlobalPosition);
-                if (dist < separationRadius && dist > 0)
-                {
-                    Vector2 away = (GlobalPosition - other.GlobalPosition).Normalized();
-                    push += away * (separationRadius - dist);
-                }
-            }
-        }
-
-        if (push != Vector2.Zero)
-            desiredVel += push.Normalized() * 50f;
-
-        return desiredVel;
-    }
 
 }

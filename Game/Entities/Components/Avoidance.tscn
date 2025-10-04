@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsjn6we723avh"]
+
+[ext_resource type="Script" uid="uid://5h5hajp7a43y" path="res://Game/Entities/Components/Avoidance.cs" id="1_asing"]
+
+[node name="Avoidance" type="Node2D"]
+script = ExtResource("1_asing")

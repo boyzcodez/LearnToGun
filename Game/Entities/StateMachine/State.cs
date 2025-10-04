@@ -4,6 +4,7 @@ using System;
 [GlobalClass]
 public partial class State : Node
 {
+    public Avoidance avoidance;
     public Entity parent;
     public Player player;
     [Signal] public delegate void TransitionedEventHandler();
@@ -22,11 +23,12 @@ public partial class State : Node
 
     [Export(PropertyHint.Enum, "Idle,Follow,Attack,Surround,Nothing")]
     public string PrevState { get; set; } = "Idle";
-    
+
     public override void _Ready()
     {
         parent = GetOwner<Entity>();
         player = GetTree().GetFirstNodeInGroup("Player") as Player;
+        avoidance = parent.GetNode<Avoidance>("Avoidance");
     }
     public virtual void Enter()
     {

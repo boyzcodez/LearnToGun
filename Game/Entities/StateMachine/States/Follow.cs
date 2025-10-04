@@ -10,23 +10,22 @@ public partial class Follow : State
     [Export] private float nextRange = 100f;
     public override void PhysicsProcess(double delta)
     {
-        // var direction = player.GlobalPosition - parent.GlobalPosition;
-        // parent.Goal = player.GlobalPosition;
-        
-        // if (direction.Length() > howClose)
-        // {
-        //     parent.speed = 2000f; // Stop moving if too close
-        // }
-        // else
-        //     parent.speed = 0f; // Stop moving if too close
+        var direction = player.GlobalPosition - parent.GlobalPosition;
 
-        // if (direction.Length() < nextRange && NextState != "Nothing")
-        // {
-        //     EmitSignal("Transitioned", this, NextState);
-        // }
-        // else if (direction.Length() > prevRange && PrevState != "Nothing")
-        // {
-        //     EmitSignal("Transitioned", this, PrevState);
-        // }
+        if (direction.Length() > howClose)
+        {
+            avoidance.MoveDirection(direction.Normalized() * speed);
+        }
+        else
+            parent.Velocity = Vector2.Zero;
+
+        if (direction.Length() < nextRange && NextState != "Nothing")
+        {
+            EmitSignal("Transitioned", this, NextState);
+        }
+        else if (direction.Length() > prevRange && PrevState != "Nothing")
+        {
+            EmitSignal("Transitioned", this, PrevState);
+        }
     }
 }

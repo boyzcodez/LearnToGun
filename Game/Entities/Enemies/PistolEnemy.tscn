@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://ww17vqyp3gdu"]
+[gd_scene load_steps=33 format=3 uid="uid://ww17vqyp3gdu"]
 
 [ext_resource type="Script" uid="uid://dexb3awvsef8d" path="res://Game/Entities/TestEnemies/ActiveTestEnemy.cs" id="1_hm5e5"]
 [ext_resource type="PackedScene" uid="uid://dyqbl4s13wnxg" path="res://Game/Entities/Components/shadow.tscn" id="2_tqxi0"]
@@ -10,7 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://bp3lx4f7c5wd1" path="res://Components/Etc/hit_flash.tscn" id="9_3wam0"]
 [ext_resource type="Resource" uid="uid://0mow7g6u66nf" path="res://Game/Guns/Enemy/Pistol/EnemyPistolData.tres" id="9_ofxb3"]
 [ext_resource type="PackedScene" uid="uid://vmtiw08cr30b" path="res://Components/DamageComps/hurtbox.tscn" id="10_xs1h7"]
-[ext_resource type="PackedScene" uid="uid://b2cg0h2elsve" path="res://Game/Entities/Components/Seperate.tscn" id="11_oh53k"]
+[ext_resource type="PackedScene" uid="uid://na4yx06ro3jd" path="res://Game/Entities/StateMachine/state_machine.tscn" id="11_fv8ny"]
+[ext_resource type="Script" uid="uid://c2orrjp6f8iyi" path="res://Game/Entities/StateMachine/States/Idle.cs" id="12_hsm8f"]
+[ext_resource type="Script" uid="uid://cbm2bcpra8ll1" path="res://Game/Entities/StateMachine/States/Follow.cs" id="13_j3f1q"]
+[ext_resource type="Script" uid="uid://2sl1ow0g27ob" path="res://Game/Entities/StateMachine/States/Surround.cs" id="14_ln6p3"]
+[ext_resource type="PackedScene" uid="uid://dsjn6we723avh" path="res://Game/Entities/Components/Avoidance.tscn" id="15_hsm8f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_htgvw"]
 radius = 5.0
@@ -135,19 +139,17 @@ animations = [{
 radius = 8.0
 height = 22.0
 
-[node name="ActiveTestEnemy" type="CharacterBody2D" node_paths=PackedStringArray("gun", "separationArea")]
+[node name="ActiveTestEnemy" type="CharacterBody2D" node_paths=PackedStringArray("gun")]
 motion_mode = 1
 wall_min_slide_angle = 0.08726646
 platform_on_leave = 2
 platform_floor_layers = 0
 script = ExtResource("1_hm5e5")
-Speed = 50.0
 ShootingRange = 200.0
 FireCooldown = 4.0
 FireTimes = 8
 FireRate = 0.3
 gun = NodePath("Hide/AnimatedSpriteE/Look/Guns")
-separationArea = NodePath("Seperate")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_htgvw")
@@ -183,19 +185,30 @@ hitFlash = NodePath("../Hide/AnimatedSpriteE/HitFlash")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CapsuleShape2D_ccun0")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_desired_distance = 12.0
-target_desired_distance = 8.0
-path_max_distance = 50.0
-avoidance_enabled = true
-
-[node name="NavTimer" type="Timer" parent="."]
-one_shot = true
-
 [node name="FireRate" type="Timer" parent="."]
 one_shot = true
 
-[node name="Seperate" parent="." instance=ExtResource("11_oh53k")]
+[node name="StateMachine" parent="." node_paths=PackedStringArray("initialState") instance=ExtResource("11_fv8ny")]
+initialState = NodePath("Idle")
+Active = true
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("12_hsm8f")
+NextState = "Follow"
+metadata/_custom_type_script = "uid://c2orrjp6f8iyi"
+
+[node name="Follow" type="Node" parent="StateMachine"]
+script = ExtResource("13_j3f1q")
+howClose = 100.0
+NextState = "Nothing"
+metadata/_custom_type_script = "uid://cbm2bcpra8ll1"
+
+[node name="Surround" type="Node" parent="StateMachine"]
+script = ExtResource("14_ln6p3")
+metadata/_custom_type_script = "uid://2sl1ow0g27ob"
+
+[node name="Avoidance" parent="." instance=ExtResource("15_hsm8f")]
+AvoidForce = 100.0
+RayLength = 48.0
 
 [connection signal="animation_finished" from="Hide/AnimatedSpriteE" to="Hide/AnimatedSpriteE" method="_on_animation_finished"]
-[connection signal="timeout" from="NavTimer" to="." method="_on_nav_timer_timeout"]
