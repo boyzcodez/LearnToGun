@@ -10,9 +10,7 @@ public partial class MultiHit : Behavior
     {
         if (bullet._timer >= 0.05f)
         {
-            var overlaps = bullet.GetOverlappingAreas();
-
-            foreach (var area in overlaps)
+            foreach (var area in bullet.GetOverlappingAreas())
             {
                 if (area is Hurtbox hurtbox && !hurtbox.immune)
                 {

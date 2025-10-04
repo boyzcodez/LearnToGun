@@ -103,6 +103,8 @@ animations = [{
 [node name="Rocket" type="Area2D" node_paths=PackedStringArray("Animation")]
 collision_layer = 32
 collision_mask = 20
+monitoring = false
+monitorable = false
 script = ExtResource("1_6cbj7")
 Behaviors = [ExtResource("3_ibh86"), ExtResource("4_wk315"), ExtResource("5_wk315")]
 Animation = NodePath("AnimatedSprite2D")

@@ -8,7 +8,7 @@
 script = ExtResource("1_1gm1d")
 GunName = "EnemyShotgun"
 Knockback = 50.0
-BulletSpeed = 90.0
+BulletSpeed = 120.0
 BulletScene = ExtResource("1_04s0y")
 SpawnAmount = 15
 UsesAmmo = false

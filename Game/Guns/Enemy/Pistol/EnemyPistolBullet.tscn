@@ -68,6 +68,8 @@ animations = [{
 [node name="EnemyBullet" type="Area2D" node_paths=PackedStringArray("Animation")]
 collision_layer = 32
 collision_mask = 18
+monitoring = false
+monitorable = false
 script = ExtResource("1_txrm2")
 Behaviors = [ExtResource("3_02r7r"), ExtResource("2_02r7r"), ExtResource("5_lyute")]
 Animation = NodePath("AnimatedSprite2D")

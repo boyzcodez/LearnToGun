@@ -16,8 +16,9 @@ public partial class Bullet : Area2D
     public Vector2 Direction { get; set; }
     public float rotation { get; set; }
     public string Key { get; private set; }
-    public bool Active { get; private set; } = false;
+    public bool Active { get; set; } = false;
     public bool hasHit = false;
+    private bool _pendingActivation = false;
 
     public float _timer;
 
@@ -28,18 +29,23 @@ public partial class Bullet : Area2D
     public override void _Ready()
     {
         SetPhysicsProcess(false);
-        SetDeferred("monitoring", false);
-        SetDeferred("monitorable", false);
         Hide();
 
         Animation.AnimationFinished += Hide;
         BodyEntered += WallHit;
-        AreaEntered += BodyHit;
-
     }
 
     public override void _PhysicsProcess(double delta)
     {
+        if (_pendingActivation)
+        {
+            _pendingActivation = false;
+            Monitoring = true;
+            Monitorable = true;
+            Active = true;
+            return; // skip first tick for stable state
+        }
+
         if (!Active) return;
 
         foreach (var behavior in Behaviors)
@@ -47,14 +53,18 @@ public partial class Bullet : Area2D
             behavior.Update(this, delta);
         }
 
-        // this is for if the player is dodging and the dodge ends with the player on top of the bullet
-        // if (GetOverlappingAreas().Count > 0)
-        // {
-        //     OnHit();
-        // }
-
         _timer += (float)delta;
         if (_timer >= 4f) Deactivate();
+
+        if (!hasHit && Monitoring)
+        {
+            if (GetOverlappingAreas().Count > 0)
+            {
+                hasHit = true;
+                OnHit();
+            }
+        }
+        
     }
 
     #endregion
@@ -79,49 +89,40 @@ public partial class Bullet : Area2D
 
     public void Activate(float newRotation)
     {
-        if (Active) return;
-        
+        if (Active || _pendingActivation) return;
+
         rotation = newRotation;
-
         Initialize();
-
         _timer = 0f;
-        Active = true;
         hasHit = false;
 
-        Show();
-        SetPhysicsProcess(true);
-        SetDeferred("monitoring", true);
-        SetDeferred("monitorable", true);
+        // Defer enabling physics process for safety
+        CallDeferred("set_physics_process", true);
+        _pendingActivation = true;
 
-        // Optional: Play default animation
+        Show();
         Animation?.Play("default");
     }
 
     public void Deactivate()
     {
-        if (!Active) return;
-        
-        Active = false;
+        if (!Active && !_pendingActivation) return;
 
-        SetPhysicsProcess(false);
+        Active = false;
+        _pendingActivation = false;
+        CallDeferred("set_physics_process", false);
+
         SetDeferred("monitoring", false);
         SetDeferred("monitorable", false);
 
         _pool.ReturnBullet(Key, this);
 
-        // Optional: Play hit animation
         Animation?.Play("hit");
     }
     private void WallHit(Node body)
     {
         if (hasHit) return;
         Deactivate();
-    }
-    private void BodyHit(Node body)
-    {
-        hasHit = true;
-        OnHit();
     }
 
     #endregion

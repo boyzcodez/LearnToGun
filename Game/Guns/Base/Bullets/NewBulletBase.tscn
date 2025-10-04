@@ -61,6 +61,8 @@ animations = [{
 [node name="NewBulletBase" type="Area2D" node_paths=PackedStringArray("Animation")]
 collision_layer = 32
 collision_mask = 20
+monitoring = false
+monitorable = false
 script = ExtResource("1_xqkn1")
 Behaviors = [ExtResource("3_xqkn1"), ExtResource("2_hhwh4"), ExtResource("5_1knxl")]
 Animation = NodePath("AnimatedSprite2D")
