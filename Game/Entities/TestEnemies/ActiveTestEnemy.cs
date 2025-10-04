@@ -18,6 +18,7 @@ public partial class ActiveTestEnemy : Entity
     private Node2D player;
     private double fireTimer = 3.0;
     private bool isShooting = false;
+    private Vector2 positionPlus = new Vector2(0, -11);
 
     public override void _Ready()
     {
@@ -48,7 +49,7 @@ public partial class ActiveTestEnemy : Entity
 
         fireTimer -= delta;
 
-        float distanceToPlayer = GlobalPosition.DistanceTo(player.GlobalPosition);
+        float distanceToPlayer = GlobalPosition.DistanceTo(player.GlobalPosition + positionPlus);
         if (distanceToPlayer > ShootingRange)
         {
             navAgent.TargetPosition = player.GlobalPosition;
@@ -78,7 +79,7 @@ public partial class ActiveTestEnemy : Entity
         Vector2 dir = (nextPos - GlobalPosition).Normalized() * Speed;
 
         //dir = AvoidWalls(dir); // dont know if needed
-        //dir = SeparateFromEnemies(dir); // dont know if needed
+        dir = SeparateFromEnemies(dir); // dont know if needed
 
         Velocity = Velocity.Lerp(dir, 0.2f);
         MoveAndSlide();
@@ -86,20 +87,37 @@ public partial class ActiveTestEnemy : Entity
     private bool HasLineOfSight(Vector2 target)
     {
         var spaceState = GetWorld2D().DirectSpaceState;
-        var query = PhysicsRayQueryParameters2D.Create(GlobalPosition, target);
-        query.Exclude = new Godot.Collections.Array<Rid> { GetRid() };
 
-        var result = spaceState.IntersectRay(query);
-        if (result.Count == 0) return true;
-
-        if (result.TryGetValue("collider", out var colliderVar))
+        // Approximate player's "body" by offset rays
+        var bodyOffsets = new Vector2[]
         {
-            // Convert the Variant into a GodotObject
-            var colliderObj = colliderVar.AsGodotObject();
+            Vector2.Zero,
+            new Vector2(8, 0),    // right shoulder
+            new Vector2(-8, 0),   // left shoulder
+            new Vector2(0, -8),   // head
+            new Vector2(0, 8),    // feet
+        };
 
-            // Compare against your player node
-            if (colliderObj == player)
+        foreach (var offset in bodyOffsets)
+        {
+            var targetP = target + offset;
+            var query = PhysicsRayQueryParameters2D.Create(GlobalPosition, targetP);
+            query.Exclude = new Godot.Collections.Array<Rid> { GetRid() };
+            query.CollideWithAreas = true;
+            query.CollideWithBodies = true;
+
+            var result = spaceState.IntersectRay(query);
+
+            // ✅ If no collision or collision is the player, we have LoS
+            if (result.Count == 0)
                 return true;
+
+            if (result.TryGetValue("collider", out var colliderVar))
+            {
+                var colliderObj = colliderVar.AsGodotObject();
+                if (colliderObj == player)
+                    return true;
+            }
         }
 
         return false;
@@ -144,29 +162,29 @@ public partial class ActiveTestEnemy : Entity
     //     return desiredVel;
     // }
 
-    // // dont know if needed
-    // private Vector2 SeparateFromEnemies(Vector2 desiredVel)
-    // {
-    //     float separationRadius = 32f;
-    //     Vector2 push = Vector2.Zero;
+    // dont know if needed
+    private Vector2 SeparateFromEnemies(Vector2 desiredVel)
+    {
+        float separationRadius = 32f;
+        Vector2 push = Vector2.Zero;
 
-    //     foreach (var body in separationArea.GetOverlappingBodies())
-    //     {
-    //         if (body is Hurtbox other && other != this.GetNode<Hurtbox>("Hurtbox"))
-    //         {
-    //             float dist = GlobalPosition.DistanceTo(other.GlobalPosition);
-    //             if (dist < separationRadius && dist > 0)
-    //             {
-    //                 Vector2 away = (GlobalPosition - other.GlobalPosition).Normalized();
-    //                 push += away * (separationRadius - dist);
-    //             }
-    //         }
-    //     }
+        foreach (var body in separationArea.GetOverlappingAreas())
+        {
+            if (body is Hurtbox other && other != this.GetNode<Hurtbox>("Hurtbox"))
+            {
+                float dist = GlobalPosition.DistanceTo(other.GlobalPosition);
+                if (dist < separationRadius && dist > 0)
+                {
+                    Vector2 away = (GlobalPosition - other.GlobalPosition).Normalized();
+                    push += away * (separationRadius - dist);
+                }
+            }
+        }
 
-    //     if (push != Vector2.Zero)
-    //         desiredVel += push.Normalized() * 50f;
+        if (push != Vector2.Zero)
+            desiredVel += push.Normalized() * 50f;
 
-    //     return desiredVel;
-    // }
+        return desiredVel;
+    }
 
 }

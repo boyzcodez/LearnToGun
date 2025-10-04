@@ -18,7 +18,7 @@ public partial class Bullet : Area2D
     public string Key { get; private set; }
     public bool Active { get; set; } = false;
     public bool hasHit = false;
-    private bool _pendingActivation = false;
+    public bool _pendingActivation = false;
 
     public float _timer;
 

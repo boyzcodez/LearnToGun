@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bhb68kqkfragl"]
+[gd_scene load_steps=29 format=3 uid="uid://bhb68kqkfragl"]
 
 [ext_resource type="Script" uid="uid://dexb3awvsef8d" path="res://Game/Entities/TestEnemies/ActiveTestEnemy.cs" id="1_hc5v1"]
 [ext_resource type="PackedScene" uid="uid://vmtiw08cr30b" path="res://Components/DamageComps/hurtbox.tscn" id="3_m1e7j"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://mg8q0xeodew0" path="res://Game/Guns/Base/Guns.tscn" id="8_wklgt"]
 [ext_resource type="Resource" uid="uid://d1ps46siei1u" path="res://Game/Guns/Enemy/Shotgun/EnemyShotgunData.tres" id="9_jyark"]
 [ext_resource type="PackedScene" uid="uid://dyqbl4s13wnxg" path="res://Game/Entities/Components/shadow.tscn" id="11_bbp8y"]
+[ext_resource type="PackedScene" uid="uid://b2cg0h2elsve" path="res://Game/Entities/Components/Seperate.tscn" id="11_jyark"]
 [ext_resource type="PackedScene" uid="uid://bp3lx4f7c5wd1" path="res://Components/Etc/hit_flash.tscn" id="11_oxb72"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_htgvw"]
@@ -134,7 +135,7 @@ animations = [{
 radius = 8.0
 height = 22.0
 
-[node name="ActiveTestEnemy" type="CharacterBody2D" node_paths=PackedStringArray("gun")]
+[node name="ActiveTestEnemy" type="CharacterBody2D" node_paths=PackedStringArray("gun", "separationArea")]
 motion_mode = 1
 wall_min_slide_angle = 0.08726646
 platform_on_leave = 2
@@ -145,6 +146,7 @@ ShootingRange = 130.0
 FireCooldown = 4.0
 FireTimes = 2
 gun = NodePath("Hide/AnimatedSpriteE/Look/Guns")
+separationArea = NodePath("Seperate")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_htgvw")
@@ -184,12 +186,15 @@ shape = SubResource("CapsuleShape2D_ccun0")
 path_desired_distance = 12.0
 target_desired_distance = 8.0
 path_max_distance = 50.0
+avoidance_enabled = true
 
 [node name="NavTimer" type="Timer" parent="."]
 one_shot = true
 
 [node name="FireRate" type="Timer" parent="."]
 one_shot = true
+
+[node name="Seperate" parent="." instance=ExtResource("11_jyark")]
 
 [connection signal="animation_finished" from="Hide/AnimatedSpriteE" to="Hide/AnimatedSpriteE" method="_on_animation_finished"]
 [connection signal="timeout" from="NavTimer" to="." method="_on_nav_timer_timeout"]

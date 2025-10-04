@@ -8,7 +8,7 @@ public partial class MultiHit : Behavior
     }
     public override void Update(Bullet bullet, double delta)
     {
-        if (bullet._timer >= 0.05f)
+        if (!bullet._pendingActivation)
         {
             foreach (var area in bullet.GetOverlappingAreas())
             {
