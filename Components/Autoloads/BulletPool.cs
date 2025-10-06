@@ -80,7 +80,7 @@ public partial class BulletPool : Node2D
     }
     public void ClearBullets()
     {
-        EventBus.TriggerScreenShake(0.5f);
+        EventBus.TriggerScreenShake(0.4f);
 
         foreach (var bullet in _enemyBullets)
         {

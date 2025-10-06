@@ -37,6 +37,7 @@ public partial class Player : Entity
         if (KnockbackTime > 0f)
         {
             KnockbackTime -= (float)delta;
+            Velocity = KnockbackVelocity;
             if (KnockbackTime <= 0f)
             {
                 Velocity = Vector2.Zero; // Stop movement after knockback
@@ -55,8 +56,6 @@ public partial class Player : Entity
                 Movement((float)delta);
             }
         }
-
-        //if (Input.IsActionJustPressed("attack")) weaponManager.Shoot(this);
 
         MoveAndSlide();
     }

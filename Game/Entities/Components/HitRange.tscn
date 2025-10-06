@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcgkxc4mvklfp"]
+
+[ext_resource type="Script" uid="uid://cek66o4y4sijn" path="res://Game/Entities/Enemies/HitRange.cs" id="1_gnmyn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_86r2e"]
+radius = 11.0
+
+[node name="HitRange" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_gnmyn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_86r2e")
