@@ -3,7 +3,7 @@ using System;
 
 public partial class HitRange : Area2D
 {
-    private DamageData damageData = new DamageData(0, 200f, "");
+    private DamageData damageData = new DamageData(1, 200f, "");
     private Hurtbox ownerHurtbox;
     public override void _Ready()
     {
