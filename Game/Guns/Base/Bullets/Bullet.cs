@@ -8,6 +8,7 @@ public partial class Bullet : Area2D
 
     [Export] public Behavior[] Behaviors = [];
     [Export] public AnimatedSprite2D Animation;
+    //[Export] public PackedScene impactDust;
 
     private BulletPool _pool;
     public DamageData DamageData;
@@ -123,6 +124,13 @@ public partial class Bullet : Area2D
     {
         if (hasHit) return;
         Deactivate();
+
+        // if (impactDust != null)
+        // {
+        //     var instance = impactDust.Instantiate() as CpuParticles2D;
+        //     instance.Rotate(-rotation);
+        //     AddChild(instance);
+        // }
     }
 
     #endregion

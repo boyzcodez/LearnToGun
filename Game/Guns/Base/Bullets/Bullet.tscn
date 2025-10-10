@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://rxr8ltaien1h"]
+[gd_scene load_steps=4 format=3 uid="uid://rxr8ltaien1h"]
 
 [ext_resource type="Script" uid="uid://de44iwnl6kvq1" path="res://Game/Guns/Base/Bullets/Bullet.cs" id="1_u4v11"]
+[ext_resource type="PackedScene" uid="uid://d15pvs8p20mie" path="res://Game/Guns/Base/Partical Effects/imapct_smoke.tscn" id="2_8w2lm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fexg8"]
 
@@ -13,3 +14,5 @@ script = ExtResource("1_u4v11")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fexg8")
+
+[node name="ImapctSmoke" parent="." instance=ExtResource("2_8w2lm")]

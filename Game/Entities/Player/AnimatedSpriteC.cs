@@ -36,7 +36,8 @@ public partial class AnimatedSpriteC : AnimatedSprite
 
         currentDirection = directionNode.GetDirection(sectionIndex);
 
-        if (player.dodgeTime > 0) PlayAnimation("Glitch", 5);
+        if (player.Dead) PlayAnimation("Death", 10);
+        else if (player.dodgeTime > 0) PlayAnimation("Glitch", 5);
         else PlayAnimation(currentAnim, 1);
     }
 

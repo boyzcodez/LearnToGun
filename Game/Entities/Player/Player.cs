@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Godot;
 
 [GlobalClass]
@@ -16,6 +17,7 @@ public partial class Player : Entity
     private Hurtbox hurtbox;
     private Node2D warpDashNode;
     private Timer dashTimer;
+    private LookAt lookAt;
 
     private bool disabled = false;
 
@@ -25,6 +27,7 @@ public partial class Player : Entity
         dashTimer = GetNode<Timer>("DashCooldown");
         hurtbox = GetNode<Hurtbox>("Hurtbox");
         warpDashNode = GetNode<Node2D>("WarpDash");
+        lookAt = GetNode<LookAt>("LookAt");
         //Input.SetMouseMode(Input.MouseModeEnum.Hidden);
 
         //EventBus.MapSwitch += PlayerReset;
@@ -32,7 +35,7 @@ public partial class Player : Entity
     }
     public override void _PhysicsProcess(double delta)
     {
-        if (disabled) return;
+        if (disabled || Dead) return;
 
         if (KnockbackTime > 0f)
         {
@@ -98,13 +101,23 @@ public partial class Player : Entity
             dashTimer.Start(dashCooldown);
         }
     }
-    public override void Death()
+    public override async void Death()
     {
         EventBus.gameOn = false;
+
+        Dead = true;
+        KnockbackTime = 0f;
+        lookAt.Hide();
         EventBus.PlayerDied();
+
+
+        await ToSignal(GetTree().CreateTimer(3f), "timeout");
+        
         GetNode<Hurtbox>("Hurtbox").ResetHealth();
 
         GlobalPosition = new Vector2(0, 0);
+        Dead = false;
+        lookAt.Show();
     }
     private void PlayerReset()
     {

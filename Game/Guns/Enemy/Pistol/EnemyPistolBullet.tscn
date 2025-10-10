@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dxjpg6l46xs3y"]
+[gd_scene load_steps=16 format=3 uid="uid://dxjpg6l46xs3y"]
 
 [ext_resource type="Script" uid="uid://de44iwnl6kvq1" path="res://Game/Guns/Base/Bullets/Bullet.cs" id="1_txrm2"]
 [ext_resource type="Resource" uid="uid://cmau4tqbmn717" path="res://Components/BulletComps/BulletBehaviors/Resources/StraightMovement.tres" id="2_02r7r"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dd7r1b2hrw06h" path="res://Assets/Guns/Bullets/NewBullets.png" id="5_02r7r"]
 [ext_resource type="Resource" uid="uid://xn0p4wisqnkv" path="res://Components/BulletComps/BulletBehaviors/Resources/TowardRotation.tres" id="5_lyute"]
 [ext_resource type="PackedScene" uid="uid://dm1fl7xf7jysr" path="res://Game/Entities/Components/Shadows.tscn" id="6_xtjlt"]
+[ext_resource type="PackedScene" uid="uid://d15pvs8p20mie" path="res://Game/Guns/Base/Partical Effects/imapct_smoke.tscn" id="7_lyute"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pnq1u"]
 radius = 6.0
@@ -73,6 +74,7 @@ monitorable = false
 script = ExtResource("1_txrm2")
 Behaviors = [ExtResource("3_02r7r"), ExtResource("2_02r7r"), ExtResource("5_lyute")]
 Animation = NodePath("AnimatedSprite2D")
+impactDust = ExtResource("7_lyute")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_pnq1u")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drnvmxh1e2u5u"
-path="res://.godot/imported/NewRobot.png-d640b04d570cdc31eb2ce8c791ebd13f.ctex"
+uid="uid://d1c0nok8gc3d6"
+path="res://.godot/imported/Smokepaticles.png-ccca9028522d8663055ab278c13c78b5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/NewRobot.png"
-dest_files=["res://.godot/imported/NewRobot.png-d640b04d570cdc31eb2ce8c791ebd13f.ctex"]
+source_file="res://Assets/Effects/Smokepaticles.png"
+dest_files=["res://.godot/imported/Smokepaticles.png-ccca9028522d8663055ab278c13c78b5.ctex"]
 
 [params]
 
