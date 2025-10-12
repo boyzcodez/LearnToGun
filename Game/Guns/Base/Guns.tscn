@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cr48lni3g5d8a" path="res://Game/Guns/Base/Guns.cs" id="1_wlfwf"]
 [ext_resource type="Material" uid="uid://dgm487iucl2ye" path="res://Game/Shaders/smooth_rotate_pixles.tres" id="2_nw0vf"]
 [ext_resource type="Texture2D" uid="uid://p81l6fvexk0a" path="res://Assets/Guns/Guns/EnemyPistol.png" id="2_yy3x0"]
-[ext_resource type="Texture2D" uid="uid://diet8ij7y2hpc" path="res://Assets/Guns/Guns/basic_weapon_shotgun1.png" id="3_rpglb"]
+[ext_resource type="Texture2D" uid="uid://dja0ghsr3gw8u" path="res://Assets/Guns/Guns/EnemyShotgun/EliteEnemyShotgun.png" id="4_io5qt"]
 [ext_resource type="Texture2D" uid="uid://cvyc8ap5mr7vy" path="res://Assets/Guns/Guns/Pistol/NewPistol.png" id="5_4xwd0"]
 [ext_resource type="Texture2D" uid="uid://ctvc5jlwlpnox" path="res://Assets/Guns/Guns/Zooka.png" id="6_0e7gx"]
 [ext_resource type="Texture2D" uid="uid://dbdowrg4ui4c6" path="res://Assets/Guns/Guns/Shotgun/Shotgun1.png" id="6_4xwd0"]
@@ -35,23 +35,23 @@ atlas = ExtResource("2_yy3x0")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_21tnl"]
-atlas = ExtResource("3_rpglb")
+atlas = ExtResource("4_io5qt")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_glwbl"]
-atlas = ExtResource("3_rpglb")
+atlas = ExtResource("4_io5qt")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_03i64"]
-atlas = ExtResource("3_rpglb")
+atlas = ExtResource("4_io5qt")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kbio5"]
-atlas = ExtResource("3_rpglb")
+atlas = ExtResource("4_io5qt")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h7hvy"]
-atlas = ExtResource("3_rpglb")
+atlas = ExtResource("4_io5qt")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tr2wm"]
@@ -387,5 +387,5 @@ script = ExtResource("1_wlfwf")
 [node name="GunAnimation" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_nw0vf")
 sprite_frames = SubResource("SpriteFrames_yy3x0")
-animation = &"EnemyShotgun_LV1_Shoot"
+animation = &"EnemyShotgun_LV1_"
 script = ExtResource("7_rpglb")
