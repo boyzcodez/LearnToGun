@@ -60,7 +60,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 17.0
+"speed": 14.0
 }]
 
 [node name="Hurtbox" type="Area2D"]
@@ -74,3 +74,5 @@ lifetime = 0.15000000000000002
 
 [node name="HitAnimation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_mdlb4")
+frame = 5
+frame_progress = 1.0

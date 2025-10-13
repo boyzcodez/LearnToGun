@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://ww17vqyp3gdu"]
+[gd_scene load_steps=46 format=3 uid="uid://ww17vqyp3gdu"]
 
 [ext_resource type="Script" uid="uid://dexb3awvsef8d" path="res://Game/Entities/TestEnemies/ActiveTestEnemy.cs" id="1_hm5e5"]
 [ext_resource type="PackedScene" uid="uid://dyqbl4s13wnxg" path="res://Game/Entities/Components/shadow.tscn" id="2_tqxi0"]
@@ -28,6 +28,10 @@ region = Rect2(64, 128, 64, 64)
 atlas = ExtResource("4_4dabi")
 region = Rect2(128, 128, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofxb3"]
+atlas = ExtResource("5_ofxb3")
+region = Rect2(128, 256, 64, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_bbp8y"]
 atlas = ExtResource("4_4dabi")
 region = Rect2(192, 128, 64, 64)
@@ -39,6 +43,10 @@ region = Rect2(0, 256, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_fv8ny"]
 atlas = ExtResource("5_ofxb3")
 region = Rect2(64, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iats4"]
+atlas = ExtResource("5_ofxb3")
+region = Rect2(128, 256, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hsm8f"]
 atlas = ExtResource("5_ofxb3")
@@ -141,11 +149,14 @@ animations = [{
 "texture": SubResource("AtlasTexture_b3ga6")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ofxb3")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_bbp8y")
 }],
 "loop": false,
 "name": &"HitBack",
-"speed": 11.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -155,6 +166,9 @@ animations = [{
 "texture": SubResource("AtlasTexture_fv8ny")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_iats4")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_hsm8f")
 }, {
 "duration": 1.0,
@@ -162,7 +176,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"HitFront",
-"speed": 11.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,

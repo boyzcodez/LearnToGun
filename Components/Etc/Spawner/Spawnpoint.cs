@@ -3,7 +3,7 @@ using System;
 
 public partial class Spawnpoint : AnimatedSprite2D
 {
-    [Export(PropertyHint.Enum, "PistolEnemy,ShotgunEnemy")]
+    [Export(PropertyHint.Enum, "PistolEnemy,ShotgunEnemy,ChaseEnemy")]
     public string Enemy { get; set; } = "PistolEnemy";
     private EnemySpawner spawner;
 

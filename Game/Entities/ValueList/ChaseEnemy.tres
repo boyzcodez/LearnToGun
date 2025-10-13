@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Enemy" load_steps=3 format=3 uid="uid://dl4o1la662ajg"]
+
+[ext_resource type="Script" uid="uid://bosj4dr7i34es" path="res://Game/Entities/ValueList/Enemy.cs" id="1_ia5f7"]
+[ext_resource type="PackedScene" uid="uid://bl7qqpxlnry7w" path="res://Game/Entities/Enemies/ChaseEnemy.tscn" id="1_othp6"]
+
+[resource]
+script = ExtResource("1_ia5f7")
+name = "ChaseEnemy"
+enemyScene = ExtResource("1_othp6")
+metadata/_custom_type_script = "uid://bosj4dr7i34es"

@@ -16,6 +16,7 @@ public partial class Player : Entity
 
     private Hurtbox hurtbox;
     private Node2D warpDashNode;
+    private CpuParticles2D dashParticles;
     private Timer dashTimer;
     private LookAt lookAt;
 

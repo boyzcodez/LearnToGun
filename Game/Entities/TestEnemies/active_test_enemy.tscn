@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://bhb68kqkfragl"]
+[gd_scene load_steps=45 format=3 uid="uid://bhb68kqkfragl"]
 
 [ext_resource type="Script" uid="uid://dexb3awvsef8d" path="res://Game/Entities/TestEnemies/ActiveTestEnemy.cs" id="1_hc5v1"]
 [ext_resource type="PackedScene" uid="uid://vmtiw08cr30b" path="res://Components/DamageComps/hurtbox.tscn" id="3_m1e7j"]
@@ -27,6 +27,10 @@ region = Rect2(64, 256, 64, 64)
 atlas = ExtResource("4_jyark")
 region = Rect2(128, 256, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_jyark"]
+atlas = ExtResource("4_jyark")
+region = Rect2(128, 256, 64, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_wxglr"]
 atlas = ExtResource("4_jyark")
 region = Rect2(192, 256, 64, 64)
@@ -38,6 +42,10 @@ region = Rect2(0, 256, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_bbp8y"]
 atlas = ExtResource("4_jyark")
 region = Rect2(64, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ly3e6"]
+atlas = ExtResource("4_jyark")
+region = Rect2(128, 256, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oxb72"]
 atlas = ExtResource("4_jyark")
@@ -140,11 +148,14 @@ animations = [{
 "texture": SubResource("AtlasTexture_q6s24")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_jyark")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_wxglr")
 }],
 "loop": false,
 "name": &"HitBack",
-"speed": 11.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -154,6 +165,9 @@ animations = [{
 "texture": SubResource("AtlasTexture_bbp8y")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ly3e6")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_oxb72")
 }, {
 "duration": 1.0,
@@ -161,7 +175,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"HitFront",
-"speed": 11.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -272,7 +286,7 @@ position = Vector2(0, -1)
 material = ExtResource("4_6ce44")
 position = Vector2(0, -10)
 sprite_frames = SubResource("SpriteFrames_b3ga6")
-animation = &"RunFront"
+animation = &"HitFront"
 script = ExtResource("5_bbp8y")
 
 [node name="Look" type="Marker2D" parent="Hide/AnimatedSpriteE"]
