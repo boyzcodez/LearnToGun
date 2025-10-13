@@ -7,9 +7,9 @@ public partial class Player : Entity
     //[Export] public PlayerWeaponManager weaponManager;
     private const float SPEED = 120f;
     private const float DODGE_SPEED = 200f;
-    private const float DODGE_DURATION = 0.5f;
+    private const float DODGE_DURATION = 0.4f;
 
-    private bool isDodging = false;
+    public bool isDodging = false;
     private Vector2 dodgeDirection;
     public float dodgeTime = 0f;
     private float dashCooldown = 0.5f;

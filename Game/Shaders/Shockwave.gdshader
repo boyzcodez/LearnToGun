@@ -4,6 +4,7 @@ uniform vec2 center;
 uniform float force;
 uniform float size;
 uniform float thickness;
+uniform float offset;
 
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
 
@@ -13,6 +14,11 @@ void fragment(){
 	float mask = (1.0 - smoothstep(size-0.1,size, length(scaledUV - center))) * 
 	smoothstep(size-thickness-0.1,size-thickness, length(scaledUV - center));
 	vec2 disp = normalize(scaledUV - center) * force * mask;
+	
+	COLOR.r = texture(SCREEN_TEXTURE,vec2(SCREEN_UV.x + offset, SCREEN_UV.y) - disp).r;
+	COLOR.g = texture(SCREEN_TEXTURE,SCREEN_UV - disp).g;
+	COLOR.b = texture(SCREEN_TEXTURE,vec2(SCREEN_UV.x - offset, SCREEN_UV.y) - disp).b;
+	
 	COLOR = texture(SCREEN_TEXTURE,SCREEN_UV - disp);
 	//COLOR.rgb = vec3(mask);
 	

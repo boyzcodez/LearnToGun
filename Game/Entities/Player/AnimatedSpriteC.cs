@@ -3,7 +3,7 @@ using System;
 
 public partial class AnimatedSpriteC : AnimatedSprite
 {
-    
+    [Export] private WarpDash warpDash;
     private const string RunAnim = "Run";
     private Player player;
 
@@ -37,7 +37,7 @@ public partial class AnimatedSpriteC : AnimatedSprite
         currentDirection = directionNode.GetDirection(sectionIndex);
 
         if (player.Dead) PlayAnimation("Death", 10);
-        else if (player.dodgeTime > 0) PlayAnimation("Glitch", 5);
+        else if (warpDash.isWarping) PlayAnimation("Glitch", 1);
         else PlayAnimation(currentAnim, 1);
     }
 

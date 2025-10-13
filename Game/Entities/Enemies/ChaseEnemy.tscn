@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bl7qqpxlnry7w"]
+[gd_scene load_steps=40 format=3 uid="uid://bl7qqpxlnry7w"]
 
 [ext_resource type="Script" uid="uid://dexb3awvsef8d" path="res://Game/Entities/TestEnemies/ActiveTestEnemy.cs" id="1_k7a81"]
 [ext_resource type="PackedScene" uid="uid://dyqbl4s13wnxg" path="res://Game/Entities/Components/shadow.tscn" id="2_s3jmn"]
@@ -219,6 +219,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g1due"]
 size = Vector2(26, 17)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_g1due"]
+radius = 15.033297
+
 [node name="ActiveTestEnemy" type="CharacterBody2D" node_paths=PackedStringArray("gun")]
 motion_mode = 1
 wall_min_slide_angle = 0.08726646
@@ -245,7 +248,7 @@ position = Vector2(0, -1)
 material = ExtResource("3_nh5dd")
 position = Vector2(0, -10)
 sprite_frames = SubResource("SpriteFrames_b3ga6")
-animation = &"HitBack"
+animation = &"HitFront"
 script = ExtResource("6_8j4or")
 
 [node name="Look" type="Marker2D" parent="Hide/AnimatedSpriteE"]
@@ -276,5 +279,9 @@ one_shot = true
 avoidance_enabled = true
 
 [node name="HitRange" parent="." instance=ExtResource("12_0o6dg")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitRange"]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_g1due")
 
 [connection signal="animation_finished" from="Hide/AnimatedSpriteE" to="Hide/AnimatedSpriteE" method="_on_animation_finished"]

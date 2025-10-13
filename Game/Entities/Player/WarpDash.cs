@@ -5,7 +5,7 @@ public partial class WarpDash : Node2D
 {
     private float ghostTimer = 0.0f;
     private const float ghostInterval = 0.5f;
-    private bool isWarping = false;
+    public bool isWarping = false;
 
     private Timer warpTimer;
     private AnimatedSprite animatedSprite;
