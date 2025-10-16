@@ -4,10 +4,11 @@
 [ext_resource type="Material" uid="uid://dpwwu6i43sglf" path="res://Game/Shaders/ghost_sprite.tres" id="2_hjc0n"]
 
 [node name="GhostSprite" type="Node2D"]
-z_index = -1
+y_sort_enabled = true
 script = ExtResource("1_hjc0n")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+y_sort_enabled = true
 material = ExtResource("2_hjc0n")
 
 [node name="Timer" type="Timer" parent="."]

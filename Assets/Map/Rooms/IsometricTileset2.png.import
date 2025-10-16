@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cemuose5j1p4x"
-path="res://.godot/imported/Shadows.png-842b961074e848860ae3e881a237ed86.ctex"
+uid="uid://cfhcbkrbebhjn"
+path="res://.godot/imported/IsometricTileset2.png-aa75881a2193387746e5362f3dfe8a22.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Entity/Shadows.png"
-dest_files=["res://.godot/imported/Shadows.png-842b961074e848860ae3e881a237ed86.ctex"]
+source_file="res://Assets/Map/Rooms/IsometricTileset2.png"
+dest_files=["res://.godot/imported/IsometricTileset2.png-aa75881a2193387746e5362f3dfe8a22.ctex"]
 
 [params]
 

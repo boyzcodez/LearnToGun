@@ -1,7 +1,7 @@
 [gd_resource type="TileSet" load_steps=5 format=3 uid="uid://mnog6di1hrb2"]
 
-[ext_resource type="Texture2D" uid="uid://cfhcbkrbebhjn" path="res://Assets/Rooms/IsometricTileset2.png" id="1_a47li"]
-[ext_resource type="Texture2D" uid="uid://bx8o6d8ml8ipc" path="res://Assets/Rooms/IsometricTileset.png" id="1_vcaqw"]
+[ext_resource type="Texture2D" uid="uid://cfhcbkrbebhjn" path="res://Assets/Map/Rooms/IsometricTileset2.png" id="1_a47li"]
+[ext_resource type="Texture2D" uid="uid://bx8o6d8ml8ipc" path="res://Assets/Map/Rooms/IsometricTileset.png" id="2_5v4h2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5v4h2"]
 texture = ExtResource("1_a47li")
@@ -28,7 +28,7 @@ texture_region_size = Vector2i(32, 32)
 1:1/0/y_sort_origin = 24
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e217v"]
-texture = ExtResource("1_vcaqw")
+texture = ExtResource("2_5v4h2")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(0, -8)

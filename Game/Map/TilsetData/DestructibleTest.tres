@@ -1,0 +1,27 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bjiq5tkxyihno"]
+
+[ext_resource type="Texture2D" uid="uid://blkwr8imh8ete" path="res://Assets/Map/Tilesets/DestructibleTileset1.png" id="1_36muk"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_36muk"]
+texture = ExtResource("1_36muk")
+texture_region_size = Vector2i(32, 32)
+1:1/0 = 0
+2:1/0 = 0
+2:0/0 = 0
+1:0/0 = 0
+0:0/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+3:0/size_in_atlas = Vector2i(1, 2)
+3:0/0 = 0
+3:0/0/texture_origin = Vector2i(0, 16)
+3:0/0/y_sort_origin = 15
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, 16, 16, 16, -16, -16, -16)
+2:2/0 = 0
+
+[resource]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 17
+physics_layer_0/collision_mask = 17
+sources/5 = SubResource("TileSetAtlasSource_36muk")

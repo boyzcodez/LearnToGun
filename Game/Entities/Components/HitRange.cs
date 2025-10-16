@@ -3,12 +3,16 @@ using System;
 
 public partial class HitRange : Area2D
 {
-    private DamageData damageData = new DamageData(1, 200f, "");
+    [Export] private int Damage = 1;
+    [Export] private float knockback = 0f;
+    private DamageData damageData;
     private Hurtbox ownerHurtbox;
     public override void _Ready()
     {
         ownerHurtbox = GetOwner<Entity>().GetNode<Hurtbox>("Hurtbox");
         AreaEntered += RangeEntered;
+
+        damageData = new DamageData(Damage, knockback, "");
     }
     private void RangeEntered(Node body)
     {

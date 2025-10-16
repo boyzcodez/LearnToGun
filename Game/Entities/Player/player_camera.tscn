@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqtng3dp4vtsa"]
+[gd_scene load_steps=8 format=3 uid="uid://bqtng3dp4vtsa"]
 
 [ext_resource type="Script" uid="uid://c6vbo4viabeax" path="res://Game/Entities/Player/PlayerCamera.cs" id="1_cm6ya"]
 [ext_resource type="Script" uid="uid://bmkmywagf3m2b" path="res://Game/GUI/Ui.cs" id="2_0lmko"]
 [ext_resource type="Script" uid="uid://c2fyb5a13hqow" path="res://Components/Etc/FpsLabel.cs" id="3_0lmko"]
 [ext_resource type="Script" uid="uid://i8uaafigka8e" path="res://Game/Entities/Player/UiManager.cs" id="3_re3xe"]
+[ext_resource type="Texture2D" uid="uid://cnus75x72vqbj" path="res://Assets/Etc/Mouse.png" id="5_67rbx"]
+[ext_resource type="Script" uid="uid://bbqxj6dq4iqxm" path="res://Game/GUI/Mouse.cs" id="5_mlwuw"]
+[ext_resource type="Material" uid="uid://cx5bh10h2ko2n" path="res://Game/Shaders/TrueSmooth.tres" id="6_ib0iv"]
 
 [node name="PlayerCamera" type="Camera2D"]
 limit_enabled = false
@@ -69,3 +72,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.051970966, 0.05197096, 0.05197095, 1)
+
+[node name="MouseLayer" type="CanvasLayer" parent="."]
+layer = 50
+
+[node name="Mouse" type="Node2D" parent="MouseLayer"]
+script = ExtResource("5_mlwuw")
+
+[node name="Dot" type="Sprite2D" parent="MouseLayer/Mouse"]
+texture_filter = 2
+material = ExtResource("6_ib0iv")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_67rbx")
+vframes = 2
+
+[node name="Square" type="Sprite2D" parent="MouseLayer/Mouse"]
+texture_filter = 2
+material = ExtResource("6_ib0iv")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_67rbx")
+vframes = 2
+frame = 1

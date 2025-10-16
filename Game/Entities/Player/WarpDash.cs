@@ -10,6 +10,7 @@ public partial class WarpDash : Node2D
     private Timer warpTimer;
     private AnimatedSprite animatedSprite;
     private Shadow shadow;
+    private Node2D ysort;
     [Export] private PackedScene ghostScene;
 
 
@@ -32,7 +33,7 @@ public partial class WarpDash : Node2D
             animatedSprite.FlipH
         );
 
-        GetTree().CurrentScene.AddChild(ghost);
+        ysort.AddChild(ghost);
     }
 
     public override void _Ready()
@@ -40,6 +41,7 @@ public partial class WarpDash : Node2D
         warpTimer = GetNode<Timer>("Timer");
         animatedSprite = GetParent().GetNode<AnimatedSprite>("AnimatedSprite");
         shadow = GetParent().GetNode<Shadow>("Shadow");
+        ysort = GetTree().GetFirstNodeInGroup("YSort") as Node2D;
     }
 
     // this function is hooked up through the engine

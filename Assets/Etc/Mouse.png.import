@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cemuose5j1p4x"
-path="res://.godot/imported/Shadows.png-842b961074e848860ae3e881a237ed86.ctex"
+uid="uid://cnus75x72vqbj"
+path="res://.godot/imported/Mouse.png-916c0bd70b5d3d89efe4fc7e8cb5cdfd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Entity/Shadows.png"
-dest_files=["res://.godot/imported/Shadows.png-842b961074e848860ae3e881a237ed86.ctex"]
+source_file="res://Assets/Etc/Mouse.png"
+dest_files=["res://.godot/imported/Mouse.png-916c0bd70b5d3d89efe4fc7e8cb5cdfd.ctex"]
 
 [params]
 

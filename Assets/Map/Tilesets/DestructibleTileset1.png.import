@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfhcbkrbebhjn"
-path="res://.godot/imported/IsometricTileset2.png-563c095d40d2e258c6efc443cc932216.ctex"
+uid="uid://blkwr8imh8ete"
+path="res://.godot/imported/DestructibleTileset1.png-e9d6710fa273f89a5f10a3b2a82fc23c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Rooms/IsometricTileset2.png"
-dest_files=["res://.godot/imported/IsometricTileset2.png-563c095d40d2e258c6efc443cc932216.ctex"]
+source_file="res://Assets/Map/Tilesets/DestructibleTileset1.png"
+dest_files=["res://.godot/imported/DestructibleTileset1.png-e9d6710fa273f89a5f10a3b2a82fc23c.ctex"]
 
 [params]
 
