@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=4 uid="uid://cuats172hxloe"]
+
+[ext_resource type="Texture2D" uid="uid://2hywbifxhtfb" path="res://Assets/Map/Tilesets/DestructibleTileset2.png" id="1_h1o8d"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_carjx"]
+texture = ExtResource("1_h1o8d")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+6:0/size_in_atlas = Vector2i(2, 4)
+6:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_1erjf"]
+sources/1 = SubResource("TileSetAtlasSource_carjx")
+
+[node name="16xTilemap" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAP3/AQAAAAAAAAABAP3/AQAAAAAAAAACAP3/AQAAAAAAAAACAP7/AQAAAAAAAAABAP7/AQAAAAAAAAAAAP7/AQAAAAAAAAAAAP//AQABAAAAAAABAP//AQABAAAAAAACAP//AQABAAAAAAADAP//AQACAAAAAAADAP7/AQACAAAAAAADAP3/AQACAAAAAAACAPv/AQAGAAAAAAAFAP//AQAGAAAAAAACAAAAAQAGAAAAAAAEAPv/AQAGAAAAAAACAPn/AQAGAAAAAAAEAPn/AQAGAAAAAAA=")
+tile_set = SubResource("TileSet_1erjf")

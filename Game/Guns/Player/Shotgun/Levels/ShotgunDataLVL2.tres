@@ -11,6 +11,7 @@ LVL = "LV2_"
 maxXP = 3
 Damage = 2
 Knockback = 200.0
+ShootPosition = Vector2(16, 0)
 BulletScene = ExtResource("1_f76hd")
 SpawnAmount = 20
 FireRate = 0.4

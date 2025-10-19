@@ -9,6 +9,7 @@ public partial class Guns : Node2D
 
     private BulletPool pool;
     private GunData currentGun;
+    private AnimatedSprite2D muzzleFlash;
     private ShaderMaterial shaderMaterial;
 
     private int _currentGunIndex = 0;
@@ -19,6 +20,7 @@ public partial class Guns : Node2D
     {
         pool = GetTree().GetFirstNodeInGroup("BulletPool") as BulletPool;
         sprite = GetNode<AnimatedGun>("GunAnimation");
+        muzzleFlash = GetNode<AnimatedSprite2D>("MuzzleFlash");
         shaderMaterial = sprite.Material as ShaderMaterial;
 
         foreach (var gunData in guns)
@@ -45,6 +47,7 @@ public partial class Guns : Node2D
         type = currentGun.GunName + currentGun.LVL + GetInstanceId();
         if (active == true) EventBus.Ammo(currentGun.CurrentAmmo, currentGun.MaxAmmo);
         sprite?.Play(currentGun.GunName + "_" + currentGun.LVL);
+        muzzleFlash.Position = currentGun.ShootPosition;
     }
 
     public override void _Process(double delta)
@@ -93,6 +96,7 @@ public partial class Guns : Node2D
     }
     private async void PlayAnimation()
     {
+        muzzleFlash.Play("default");
         sprite.Play(currentGun.GunName + "_" + currentGun.LVL + "Shoot");
 
         await ToSignal(sprite, "animation_finished");

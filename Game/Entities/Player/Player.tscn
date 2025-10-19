@@ -990,6 +990,7 @@ shape = SubResource("CircleShape2D_onrkg")
 position = Vector2(0, -1)
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("warpDash")]
+light_mask = 2
 material = ExtResource("3_akrrf")
 position = Vector2(0, -10)
 sprite_frames = SubResource("SpriteFrames_fy1n6")

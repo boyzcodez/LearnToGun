@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://mg8q0xeodew0"]
+[gd_scene load_steps=63 format=3 uid="uid://mg8q0xeodew0"]
 
 [ext_resource type="Script" uid="uid://cr48lni3g5d8a" path="res://Game/Guns/Base/Guns.cs" id="1_wlfwf"]
 [ext_resource type="Material" uid="uid://dgm487iucl2ye" path="res://Game/Shaders/smooth_rotate_pixles.tres" id="2_nw0vf"]
@@ -13,6 +13,46 @@
 [ext_resource type="Texture2D" uid="uid://dc3evkxk57dno" path="res://Assets/Guns/Guns/Shotgun/Shotgu2shoot.png" id="9_glwbl"]
 [ext_resource type="Texture2D" uid="uid://cx0fqp06y34wx" path="res://Assets/Guns/Guns/Shotgun/Shotgun3.png" id="10_03i64"]
 [ext_resource type="Texture2D" uid="uid://d1y3f0q13nphv" path="res://Assets/Guns/Guns/Shotgun/Shotgun3shoot.png" id="11_kbio5"]
+[ext_resource type="Texture2D" uid="uid://1u7b4h226moh" path="res://Assets/Guns/MuzzleFlash/Simple muzzle flash.png" id="14_io5qt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3blb"]
+atlas = ExtResource("14_io5qt")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0xry"]
+atlas = ExtResource("14_io5qt")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_artxd"]
+atlas = ExtResource("14_io5qt")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkrx4"]
+atlas = ExtResource("14_io5qt")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gkrx4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h3blb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y0xry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_artxd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gkrx4")
+}],
+"loop": false,
+"name": &"default",
+"speed": 14.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6edwi"]
 atlas = ExtResource("2_yy3x0")
@@ -384,8 +424,13 @@ animations = [{
 [node name="Guns" type="Node2D"]
 script = ExtResource("1_wlfwf")
 
+[node name="MuzzleFlash" type="AnimatedSprite2D" parent="."]
+position = Vector2(16, -2)
+sprite_frames = SubResource("SpriteFrames_gkrx4")
+frame_progress = 1.0
+
 [node name="GunAnimation" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_nw0vf")
 sprite_frames = SubResource("SpriteFrames_yy3x0")
-animation = &"EnemyShotgun_LV1_"
+animation = &"Zooka_LV1_"
 script = ExtResource("7_rpglb")

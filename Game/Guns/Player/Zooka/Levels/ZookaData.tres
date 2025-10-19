@@ -7,6 +7,7 @@
 script = ExtResource("1_0ca57")
 GunName = "Zooka"
 Knockback = 100.0
+ShootPosition = Vector2(16, -2)
 BulletScene = ExtResource("1_20qpx")
 SpawnAmount = 20
 FireRate = 0.7

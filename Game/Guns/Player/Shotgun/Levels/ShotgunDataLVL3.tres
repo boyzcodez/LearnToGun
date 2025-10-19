@@ -10,6 +10,7 @@ LVL = "LV3_"
 maxXP = 3
 Damage = 3
 Knockback = 200.0
+ShootPosition = Vector2(20, 0)
 BulletScene = ExtResource("1_jvcln")
 FireRate = 0.2
 rotate = true

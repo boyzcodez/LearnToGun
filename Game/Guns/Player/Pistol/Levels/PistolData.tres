@@ -8,6 +8,7 @@ script = ExtResource("1_1ql6e")
 GunName = "Pistol"
 Knockback = 50.0
 BulletSpeed = 220.0
+ShootPosition = Vector2(12, -2)
 BulletScene = ExtResource("1_0ejhw")
 CurrentAmmo = 30
 MaxAmmo = 30
