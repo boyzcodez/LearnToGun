@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="PierceHit" load_steps=2 format=3 uid="uid://cnpmqg7vgpwye"]
+
+[ext_resource type="Script" uid="uid://2vios3fywd5f" path="res://Components/BulletComps/BulletBehaviors/Scripts/PierceHit.cs" id="1_y1vyy"]
+
+[resource]
+script = ExtResource("1_y1vyy")
+metadata/_custom_type_script = "uid://2vios3fywd5f"

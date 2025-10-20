@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dxjpg6l46xs3y"]
+[gd_scene load_steps=18 format=3 uid="uid://dxjpg6l46xs3y"]
 
 [ext_resource type="Script" uid="uid://de44iwnl6kvq1" path="res://Game/Guns/Base/Bullets/Bullet.cs" id="1_txrm2"]
 [ext_resource type="Resource" uid="uid://cmau4tqbmn717" path="res://Components/BulletComps/BulletBehaviors/Resources/StraightMovement.tres" id="2_02r7r"]
@@ -6,49 +6,57 @@
 [ext_resource type="Texture2D" uid="uid://dd7r1b2hrw06h" path="res://Assets/Guns/Bullets/NewBullets.png" id="5_02r7r"]
 [ext_resource type="Resource" uid="uid://xn0p4wisqnkv" path="res://Components/BulletComps/BulletBehaviors/Resources/TowardRotation.tres" id="5_lyute"]
 [ext_resource type="PackedScene" uid="uid://dm1fl7xf7jysr" path="res://Game/Entities/Components/Shadows.tscn" id="6_xtjlt"]
-[ext_resource type="PackedScene" uid="uid://d15pvs8p20mie" path="res://Game/Guns/Base/Partical Effects/imapct_smoke.tscn" id="7_lyute"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pnq1u"]
 radius = 6.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_02r7r"]
-atlas = ExtResource("5_02r7r")
-region = Rect2(0, 192, 64, 64)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_xtjlt"]
 atlas = ExtResource("5_02r7r")
-region = Rect2(0, 192, 64, 64)
+region = Rect2(0, 384, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lyute"]
 atlas = ExtResource("5_02r7r")
-region = Rect2(64, 192, 64, 64)
+region = Rect2(0, 384, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2rr0b"]
 atlas = ExtResource("5_02r7r")
-region = Rect2(128, 192, 64, 64)
+region = Rect2(64, 384, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5dviy"]
 atlas = ExtResource("5_02r7r")
-region = Rect2(192, 192, 64, 64)
+region = Rect2(128, 384, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kqcc6"]
 atlas = ExtResource("5_02r7r")
-region = Rect2(256, 192, 64, 64)
+region = Rect2(192, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_el47f"]
+atlas = ExtResource("5_02r7r")
+region = Rect2(0, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqn0s"]
+atlas = ExtResource("5_02r7r")
+region = Rect2(64, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ewd32"]
+atlas = ExtResource("5_02r7r")
+region = Rect2(128, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4vdf"]
+atlas = ExtResource("5_02r7r")
+region = Rect2(192, 512, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h0y3f"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_02r7r")
+"texture": SubResource("AtlasTexture_xtjlt")
 }],
 "loop": false,
 "name": &"default",
 "speed": 0.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xtjlt")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lyute")
 }, {
@@ -64,6 +72,23 @@ animations = [{
 "loop": false,
 "name": &"hit",
 "speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_el47f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lqn0s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ewd32")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4vdf")
+}],
+"loop": false,
+"name": &"wall",
+"speed": 11.0
 }]
 
 [node name="EnemyBullet" type="Area2D" node_paths=PackedStringArray("Animation")]
@@ -74,13 +99,13 @@ monitorable = false
 script = ExtResource("1_txrm2")
 Behaviors = [ExtResource("3_02r7r"), ExtResource("2_02r7r"), ExtResource("5_lyute")]
 Animation = NodePath("AnimatedSprite2D")
-impactDust = ExtResource("7_lyute")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_pnq1u")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_h0y3f")
+animation = &"wall"
 
 [node name="Shadows" parent="." instance=ExtResource("6_xtjlt")]
 position = Vector2(0, 10)

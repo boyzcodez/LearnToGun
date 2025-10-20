@@ -1,0 +1,132 @@
+[gd_scene load_steps=22 format=3 uid="uid://bxfyrcqmxhxni"]
+
+[ext_resource type="Script" uid="uid://de44iwnl6kvq1" path="res://Game/Guns/Base/Bullets/Bullet.cs" id="1_8rglj"]
+[ext_resource type="Texture2D" uid="uid://dd7r1b2hrw06h" path="res://Assets/Guns/Bullets/NewBullets.png" id="2_epq31"]
+[ext_resource type="Script" uid="uid://fv6d3enirc" path="res://Components/BulletComps/BulletBehaviors/Scripts/StraightMovement.cs" id="2_fj3bm"]
+[ext_resource type="Script" uid="uid://dlvpea0mxkxta" path="res://Components/BulletComps/BulletBehaviors/Scripts/TowardsMouse.cs" id="3_3pwx2"]
+[ext_resource type="Script" uid="uid://2vios3fywd5f" path="res://Components/BulletComps/BulletBehaviors/Scripts/PierceHit.cs" id="4_fj3bm"]
+
+[sub_resource type="Resource" id="Resource_1xfyh"]
+script = ExtResource("2_fj3bm")
+metadata/_custom_type_script = "uid://fv6d3enirc"
+
+[sub_resource type="Resource" id="Resource_6fivr"]
+script = ExtResource("3_3pwx2")
+metadata/_custom_type_script = "uid://dlvpea0mxkxta"
+
+[sub_resource type="Resource" id="Resource_3pwx2"]
+script = ExtResource("4_fj3bm")
+metadata/_custom_type_script = "uid://2vios3fywd5f"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epq31"]
+size = Vector2(13, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wol7"]
+atlas = ExtResource("2_epq31")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1c01"]
+atlas = ExtResource("2_epq31")
+region = Rect2(0, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fj3bm"]
+atlas = ExtResource("2_epq31")
+region = Rect2(64, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3pwx2"]
+atlas = ExtResource("2_epq31")
+region = Rect2(128, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kv7k7"]
+atlas = ExtResource("2_epq31")
+region = Rect2(192, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xfyh"]
+atlas = ExtResource("2_epq31")
+region = Rect2(256, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fivr"]
+atlas = ExtResource("2_epq31")
+region = Rect2(0, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ep3hh"]
+atlas = ExtResource("2_epq31")
+region = Rect2(64, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bq8xt"]
+atlas = ExtResource("2_epq31")
+region = Rect2(128, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wjpo"]
+atlas = ExtResource("2_epq31")
+region = Rect2(192, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcbv3"]
+atlas = ExtResource("2_epq31")
+region = Rect2(256, 512, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fexg8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2wol7")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w1c01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fj3bm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3pwx2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kv7k7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xfyh")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6fivr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ep3hh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bq8xt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2wjpo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcbv3")
+}],
+"loop": false,
+"name": &"wall",
+"speed": 11.0
+}]
+
+[node name="Bullet" type="Area2D" node_paths=PackedStringArray("Animation")]
+collision_layer = 32
+collision_mask = 20
+script = ExtResource("1_8rglj")
+Behaviors = [SubResource("Resource_1xfyh"), SubResource("Resource_6fivr"), SubResource("Resource_3pwx2")]
+Animation = NodePath("AnimatedSprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_epq31")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_fexg8")
+animation = &"wall"

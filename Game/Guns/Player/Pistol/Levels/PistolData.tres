@@ -1,16 +1,17 @@
 [gd_resource type="Resource" script_class="GunData" load_steps=3 format=3 uid="uid://du4ihic1fxweh"]
 
-[ext_resource type="PackedScene" uid="uid://c2lf3revdfxi0" path="res://Game/Guns/Base/Bullets/NewBulletBase.tscn" id="1_0ejhw"]
 [ext_resource type="Script" uid="uid://bf05vlwwwrvul" path="res://Game/Guns/Base/Parts/GunData.cs" id="1_1ql6e"]
+[ext_resource type="PackedScene" uid="uid://c2lf3revdfxi0" path="res://Game/Guns/Player/Pistol/NewBulletBase.tscn" id="1_y8e7k"]
 
 [resource]
 script = ExtResource("1_1ql6e")
 GunName = "Pistol"
 Knockback = 50.0
-BulletSpeed = 220.0
+BulletSpeed = 350.0
 ShootPosition = Vector2(12, -2)
-BulletScene = ExtResource("1_0ejhw")
+BulletScene = ExtResource("1_y8e7k")
 CurrentAmmo = 30
 MaxAmmo = 30
 FireRate = 0.2
+rotate = true
 metadata/_custom_type_script = "uid://bf05vlwwwrvul"

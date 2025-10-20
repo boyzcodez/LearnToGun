@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="GunData" load_steps=3 format=3 uid="uid://c3qu7r4vny8f"]
+
+[ext_resource type="PackedScene" uid="uid://bxfyrcqmxhxni" path="res://Game/Guns/Player/Nailgun/Nail.tscn" id="1_uttnd"]
+[ext_resource type="Script" uid="uid://bf05vlwwwrvul" path="res://Game/Guns/Base/Parts/GunData.cs" id="2_cqwrh"]
+
+[resource]
+script = ExtResource("2_cqwrh")
+GunName = "Nailgun"
+Damage = 10
+BulletSpeed = 800.0
+BulletScene = ExtResource("1_uttnd")
+CurrentAmmo = 30
+MaxAmmo = 30
+rotate = true
+metadata/_custom_type_script = "uid://bf05vlwwwrvul"

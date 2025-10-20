@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://mg8q0xeodew0"]
+[gd_scene load_steps=68 format=3 uid="uid://mg8q0xeodew0"]
 
 [ext_resource type="Script" uid="uid://cr48lni3g5d8a" path="res://Game/Guns/Base/Guns.cs" id="1_wlfwf"]
 [ext_resource type="Material" uid="uid://dgm487iucl2ye" path="res://Game/Shaders/smooth_rotate_pixles.tres" id="2_nw0vf"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cvyc8ap5mr7vy" path="res://Assets/Guns/Guns/Pistol/NewPistol.png" id="5_4xwd0"]
 [ext_resource type="Texture2D" uid="uid://ctvc5jlwlpnox" path="res://Assets/Guns/Guns/Zooka.png" id="6_0e7gx"]
 [ext_resource type="Texture2D" uid="uid://dbdowrg4ui4c6" path="res://Assets/Guns/Guns/Shotgun/Shotgun1.png" id="6_4xwd0"]
+[ext_resource type="Texture2D" uid="uid://c7wkn3kmrmcwy" path="res://Assets/Guns/Guns/Nailgun/Nailgun.png" id="6_21tnl"]
 [ext_resource type="Texture2D" uid="uid://cav22dosxg5m8" path="res://Assets/Guns/Guns/Shotgun/Shotgun1shoot.png" id="7_io5qt"]
 [ext_resource type="Script" uid="uid://7hwx3rpv0roe" path="res://Game/Guns/Base/Parts/AnimatedGun.cs" id="7_rpglb"]
 [ext_resource type="Texture2D" uid="uid://do8na63fveryk" path="res://Assets/Guns/Guns/Shotgun/Shotgu2.png" id="8_21tnl"]
@@ -14,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://cx0fqp06y34wx" path="res://Assets/Guns/Guns/Shotgun/Shotgun3.png" id="10_03i64"]
 [ext_resource type="Texture2D" uid="uid://d1y3f0q13nphv" path="res://Assets/Guns/Guns/Shotgun/Shotgun3shoot.png" id="11_kbio5"]
 [ext_resource type="Texture2D" uid="uid://1u7b4h226moh" path="res://Assets/Guns/MuzzleFlash/Simple muzzle flash.png" id="14_io5qt"]
+[ext_resource type="Script" uid="uid://buqemifoya2pj" path="res://Game/Guns/Base/LaserSight.cs" id="16_glwbl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h3blb"]
 atlas = ExtResource("14_io5qt")
@@ -22,10 +24,6 @@ region = Rect2(0, 0, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_y0xry"]
 atlas = ExtResource("14_io5qt")
 region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_artxd"]
-atlas = ExtResource("14_io5qt")
-region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gkrx4"]
 atlas = ExtResource("14_io5qt")
@@ -44,14 +42,11 @@ animations = [{
 "texture": SubResource("AtlasTexture_y0xry")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_artxd")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_gkrx4")
 }],
 "loop": false,
 "name": &"default",
-"speed": 14.0
+"speed": 21.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6edwi"]
@@ -93,6 +88,22 @@ region = Rect2(0, 0, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_h7hvy"]
 atlas = ExtResource("4_io5qt")
 region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3s8n"]
+atlas = ExtResource("6_21tnl")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7u4b"]
+atlas = ExtResource("6_21tnl")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_asnsk"]
+atlas = ExtResource("6_21tnl")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_at317"]
+atlas = ExtResource("6_21tnl")
+region = Rect2(128, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tr2wm"]
 atlas = ExtResource("5_4xwd0")
@@ -276,6 +287,28 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_c3s8n")
+}],
+"loop": false,
+"name": &"Nailgun_LV1_",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7u4b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_asnsk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_at317")
+}],
+"loop": false,
+"name": &"Nailgun_LV1_Shoot",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_tr2wm")
 }],
 "loop": false,
@@ -432,5 +465,9 @@ frame_progress = 1.0
 [node name="GunAnimation" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_nw0vf")
 sprite_frames = SubResource("SpriteFrames_yy3x0")
-animation = &"Zooka_LV1_"
+animation = &"Nailgun_LV1_Shoot"
 script = ExtResource("7_rpglb")
+
+[node name="LaserSight" type="Node2D" parent="."]
+script = ExtResource("16_glwbl")
+Thickness = 2.0

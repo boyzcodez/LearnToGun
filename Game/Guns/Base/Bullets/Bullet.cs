@@ -57,11 +57,10 @@ public partial class Bullet : Area2D
         _timer += (float)delta;
         if (_timer >= 4f) Deactivate();
 
-        if (!hasHit && Monitoring)
+        if (Monitoring)
         {
             if (GetOverlappingAreas().Count > 0)
             {
-                hasHit = true;
                 OnHit();
             }
         }
@@ -122,15 +121,7 @@ public partial class Bullet : Area2D
     }
     private void WallHit(Node body)
     {
-        if (hasHit) return;
         Deactivate();
-
-        // if (impactDust != null)
-        // {
-        //     var instance = impactDust.Instantiate() as CpuParticles2D;
-        //     instance.Rotate(-rotation);
-        //     AddChild(instance);
-        // }
     }
 
     #endregion

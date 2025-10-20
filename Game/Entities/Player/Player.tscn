@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://mg8q0xeodew0" path="res://Game/Guns/Base/Guns.tscn" id="13_2gvph"]
 [ext_resource type="PackedScene" uid="uid://bxyy5vw0eiy5e" path="res://Game/Entities/Player/ghost_sprite.tscn" id="13_nfw5o"]
 [ext_resource type="Resource" uid="uid://dvm0m7652xkik" path="res://Components/DamageComps/OnHitEffects/Resources/ClearBullets.tres" id="13_tqhgd"]
-[ext_resource type="Resource" uid="uid://bs3fdspup1o48" path="res://Game/Guns/Player/Zooka/Levels/ZookaData.tres" id="13_vcc71"]
+[ext_resource type="Resource" uid="uid://c3qu7r4vny8f" path="res://Game/Guns/Player/Nailgun/Levels/NailgunDataLVL1.tres" id="13_vcc71"]
 [ext_resource type="PackedScene" uid="uid://haqfsuv5fmc3" path="res://Components/InteractComp/interact_component.tscn" id="14_wlpas"]
 [ext_resource type="Texture2D" uid="uid://c48h0yfxwlgc6" path="res://Assets/Effects/ParticleEffects.png" id="17_6v7ly"]
 [ext_resource type="Script" uid="uid://wvm80ckdaxft" path="res://Game/Entities/Player/Effects.cs" id="18_86ark"]
