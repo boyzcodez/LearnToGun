@@ -1,9 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://c6mvfh4mlxu4h"]
+[gd_scene load_steps=13 format=3 uid="uid://c6mvfh4mlxu4h"]
 
 [ext_resource type="Script" uid="uid://de44iwnl6kvq1" path="res://Game/Guns/Base/Bullets/Bullet.cs" id="1_ut5ie"]
+[ext_resource type="Script" uid="uid://dlvpea0mxkxta" path="res://Components/BulletComps/BulletBehaviors/Scripts/TowardsMouse.cs" id="3_0bpo6"]
 [ext_resource type="Resource" uid="uid://ca3v0exbyg8jf" path="res://Components/BulletComps/BulletBehaviors/Resources/MultiHit.tres" id="3_nu8hp"]
-[ext_resource type="Resource" uid="uid://xn0p4wisqnkv" path="res://Components/BulletComps/BulletBehaviors/Resources/TowardRotation.tres" id="4_lbp1c"]
 [ext_resource type="Texture2D" uid="uid://dd7r1b2hrw06h" path="res://Assets/Guns/Bullets/NewBullets.png" id="4_nu8hp"]
+
+[sub_resource type="Resource" id="Resource_lbp1c"]
+script = ExtResource("3_0bpo6")
+metadata/_custom_type_script = "uid://dlvpea0mxkxta"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0bpo6"]
 radius = 30.0
@@ -62,7 +66,7 @@ collision_mask = 4
 monitoring = false
 monitorable = false
 script = ExtResource("1_ut5ie")
-Behaviors = [ExtResource("3_nu8hp"), ExtResource("4_lbp1c")]
+Behaviors = [ExtResource("3_nu8hp"), SubResource("Resource_lbp1c")]
 Animation = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

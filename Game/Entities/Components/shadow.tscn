@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://c8evvwcrspp7p" path="res://Game/Entities/Components/Shadow.cs" id="2_5jxc8"]
 
 [node name="Shadow" type="Sprite2D"]
-modulate = Color(1, 1, 1, 0.392157)
+modulate = Color(1, 1, 1, 0.21960784)
 texture = ExtResource("1_ymd47")
 hframes = 4
 script = ExtResource("2_5jxc8")

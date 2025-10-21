@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://cwb66pmq7dp65" path="res://Components/BulletComps/BulletBehaviors/Resources/SingleHit.tres" id="3_02r7r"]
 [ext_resource type="Texture2D" uid="uid://dd7r1b2hrw06h" path="res://Assets/Guns/Bullets/NewBullets.png" id="5_02r7r"]
 [ext_resource type="Resource" uid="uid://xn0p4wisqnkv" path="res://Components/BulletComps/BulletBehaviors/Resources/TowardRotation.tres" id="5_lyute"]
-[ext_resource type="PackedScene" uid="uid://dm1fl7xf7jysr" path="res://Game/Entities/Components/Shadows.tscn" id="6_xtjlt"]
+[ext_resource type="PackedScene" uid="uid://dyqbl4s13wnxg" path="res://Game/Entities/Components/shadow.tscn" id="6_xtjlt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pnq1u"]
 radius = 6.0
@@ -91,7 +91,7 @@ animations = [{
 "speed": 11.0
 }]
 
-[node name="EnemyBullet" type="Area2D" node_paths=PackedStringArray("Animation")]
+[node name="EnemyBullet" type="Area2D" node_paths=PackedStringArray("Animation", "shadow")]
 collision_layer = 32
 collision_mask = 18
 monitoring = false
@@ -99,6 +99,7 @@ monitorable = false
 script = ExtResource("1_txrm2")
 Behaviors = [ExtResource("3_02r7r"), ExtResource("2_02r7r"), ExtResource("5_lyute")]
 Animation = NodePath("AnimatedSprite2D")
+shadow = NodePath("Shadow")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_pnq1u")
@@ -107,5 +108,5 @@ shape = SubResource("CircleShape2D_pnq1u")
 sprite_frames = SubResource("SpriteFrames_h0y3f")
 animation = &"wall"
 
-[node name="Shadows" parent="." instance=ExtResource("6_xtjlt")]
+[node name="Shadow" parent="." instance=ExtResource("6_xtjlt")]
 position = Vector2(0, 10)
