@@ -55,6 +55,7 @@ script = ExtResource("1_q5o2i")
 [node name="Raycast" type="RayCast2D" parent="."]
 target_position = Vector2(500, 0)
 collision_mask = 69
+hit_from_inside = true
 collide_with_areas = true
 
 [node name="LineSprite" type="Sprite2D" parent="."]

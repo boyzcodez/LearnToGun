@@ -8,6 +8,7 @@ public partial class Bullet : Area2D
 
     [Export] public Behavior[] Behaviors = [];
     [Export] public AnimatedSprite2D Animation;
+    [Export] public Sprite2D shadow;
     //[Export] public PackedScene impactDust;
 
     private BulletPool _pool;
