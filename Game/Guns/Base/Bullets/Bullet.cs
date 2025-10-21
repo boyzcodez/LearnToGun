@@ -13,6 +13,7 @@ public partial class Bullet : Area2D
 
     private BulletPool _pool;
     public DamageData DamageData;
+    public CollisionShape2D collisionShape;
 
     public float Speed { get; private set; } = 80f;
     public Vector2 Direction { get; set; }
@@ -20,6 +21,7 @@ public partial class Bullet : Area2D
     public string Key { get; private set; }
     public bool Active { get; set; } = false;
     public bool hasHit = false;
+    public bool doesRotate = false;
     public bool _pendingActivation = false;
 
     public float _timer;
@@ -30,6 +32,7 @@ public partial class Bullet : Area2D
 
     public override void _Ready()
     {
+        collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
         SetPhysicsProcess(false);
         Hide();
 
@@ -80,12 +83,13 @@ public partial class Bullet : Area2D
         }
     }
 
-    public void Init(DamageData damageData, string type, float newSpeed, BulletPool newPool)
+    public void Init(DamageData damageData, string type, float newSpeed, bool rotate, BulletPool newPool)
     {
         DamageData = damageData;
         Key = type;
         Speed = newSpeed;
         _pool = newPool;
+        doesRotate = rotate;
     }
 
     public void Activate(float newRotation)
@@ -93,6 +97,12 @@ public partial class Bullet : Area2D
         if (Active || _pendingActivation) return;
 
         rotation = newRotation;
+        if (doesRotate)
+        {
+            Animation.Rotation = newRotation;
+            collisionShape.Rotation = newRotation;
+            if (shadow != null) shadow.Rotation = newRotation;
+        }
         Initialize();
         _timer = 0f;
         hasHit = false;

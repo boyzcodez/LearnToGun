@@ -90,7 +90,7 @@ public partial class Guns : Node2D
             Bullet bullet = pool.GetBullet(type, currentGun);
             bullet.GlobalPosition = GlobalPosition;
 
-            if (currentGun.rotate) bullet.Rotation = rotation;
+            //if (currentGun.rotate) bullet.Rotation = rotation;
 
             bullet.Activate(rotation);
         }
