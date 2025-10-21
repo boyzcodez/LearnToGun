@@ -88,7 +88,7 @@ public partial class Guns : Node2D
             float rotation = GlobalRotation + angleOffset;
 
             Bullet bullet = pool.GetBullet(type, currentGun);
-            bullet.GlobalPosition = GlobalPosition;
+            bullet.GlobalPosition = muzzleFlash.GlobalPosition;
 
             //if (currentGun.rotate) bullet.Rotation = rotation;
 
