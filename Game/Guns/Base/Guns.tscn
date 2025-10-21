@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://mg8q0xeodew0"]
+[gd_scene load_steps=67 format=3 uid="uid://mg8q0xeodew0"]
 
 [ext_resource type="Script" uid="uid://cr48lni3g5d8a" path="res://Game/Guns/Base/Guns.cs" id="1_wlfwf"]
 [ext_resource type="Material" uid="uid://dgm487iucl2ye" path="res://Game/Shaders/smooth_rotate_pixles.tres" id="2_nw0vf"]
@@ -15,7 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://cx0fqp06y34wx" path="res://Assets/Guns/Guns/Shotgun/Shotgun3.png" id="10_03i64"]
 [ext_resource type="Texture2D" uid="uid://d1y3f0q13nphv" path="res://Assets/Guns/Guns/Shotgun/Shotgun3shoot.png" id="11_kbio5"]
 [ext_resource type="Texture2D" uid="uid://1u7b4h226moh" path="res://Assets/Guns/MuzzleFlash/Simple muzzle flash.png" id="14_io5qt"]
-[ext_resource type="Script" uid="uid://buqemifoya2pj" path="res://Game/Guns/Base/LaserSight.cs" id="16_glwbl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h3blb"]
 atlas = ExtResource("14_io5qt")
@@ -467,7 +466,3 @@ material = ExtResource("2_nw0vf")
 sprite_frames = SubResource("SpriteFrames_yy3x0")
 animation = &"Nailgun_LV1_Shoot"
 script = ExtResource("7_rpglb")
-
-[node name="LaserSight" type="Node2D" parent="."]
-script = ExtResource("16_glwbl")
-Thickness = 2.0

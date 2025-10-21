@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmykm6xlky56h"]
+
+[ext_resource type="Script" uid="uid://buqemifoya2pj" path="res://Game/Guns/Base/LaserSight.cs" id="1_2geow"]
+
+[node name="LaserSight" type="Node2D"]
+script = ExtResource("1_2geow")
+Thickness = 2.0

@@ -1,0 +1,70 @@
+[gd_scene load_steps=11 format=3 uid="uid://mxrkr1wy2wt6"]
+
+[ext_resource type="Script" uid="uid://cgmu527y6attc" path="res://Game/Guns/Base/Parts/LaserSight2.cs" id="1_q5o2i"]
+[ext_resource type="Texture2D" uid="uid://c7t14n7i1vwib" path="res://Assets/Etc/RedDot.png" id="2_lx5r2"]
+[ext_resource type="Shader" uid="uid://4sp66ax8wvw1" path="res://Game/Shaders/PixelLine.gdshader" id="4_ineft"]
+[ext_resource type="Texture2D" uid="uid://br2sq80qgeeh" path="res://Assets/Etc/ScreenwideLine.png" id="5_ineft"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wom17"]
+shader = ExtResource("4_ineft")
+shader_parameter/pixel_size = 1.0
+shader_parameter/mix_sampling = 0
+shader_parameter/flip_h = false
+shader_parameter/flip_v = false
+shader_parameter/visible_length = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_artxd"]
+atlas = ExtResource("2_lx5r2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_parkm"]
+atlas = ExtResource("2_lx5r2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4iqb"]
+atlas = ExtResource("2_lx5r2")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5s216"]
+atlas = ExtResource("2_lx5r2")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_glwbl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_artxd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_parkm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4iqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5s216")
+}],
+"loop": true,
+"name": &"default",
+"speed": 14.0
+}]
+
+[node name="LaserSight" type="Node2D"]
+script = ExtResource("1_q5o2i")
+
+[node name="Raycast" type="RayCast2D" parent="."]
+target_position = Vector2(500, 0)
+collision_mask = 69
+collide_with_areas = true
+
+[node name="LineSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_wom17")
+position = Vector2(319, 0)
+texture = ExtResource("5_ineft")
+
+[node name="Reddot" type="AnimatedSprite2D" parent="."]
+position = Vector2(50, 0)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_glwbl")
+autoplay = "default"
+frame_progress = 0.80521

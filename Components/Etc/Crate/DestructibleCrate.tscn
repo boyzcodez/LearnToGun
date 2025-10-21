@@ -16,7 +16,7 @@ position = Vector2(0, -4)
 texture = ExtResource("1_03ijl")
 
 [node name="DestructionArea" type="Area2D" parent="."]
-collision_layer = 0
+collision_layer = 64
 collision_mask = 33
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DestructionArea"]

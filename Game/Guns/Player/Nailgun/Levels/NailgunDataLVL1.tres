@@ -7,9 +7,10 @@
 script = ExtResource("2_cqwrh")
 GunName = "Nailgun"
 Damage = 10
-BulletSpeed = 800.0
+BulletSpeed = 1600.0
 BulletScene = ExtResource("1_uttnd")
 CurrentAmmo = 30
 MaxAmmo = 30
 rotate = true
+LaserSight = true
 metadata/_custom_type_script = "uid://bf05vlwwwrvul"

@@ -19,7 +19,7 @@ script = ExtResource("4_fj3bm")
 metadata/_custom_type_script = "uid://2vios3fywd5f"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_epq31"]
-size = Vector2(13, 8)
+size = Vector2(20, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2wol7"]
 atlas = ExtResource("2_epq31")
@@ -124,9 +124,8 @@ Behaviors = [SubResource("Resource_1xfyh"), SubResource("Resource_6fivr"), SubRe
 Animation = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 0)
+position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_epq31")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fexg8")
-animation = &"wall"

@@ -5,6 +5,7 @@ public partial class Guns : Node2D
 {
     [Export] public GunData[] guns { get; set; } = [];
     [Export] public bool active = false;
+    [Export] public LaserSight2 laserSight;
     public AnimatedGun sprite { get; set; }
 
     private BulletPool pool;
@@ -45,9 +46,12 @@ public partial class Guns : Node2D
     {
         currentGun = guns[index];
         type = currentGun.GunName + currentGun.LVL + GetInstanceId();
-        if (active == true) EventBus.Ammo(currentGun.CurrentAmmo, currentGun.MaxAmmo);
+
         sprite?.Play(currentGun.GunName + "_" + currentGun.LVL);
         muzzleFlash.Position = currentGun.ShootPosition;
+
+        if (active == true) EventBus.Ammo(currentGun.CurrentAmmo, currentGun.MaxAmmo);
+        if (laserSight != null) laserSight.ToggleLaser(currentGun.LaserSight);
     }
 
     public override void _Process(double delta)
