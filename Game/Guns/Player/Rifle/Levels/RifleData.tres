@@ -13,5 +13,6 @@ SpawnAmount = 100
 CurrentAmmo = 100
 MaxAmmo = 100
 FireRate = 0.1
+RandomFactor = 0.2
 rotate = true
 metadata/_custom_type_script = "uid://bf05vlwwwrvul"

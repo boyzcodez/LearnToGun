@@ -27,14 +27,14 @@ public partial class LookAt : Marker2D
         //toMouse.Angle();
 
 
-        if (gunSpot != null)
-        {
-            float factor = Mathf.Abs(Mathf.Cos(snappedAngle));
-            float offsetX = Mathf.Lerp(MinOffset, BaseOffset, factor);
+        // if (gunSpot != null)
+        // {
+        //     float factor = Mathf.Abs(Mathf.Cos(snappedAngle));
+        //     float offsetX = Mathf.Lerp(MinOffset, BaseOffset, factor);
 
-            Vector2 spritePos = gunSpot.Position;
-            spritePos.X = offsetX;
-            gunSpot.Position = spritePos;
-        }
+        //     Vector2 spritePos = gunSpot.Position;
+        //     spritePos.X = offsetX;
+        //     gunSpot.Position = spritePos;
+        // }
     }
 }

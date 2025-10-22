@@ -86,8 +86,8 @@ public partial class Guns : Node2D
         for (int i = 0; i < currentGun.BulletCount; i++)
         {
             float angleOffset = -spreadRad / 2f + i * angleStep;
-            //Vector2 direction = baseDirection.Rotated(angleOffset);
-            float rotation = GlobalRotation + angleOffset;
+            //Vector2 direction = baseDirection.Rotated(angleOffset); 
+            float rotation = GlobalRotation + angleOffset + (float)GD.RandRange(-currentGun.RandomFactor, currentGun.RandomFactor);
 
             Bullet bullet = pool.GetBullet(type, currentGun);
             bullet.GlobalPosition = muzzleFlash.GlobalPosition;
