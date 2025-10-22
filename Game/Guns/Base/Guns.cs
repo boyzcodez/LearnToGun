@@ -13,6 +13,7 @@ public partial class Guns : Node2D
     private AnimatedSprite2D muzzleFlash;
     private ShaderMaterial shaderMaterial;
 
+    public bool shooting = false;
     private int _currentGunIndex = 0;
     private float _cooldown = 0f;
     public string type;
@@ -50,13 +51,14 @@ public partial class Guns : Node2D
         sprite?.Play(currentGun.GunName + "_" + currentGun.LVL);
         muzzleFlash.Position = currentGun.ShootPosition;
 
-        if (active == true) EventBus.Ammo(currentGun.CurrentAmmo, currentGun.MaxAmmo);
+        if (active) EventBus.Ammo(currentGun.CurrentAmmo, currentGun.MaxAmmo);
         if (laserSight != null) laserSight.ToggleLaser(currentGun.LaserSight);
     }
 
     public override void _Process(double delta)
     {
-        //if (_cooldown > 0) _cooldown -= (float)delta;
+        if (shooting && _cooldown <= 0) Shoot();
+        else if (_cooldown > 0) _cooldown -= (float)delta;
 
         if (GlobalRotation > -1.5f && GlobalRotation < 1.5f)
             shaderMaterial.SetShaderParameter("flip_v", false);

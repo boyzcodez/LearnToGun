@@ -296,7 +296,7 @@ position = Vector2(0, 4)
 script = ExtResource("3_q6s24")
 
 [node name="Guns" parent="Hide/AnimatedSpriteE/Look" instance=ExtResource("8_wklgt")]
-position = Vector2(14, 0)
+position = Vector2(6, 0)
 guns = Array[Object]([ExtResource("9_jyark")])
 
 [node name="HitFlash" parent="Hide/AnimatedSpriteE" instance=ExtResource("11_oxb72")]

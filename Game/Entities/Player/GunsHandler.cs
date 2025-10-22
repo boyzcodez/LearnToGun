@@ -34,9 +34,13 @@ public partial class GunsHandler : Node
     }
     public override void _Input(InputEvent @event)
     {
-        if (@event.IsActionPressed("attack"))
+        if (@event.IsActionPressed("attack") & guns != null)
         {
-            guns?.Shoot();
+            guns.shooting = true;
+        }
+        if (@event.IsActionReleased("attack") & guns != null)
+        {
+            guns.shooting = false;
         }
     }
 

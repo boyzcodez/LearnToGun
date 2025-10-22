@@ -13,6 +13,6 @@ BulletScene = ExtResource("1_i0j6t")
 SpawnAmount = 10
 MaxAmmo = 999
 UsesAmmo = false
-FireRate = 0.5
+FireRate = 0.0
 isEnemy = true
 metadata/_custom_type_script = "uid://bf05vlwwwrvul"

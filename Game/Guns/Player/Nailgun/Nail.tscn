@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bxfyrcqmxhxni"]
+[gd_scene load_steps=23 format=3 uid="uid://bxfyrcqmxhxni"]
 
 [ext_resource type="Script" uid="uid://de44iwnl6kvq1" path="res://Game/Guns/Base/Bullets/Bullet.cs" id="1_8rglj"]
 [ext_resource type="Texture2D" uid="uid://dd7r1b2hrw06h" path="res://Assets/Guns/Bullets/NewBullets.png" id="2_epq31"]
@@ -20,6 +20,9 @@ metadata/_custom_type_script = "uid://2vios3fywd5f"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_epq31"]
 size = Vector2(20, 8)
+
+[sub_resource type="Gradient" id="Gradient_fj3bm"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2wol7"]
 atlas = ExtResource("2_epq31")
@@ -116,16 +119,28 @@ animations = [{
 "speed": 11.0
 }]
 
-[node name="Bullet" type="Area2D" node_paths=PackedStringArray("Animation")]
+[node name="Bullet" type="Area2D" node_paths=PackedStringArray("Animation", "particles")]
 collision_layer = 32
 collision_mask = 20
 script = ExtResource("1_8rglj")
 Behaviors = [SubResource("Resource_1xfyh"), SubResource("Resource_6fivr"), SubResource("Resource_3pwx2")]
 Animation = NodePath("AnimatedSprite2D")
+particles = NodePath("Pixeltrail")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_epq31")
+
+[node name="Pixeltrail" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 32
+lifetime = 0.3
+direction = Vector2(-1, 0)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+color_ramp = SubResource("Gradient_fj3bm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fexg8")

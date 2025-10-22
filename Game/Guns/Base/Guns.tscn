@@ -1,10 +1,11 @@
-[gd_scene load_steps=67 format=3 uid="uid://mg8q0xeodew0"]
+[gd_scene load_steps=82 format=3 uid="uid://mg8q0xeodew0"]
 
 [ext_resource type="Script" uid="uid://cr48lni3g5d8a" path="res://Game/Guns/Base/Guns.cs" id="1_wlfwf"]
 [ext_resource type="Material" uid="uid://dgm487iucl2ye" path="res://Game/Shaders/smooth_rotate_pixles.tres" id="2_nw0vf"]
-[ext_resource type="Texture2D" uid="uid://p81l6fvexk0a" path="res://Assets/Guns/Guns/EnemyPistol.png" id="2_yy3x0"]
+[ext_resource type="Texture2D" uid="uid://xk5tmveqj1kd" path="res://Assets/Guns/Guns/EnemyPistol/EnemyPistol.png" id="4_21tnl"]
 [ext_resource type="Texture2D" uid="uid://dja0ghsr3gw8u" path="res://Assets/Guns/Guns/EnemyShotgun/EliteEnemyShotgun.png" id="4_io5qt"]
 [ext_resource type="Texture2D" uid="uid://cvyc8ap5mr7vy" path="res://Assets/Guns/Guns/Pistol/NewPistol.png" id="5_4xwd0"]
+[ext_resource type="Texture2D" uid="uid://bfyrnlqew1iub" path="res://Assets/Guns/Guns/EnemyRifle/EnemyRifle.png" id="5_glwbl"]
 [ext_resource type="Texture2D" uid="uid://ctvc5jlwlpnox" path="res://Assets/Guns/Guns/Zooka.png" id="6_0e7gx"]
 [ext_resource type="Texture2D" uid="uid://dbdowrg4ui4c6" path="res://Assets/Guns/Guns/Shotgun/Shotgun1.png" id="6_4xwd0"]
 [ext_resource type="Texture2D" uid="uid://c7wkn3kmrmcwy" path="res://Assets/Guns/Guns/Nailgun/Nailgun.png" id="6_21tnl"]
@@ -12,7 +13,9 @@
 [ext_resource type="Script" uid="uid://7hwx3rpv0roe" path="res://Game/Guns/Base/Parts/AnimatedGun.cs" id="7_rpglb"]
 [ext_resource type="Texture2D" uid="uid://do8na63fveryk" path="res://Assets/Guns/Guns/Shotgun/Shotgu2.png" id="8_21tnl"]
 [ext_resource type="Texture2D" uid="uid://dc3evkxk57dno" path="res://Assets/Guns/Guns/Shotgun/Shotgu2shoot.png" id="9_glwbl"]
+[ext_resource type="Texture2D" uid="uid://csagvlm21rjm2" path="res://Assets/Guns/Guns/Rifle/Rifle.png" id="9_kbio5"]
 [ext_resource type="Texture2D" uid="uid://cx0fqp06y34wx" path="res://Assets/Guns/Guns/Shotgun/Shotgun3.png" id="10_03i64"]
+[ext_resource type="Texture2D" uid="uid://davem62ppmpy1" path="res://Assets/Guns/Guns/Rifle/RifleShoot.png" id="10_h7hvy"]
 [ext_resource type="Texture2D" uid="uid://d1y3f0q13nphv" path="res://Assets/Guns/Guns/Shotgun/Shotgun3shoot.png" id="11_kbio5"]
 [ext_resource type="Texture2D" uid="uid://1u7b4h226moh" path="res://Assets/Guns/MuzzleFlash/Simple muzzle flash.png" id="14_io5qt"]
 
@@ -48,24 +51,40 @@ animations = [{
 "speed": 21.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6edwi"]
-atlas = ExtResource("2_yy3x0")
+[sub_resource type="AtlasTexture" id="AtlasTexture_artxd"]
+atlas = ExtResource("4_21tnl")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tfurc"]
-atlas = ExtResource("2_yy3x0")
+[sub_resource type="AtlasTexture" id="AtlasTexture_parkm"]
+atlas = ExtResource("4_21tnl")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1e5hu"]
-atlas = ExtResource("2_yy3x0")
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4iqb"]
+atlas = ExtResource("4_21tnl")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4xwd0"]
-atlas = ExtResource("2_yy3x0")
+[sub_resource type="AtlasTexture" id="AtlasTexture_5s216"]
+atlas = ExtResource("4_21tnl")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_io5qt"]
-atlas = ExtResource("2_yy3x0")
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjoqo"]
+atlas = ExtResource("4_21tnl")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4tqt6"]
+atlas = ExtResource("5_glwbl")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkhu8"]
+atlas = ExtResource("5_glwbl")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkq3o"]
+atlas = ExtResource("5_glwbl")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_esy3i"]
+atlas = ExtResource("5_glwbl")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_21tnl"]
@@ -94,15 +113,15 @@ region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s7u4b"]
 atlas = ExtResource("6_21tnl")
-region = Rect2(0, 64, 64, 64)
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_asnsk"]
 atlas = ExtResource("6_21tnl")
-region = Rect2(64, 64, 64, 64)
+region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_at317"]
 atlas = ExtResource("6_21tnl")
-region = Rect2(128, 64, 64, 64)
+region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tr2wm"]
 atlas = ExtResource("5_4xwd0")
@@ -119,6 +138,38 @@ region = Rect2(0, 0, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_2fq53"]
 atlas = ExtResource("5_4xwd0")
 region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnla1"]
+atlas = ExtResource("9_kbio5")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wtjb"]
+atlas = ExtResource("9_kbio5")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1sfh"]
+atlas = ExtResource("9_kbio5")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1t2cw"]
+atlas = ExtResource("9_kbio5")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q42cb"]
+atlas = ExtResource("10_h7hvy")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wuiln"]
+atlas = ExtResource("10_h7hvy")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flbct"]
+atlas = ExtResource("10_h7hvy")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ro8cw"]
+atlas = ExtResource("10_h7hvy")
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lqsee"]
 atlas = ExtResource("6_4xwd0")
@@ -236,7 +287,7 @@ region = Rect2(0, 0, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6edwi")
+"texture": SubResource("AtlasTexture_artxd")
 }],
 "loop": false,
 "name": &"EnemyPistol_LV1_",
@@ -244,19 +295,41 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tfurc")
+"texture": SubResource("AtlasTexture_parkm")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1e5hu")
+"texture": SubResource("AtlasTexture_q4iqb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4xwd0")
+"texture": SubResource("AtlasTexture_5s216")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_io5qt")
+"texture": SubResource("AtlasTexture_sjoqo")
 }],
 "loop": false,
 "name": &"EnemyPistol_LV1_Shoot",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4tqt6")
+}],
+"loop": false,
+"name": &"EnemyRifle_LV1_",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gkhu8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkq3o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_esy3i")
+}],
+"loop": false,
+"name": &"EnemyRifle_LV1_Shoot",
 "speed": 7.0
 }, {
 "frames": [{
@@ -326,6 +399,40 @@ animations = [{
 }],
 "loop": false,
 "name": &"Pistol_LV1_Shoot",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vnla1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wtjb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i1sfh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1t2cw")
+}],
+"loop": true,
+"name": &"Rifle_LV1_",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q42cb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wuiln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_flbct")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ro8cw")
+}],
+"loop": false,
+"name": &"Rifle_LV1_Shoot",
 "speed": 7.0
 }, {
 "frames": [{
@@ -457,12 +564,12 @@ animations = [{
 script = ExtResource("1_wlfwf")
 
 [node name="MuzzleFlash" type="AnimatedSprite2D" parent="."]
-position = Vector2(12, -4)
+position = Vector2(21, -3)
 sprite_frames = SubResource("SpriteFrames_gkrx4")
 frame_progress = 1.0
 
 [node name="GunAnimation" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_nw0vf")
 sprite_frames = SubResource("SpriteFrames_yy3x0")
-animation = &"Nailgun_LV1_Shoot"
+animation = &"Rifle_LV1_"
 script = ExtResource("7_rpglb")

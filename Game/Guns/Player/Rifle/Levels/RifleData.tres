@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="GunData" load_steps=3 format=3 uid="uid://ieag318h1oao"]
+
+[ext_resource type="Script" uid="uid://bf05vlwwwrvul" path="res://Game/Guns/Base/Parts/GunData.cs" id="1_4ei4g"]
+[ext_resource type="PackedScene" uid="uid://c2lf3revdfxi0" path="res://Game/Guns/Player/Pistol/NewBulletBase.tscn" id="1_fyjhw"]
+
+[resource]
+script = ExtResource("1_4ei4g")
+GunName = "Rifle"
+BulletSpeed = 500.0
+ShootPosition = Vector2(21, -3)
+BulletScene = ExtResource("1_fyjhw")
+SpawnAmount = 100
+CurrentAmmo = 100
+MaxAmmo = 100
+FireRate = 0.1
+rotate = true
+metadata/_custom_type_script = "uid://bf05vlwwwrvul"

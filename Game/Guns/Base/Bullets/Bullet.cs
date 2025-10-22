@@ -8,6 +8,7 @@ public partial class Bullet : Area2D
 
     [Export] public Behavior[] Behaviors = [];
     [Export] public AnimatedSprite2D Animation;
+    [Export] public CpuParticles2D particles;
     [Export] public Sprite2D shadow;
     //[Export] public PackedScene impactDust;
 
@@ -102,7 +103,15 @@ public partial class Bullet : Area2D
             Animation.Rotation = newRotation;
             collisionShape.Rotation = newRotation;
             if (shadow != null) shadow.Rotation = newRotation;
+            
         }
+        if (particles != null)
+        {
+            particles.Emitting = true;
+            particles.Rotation = newRotation;
+        }
+        
+
         Initialize();
         _timer = 0f;
         hasHit = false;
@@ -129,6 +138,10 @@ public partial class Bullet : Area2D
         _pool.ReturnBullet(Key, this);
 
         Animation?.Play("hit");
+        if (particles != null)
+        {
+            particles.Emitting = false;
+        }
     }
     private void WallHit(Node body)
     {

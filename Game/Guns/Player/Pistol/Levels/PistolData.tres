@@ -12,6 +12,6 @@ ShootPosition = Vector2(12, -2)
 BulletScene = ExtResource("1_y8e7k")
 CurrentAmmo = 30
 MaxAmmo = 30
-FireRate = 0.2
+FireRate = 0.4
 rotate = true
 metadata/_custom_type_script = "uid://bf05vlwwwrvul"

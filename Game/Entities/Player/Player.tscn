@@ -1,4 +1,4 @@
-[gd_scene load_steps=138 format=3 uid="uid://bbjw3fvxlq53q"]
+[gd_scene load_steps=139 format=3 uid="uid://bbjw3fvxlq53q"]
 
 [ext_resource type="Script" uid="uid://cccauuo7nkwjv" path="res://Game/Entities/Player/Player.cs" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://dyqbl4s13wnxg" path="res://Game/Entities/Components/shadow.tscn" id="2_nfw5o"]
@@ -20,6 +20,7 @@
 [ext_resource type="Resource" uid="uid://c3qu7r4vny8f" path="res://Game/Guns/Player/Nailgun/Levels/NailgunDataLVL1.tres" id="13_vcc71"]
 [ext_resource type="PackedScene" uid="uid://mxrkr1wy2wt6" path="res://Game/Guns/Base/Parts/LaserSight2.tscn" id="14_esr38"]
 [ext_resource type="PackedScene" uid="uid://haqfsuv5fmc3" path="res://Components/InteractComp/interact_component.tscn" id="14_wlpas"]
+[ext_resource type="Resource" uid="uid://ieag318h1oao" path="res://Game/Guns/Player/Rifle/Levels/RifleData.tres" id="16_0xjwd"]
 [ext_resource type="Texture2D" uid="uid://c48h0yfxwlgc6" path="res://Assets/Effects/ParticleEffects.png" id="17_6v7ly"]
 [ext_resource type="Script" uid="uid://wvm80ckdaxft" path="res://Game/Entities/Player/Effects.cs" id="18_86ark"]
 [ext_resource type="PackedScene" uid="uid://bqtng3dp4vtsa" path="res://Game/Entities/Player/player_camera.tscn" id="20_uabuf"]
@@ -1025,14 +1026,13 @@ script = ExtResource("9_vpkgm")
 position = Vector2(17, 0)
 
 [node name="LookAt" type="Marker2D" parent="."]
-show_behind_parent = true
-position = Vector2(0, -8)
+position = Vector2(0, -6)
 script = ExtResource("6_4ddeg")
 SnapDegrees = 9.0
 
 [node name="Guns" parent="LookAt" node_paths=PackedStringArray("laserSight") instance=ExtResource("13_2gvph")]
-position = Vector2(14, 0)
-guns = Array[Object]([ExtResource("10_iwdm0"), ExtResource("12_2gvph"), ExtResource("13_vcc71")])
+position = Vector2(6, 0)
+guns = Array[Object]([ExtResource("10_iwdm0"), ExtResource("12_2gvph"), ExtResource("13_vcc71"), ExtResource("16_0xjwd")])
 active = true
 laserSight = NodePath("../../LookAtSharp/LaserSight")
 
