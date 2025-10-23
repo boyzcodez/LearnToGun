@@ -564,12 +564,12 @@ animations = [{
 script = ExtResource("1_wlfwf")
 
 [node name="MuzzleFlash" type="AnimatedSprite2D" parent="."]
-position = Vector2(21, -3)
+position = Vector2(30, -2)
 sprite_frames = SubResource("SpriteFrames_gkrx4")
 frame_progress = 1.0
 
 [node name="GunAnimation" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_nw0vf")
 sprite_frames = SubResource("SpriteFrames_yy3x0")
-animation = &"Rifle_LV1_"
+animation = &"Shotgun_LV3_"
 script = ExtResource("7_rpglb")

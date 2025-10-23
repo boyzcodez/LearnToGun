@@ -119,6 +119,7 @@ public partial class Player : Entity
         GlobalPosition = new Vector2(0, 0);
         Dead = false;
         lookAt.Show();
+        EventBus.TriggerClearBullets();
     }
     private void PlayerReset()
     {

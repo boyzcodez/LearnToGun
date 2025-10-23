@@ -37,4 +37,7 @@ public partial class GunData : Resource
         CurrentAmmo += ammoAmount;
         Math.Clamp(CurrentAmmo, 0, MaxAmmo);
     }
+
+    // damage calc stuff here 
+    // 
 }

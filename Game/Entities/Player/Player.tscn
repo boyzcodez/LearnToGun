@@ -1,4 +1,4 @@
-[gd_scene load_steps=139 format=3 uid="uid://bbjw3fvxlq53q"]
+[gd_scene load_steps=138 format=3 uid="uid://bbjw3fvxlq53q"]
 
 [ext_resource type="Script" uid="uid://cccauuo7nkwjv" path="res://Game/Entities/Player/Player.cs" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://dyqbl4s13wnxg" path="res://Game/Entities/Components/shadow.tscn" id="2_nfw5o"]
@@ -16,7 +16,6 @@
 [ext_resource type="Script" uid="uid://c73kpxw2e5ynj" path="res://Game/Entities/Player/WarpDash.cs" id="12_qwver"]
 [ext_resource type="PackedScene" uid="uid://mg8q0xeodew0" path="res://Game/Guns/Base/Guns.tscn" id="13_2gvph"]
 [ext_resource type="PackedScene" uid="uid://bxyy5vw0eiy5e" path="res://Game/Entities/Player/ghost_sprite.tscn" id="13_nfw5o"]
-[ext_resource type="Resource" uid="uid://dvm0m7652xkik" path="res://Components/DamageComps/OnHitEffects/Resources/ClearBullets.tres" id="13_tqhgd"]
 [ext_resource type="Resource" uid="uid://c3qu7r4vny8f" path="res://Game/Guns/Player/Nailgun/Levels/NailgunDataLVL1.tres" id="13_vcc71"]
 [ext_resource type="PackedScene" uid="uid://mxrkr1wy2wt6" path="res://Game/Guns/Base/Parts/LaserSight2.tscn" id="14_esr38"]
 [ext_resource type="PackedScene" uid="uid://haqfsuv5fmc3" path="res://Components/InteractComp/interact_component.tscn" id="14_wlpas"]
@@ -1038,8 +1037,7 @@ laserSight = NodePath("../../LookAtSharp/LaserSight")
 
 [node name="Hurtbox" parent="." node_paths=PackedStringArray("hitFlash") instance=ExtResource("7_vh1aq")]
 collision_layer = 2
-hitEffects = [ExtResource("13_tqhgd")]
-maxHealth = 3
+maxHealth = 10
 hitFlash = NodePath("../AnimatedSprite/HitFlash")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
