@@ -11,7 +11,7 @@ public partial class ActiveTestEnemy : Entity
     [Export(PropertyHint.Enum, "Shoot,Ability,Nothing")]
     public string Trigger { get; set; } = "Shoot";
     [Export] public Guns gun;
-    [Export] public Ability abil;
+    [Export] public Ability ability;
 
     
     private NavigationAgent2D NavAgent;
@@ -111,15 +111,15 @@ public partial class ActiveTestEnemy : Entity
         return false;
     }
 
-    private void TriggerAction(string ability)
+    private void TriggerAction(string trigger)
     {
-        switch (ability)
+        switch (trigger)
         {
             case "Shoot":
                 ShootAtPlayer();
                 break;
             case "Ability":
-                abil.TriggerAbility();
+                ability.TriggerAbility();
                 break;
             case "Nothing":
                 GD.Print("I will do nothing");

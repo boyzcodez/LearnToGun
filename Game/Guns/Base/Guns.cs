@@ -61,9 +61,15 @@ public partial class Guns : Node2D
         else if (_cooldown > 0) _cooldown -= (float)delta;
 
         if (GlobalRotation > -1.5f && GlobalRotation < 1.5f)
+        {
             shaderMaterial.SetShaderParameter("flip_v", false);
+            muzzleFlash.Position = new Vector2(currentGun.ShootPosition.X, currentGun.ShootPosition.Y);
+        }
         else
+        {
             shaderMaterial.SetShaderParameter("flip_v", true);
+            muzzleFlash.Position = new Vector2(currentGun.ShootPosition.X, -currentGun.ShootPosition.Y);
+        } 
     }
 
     public void Shoot()
@@ -74,7 +80,7 @@ public partial class Guns : Node2D
         if (currentGun == null) return;
         if (sprite != null)
         {
-            sprite.FireAnimation();
+            //sprite.FireAnimation();
             PlayAnimation();
         }
 
