@@ -16,7 +16,8 @@ public partial class Bullet : Area2D
     public DamageData DamageData;
     public CollisionShape2D collisionShape;
 
-    public float Speed { get; private set; } = 80f;
+    private float BaseSpeed { get; set; } = 80f;
+    public float Speed { get; set; } = 80f;
     public Vector2 Direction { get; set; }
     public float rotation { get; set; }
     public string Key { get; private set; }
@@ -88,7 +89,8 @@ public partial class Bullet : Area2D
     {
         DamageData = damageData;
         Key = type;
-        Speed = newSpeed;
+        BaseSpeed = newSpeed;
+        Speed = BaseSpeed;
         _pool = newPool;
         doesRotate = rotate;
     }
@@ -130,6 +132,7 @@ public partial class Bullet : Area2D
 
         Active = false;
         _pendingActivation = false;
+        Speed = BaseSpeed;
         CallDeferred("set_physics_process", false);
 
         SetDeferred("monitoring", false);

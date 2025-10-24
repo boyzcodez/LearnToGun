@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="PelletSpeedControl" load_steps=2 format=3 uid="uid://ca0aquats0qkk"]
+
+[ext_resource type="Script" uid="uid://cnnnjr72uabii" path="res://Components/BulletComps/BulletBehaviors/Scripts/PelletSpeedControl.cs" id="1_fgh1k"]
+
+[resource]
+script = ExtResource("1_fgh1k")
+metadata/_custom_type_script = "uid://cnnnjr72uabii"

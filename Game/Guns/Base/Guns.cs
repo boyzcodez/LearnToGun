@@ -90,7 +90,7 @@ public partial class Guns : Node2D
             float rotation = GlobalRotation + angleOffset + (float)GD.RandRange(-currentGun.RandomFactor, currentGun.RandomFactor);
 
             Bullet bullet = pool.GetBullet(type, currentGun);
-            bullet.GlobalPosition = muzzleFlash.GlobalPosition;
+            bullet.GlobalPosition = muzzleFlash.GlobalPosition + new Vector2(10 * NumBet(currentGun.RandomFactor), 10* NumBet(currentGun.RandomFactor));
 
             //if (currentGun.rotate) bullet.Rotation = rotation;
 
@@ -108,6 +108,10 @@ public partial class Guns : Node2D
         await ToSignal(sprite, "animation_finished");
 
         sprite.Play(currentGun.GunName + "_" + currentGun.LVL);
+    }
+    private float NumBet(double bet)
+    {
+        return (float)GD.RandRange(-bet, bet);
     }
 
 }
