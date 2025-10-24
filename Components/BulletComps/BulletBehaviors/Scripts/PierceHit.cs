@@ -25,7 +25,7 @@ public partial class PierceHit : Behavior
 
         foreach (Hurtbox hurtbox in overlaps)
         {
-            if (_piercedTargets.Contains(hurtbox)) return;
+            if (_piercedTargets.Contains(hurtbox) && !hurtbox.immune) return;
             else
             {
                 _piercedTargets.Add(hurtbox);

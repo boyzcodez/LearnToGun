@@ -266,7 +266,7 @@ height = 22.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jyark"]
 
-[node name="ActiveTestEnemy" type="CharacterBody2D" node_paths=PackedStringArray("gun", "abil")]
+[node name="ActiveTestEnemy" type="CharacterBody2D" node_paths=PackedStringArray("gun")]
 motion_mode = 1
 wall_min_slide_angle = 0.08726646
 platform_on_leave = 2
@@ -275,9 +275,7 @@ script = ExtResource("1_hc5v1")
 ShootingRange = 130.0
 FireCooldown = 4.0
 moveSpeed = 60.0
-Trigger = "Ability"
 gun = NodePath("Hide/AnimatedSpriteE/Look/Guns")
-abil = NodePath("Hide/AnimatedSpriteE/Ability")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_htgvw")

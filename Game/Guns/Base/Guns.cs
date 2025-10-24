@@ -50,6 +50,7 @@ public partial class Guns : Node2D
 
         sprite?.Play(currentGun.GunName + "_" + currentGun.LVL);
         muzzleFlash.Position = currentGun.ShootPosition;
+        Position = new Vector2(currentGun.GunX, 0); 
 
         if (active) EventBus.Ammo(currentGun.CurrentAmmo, currentGun.MaxAmmo);
         if (laserSight != null) laserSight.ToggleLaser(currentGun.LaserSight);

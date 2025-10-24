@@ -41,11 +41,10 @@ public partial class Hurtbox : Area2D
         EmitSignal(SignalName.Hit);
         XpHandler.AddXP(damageData.WeaponName, xpAmount);
 
-        GD.Print("took " + damageData.Damage + " damage, current health " + currentHealth);
-
 
         if (currentHealth <= 0)
         {
+            immune = true;
             owner.Death();
         }
         else
@@ -68,6 +67,7 @@ public partial class Hurtbox : Area2D
     }
     public void ResetHealth()
     {
+        immune = false;
         currentHealth = maxHealth;
     }
 }
