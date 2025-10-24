@@ -274,6 +274,7 @@ platform_floor_layers = 0
 script = ExtResource("1_hc5v1")
 ShootingRange = 130.0
 FireCooldown = 4.0
+FireTimes = 2
 moveSpeed = 60.0
 gun = NodePath("Hide/AnimatedSpriteE/Look/Guns")
 

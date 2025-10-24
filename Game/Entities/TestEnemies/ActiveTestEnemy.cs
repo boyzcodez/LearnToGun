@@ -126,6 +126,8 @@ public partial class ActiveTestEnemy : Entity
                 break;
         }
 
+        fireTimer = FireCooldown + FireRate * FireTimes;
+        
     }
 
     
@@ -142,8 +144,7 @@ public partial class ActiveTestEnemy : Entity
             FireRateTimer.Start(FireRate);
             await ToSignal(FireRateTimer, "timeout");
         }
-
-        fireTimer = FireCooldown;
+        
         isShooting = false;
     }
 
