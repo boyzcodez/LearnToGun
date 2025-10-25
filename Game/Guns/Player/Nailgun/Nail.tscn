@@ -28,25 +28,25 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 atlas = ExtResource("2_epq31")
 region = Rect2(0, 192, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_w1c01"]
-atlas = ExtResource("2_epq31")
-region = Rect2(0, 512, 64, 64)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_fj3bm"]
 atlas = ExtResource("2_epq31")
-region = Rect2(64, 512, 64, 64)
+region = Rect2(0, 704, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3pwx2"]
 atlas = ExtResource("2_epq31")
-region = Rect2(128, 512, 64, 64)
+region = Rect2(64, 704, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kv7k7"]
 atlas = ExtResource("2_epq31")
-region = Rect2(192, 512, 64, 64)
+region = Rect2(128, 704, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1xfyh"]
 atlas = ExtResource("2_epq31")
-region = Rect2(256, 512, 64, 64)
+region = Rect2(192, 704, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_th4gt"]
+atlas = ExtResource("2_epq31")
+region = Rect2(256, 704, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6fivr"]
 atlas = ExtResource("2_epq31")
@@ -80,9 +80,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_w1c01")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_fj3bm")
 }, {
 "duration": 1.0,
@@ -93,10 +90,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1xfyh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_th4gt")
 }],
 "loop": false,
 "name": &"hit",
-"speed": 11.0
+"speed": 14.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -144,3 +144,4 @@ color_ramp = SubResource("Gradient_fj3bm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fexg8")
+animation = &"hit"

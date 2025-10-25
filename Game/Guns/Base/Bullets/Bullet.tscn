@@ -3,6 +3,17 @@
 [ext_resource type="Script" uid="uid://de44iwnl6kvq1" path="res://Game/Guns/Base/Bullets/Bullet.cs" id="1_u4v11"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fexg8"]
+animations = [{
+"frames": [],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"hit",
+"speed": 11.0
+}]
 
 [node name="Bullet" type="Area2D"]
 collision_layer = 0

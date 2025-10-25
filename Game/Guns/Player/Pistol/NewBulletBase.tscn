@@ -79,7 +79,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"hit",
-"speed": 11.0
+"speed": 14.0
 }, {
 "frames": [{
 "duration": 1.0,
