@@ -6,7 +6,6 @@
 
 [node name="Shard" type="Sprite2D"]
 y_sort_enabled = true
-texture_filter = 2
 material = ExtResource("1_lapij")
 texture = ExtResource("2_qy7gy")
 hframes = 3

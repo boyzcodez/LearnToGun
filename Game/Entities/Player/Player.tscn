@@ -1086,6 +1086,7 @@ libraries = {
 }
 
 [node name="PlayerCamera" parent="." instance=ExtResource("20_uabuf")]
+process_callback = 0
 
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
 [connection signal="animation_finished" from="AnimatedSprite" to="AnimatedSprite" method="_on_animation_finished"]
