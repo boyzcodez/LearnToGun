@@ -61,6 +61,8 @@ public partial class Player : Entity
             }
         }
 
+        //GlobalPosition.Round();
+
         MoveAndSlide();
     }
 

@@ -11,7 +11,7 @@ public partial class EnemySpawner : Node2D
 
     public Dictionary<string, Queue<Entity>> _pools = new();
     public List<Entity> currentEnemies = new();
-    private int enemyAmount = 5;
+    private int enemyAmount = 10;
     private int activeEnemies = 0;
 
     public override void _Ready()
