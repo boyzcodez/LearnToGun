@@ -1,4 +1,4 @@
-[gd_scene load_steps=138 format=3 uid="uid://bbjw3fvxlq53q"]
+[gd_scene load_steps=140 format=3 uid="uid://bbjw3fvxlq53q"]
 
 [ext_resource type="Script" uid="uid://cccauuo7nkwjv" path="res://Game/Entities/Player/Player.cs" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://dyqbl4s13wnxg" path="res://Game/Entities/Components/shadow.tscn" id="2_nfw5o"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://haqfsuv5fmc3" path="res://Components/InteractComp/interact_component.tscn" id="14_wlpas"]
 [ext_resource type="Resource" uid="uid://ieag318h1oao" path="res://Game/Guns/Player/Rifle/Levels/RifleData.tres" id="16_0xjwd"]
 [ext_resource type="Texture2D" uid="uid://c48h0yfxwlgc6" path="res://Assets/Effects/ParticleEffects.png" id="17_6v7ly"]
+[ext_resource type="Script" uid="uid://e1jle0vnwo3p" path="res://Components/DamageComps/OnHitEffects/Scripts/Shake.cs" id="18_0xjwd"]
 [ext_resource type="Script" uid="uid://wvm80ckdaxft" path="res://Game/Entities/Player/Effects.cs" id="18_86ark"]
 [ext_resource type="PackedScene" uid="uid://bqtng3dp4vtsa" path="res://Game/Entities/Player/player_camera.tscn" id="20_uabuf"]
 [ext_resource type="Shader" uid="uid://cd5qo1r5p7bct" path="res://Game/Shaders/Shockwave.gdshader" id="21_vcc71"]
@@ -831,6 +832,10 @@ animations = [{
 "speed": 9.0
 }]
 
+[sub_resource type="Resource" id="Resource_lbtsn"]
+script = ExtResource("18_0xjwd")
+metadata/_custom_type_script = "uid://e1jle0vnwo3p"
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ch4ko"]
 radius = 5.0
 height = 14.0
@@ -1036,12 +1041,13 @@ active = true
 laserSight = NodePath("../../LookAtSharp/LaserSight")
 
 [node name="Hurtbox" parent="." node_paths=PackedStringArray("hitFlash") instance=ExtResource("7_vh1aq")]
+position = Vector2(0, -9)
 collision_layer = 2
+hitEffects = [SubResource("Resource_lbtsn")]
 maxHealth = 10
 hitFlash = NodePath("../AnimatedSprite/HitFlash")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(0, -9)
 shape = SubResource("CapsuleShape2D_ch4ko")
 debug_color = Color(0.883969, 0.263477, 0.526173, 0.42)
 

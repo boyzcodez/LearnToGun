@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bp3lx4f7c5wd1" path="res://Components/Etc/hit_flash.tscn" id="11_oxb72"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_htgvw"]
-radius = 5.0
+radius = 8.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jyark"]
 atlas = ExtResource("4_jyark")
@@ -266,7 +266,7 @@ height = 22.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jyark"]
 
-[node name="ActiveTestEnemy" type="CharacterBody2D" node_paths=PackedStringArray("gun")]
+[node name="ActiveTestEnemy" type="CharacterBody2D" node_paths=PackedStringArray("gun", "lineOfSight")]
 motion_mode = 1
 wall_min_slide_angle = 0.08726646
 platform_on_leave = 2
@@ -277,6 +277,7 @@ FireCooldown = 4.0
 FireTimes = 2
 moveSpeed = 60.0
 gun = NodePath("Hide/AnimatedSpriteE/Look/Guns")
+lineOfSight = NodePath("Hide/AnimatedSpriteE/Look/sight")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_htgvw")
@@ -301,23 +302,32 @@ script = ExtResource("3_q6s24")
 position = Vector2(6, 0)
 guns = Array[Object]([ExtResource("9_jyark")])
 
+[node name="sight" type="RayCast2D" parent="Hide/AnimatedSpriteE/Look"]
+target_position = Vector2(0, 0)
+collision_mask = 16
+hit_from_inside = true
+
 [node name="HitFlash" parent="Hide/AnimatedSpriteE" instance=ExtResource("11_oxb72")]
 
 [node name="Ability" parent="Hide/AnimatedSpriteE" instance=ExtResource("10_lhyhb")]
-position = Vector2(0, 10)
+visible = false
 
 [node name="Guns" parent="Hide/AnimatedSpriteE/Ability" instance=ExtResource("8_wklgt")]
+position = Vector2(10, 0)
 guns = Array[Object]([ExtResource("11_38i84")])
 
 [node name="Guns2" parent="Hide/AnimatedSpriteE/Ability" instance=ExtResource("8_wklgt")]
+position = Vector2(0, 10)
 rotation = 1.5707964
 guns = Array[Object]([ExtResource("11_38i84")])
 
 [node name="Guns3" parent="Hide/AnimatedSpriteE/Ability" instance=ExtResource("8_wklgt")]
+position = Vector2(-10, 0)
 rotation = 3.1415927
 guns = Array[Object]([ExtResource("11_38i84")])
 
 [node name="Guns4" parent="Hide/AnimatedSpriteE/Ability" instance=ExtResource("8_wklgt")]
+position = Vector2(0, -10)
 rotation = 4.712389
 guns = Array[Object]([ExtResource("11_38i84")])
 
@@ -335,6 +345,7 @@ one_shot = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
+radius = 15.0
 
 [node name="HitRange" parent="." instance=ExtResource("11_jyark")]
 knockback = 200.0

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Shake" load_steps=2 format=3 uid="uid://dvt0wpk754m87"]
+
+[ext_resource type="Script" uid="uid://e1jle0vnwo3p" path="res://Components/DamageComps/OnHitEffects/Scripts/Shake.cs" id="1_kthyo"]
+
+[resource]
+script = ExtResource("1_kthyo")
+metadata/_custom_type_script = "uid://e1jle0vnwo3p"

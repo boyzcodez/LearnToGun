@@ -12,8 +12,9 @@ public partial class ActiveTestEnemy : Entity
     public string Trigger { get; set; } = "Shoot";
     [Export] public Guns gun;
     [Export] public Ability ability;
+    [Export] public RayCast2D lineOfSight;
 
-    
+
     private NavigationAgent2D NavAgent;
 
     private Timer FireRateTimer;
@@ -26,6 +27,8 @@ public partial class ActiveTestEnemy : Entity
         player = GetTree().GetFirstNodeInGroup("Player") as Player;
         FireRateTimer = GetNode<Timer>("FireRate");
         NavAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");
+
+        lineOfSight.TargetPosition = new Vector2(ShootingRange/lineOfSight.Scale.X, 0);
 
         EventBus.Reset += Death;
     }
@@ -64,7 +67,7 @@ public partial class ActiveTestEnemy : Entity
             Velocity = Vector2.Zero;
             if (fireTimer < 0)
             {
-                fireTimer = FireCooldown;
+                fireTimer = FireCooldown + FireRate * FireTimes;
                 TriggerAction(Trigger);
             }
 
@@ -91,24 +94,62 @@ public partial class ActiveTestEnemy : Entity
     }
     private bool HasLineOfSight(Vector2 target)
     {
-        var spaceState = GetWorld2D().DirectSpaceState;
-        var query = PhysicsRayQueryParameters2D.Create(GlobalPosition, target);
-        query.Exclude = new Godot.Collections.Array<Rid> { GetRid() };
+        // var spaceState = GetWorld2D().DirectSpaceState;
+        // var query = PhysicsRayQueryParameters2D.Create(gun.GlobalPosition, target);
+        // query.Exclude = new Godot.Collections.Array<Rid> { GetRid() };
 
-        var result = spaceState.IntersectRay(query);
-        if (result.Count == 0) return true;
+        // var result = spaceState.IntersectRay(query);
+        // if (result.Count == 0) return true;
 
-        if (result.TryGetValue("collider", out var colliderVar))
+        // if (result.TryGetValue("collider", out var colliderVar))
+        // {
+        //     // Convert the Variant into a GodotObject
+        //     var colliderObj = colliderVar.AsGodotObject();
+
+        //     // Compare against your player node
+        //     if (colliderObj == player)
+        //         return true;
+        // }
+
+        // return false;
+
+        // Get direction enemy is facing
+        // Vector2 direction = Velocity.Normalized();
+        // if (direction == Vector2.Zero)
+        //     return false;
+
+        // // Set up ray start & end
+        // Vector2 start = GlobalPosition + new Vector2(0, -6);
+        // Vector2 end = start + direction * RayLength;
+
+        // var spaceState = GetWorld2D().DirectSpaceState;
+
+        // var query = PhysicsRayQueryParameters2D.Create(start, end);
+        // query.CollideWithAreas = false;
+        // query.CollideWithBodies = true;
+
+        // // Optional: if you use layer masks, apply them here
+        // // query.CollisionMask = 1 << 1; // example if "Walls" is on layer 1
+
+        // var result = spaceState.IntersectRay(query);
+
+        // return result.Count < 0; // true if we hit something
+
+        if (!lineOfSight.IsColliding())
         {
-            // Convert the Variant into a GodotObject
-            var colliderObj = colliderVar.AsGodotObject();
+            return true;
+        } 
+        else
+        {
+            var distanceToPlayer = lineOfSight.GlobalPosition.DistanceTo(player.GlobalPosition);
+            var distanceToWall = lineOfSight.GlobalPosition.DistanceTo(lineOfSight.GetCollisionPoint());
 
-            // Compare against your player node
-            if (colliderObj == player)
-                return true;
+            if (distanceToWall < distanceToPlayer)
+            {
+                return false;
+            }
+            else return true;
         }
-
-        return false;
     }
 
     private void TriggerAction(string trigger)
@@ -125,9 +166,6 @@ public partial class ActiveTestEnemy : Entity
                 GD.Print("I will do nothing");
                 break;
         }
-
-        fireTimer = FireCooldown + FireRate * FireTimes;
-        
     }
 
     

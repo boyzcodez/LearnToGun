@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bcgkxc4mvklfp" path="res://Game/Entities/Components/HitRange.tscn" id="12_0o6dg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_htgvw"]
-radius = 5.0
+radius = 8.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k7a81"]
 atlas = ExtResource("4_g1due")
@@ -236,7 +236,7 @@ size = Vector2(20, 16)
 [sub_resource type="CircleShape2D" id="CircleShape2D_g1due"]
 radius = 15.033297
 
-[node name="ActiveTestEnemy" type="CharacterBody2D" node_paths=PackedStringArray("gun")]
+[node name="ActiveTestEnemy" type="CharacterBody2D" node_paths=PackedStringArray("gun", "lineOfSight")]
 motion_mode = 1
 wall_min_slide_angle = 0.08726646
 platform_on_leave = 2
@@ -249,6 +249,7 @@ FireRate = 0.3
 moveSpeed = 80.0
 Trigger = "Nothing"
 gun = NodePath("Hide/AnimatedSpriteE/Look/Guns")
+lineOfSight = NodePath("Hide/AnimatedSpriteE/Look/sight")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_htgvw")
@@ -262,7 +263,7 @@ position = Vector2(0, -1)
 material = ExtResource("3_nh5dd")
 position = Vector2(0, -10)
 sprite_frames = SubResource("SpriteFrames_b3ga6")
-animation = &"RunFront"
+animation = &"IdleFront"
 script = ExtResource("6_8j4or")
 
 [node name="Look" type="Marker2D" parent="Hide/AnimatedSpriteE"]
@@ -273,6 +274,11 @@ script = ExtResource("7_rhloq")
 visible = false
 position = Vector2(14, 0)
 guns = Array[Object]([ExtResource("9_lmfcc")])
+
+[node name="sight" type="RayCast2D" parent="Hide/AnimatedSpriteE/Look"]
+target_position = Vector2(0, 0)
+collision_mask = 16
+hit_from_inside = true
 
 [node name="HitFlash" parent="Hide/AnimatedSpriteE" instance=ExtResource("10_pja5j")]
 
@@ -291,6 +297,7 @@ one_shot = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
+radius = 15.0
 
 [node name="HitRange" parent="." instance=ExtResource("12_0o6dg")]
 knockback = 300.0
