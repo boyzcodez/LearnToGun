@@ -1,4 +1,4 @@
-[gd_scene load_steps=140 format=3 uid="uid://bbjw3fvxlq53q"]
+[gd_scene load_steps=139 format=3 uid="uid://bbjw3fvxlq53q"]
 
 [ext_resource type="Script" uid="uid://cccauuo7nkwjv" path="res://Game/Entities/Player/Player.cs" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://dyqbl4s13wnxg" path="res://Game/Entities/Components/shadow.tscn" id="2_nfw5o"]
@@ -23,7 +23,6 @@
 [ext_resource type="Texture2D" uid="uid://c48h0yfxwlgc6" path="res://Assets/Effects/ParticleEffects.png" id="17_6v7ly"]
 [ext_resource type="Script" uid="uid://e1jle0vnwo3p" path="res://Components/DamageComps/OnHitEffects/Scripts/Shake.cs" id="18_0xjwd"]
 [ext_resource type="Script" uid="uid://wvm80ckdaxft" path="res://Game/Entities/Player/Effects.cs" id="18_86ark"]
-[ext_resource type="PackedScene" uid="uid://bqtng3dp4vtsa" path="res://Game/Entities/Player/player_camera.tscn" id="20_uabuf"]
 [ext_resource type="Shader" uid="uid://cd5qo1r5p7bct" path="res://Game/Shaders/Shockwave.gdshader" id="21_vcc71"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
@@ -1084,9 +1083,6 @@ grow_vertical = 2
 libraries = {
 &"": SubResource("AnimationLibrary_esr38")
 }
-
-[node name="PlayerCamera" parent="." instance=ExtResource("20_uabuf")]
-process_callback = 0
 
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
 [connection signal="animation_finished" from="AnimatedSprite" to="AnimatedSprite" method="_on_animation_finished"]

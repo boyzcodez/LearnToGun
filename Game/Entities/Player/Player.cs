@@ -34,7 +34,7 @@ public partial class Player : Entity
         //EventBus.MapSwitch += PlayerReset;
         EventBus.Lock += Lock;
     }
-    public override void _PhysicsProcess(double delta)
+    public override void _Process(double delta)
     {
         if (disabled || Dead) return;
 

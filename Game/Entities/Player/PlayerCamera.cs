@@ -3,6 +3,7 @@ using System;
 
 public partial class PlayerCamera : Camera2D
 {
+    [Export] private Player target;
     [Export] private float decay = 0.8f;
     [Export] private Vector2 maxOffset = new Vector2(100, 75);
     [Export] private float maxRoll = 0.1f;
@@ -15,8 +16,10 @@ public partial class PlayerCamera : Camera2D
         EventBus.ScreenShake += AddTrauma;
         GD.Randomize();
     }
-    public override void _PhysicsProcess(double delta)
+    public override void _Process(double delta)
     {
+        if (target != null) Position = target.GlobalPosition.Round();
+
         if (trauma > 0f)
         {
             trauma = Math.Max(trauma - decay * (float)delta, 0f);
