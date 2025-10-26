@@ -36,7 +36,7 @@ public partial class GunData : Resource
     public void ReFillAmmo(int ammoAmount)
     {
         CurrentAmmo += ammoAmount;
-        Math.Clamp(CurrentAmmo, 0, MaxAmmo);
+        CurrentAmmo = Math.Clamp(CurrentAmmo, 0, MaxAmmo);
     }
 
     // damage calc stuff here 

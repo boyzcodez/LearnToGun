@@ -211,12 +211,12 @@ public partial class ActiveTestEnemy : Entity
     }
     public void Deactivate()
     {
-        collisionShape.Disabled = true;
+        collisionShape.SetDeferred("Disabled", true);
         SetProcess(false);
         Visible = false;
 
-        hurtbox.Monitorable = false;
-        hurtbox.Monitoring = false;
+        hurtbox.SetDeferred("monitoring", false);
+        hurtbox.SetDeferred("monitorable", false);
     }
 
     public override void Death()
@@ -224,7 +224,10 @@ public partial class ActiveTestEnemy : Entity
         EventBus.OnEnemyDied(name, this);
         hurtbox.ResetHealth();
         KnockbackVelocity = Vector2.Zero;
+        KnockbackTime = 0f;
         Dead = true;
+
+
     }
 
 

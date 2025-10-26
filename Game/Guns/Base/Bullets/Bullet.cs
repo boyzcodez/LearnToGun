@@ -36,7 +36,7 @@ public partial class Bullet : Area2D
     {
         collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
         SetProcess(false);
-        Hide();
+        Visible = false;
 
         Animation.AnimationFinished += Hide;
         BodyEntered += WallHit;
@@ -122,7 +122,7 @@ public partial class Bullet : Area2D
         CallDeferred("set_process", true);
         _pendingActivation = true;
 
-        Show();
+        Visible = true;
         Animation?.Play("default");
     }
 

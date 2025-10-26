@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://bqtng3dp4vtsa"]
+[gd_scene load_steps=10 format=3 uid="uid://bqtng3dp4vtsa"]
 
 [ext_resource type="Script" uid="uid://c6vbo4viabeax" path="res://Game/Entities/Player/PlayerCamera.cs" id="1_cm6ya"]
 [ext_resource type="Script" uid="uid://bmkmywagf3m2b" path="res://Game/GUI/Ui.cs" id="2_0lmko"]
 [ext_resource type="Script" uid="uid://c2fyb5a13hqow" path="res://Components/Etc/FpsLabel.cs" id="3_0lmko"]
 [ext_resource type="Script" uid="uid://i8uaafigka8e" path="res://Game/Entities/Player/UiManager.cs" id="3_re3xe"]
+[ext_resource type="Texture2D" uid="uid://boqicn2yktovm" path="res://Assets/GUI/HealthbarEmpty.png" id="4_papp3"]
 [ext_resource type="Texture2D" uid="uid://cnus75x72vqbj" path="res://Assets/Etc/Mouse.png" id="5_67rbx"]
+[ext_resource type="Texture2D" uid="uid://wjrg1fp3rtxj" path="res://Assets/GUI/HealthbarFull.png" id="5_llfvn"]
 [ext_resource type="Script" uid="uid://bbqxj6dq4iqxm" path="res://Game/GUI/Mouse.cs" id="5_mlwuw"]
 [ext_resource type="Material" uid="uid://cx5bh10h2ko2n" path="res://Game/Shaders/TrueSmooth.tres" id="6_ib0iv"]
 
@@ -25,10 +27,17 @@ grow_vertical = 2
 script = ExtResource("3_re3xe")
 
 [node name="Money" type="Label" parent="UI/UIManager"]
-layout_mode = 0
-offset_top = 10.0
-offset_right = 51.0
-offset_bottom = 33.0
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = -105.0
+offset_bottom = -82.0
+grow_horizontal = 0
+grow_vertical = 2
 text = "0 coin"
 
 [node name="Ammo" type="Label" parent="UI/UIManager"]
@@ -44,14 +53,37 @@ text = "Ammo"
 
 [node name="Health" type="Label" parent="UI/UIManager"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -26.0
-offset_right = 26.0
-offset_bottom = 23.0
-grow_horizontal = 2
+offset_top = 10.0
+offset_right = 52.0
+offset_bottom = 33.0
 text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Healthbar" type="TextureProgressBar" parent="UI/UIManager"]
+layout_mode = 0
+offset_top = 10.0
+offset_right = 70.0
+offset_bottom = 30.0
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("4_papp3")
+texture_progress = ExtResource("5_llfvn")
+
+[node name="HealthAmount" type="Label" parent="UI/UIManager/Healthbar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.5
+offset_top = -12.5
+offset_right = 21.5
+offset_bottom = 10.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "10/10"
 horizontal_alignment = 1
 vertical_alignment = 1
 

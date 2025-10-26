@@ -25,6 +25,8 @@ public partial class Guns : Node2D
         muzzleFlash = GetNode<AnimatedSprite2D>("MuzzleFlash");
         shaderMaterial = sprite.Material as ShaderMaterial;
 
+        EventBus.Reset += ReFillGuns;
+
         foreach (var gunData in guns)
         {
             type = gunData.GunName + gunData.LVL + GetInstanceId();
@@ -119,6 +121,15 @@ public partial class Guns : Node2D
     private float NumBet(double bet)
     {
         return (float)GD.RandRange(-bet, bet);
+    }
+    private void ReFillGuns()
+    {
+        foreach (GunData gun in guns)
+        {
+            gun.ReFillAmmo(999);
+        }
+        
+        if (active) EventBus.Ammo(currentGun.CurrentAmmo, currentGun.MaxAmmo);
     }
 
 }

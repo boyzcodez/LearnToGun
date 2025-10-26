@@ -45,8 +45,8 @@ public partial class HitRange : Area2D
     }
     public void Deactivate()
     {
-        Monitorable = false;
-        Monitoring = false;
+        SetDeferred("monitoring", false);
+        SetDeferred("monitorable", false);
     }
 
 }
