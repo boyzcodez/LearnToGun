@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bqtng3dp4vtsa"]
+[gd_scene load_steps=12 format=3 uid="uid://bqtng3dp4vtsa"]
 
 [ext_resource type="Script" uid="uid://c6vbo4viabeax" path="res://Game/Entities/Player/PlayerCamera.cs" id="1_cm6ya"]
 [ext_resource type="Script" uid="uid://bmkmywagf3m2b" path="res://Game/GUI/Ui.cs" id="2_0lmko"]
@@ -9,6 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://wjrg1fp3rtxj" path="res://Assets/GUI/HealthbarFull.png" id="5_llfvn"]
 [ext_resource type="Script" uid="uid://bbqxj6dq4iqxm" path="res://Game/GUI/Mouse.cs" id="5_mlwuw"]
 [ext_resource type="Material" uid="uid://cx5bh10h2ko2n" path="res://Game/Shaders/TrueSmooth.tres" id="6_ib0iv"]
+[ext_resource type="Shader" uid="uid://bytv37qeyi83r" path="res://Game/Shaders/ChromaticAberration.gdshader" id="10_llfvn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xvah5"]
+shader = ExtResource("10_llfvn")
+shader_parameter/aberration_x = 0.02000004845000003
+shader_parameter/aberration_y = 0.02000004845000003
 
 [node name="PlayerCamera" type="Camera2D"]
 limit_enabled = false
@@ -125,3 +131,15 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_67rbx")
 vframes = 2
 frame = 1
+
+[node name="Aberration" type="CanvasLayer" parent="."]
+layer = 15
+
+[node name="ColorRect" type="ColorRect" parent="Aberration"]
+visible = false
+material = SubResource("ShaderMaterial_xvah5")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
