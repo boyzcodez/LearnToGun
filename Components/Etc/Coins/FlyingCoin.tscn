@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://doulm4cnf4c77"]
+[gd_scene load_steps=9 format=3 uid="uid://doulm4cnf4c77"]
 
 [ext_resource type="Texture2D" uid="uid://bn1o7q5jvihy8" path="res://Assets/Particles/coinsSpin.png" id="1_p7kkm"]
-[ext_resource type="Material" uid="uid://cx5bh10h2ko2n" path="res://Game/Shaders/TrueSmooth.tres" id="1_vhg8u"]
 [ext_resource type="Script" uid="uid://b34u0dibmjcnh" path="res://Components/Etc/Coins/FlyingCoin.cs" id="2_vhg8u"]
 [ext_resource type="PackedScene" uid="uid://bgkqmmqtwxk4u" path="res://Components/Etc/Coins/Tail.tscn" id="4_gibrn"]
 
@@ -42,8 +41,6 @@ animations = [{
 }]
 
 [node name="FlyingCoin" type="AnimatedSprite2D"]
-texture_filter = 2
-material = ExtResource("1_vhg8u")
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_o0la2")
 autoplay = "default"
@@ -51,3 +48,4 @@ script = ExtResource("2_vhg8u")
 
 [node name="Tail" parent="." instance=ExtResource("4_gibrn")]
 width = 4.0
+default_color = Color(0.87340343, 0.8216893, 0.51323175, 1)

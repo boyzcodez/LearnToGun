@@ -319,8 +319,8 @@ shape = SubResource("CapsuleShape2D_ccun0")
 one_shot = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 70.0
 avoidance_enabled = true
-radius = 15.0
 
 [node name="HitRange" parent="." instance=ExtResource("11_oh53k")]
 knockback = 200.0

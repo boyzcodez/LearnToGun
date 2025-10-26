@@ -10,6 +10,7 @@ public partial class ActiveTestEnemy : Entity
 
     [Export(PropertyHint.Enum, "Shoot,Ability,Nothing")]
     public string Trigger { get; set; } = "Shoot";
+    [Export] public bool needsLineOfSight = true;
     [Export] public Guns gun;
     [Export] public Ability ability;
     [Export] public RayCast2D lineOfSight;
@@ -17,6 +18,8 @@ public partial class ActiveTestEnemy : Entity
 
     private NavigationAgent2D NavAgent;
 
+    private CollisionShape2D collisionShape;
+    private Hurtbox hurtbox;
     private Timer FireRateTimer;
     private Node2D player;
     private double fireTimer = 3.0;
@@ -27,13 +30,24 @@ public partial class ActiveTestEnemy : Entity
         player = GetTree().GetFirstNodeInGroup("Player") as Player;
         FireRateTimer = GetNode<Timer>("FireRate");
         NavAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");
+        collisionShape = GetNode<CollisionShape2D>("CollisionShape");
+        hurtbox = GetNode<Hurtbox>("Hurtbox");
 
         lineOfSight.TargetPosition = new Vector2(ShootingRange/lineOfSight.Scale.X, 0);
 
         EventBus.Reset += Death;
+        Connect(SignalName.Activation, new Callable(this, nameof(Activate)));
+        Connect(SignalName.Deactivation, new Callable(this, nameof(Deactivate)));
+
+        collisionShape.Disabled = true;
+        SetProcess(false);
+        Visible = false;
+
+        hurtbox.Monitorable = false;
+        hurtbox.Monitoring = false;
     }
 
-    public override void _PhysicsProcess(double delta)
+    public override void _Process(double delta)
     {
         if (player == null) return;
 
@@ -62,7 +76,7 @@ public partial class ActiveTestEnemy : Entity
         }
 
         bool hasLineOfSight = HasLineOfSight(player.GlobalPosition);
-        if (hasLineOfSight)
+        if (hasLineOfSight || needsLineOfSight == false)
         {
             Velocity = Vector2.Zero;
             if (fireTimer < 0)
@@ -168,7 +182,7 @@ public partial class ActiveTestEnemy : Entity
         }
     }
 
-    
+
 
     private async void ShootAtPlayer()
     {
@@ -182,8 +196,36 @@ public partial class ActiveTestEnemy : Entity
             FireRateTimer.Start(FireRate);
             await ToSignal(FireRateTimer, "timeout");
         }
-        
+
         isShooting = false;
     }
+
+    public void Activate()
+    {
+        collisionShape.Disabled = false;
+        SetProcess(true);
+        Visible = true;
+
+        hurtbox.Monitorable = true;
+        hurtbox.Monitoring = true;
+    }
+    public void Deactivate()
+    {
+        collisionShape.Disabled = true;
+        SetProcess(false);
+        Visible = false;
+
+        hurtbox.Monitorable = false;
+        hurtbox.Monitoring = false;
+    }
+
+    public override void Death()
+    {
+        EventBus.OnEnemyDied(name, this);
+        hurtbox.ResetHealth();
+        KnockbackVelocity = Vector2.Zero;
+        Dead = true;
+    }
+
 
 }

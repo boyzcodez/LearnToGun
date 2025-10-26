@@ -13,6 +13,11 @@ public partial class AnimatedSpriteE : AnimatedSprite
         self = GetOwner<Entity>();
         look = GetNode<Look>("Look");
         player = GetTree().GetFirstNodeInGroup("Player") as Player;
+
+        GetOwner<Entity>().Connect(Entity.SignalName.Activation, new Callable(this, nameof(Activate)));
+        GetOwner<Entity>().Connect(Entity.SignalName.Deactivation, new Callable(this, nameof(Deactivate)));
+
+        SetProcess(false);
     }
     public override void _Process(double delta)
     {
@@ -49,6 +54,15 @@ public partial class AnimatedSpriteE : AnimatedSprite
             animationPriority = value;
             Play(animation + direction);
         }
-            
+
+    }
+
+    public void Activate()
+    {
+        SetProcess(true);
+    }
+    public void Deactivate()
+    {
+        SetProcess(false);
     }
 }

@@ -34,8 +34,8 @@ public partial class EnemySpawner : Node2D
                 var instance = enemy.enemyScene.Instantiate<Entity>();
 
                 instance.name = enemy.name;
-                instance.SetDeferred("process_mode", (int)Node.ProcessModeEnum.Disabled);
-                instance.Hide();
+                //instance.SetDeferred("process_mode", (int)Node.ProcessModeEnum.Disabled);
+                //instance.Hide();
 
                 ysort.CallDeferred("add_child", instance);
 
@@ -57,15 +57,18 @@ public partial class EnemySpawner : Node2D
         if (!currentEnemies.Contains(selected)) currentEnemies.Add(selected);
 
         selected.GlobalPosition = spot;
-        selected.SetDeferred("process_mode", (int)Node.ProcessModeEnum.Inherit);
-        selected.Show();
+        //selected.SetDeferred("process_mode", (int)Node.ProcessModeEnum.Inherit);
+        //selected.Show();
+        selected.EmitSignal("Activation");
     }
     private void OnEnemyDied(string name, Entity enemy)
     {
         if (EventBus.gameOn) activeEnemies -= 1;
 
-        enemy.SetDeferred("process_mode", (int)Node.ProcessModeEnum.Disabled);
-        enemy.Hide();
+        //enemy.SetDeferred("process_mode", (int)Node.ProcessModeEnum.Disabled);
+        //enemy.Hide();
+        
+        enemy.EmitSignal("Deactivation");
         enemy.GlobalPosition = new Vector2(500, 0);
         _pools[name].Enqueue(enemy);
 

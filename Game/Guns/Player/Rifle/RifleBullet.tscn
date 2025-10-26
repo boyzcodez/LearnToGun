@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bvmvokgsgqp04" path="res://Components/BulletComps/BulletBehaviors/Scripts/SingleHit.cs" id="2_o4ioj"]
 [ext_resource type="Texture2D" uid="uid://dd7r1b2hrw06h" path="res://Assets/Guns/Bullets/NewBullets.png" id="2_srlgj"]
 [ext_resource type="Script" uid="uid://fv6d3enirc" path="res://Components/BulletComps/BulletBehaviors/Scripts/StraightMovement.cs" id="3_0my8h"]
-[ext_resource type="Script" uid="uid://dlvpea0mxkxta" path="res://Components/BulletComps/BulletBehaviors/Scripts/TowardsMouse.cs" id="4_o4ioj"]
+[ext_resource type="Script" uid="uid://cv6nt1736ic1o" path="res://Components/BulletComps/BulletBehaviors/Scripts/TowardsRotation.cs" id="4_o4ioj"]
 
 [sub_resource type="Resource" id="Resource_yetw4"]
 script = ExtResource("2_o4ioj")
@@ -16,7 +16,7 @@ metadata/_custom_type_script = "uid://fv6d3enirc"
 
 [sub_resource type="Resource" id="Resource_0my8h"]
 script = ExtResource("4_o4ioj")
-metadata/_custom_type_script = "uid://dlvpea0mxkxta"
+metadata/_custom_type_script = "uid://cv6nt1736ic1o"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o4ioj"]
 size = Vector2(8, 6)

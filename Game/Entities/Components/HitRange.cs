@@ -13,6 +13,12 @@ public partial class HitRange : Area2D
         AreaEntered += RangeEntered;
 
         damageData = new DamageData(Damage, knockback, "");
+
+        GetParent<Entity>().Connect(Entity.SignalName.Activation, new Callable(this, nameof(Activate)));
+        GetParent<Entity>().Connect(Entity.SignalName.Deactivation, new Callable(this, nameof(Deactivate)));
+
+        Monitorable = false;
+        Monitoring = false;
     }
     private void RangeEntered(Node body)
     {
@@ -29,7 +35,18 @@ public partial class HitRange : Area2D
                 hurtbox.TakeDamage(damageData, direction);
             }
         }
-            
+
+    }
+
+    public void Activate()
+    {
+        Monitorable = true;
+        Monitoring = true;
+    }
+    public void Deactivate()
+    {
+        Monitorable = false;
+        Monitoring = false;
     }
 
 }

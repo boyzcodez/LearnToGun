@@ -9,7 +9,6 @@ public partial class WarpDash : Node2D
 
     private Timer warpTimer;
     private AnimatedSprite animatedSprite;
-    private Shadow shadow;
     private Node2D ysort;
     [Export] private PackedScene ghostScene;
 
@@ -40,7 +39,6 @@ public partial class WarpDash : Node2D
     {
         warpTimer = GetNode<Timer>("Timer");
         animatedSprite = GetParent().GetNode<AnimatedSprite>("AnimatedSprite");
-        shadow = GetParent().GetNode<Shadow>("Shadow");
         ysort = GetTree().GetFirstNodeInGroup("YSort") as Node2D;
     }
 
@@ -60,7 +58,6 @@ public partial class WarpDash : Node2D
         isWarping = true;
         warpTimer.Start();
         //animatedSprite.PlayAnimation("Glitch", 3);
-        shadow.TriggerShrink();
 
     }
     public void Deactivated()

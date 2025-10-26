@@ -3,6 +3,8 @@ using Godot;
 [GlobalClass]
 public partial class Entity : CharacterBody2D
 {
+    [Signal] public delegate void ActivationEventHandler();
+    [Signal] public delegate void DeactivationEventHandler();
 
     public Vector2 direction = Vector2.Zero;
     public float KnockbackTime = 0f;
@@ -28,10 +30,6 @@ public partial class Entity : CharacterBody2D
 
     public virtual void Death()
     {
-        EventBus.OnEnemyDied(name, this);
-        GetNode<Hurtbox>("Hurtbox").ResetHealth();
-        KnockbackVelocity = Vector2.Zero;
-        Dead = true;
     }
     
 
