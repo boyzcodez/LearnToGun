@@ -299,7 +299,7 @@ position = Vector2(0, 4)
 script = ExtResource("3_q6s24")
 
 [node name="Guns" parent="Hide/AnimatedSpriteE/Look" instance=ExtResource("8_wklgt")]
-position = Vector2(6, 0)
+position = Vector2(2, 0)
 guns = Array[Object]([ExtResource("9_jyark")])
 
 [node name="sight" type="RayCast2D" parent="Hide/AnimatedSpriteE/Look"]
