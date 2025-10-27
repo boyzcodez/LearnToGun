@@ -8,13 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://dtl2ydqrnh23i" path="res://Components/WarpEffects/portal_machine.tscn" id="5_1mht2"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ru6ok"]
-vertices = PackedVector2Array(-2, 2, 98, 2, 150, 142, 142, 142, -46, 114, -46, 38, 150, -150, 98, -90, -150, -150, -78, -122, -78, -46, -2, -90, -114, 38, -146, -46, 142, 150, -150, 150, -114, 114, -146, -122)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(6, 2, 1, 7), PackedInt32Array(8, 6, 7, 9), PackedInt32Array(10, 9, 11, 0, 5), PackedInt32Array(10, 5, 12, 13), PackedInt32Array(4, 3, 14, 15, 16), PackedInt32Array(12, 16, 15, 13), PackedInt32Array(13, 15, 8, 17), PackedInt32Array(9, 17, 8), PackedInt32Array(9, 7, 11)])
+vertices = PackedVector2Array(1, -1, 95, -1, 153, 145, 145, 145, -49, 111, -49, 41, 153, -153, 95, -87, -153, -153, 1, -87, -81, -119, -81, -49, -143, -119, -153, 153, -143, -49, -111, 41, -111, 111, 145, 153)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(6, 2, 1, 7), PackedInt32Array(8, 6, 7, 9, 10), PackedInt32Array(11, 10, 9, 0, 5), PackedInt32Array(8, 10, 12), PackedInt32Array(13, 8, 12, 14), PackedInt32Array(11, 5, 15, 14), PackedInt32Array(13, 14, 15, 16), PackedInt32Array(17, 13, 16, 4, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-174, -175, 176, -177, 181, 198, -180, 199)])
 parsed_geometry_type = 1
 parsed_collision_mask = 1
 cell_size = 16.0
-agent_radius = 20.0
+agent_radius = 15.0
 
 [node name="RoomBase" type="Node2D"]
 y_sort_enabled = true
