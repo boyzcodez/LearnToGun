@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Godot;
 
@@ -69,7 +70,7 @@ public partial class Player : Entity
     private void Movement(float delta)
     {
         Vector2 direction = Input.GetVector("left", "right", "up", "down");
-        Velocity = Velocity.Lerp(direction * SPEED, 22.0f * delta);
+        Velocity = Velocity.Lerp(direction * SPEED, 1.0f - (float)Mathf.Exp(-25f * GetPhysicsProcessDeltaTime()));
 
         if (Input.IsActionJustPressed("dodge") && direction != Vector2.Zero && isDodging == false)
         {

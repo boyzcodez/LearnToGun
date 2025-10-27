@@ -34,7 +34,7 @@ public partial class PlayerCamera : Camera2D
 
             // // Smoothly approach the snapped position
             // GlobalPosition = GlobalPosition.Lerp(snapped, (float)(SnapSmoothness * delta));
-            GlobalPosition = target.GlobalPosition.Round();
+            GlobalPosition = target.GlobalPosition;
         }
 
         if (trauma > 0f)
