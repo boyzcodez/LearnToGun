@@ -88,8 +88,7 @@ public partial class ActiveTestEnemy : Entity
         }
         else
         {
-            Vector2 offsetTarget = player.GlobalPosition + (GlobalPosition.DirectionTo(player.GlobalPosition)).Orthogonal() * 100;
-            NavAgent.TargetPosition = offsetTarget;
+            NavAgent.TargetPosition = player.GlobalPosition;
             MoveAlongPath(delta);
         }
     }

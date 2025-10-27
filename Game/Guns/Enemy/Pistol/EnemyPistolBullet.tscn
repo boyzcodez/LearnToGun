@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dyqbl4s13wnxg" path="res://Game/Entities/Components/shadow.tscn" id="6_xtjlt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pnq1u"]
-radius = 6.0
+radius = 5.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xtjlt"]
 atlas = ExtResource("5_02r7r")
