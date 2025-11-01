@@ -11,7 +11,7 @@ public partial class EnemySpawner : Node2D
 
     public Dictionary<string, Queue<Entity>> _pools = new();
     public List<Entity> currentEnemies = new();
-    private int enemyAmount = 10;
+    private int enemyAmount = 20;
     private int activeEnemies = 0;
 
     public override void _Ready()
@@ -19,6 +19,7 @@ public partial class EnemySpawner : Node2D
         PreparePool(DifficultyOne);
         EventBus.EnemyDied += OnEnemyDied;
         EventBus.Reset += Reset;
+        EventBus.MapSwitch += Reset;
     }
 
 
@@ -34,8 +35,6 @@ public partial class EnemySpawner : Node2D
                 var instance = enemy.enemyScene.Instantiate<Entity>();
 
                 instance.name = enemy.name;
-                //instance.SetDeferred("process_mode", (int)Node.ProcessModeEnum.Disabled);
-                //instance.Hide();
 
                 ysort.CallDeferred("add_child", instance);
 
@@ -54,30 +53,26 @@ public partial class EnemySpawner : Node2D
 
         var selected = _pools[enemy].Dequeue();
 
-        if (!currentEnemies.Contains(selected)) currentEnemies.Add(selected);
+        currentEnemies.Add(selected);
 
         selected.GlobalPosition = spot;
-        //selected.SetDeferred("process_mode", (int)Node.ProcessModeEnum.Inherit);
-        //selected.Show();
         selected.EmitSignal("Activation");
     }
-    private void OnEnemyDied(string name, Entity enemy)
+    private void OnEnemyDied()
     {
-        if (EventBus.gameOn) activeEnemies -= 1;
-
-        //enemy.SetDeferred("process_mode", (int)Node.ProcessModeEnum.Disabled);
-        //enemy.Hide();
-        
-        enemy.EmitSignal("Deactivation");
-        enemy.GlobalPosition = new Vector2(500, 0);
-        _pools[name].Enqueue(enemy);
-
-        if (currentEnemies.Contains(enemy)) currentEnemies.Remove(enemy);
-
-        if (activeEnemies <= 0 && EventBus.gameOn) EventBus.TriggerEndOfWave();
+        activeEnemies -= 1;
+        if (activeEnemies == 0) EventBus.TriggerEndOfWave();
     }
     private void Reset()
     {
         activeEnemies = 0;
+
+        foreach (var enemy in currentEnemies)
+        {
+            enemy.Visible = false;
+            _pools[enemy.name].Enqueue(enemy);
+        }
+
+        currentEnemies.Clear();
     }
 }

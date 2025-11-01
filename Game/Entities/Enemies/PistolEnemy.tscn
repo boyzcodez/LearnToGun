@@ -278,6 +278,7 @@ lineOfSight = NodePath("Hide/AnimatedSpriteE/Look/sight")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_htgvw")
+disabled = true
 
 [node name="Hide" type="Node2D" parent="."]
 
@@ -300,6 +301,7 @@ position = Vector2(6, 0)
 guns = Array[Object]([ExtResource("9_ofxb3")])
 
 [node name="sight" type="RayCast2D" parent="Hide/AnimatedSpriteE/Look"]
+enabled = false
 target_position = Vector2(0, 0)
 collision_mask = 16
 hit_from_inside = true
@@ -309,6 +311,8 @@ hit_from_inside = true
 [node name="Hurtbox" parent="." node_paths=PackedStringArray("hitFlash") instance=ExtResource("10_xs1h7")]
 position = Vector2(0, -11)
 collision_layer = 4
+monitoring = false
+monitorable = false
 maxHealth = 3
 hitFlash = NodePath("../Hide/AnimatedSpriteE/HitFlash")
 
@@ -320,9 +324,10 @@ one_shot = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 10.0
-avoidance_enabled = true
 
 [node name="HitRange" parent="." instance=ExtResource("11_oh53k")]
+monitoring = false
+monitorable = false
 knockback = 200.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitRange"]

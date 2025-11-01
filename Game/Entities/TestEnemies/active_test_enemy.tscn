@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://bhb68kqkfragl"]
+[gd_scene load_steps=47 format=3 uid="uid://bhb68kqkfragl"]
 
 [ext_resource type="Script" uid="uid://dexb3awvsef8d" path="res://Game/Entities/TestEnemies/ActiveTestEnemy.cs" id="1_hc5v1"]
 [ext_resource type="PackedScene" uid="uid://vmtiw08cr30b" path="res://Components/DamageComps/hurtbox.tscn" id="3_m1e7j"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://mg8q0xeodew0" path="res://Game/Guns/Base/Guns.tscn" id="8_wklgt"]
 [ext_resource type="Resource" uid="uid://d1ps46siei1u" path="res://Game/Guns/Enemy/Shotgun/EnemyShotgunData.tres" id="9_jyark"]
 [ext_resource type="PackedScene" uid="uid://0s32cl0oa2f3" path="res://Game/Entities/Components/Ability.tscn" id="10_lhyhb"]
-[ext_resource type="Resource" uid="uid://bug7pyhs5umpp" path="res://Game/Guns/Enemy/Invisible/InvisibleGunData.tres" id="11_38i84"]
 [ext_resource type="PackedScene" uid="uid://dyqbl4s13wnxg" path="res://Game/Entities/Components/shadow.tscn" id="11_bbp8y"]
 [ext_resource type="PackedScene" uid="uid://bcgkxc4mvklfp" path="res://Game/Entities/Components/HitRange.tscn" id="11_jyark"]
 [ext_resource type="PackedScene" uid="uid://bp3lx4f7c5wd1" path="res://Components/Etc/hit_flash.tscn" id="11_oxb72"]
@@ -281,6 +280,7 @@ lineOfSight = NodePath("Hide/AnimatedSpriteE/Look/sight")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_htgvw")
+disabled = true
 
 [node name="Hide" type="Node2D" parent="."]
 
@@ -303,6 +303,7 @@ position = Vector2(2, 0)
 guns = Array[Object]([ExtResource("9_jyark")])
 
 [node name="sight" type="RayCast2D" parent="Hide/AnimatedSpriteE/Look"]
+enabled = false
 target_position = Vector2(0, 0)
 collision_mask = 16
 hit_from_inside = true
@@ -312,28 +313,11 @@ hit_from_inside = true
 [node name="Ability" parent="Hide/AnimatedSpriteE" instance=ExtResource("10_lhyhb")]
 visible = false
 
-[node name="Guns" parent="Hide/AnimatedSpriteE/Ability" instance=ExtResource("8_wklgt")]
-position = Vector2(10, 0)
-guns = Array[Object]([ExtResource("11_38i84")])
-
-[node name="Guns2" parent="Hide/AnimatedSpriteE/Ability" instance=ExtResource("8_wklgt")]
-position = Vector2(0, 10)
-rotation = 1.5707964
-guns = Array[Object]([ExtResource("11_38i84")])
-
-[node name="Guns3" parent="Hide/AnimatedSpriteE/Ability" instance=ExtResource("8_wklgt")]
-position = Vector2(-10, 0)
-rotation = 3.1415927
-guns = Array[Object]([ExtResource("11_38i84")])
-
-[node name="Guns4" parent="Hide/AnimatedSpriteE/Ability" instance=ExtResource("8_wklgt")]
-position = Vector2(0, -10)
-rotation = 4.712389
-guns = Array[Object]([ExtResource("11_38i84")])
-
 [node name="Hurtbox" parent="." node_paths=PackedStringArray("hitFlash") instance=ExtResource("3_m1e7j")]
 position = Vector2(0, -11)
 collision_layer = 4
+monitoring = false
+monitorable = false
 maxHealth = 3
 hitFlash = NodePath("../Hide/AnimatedSpriteE/HitFlash")
 
@@ -344,10 +328,11 @@ shape = SubResource("CapsuleShape2D_ccun0")
 one_shot = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-avoidance_enabled = true
 radius = 15.0
 
 [node name="HitRange" parent="." instance=ExtResource("11_jyark")]
+monitoring = false
+monitorable = false
 knockback = 200.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitRange"]

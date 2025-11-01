@@ -35,14 +35,13 @@ public partial class LaserSight2 : Node2D
         // If RayCast hits something, measure the distance to the collision point
         if (raycast.IsColliding())
         {
-            //Vector2 origin = raycast.GlobalPosition;
-            //Vector2 collisionPoint = raycast.GetCollisionPoint();
-            //hitLength = origin.DistanceTo(collisionPoint) + visualOffsetPx;
+            reddot.Show();
 
             reddot.Position = ToLocal(raycast.GetCollisionPoint());
 
             hitLength = raycast.GlobalPosition.DistanceTo(reddot.GlobalPosition);
         }
+        else reddot.Hide();
 
         hitLength = Mathf.Clamp(hitLength, 0.0f, maxLineLengthPx);
 

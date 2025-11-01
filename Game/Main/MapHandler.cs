@@ -94,7 +94,7 @@ public partial class MapHandler : Node2D
         if (EventBus.room == 1) EventBus.gameOn = true;
 
         Node2D nextRoom = SpawnNextRoom();
-        nextRoom.GlobalPosition = new Vector2(0, -500);
+        nextRoom.GlobalPosition = new Vector2(0, -1000);
         
         ysort.CallDeferred("add_child", nextRoom);
         child = nextRoom;

@@ -16,9 +16,6 @@ public partial class HitRange : Area2D
 
         GetParent<Entity>().Connect(Entity.SignalName.Activation, new Callable(this, nameof(Activate)));
         GetParent<Entity>().Connect(Entity.SignalName.Deactivation, new Callable(this, nameof(Deactivate)));
-
-        Monitorable = false;
-        Monitoring = false;
     }
     private void RangeEntered(Node body)
     {

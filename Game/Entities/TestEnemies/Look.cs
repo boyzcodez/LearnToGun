@@ -17,7 +17,6 @@ public partial class Look : Marker2D
         GetOwner<Entity>().Connect(Entity.SignalName.Deactivation, new Callable(this, nameof(Deactivate)));
 
         SetPhysicsProcess(false);
-        raycast.Enabled = false;
         guns.SetProcess(false);
     }
 

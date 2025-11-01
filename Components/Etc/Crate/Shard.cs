@@ -79,7 +79,7 @@ public partial class Shard : Sprite2D
             else
             {
                 // Stop moving and freeze rotation
-                GlobalPosition = new Vector2(GlobalPosition.X, _groundY);
+                GlobalPosition = new Vector2(GlobalPosition.X, _groundY).Round();
                 _velocity = Vector2.Zero;
                 _rotationSpeed = 0f;
                 _done = true;

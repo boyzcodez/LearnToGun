@@ -8,6 +8,7 @@ script = ExtResource("1_7s74o")
 GunName = "Shotgun"
 LVL = "LV3_"
 maxXP = 3
+Damage = 5
 Knockback = 200.0
 BulletSpeed = 450.0
 ShootPosition = Vector2(30, -2)

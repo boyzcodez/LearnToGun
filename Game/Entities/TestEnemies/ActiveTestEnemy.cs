@@ -24,6 +24,7 @@ public partial class ActiveTestEnemy : Entity
     private Node2D player;
     private double fireTimer = 3.0;
     private bool isShooting = false;
+    private bool waitDeactivation = true;
 
     public override void _Ready()
     {
@@ -35,21 +36,16 @@ public partial class ActiveTestEnemy : Entity
 
         lineOfSight.TargetPosition = new Vector2(ShootingRange/lineOfSight.Scale.X, 0);
 
-        EventBus.Reset += Death;
         Connect(SignalName.Activation, new Callable(this, nameof(Activate)));
         Connect(SignalName.Deactivation, new Callable(this, nameof(Deactivate)));
 
-        collisionShape.Disabled = true;
         SetProcess(false);
         Visible = false;
-
-        hurtbox.Monitorable = false;
-        hurtbox.Monitoring = false;
     }
 
     public override void _Process(double delta)
     {
-        if (player == null) return;
+        if (player == null || NavAgent == null) return;
 
         if (KnockbackTime > 0f)
         {
@@ -63,6 +59,12 @@ public partial class ActiveTestEnemy : Entity
             MoveAndSlide();
 
             return;
+        }
+
+        if (Dead && waitDeactivation)
+        {
+            waitDeactivation = false;
+            EmitSignal("Deactivation");
         }
 
         fireTimer -= delta;
@@ -107,47 +109,6 @@ public partial class ActiveTestEnemy : Entity
     }
     private bool HasLineOfSight(Vector2 target)
     {
-        // var spaceState = GetWorld2D().DirectSpaceState;
-        // var query = PhysicsRayQueryParameters2D.Create(gun.GlobalPosition, target);
-        // query.Exclude = new Godot.Collections.Array<Rid> { GetRid() };
-
-        // var result = spaceState.IntersectRay(query);
-        // if (result.Count == 0) return true;
-
-        // if (result.TryGetValue("collider", out var colliderVar))
-        // {
-        //     // Convert the Variant into a GodotObject
-        //     var colliderObj = colliderVar.AsGodotObject();
-
-        //     // Compare against your player node
-        //     if (colliderObj == player)
-        //         return true;
-        // }
-
-        // return false;
-
-        // Get direction enemy is facing
-        // Vector2 direction = Velocity.Normalized();
-        // if (direction == Vector2.Zero)
-        //     return false;
-
-        // // Set up ray start & end
-        // Vector2 start = GlobalPosition + new Vector2(0, -6);
-        // Vector2 end = start + direction * RayLength;
-
-        // var spaceState = GetWorld2D().DirectSpaceState;
-
-        // var query = PhysicsRayQueryParameters2D.Create(start, end);
-        // query.CollideWithAreas = false;
-        // query.CollideWithBodies = true;
-
-        // // Optional: if you use layer masks, apply them here
-        // // query.CollisionMask = 1 << 1; // example if "Walls" is on layer 1
-
-        // var result = spaceState.IntersectRay(query);
-
-        // return result.Count < 0; // true if we hit something
-
         if (!lineOfSight.IsColliding())
         {
             return true;
@@ -201,18 +162,24 @@ public partial class ActiveTestEnemy : Entity
 
     public void Activate()
     {
+        ZIndex = 0;
+
         collisionShape.Disabled = false;
         SetProcess(true);
         Visible = true;
 
         hurtbox.Monitorable = true;
         hurtbox.Monitoring = true;
+
+        hurtbox.ResetHealth();
+
+        Dead = false;
+        waitDeactivation = true;
     }
     public void Deactivate()
     {
-        collisionShape.SetDeferred("Disabled", true);
+        collisionShape.Disabled = true;
         SetProcess(false);
-        Visible = false;
 
         hurtbox.SetDeferred("monitoring", false);
         hurtbox.SetDeferred("monitorable", false);
@@ -220,13 +187,11 @@ public partial class ActiveTestEnemy : Entity
 
     public override void Death()
     {
-        EventBus.OnEnemyDied(name, this);
-        hurtbox.ResetHealth();
-        KnockbackVelocity = Vector2.Zero;
-        KnockbackTime = 0f;
+        if (Dead) return;
         Dead = true;
 
-
+        EventBus.OnEnemyDied();
+        ZIndex = -1;
     }
 
 
