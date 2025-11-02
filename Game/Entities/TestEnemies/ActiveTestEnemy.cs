@@ -55,7 +55,7 @@ public partial class ActiveTestEnemy : Entity
                 Velocity = Vector2.Zero; // Stop movement after knockback
             }
 
-            Velocity = KnockbackVelocity;
+            Velocity = Velocity.Lerp(KnockbackVelocity, 1.0f - (float)Mathf.Exp(-15f * GetPhysicsProcessDeltaTime()));;
             MoveAndSlide();
 
             return;
@@ -162,11 +162,12 @@ public partial class ActiveTestEnemy : Entity
 
     public void Activate()
     {
-        ZIndex = 0;
+        //ZIndex = 0;
 
         collisionShape.Disabled = false;
         SetProcess(true);
         Visible = true;
+        gun.Visible = true;
 
         hurtbox.Monitorable = true;
         hurtbox.Monitoring = true;
@@ -178,7 +179,7 @@ public partial class ActiveTestEnemy : Entity
     }
     public void Deactivate()
     {
-        collisionShape.Disabled = true;
+        collisionShape.SetDeferred("disabled", true);
         SetProcess(false);
 
         hurtbox.SetDeferred("monitoring", false);
@@ -189,9 +190,13 @@ public partial class ActiveTestEnemy : Entity
     {
         if (Dead) return;
         Dead = true;
-
         EventBus.OnEnemyDied();
-        ZIndex = -1;
+        //ZIndex = -1;
+
+        hurtbox.animationSprite.Deactivate();
+        hurtbox.animationSprite.PlayAnimation("Death", 10);
+
+        gun.Visible = false;
     }
 
 

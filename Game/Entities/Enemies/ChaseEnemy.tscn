@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bl7qqpxlnry7w"]
+[gd_scene load_steps=50 format=3 uid="uid://bl7qqpxlnry7w"]
 
 [ext_resource type="Script" uid="uid://dexb3awvsef8d" path="res://Game/Entities/TestEnemies/ActiveTestEnemy.cs" id="1_k7a81"]
 [ext_resource type="PackedScene" uid="uid://dyqbl4s13wnxg" path="res://Game/Entities/Components/shadow.tscn" id="2_s3jmn"]
@@ -6,14 +6,46 @@
 [ext_resource type="Texture2D" uid="uid://3dl5dqbadn7v" path="res://Assets/Entity/Enemy/RobotEnemy4.png" id="4_g1due"]
 [ext_resource type="Script" uid="uid://jqlj5orjwgch" path="res://Game/Entities/TestEnemies/AnimatedSpriteE.cs" id="6_8j4or"]
 [ext_resource type="Script" uid="uid://c6vb1yef0nhpa" path="res://Game/Entities/TestEnemies/Look.cs" id="7_rhloq"]
+[ext_resource type="Resource" uid="uid://bug7pyhs5umpp" path="res://Game/Guns/Enemy/Invisible/InvisibleGunData.tres" id="8_g1due"]
 [ext_resource type="PackedScene" uid="uid://mg8q0xeodew0" path="res://Game/Guns/Base/Guns.tscn" id="8_pb4tq"]
-[ext_resource type="Resource" uid="uid://0mow7g6u66nf" path="res://Game/Guns/Enemy/Pistol/EnemyPistolData.tres" id="9_lmfcc"]
 [ext_resource type="PackedScene" uid="uid://bp3lx4f7c5wd1" path="res://Components/Etc/hit_flash.tscn" id="10_pja5j"]
 [ext_resource type="PackedScene" uid="uid://vmtiw08cr30b" path="res://Components/DamageComps/hurtbox.tscn" id="11_ntmpc"]
 [ext_resource type="PackedScene" uid="uid://bcgkxc4mvklfp" path="res://Game/Entities/Components/HitRange.tscn" id="12_0o6dg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_htgvw"]
 radius = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1due"]
+atlas = ExtResource("4_g1due")
+region = Rect2(0, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ug84"]
+atlas = ExtResource("4_g1due")
+region = Rect2(64, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eeo4h"]
+atlas = ExtResource("4_g1due")
+region = Rect2(128, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o23bx"]
+atlas = ExtResource("4_g1due")
+region = Rect2(192, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbg4n"]
+atlas = ExtResource("4_g1due")
+region = Rect2(0, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y52ow"]
+atlas = ExtResource("4_g1due")
+region = Rect2(64, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufc4m"]
+atlas = ExtResource("4_g1due")
+region = Rect2(128, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnhlv"]
+atlas = ExtResource("4_g1due")
+region = Rect2(192, 256, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k7a81"]
 atlas = ExtResource("4_g1due")
@@ -121,6 +153,40 @@ region = Rect2(192, 128, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b3ga6"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1due")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ug84")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eeo4h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o23bx")
+}],
+"loop": false,
+"name": &"DeathBack",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sbg4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y52ow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufc4m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nnhlv")
+}],
+"loop": false,
+"name": &"DeathFront",
+"speed": 9.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_k7a81")
@@ -264,7 +330,7 @@ position = Vector2(0, -1)
 material = ExtResource("3_nh5dd")
 position = Vector2(0, -10)
 sprite_frames = SubResource("SpriteFrames_b3ga6")
-animation = &"IdleFront"
+animation = &"DeathFront"
 script = ExtResource("6_8j4or")
 
 [node name="Look" type="Marker2D" parent="Hide/AnimatedSpriteE"]
@@ -274,7 +340,7 @@ script = ExtResource("7_rhloq")
 [node name="Guns" parent="Hide/AnimatedSpriteE/Look" instance=ExtResource("8_pb4tq")]
 visible = false
 position = Vector2(14, 0)
-guns = Array[Object]([ExtResource("9_lmfcc")])
+guns = Array[Object]([ExtResource("8_g1due")])
 
 [node name="sight" type="RayCast2D" parent="Hide/AnimatedSpriteE/Look"]
 enabled = false
@@ -284,13 +350,14 @@ hit_from_inside = true
 
 [node name="HitFlash" parent="Hide/AnimatedSpriteE" instance=ExtResource("10_pja5j")]
 
-[node name="Hurtbox" parent="." node_paths=PackedStringArray("hitFlash") instance=ExtResource("11_ntmpc")]
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("hitFlash", "animationSprite") instance=ExtResource("11_ntmpc")]
 position = Vector2(0, -7)
 collision_layer = 4
 monitoring = false
 monitorable = false
 maxHealth = 3
 hitFlash = NodePath("../Hide/AnimatedSpriteE/HitFlash")
+animationSprite = NodePath("../Hide/AnimatedSpriteE")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, -2)

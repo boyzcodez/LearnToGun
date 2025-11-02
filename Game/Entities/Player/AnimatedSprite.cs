@@ -15,4 +15,12 @@ public partial class AnimatedSprite : AnimatedSprite2D
         animationPriority = 0;
         EmitSignal(SignalName.AnimationDone);
     }
+    public void Activate()
+    {
+        SetProcess(true);
+    }
+    public void Deactivate()
+    {
+        SetProcess(false);
+    }
 }

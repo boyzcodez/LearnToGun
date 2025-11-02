@@ -11,14 +11,14 @@ public partial class EnemySpawner : Node2D
 
     public Dictionary<string, Queue<Entity>> _pools = new();
     public List<Entity> currentEnemies = new();
-    private int enemyAmount = 20;
+    private int enemyAmount = 15;
     private int activeEnemies = 0;
 
     public override void _Ready()
     {
         PreparePool(DifficultyOne);
         EventBus.EnemyDied += OnEnemyDied;
-        EventBus.Reset += Reset;
+        EventBus.Reset += FullReset;
         EventBus.MapSwitch += Reset;
     }
 
@@ -70,6 +70,19 @@ public partial class EnemySpawner : Node2D
         foreach (var enemy in currentEnemies)
         {
             enemy.Visible = false;
+            _pools[enemy.name].Enqueue(enemy);
+        }
+
+        currentEnemies.Clear();
+    }
+    private void FullReset()
+    {
+        activeEnemies = 0;
+
+        foreach (var enemy in currentEnemies)
+        {
+            enemy.Visible = false;
+            enemy.EmitSignal("Deactivation");
             _pools[enemy.name].Enqueue(enemy);
         }
 

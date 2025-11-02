@@ -11,6 +11,7 @@ public partial class Hurtbox : Area2D
     [Export] private int maxHealth = 100;
     [Export] private float knockbackResist = 0f;
     [Export] private HitFlash hitFlash;
+    [Export] public AnimatedSprite animationSprite;
     [Export] private int xpAmount = 1;
 
     private CpuParticles2D particles;
@@ -60,10 +61,12 @@ public partial class Hurtbox : Area2D
     private void Effects()
     {
         animation.Rotation = (float)GD.RandRange(0, Mathf.Tau);
-        
+
         animation.Play("default");
+        
         particles.Emitting = true;
         if (hitFlash != null) hitFlash.Blink();
+        if (animationSprite != null) animationSprite.PlayAnimation("Hit", 2);
     }
     public void ResetHealth()
     {

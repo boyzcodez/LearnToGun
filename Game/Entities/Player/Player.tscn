@@ -1039,12 +1039,13 @@ guns = Array[Object]([ExtResource("10_iwdm0"), ExtResource("12_2gvph"), ExtResou
 active = true
 laserSight = NodePath("../../LookAtSharp/LaserSight")
 
-[node name="Hurtbox" parent="." node_paths=PackedStringArray("hitFlash") instance=ExtResource("7_vh1aq")]
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("hitFlash", "animationSprite") instance=ExtResource("7_vh1aq")]
 position = Vector2(0, -9)
 collision_layer = 2
 hitEffects = [SubResource("Resource_lbtsn")]
 maxHealth = 10
 hitFlash = NodePath("../AnimatedSprite/HitFlash")
+animationSprite = NodePath("../AnimatedSprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CapsuleShape2D_ch4ko")

@@ -15,8 +15,6 @@ public partial class HitFlash : Node
         if (parent == null)
             return;
 
-        parent.PlayAnimation("Hit", 2);
-
         if (tween != null && tween.IsValid())
             tween.Kill();
 
