@@ -28,6 +28,7 @@ public partial class AnimatedSpriteE : AnimatedSprite
         GetOwner<Entity>().Connect(Entity.SignalName.Deactivation, new Callable(this, nameof(Deactivate)));
 
         SetProcess(false);
+        Stop();
     }
     public override void _Process(double delta)
     {
