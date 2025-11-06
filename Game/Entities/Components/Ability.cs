@@ -1,9 +1,11 @@
 using Godot;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 [GlobalClass]
 public partial class Ability : Node2D
 {
+    [Export] AnimatedSprite animatedSprite;
     [Export] float rotateAmount = 0f;
     [Export] Marker2D lookat;
     private List<Guns> guns = new();
@@ -21,8 +23,16 @@ public partial class Ability : Node2D
     }
 
 
-    public void TriggerAbility()
+    public async Task TriggerAbility()
     {
+        if (animatedSprite != null)
+        {
+           animatedSprite.PlayAnimation("Ability", 8);
+
+            await ToSignal(animatedSprite, "animation_finished"); 
+        }
+        
+
         foreach (var gun in guns)
         {
             gun.Shoot();

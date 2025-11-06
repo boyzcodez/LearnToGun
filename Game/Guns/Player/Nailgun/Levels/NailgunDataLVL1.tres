@@ -7,6 +7,7 @@
 script = ExtResource("2_cqwrh")
 GunName = "Nailgun"
 Damage = 10
+Knockback = 400.0
 BulletSpeed = 1600.0
 ShootPosition = Vector2(12, -4)
 BulletScene = ExtResource("1_uttnd")

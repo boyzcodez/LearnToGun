@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://bhb68kqkfragl"]
+[gd_scene load_steps=59 format=3 uid="uid://bhb68kqkfragl"]
 
 [ext_resource type="Script" uid="uid://dexb3awvsef8d" path="res://Game/Entities/TestEnemies/ActiveTestEnemy.cs" id="1_hc5v1"]
 [ext_resource type="PackedScene" uid="uid://vmtiw08cr30b" path="res://Components/DamageComps/hurtbox.tscn" id="3_m1e7j"]
@@ -18,35 +18,51 @@ radius = 8.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w8mfp"]
 atlas = ExtResource("4_jyark")
-region = Rect2(0, 256, 64, 64)
+region = Rect2(0, 384, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vf0vx"]
 atlas = ExtResource("4_jyark")
-region = Rect2(64, 256, 64, 64)
+region = Rect2(64, 384, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jqcvb"]
 atlas = ExtResource("4_jyark")
-region = Rect2(128, 256, 64, 64)
+region = Rect2(128, 384, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w3j5j"]
 atlas = ExtResource("4_jyark")
-region = Rect2(192, 256, 64, 64)
+region = Rect2(192, 384, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hd1nj"]
 atlas = ExtResource("4_jyark")
-region = Rect2(0, 256, 64, 64)
+region = Rect2(256, 384, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_13odc"]
 atlas = ExtResource("4_jyark")
-region = Rect2(64, 256, 64, 64)
+region = Rect2(320, 384, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vw3yp"]
 atlas = ExtResource("4_jyark")
-region = Rect2(128, 256, 64, 64)
+region = Rect2(0, 384, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ghrh"]
 atlas = ExtResource("4_jyark")
-region = Rect2(192, 256, 64, 64)
+region = Rect2(64, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aegot"]
+atlas = ExtResource("4_jyark")
+region = Rect2(128, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1x2ga"]
+atlas = ExtResource("4_jyark")
+region = Rect2(192, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3ins"]
+atlas = ExtResource("4_jyark")
+region = Rect2(256, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dp6jt"]
+atlas = ExtResource("4_jyark")
+region = Rect2(320, 384, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jyark"]
 atlas = ExtResource("4_jyark")
@@ -182,27 +198,39 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_w3j5j")
-}],
-"loop": false,
-"name": &"DeathBack",
-"speed": 9.0
 }, {
-"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hd1nj")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_13odc")
+}],
+"loop": false,
+"name": &"DeathBack",
+"speed": 12.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vw3yp")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5ghrh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aegot")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1x2ga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3ins")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dp6jt")
 }],
 "loop": false,
 "name": &"DeathFront",
-"speed": 9.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -338,7 +366,8 @@ wall_min_slide_angle = 0.08726646
 platform_on_leave = 2
 platform_floor_layers = 0
 script = ExtResource("1_hc5v1")
-ShootingRange = 130.0
+ShootingRange = 200.0
+WalkingRange = 100.0
 FireCooldown = 4.0
 FireTimes = 2
 moveSpeed = 60.0
@@ -358,12 +387,15 @@ position = Vector2(0, -1)
 material = ExtResource("4_6ce44")
 position = Vector2(0, -10)
 sprite_frames = SubResource("SpriteFrames_b3ga6")
-animation = &"DeathFront"
+animation = &"DeathBack"
+frame = 5
+frame_progress = 1.0
 script = ExtResource("5_bbp8y")
 
-[node name="Look" type="Marker2D" parent="Hide/AnimatedSpriteE"]
+[node name="Look" type="Marker2D" parent="Hide/AnimatedSpriteE" node_paths=PackedStringArray("guns")]
 position = Vector2(0, 4)
 script = ExtResource("3_q6s24")
+guns = NodePath("Guns")
 
 [node name="Guns" parent="Hide/AnimatedSpriteE/Look" instance=ExtResource("8_wklgt")]
 position = Vector2(2, 0)

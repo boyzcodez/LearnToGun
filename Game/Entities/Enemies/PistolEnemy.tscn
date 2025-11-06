@@ -365,7 +365,8 @@ wall_min_slide_angle = 0.08726646
 platform_on_leave = 2
 platform_floor_layers = 0
 script = ExtResource("1_hm5e5")
-ShootingRange = 150.0
+ShootingRange = 200.0
+WalkingRange = 100.0
 FireCooldown = 3.0
 moveSpeed = 60.0
 gun = NodePath("Hide/AnimatedSpriteE/Look/Guns")
@@ -389,9 +390,10 @@ frame = 5
 frame_progress = 1.0
 script = ExtResource("5_t40k4")
 
-[node name="Look" type="Marker2D" parent="Hide/AnimatedSpriteE"]
+[node name="Look" type="Marker2D" parent="Hide/AnimatedSpriteE" node_paths=PackedStringArray("guns")]
 position = Vector2(0, 4)
 script = ExtResource("6_vm8uv")
+guns = NodePath("Guns")
 
 [node name="Guns" parent="Hide/AnimatedSpriteE/Look" instance=ExtResource("8_oh53k")]
 position = Vector2(6, 0)

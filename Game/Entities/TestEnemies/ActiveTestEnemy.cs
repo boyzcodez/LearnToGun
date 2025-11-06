@@ -3,6 +3,7 @@ using Godot;
 public partial class ActiveTestEnemy : Entity
 {
     [Export] public float ShootingRange = 400f;
+    [Export] public float WalkingRange = 400f;
     [Export] public float FireCooldown = 1.0f;
     [Export] public int FireTimes = 1;
     [Export] public float FireRate = 0.5f;
@@ -69,31 +70,37 @@ public partial class ActiveTestEnemy : Entity
 
         fireTimer -= delta;
 
+        // --- Core AI Logic ---
         float distanceToPlayer = GlobalPosition.DistanceTo(player.GlobalPosition);
-        if (distanceToPlayer > ShootingRange)
+
+        // Update line of sight check — uses ShootingRange for the raycast length internally
+        bool hasLineOfSight = HasLineOfSight(player.GlobalPosition);
+        bool canShoot = hasLineOfSight || !needsLineOfSight;
+
+        // --- Movement Logic ---
+        bool shouldMove = distanceToPlayer > WalkingRange;
+
+        if (shouldMove || hasLineOfSight == false)
         {
             NavAgent.TargetPosition = player.GlobalPosition;
             MoveAlongPath(delta);
-            return;
-        }
-
-        bool hasLineOfSight = HasLineOfSight(player.GlobalPosition);
-        if (hasLineOfSight || needsLineOfSight == false)
-        {
-            Velocity = Vector2.Zero;
-            if (fireTimer < 0)
-            {
-                fireTimer = FireCooldown + FireRate * FireTimes;
-                TriggerAction(Trigger);
-            }
-
         }
         else
         {
-            NavAgent.TargetPosition = player.GlobalPosition;
-            MoveAlongPath(delta);
+            // Stop movement when within walking range
+            Velocity = Vector2.Zero;
         }
-    }
+
+        // --- Shooting Logic ---
+        bool inShootingRange = distanceToPlayer <= ShootingRange;
+
+        if (inShootingRange && canShoot && fireTimer <= 0)
+        {
+            fireTimer = FireCooldown + FireRate * FireTimes;
+            TriggerAction(Trigger);
+        }
+}
+        
     private void MoveAlongPath(double delta)
     {
         if (NavAgent.IsNavigationFinished()) return;
@@ -167,7 +174,7 @@ public partial class ActiveTestEnemy : Entity
         collisionShape.Disabled = false;
         SetProcess(true);
         Visible = true;
-        gun.Visible = true;
+        if (gun != null) gun.Visible = true;
 
         hurtbox.Monitorable = true;
         hurtbox.Monitoring = true;
@@ -196,7 +203,7 @@ public partial class ActiveTestEnemy : Entity
         hurtbox.animationSprite.Deactivate();
         hurtbox.animationSprite.PlayAnimation("Death", 10);
 
-        gun.Visible = false;
+        if (gun != null) gun.Visible = false;
     }
 
 
