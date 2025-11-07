@@ -1,20 +1,15 @@
-[gd_scene load_steps=22 format=3 uid="uid://c2lf3revdfxi0"]
+[gd_scene load_steps=20 format=3 uid="uid://c2lf3revdfxi0"]
 
 [ext_resource type="Script" uid="uid://de44iwnl6kvq1" path="res://Game/Guns/Base/Bullets/Bullet.cs" id="1_xqkn1"]
 [ext_resource type="Resource" uid="uid://cmau4tqbmn717" path="res://Components/BulletComps/BulletBehaviors/Resources/StraightMovement.tres" id="2_hhwh4"]
 [ext_resource type="Resource" uid="uid://cwb66pmq7dp65" path="res://Components/BulletComps/BulletBehaviors/Resources/SingleHit.tres" id="3_xqkn1"]
 [ext_resource type="Script" uid="uid://cv6nt1736ic1o" path="res://Components/BulletComps/BulletBehaviors/Scripts/TowardsRotation.cs" id="4_3raiy"]
-[ext_resource type="Script" uid="uid://c3gjb4jhvxahf" path="res://Components/BulletComps/BulletBehaviors/Scripts/Explosion.cs" id="5_wfyh3"]
 [ext_resource type="Texture2D" uid="uid://dd7r1b2hrw06h" path="res://Assets/Guns/Bullets/NewBullets.png" id="5_xqkn1"]
 [ext_resource type="PackedScene" uid="uid://dyqbl4s13wnxg" path="res://Game/Entities/Components/shadow.tscn" id="6_3raiy"]
 
 [sub_resource type="Resource" id="Resource_wfyh3"]
 script = ExtResource("4_3raiy")
 metadata/_custom_type_script = "uid://cv6nt1736ic1o"
-
-[sub_resource type="Resource" id="Resource_s3hgi"]
-script = ExtResource("5_wfyh3")
-metadata/_custom_type_script = "uid://c3gjb4jhvxahf"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sf66s"]
 radius = 6.0
@@ -113,7 +108,7 @@ collision_mask = 20
 monitoring = false
 monitorable = false
 script = ExtResource("1_xqkn1")
-Behaviors = [ExtResource("3_xqkn1"), ExtResource("2_hhwh4"), SubResource("Resource_wfyh3"), SubResource("Resource_s3hgi")]
+Behaviors = [ExtResource("3_xqkn1"), ExtResource("2_hhwh4"), SubResource("Resource_wfyh3")]
 Animation = NodePath("AnimatedSprite2D")
 shadow = NodePath("Shadow")
 

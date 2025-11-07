@@ -4,5 +4,4 @@
 
 [resource]
 script = ExtResource("1_oqsab")
-ExplosionRadius = 500.0
 metadata/_custom_type_script = "uid://c3gjb4jhvxahf"
