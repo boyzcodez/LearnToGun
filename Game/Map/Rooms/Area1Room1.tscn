@@ -92,7 +92,7 @@ position = Vector2(94, 89)
 [node name="Spawnpoint3" parent="Rounds/Spawnpoints" instance=ExtResource("3_264xr")]
 z_index = -1
 position = Vector2(-83, 18)
-Enemy = "ChaseEnemy"
+Enemy = "MageEnemy1"
 
 [node name="Spawnpoints2" parent="Rounds" instance=ExtResource("4_1mht2")]
 

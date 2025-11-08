@@ -8,22 +8,33 @@ public partial class Ability : Node2D
     [Export] AnimatedSprite animatedSprite;
     [Export] float rotateAmount = 0f;
     [Export] Marker2D lookat;
+    [Export] public int Times = 1;
+    [Export] public float RepeatWait = 0.5f;
+    [Export] public float ShotWait = 0.1f;
+
     private List<Guns> guns = new();
+    private Timer timer;
 
     public override void _Ready()
     {
+        timer = GetNode<Timer>("Timer");
+
         GetOwner<Entity>().Connect(Entity.SignalName.Activation, new Callable(this, nameof(Activate)));
         GetOwner<Entity>().Connect(Entity.SignalName.Deactivation, new Callable(this, nameof(Deactivate)));
 
-        foreach (Guns child in GetChildren())
+        foreach (var child in GetChildren())
         {
-            guns.Add(child);
-            child.SetProcess(false);
+            if (child is Guns gun)
+            {
+                guns.Add(gun);
+                gun.SetProcess(false);
+            }
+            
         }
     }
 
 
-    public async Task TriggerAbility()
+    public async void TriggerAbility()
     {
         if (animatedSprite != null)
         {
@@ -32,10 +43,15 @@ public partial class Ability : Node2D
             await ToSignal(animatedSprite, "animation_finished"); 
         }
         
-
-        foreach (var gun in guns)
+        for (int i = 0; i < Times; i++)
         {
-            gun.Shoot();
+            foreach (var gun in guns)
+            {
+                gun.Shoot();
+            }
+
+            timer.Start(RepeatWait);
+            await ToSignal(timer, "timeout");
         }
     }
 

@@ -56,7 +56,7 @@ public partial class ActiveTestEnemy : Entity
                 Velocity = Vector2.Zero; // Stop movement after knockback
             }
 
-            Velocity = Velocity.Lerp(KnockbackVelocity, 1.0f - (float)Mathf.Exp(-15f * GetPhysicsProcessDeltaTime()));;
+            Velocity = Velocity.Lerp(KnockbackVelocity, 1.0f - (float)Mathf.Exp(-35f * GetPhysicsProcessDeltaTime()));;
             MoveAndSlide();
 
             return;

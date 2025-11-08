@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://clqw4um34fajs"]
+[gd_scene load_steps=12 format=3 uid="uid://clqw4um34fajs"]
 
 [ext_resource type="Script" uid="uid://xdubo0fshbcy" path="res://Game/Main/MapHandler.cs" id="3_mxdch"]
 [ext_resource type="PackedScene" uid="uid://x3152krac0fs" path="res://Game/Map/Rooms/starting_map.tscn" id="4_gk2dm"]
 [ext_resource type="Resource" uid="uid://dl4o1la662ajg" path="res://Game/Entities/ValueList/ChaseEnemy.tres" id="4_vmwgv"]
+[ext_resource type="Resource" uid="uid://cuu1lycc44tma" path="res://Game/Entities/ValueList/MageEnemy1.tres" id="5_bhrp5"]
 [ext_resource type="PackedScene" uid="uid://bbjw3fvxlq53q" path="res://Game/Entities/Player/Player.tscn" id="5_gk2dm"]
 [ext_resource type="PackedScene" uid="uid://dij2unasvwyoh" path="res://Game/Map/Rooms/Area1Room1.tscn" id="7_bhrp5"]
 [ext_resource type="Script" uid="uid://cmj0dd4e41aj2" path="res://Components/Autoloads/BulletPool.cs" id="7_vmwgv"]
@@ -17,7 +18,7 @@
 position = Vector2(500, 0)
 script = ExtResource("8_ln7nw")
 ysort = NodePath("../YSort")
-DifficultyOne = [ExtResource("9_oab63"), ExtResource("10_bhrp5"), ExtResource("4_vmwgv")]
+DifficultyOne = [ExtResource("9_oab63"), ExtResource("10_bhrp5"), ExtResource("4_vmwgv"), ExtResource("5_bhrp5")]
 
 [node name="MapHandler" type="Node2D" parent="." node_paths=PackedStringArray("ysort")]
 script = ExtResource("3_mxdch")
