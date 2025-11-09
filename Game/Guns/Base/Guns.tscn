@@ -592,7 +592,6 @@ animations = [{
 script = ExtResource("1_wlfwf")
 
 [node name="MuzzleFlash" type="AnimatedSprite2D" parent="."]
-position = Vector2(20, -1)
 sprite_frames = SubResource("SpriteFrames_gkrx4")
 frame_progress = 1.0
 

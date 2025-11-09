@@ -98,5 +98,9 @@ frame_progress = 1.0
 script = ExtResource("2_vhg8u")
 
 [node name="Tail" parent="." instance=ExtResource("4_gibrn")]
+scale = Vector2(0.99999994, 0.99999994)
 width = 4.0
 default_color = Color(0.87340343, 0.8216893, 0.51323175, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2

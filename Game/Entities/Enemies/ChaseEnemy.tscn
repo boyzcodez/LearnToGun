@@ -326,19 +326,17 @@ ShootingRange = 150.0
 WalkingRange = 15.0
 FireCooldown = 3.0
 moveSpeed = 80.0
-gun = NodePath("Hide/AnimatedSpriteE/Look/Guns")
-lineOfSight = NodePath("Hide/AnimatedSpriteE/Look/sight")
+gun = NodePath("AnimatedSpriteE/Look/Guns")
+lineOfSight = NodePath("AnimatedSpriteE/Look/sight")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_htgvw")
 disabled = true
 
-[node name="Hide" type="Node2D" parent="."]
-
-[node name="Shadow" parent="Hide" instance=ExtResource("2_s3jmn")]
+[node name="Shadow" parent="." instance=ExtResource("2_s3jmn")]
 position = Vector2(0, -1)
 
-[node name="AnimatedSpriteE" type="AnimatedSprite2D" parent="Hide"]
+[node name="AnimatedSpriteE" type="AnimatedSprite2D" parent="."]
 material = ExtResource("3_nh5dd")
 position = Vector2(0, -10)
 sprite_frames = SubResource("SpriteFrames_b3ga6")
@@ -347,21 +345,21 @@ frame = 4
 frame_progress = 1.0
 script = ExtResource("6_8j4or")
 
-[node name="Look" type="Marker2D" parent="Hide/AnimatedSpriteE" node_paths=PackedStringArray("guns")]
+[node name="Look" type="Marker2D" parent="AnimatedSpriteE" node_paths=PackedStringArray("guns")]
 position = Vector2(0, 4)
 script = ExtResource("7_rhloq")
 guns = NodePath("Guns")
 
-[node name="sight" type="RayCast2D" parent="Hide/AnimatedSpriteE/Look"]
+[node name="sight" type="RayCast2D" parent="AnimatedSpriteE/Look"]
 enabled = false
 target_position = Vector2(0, 0)
 collision_mask = 16
 hit_from_inside = true
 
-[node name="Guns" parent="Hide/AnimatedSpriteE/Look" instance=ExtResource("8_pb4tq")]
+[node name="Guns" parent="AnimatedSpriteE/Look" instance=ExtResource("8_pb4tq")]
 guns = Array[Object]([ExtResource("8_g1due")])
 
-[node name="HitFlash" parent="Hide/AnimatedSpriteE" instance=ExtResource("10_pja5j")]
+[node name="HitFlash" parent="AnimatedSpriteE" instance=ExtResource("10_pja5j")]
 
 [node name="Hurtbox" parent="." node_paths=PackedStringArray("hitFlash", "animationSprite") instance=ExtResource("11_ntmpc")]
 position = Vector2(0, -7)
@@ -369,8 +367,8 @@ collision_layer = 4
 monitoring = false
 monitorable = false
 maxHealth = 3
-hitFlash = NodePath("../Hide/AnimatedSpriteE/HitFlash")
-animationSprite = NodePath("../Hide/AnimatedSpriteE")
+hitFlash = NodePath("../AnimatedSpriteE/HitFlash")
+animationSprite = NodePath("../AnimatedSpriteE")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, -2)
@@ -391,4 +389,4 @@ knockback = 300.0
 position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_g1due")
 
-[connection signal="animation_finished" from="Hide/AnimatedSpriteE" to="Hide/AnimatedSpriteE" method="_on_animation_finished"]
+[connection signal="animation_finished" from="AnimatedSpriteE" to="AnimatedSpriteE" method="_on_animation_finished"]

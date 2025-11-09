@@ -19,6 +19,7 @@ public partial class ActiveTestEnemy : Entity
 
     private NavigationAgent2D NavAgent;
 
+    private AnimatedSprite animatedSprite;
     private CollisionShape2D collisionShape;
     private Hurtbox hurtbox;
     private Timer FireRateTimer;
@@ -34,6 +35,7 @@ public partial class ActiveTestEnemy : Entity
         NavAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");
         collisionShape = GetNode<CollisionShape2D>("CollisionShape");
         hurtbox = GetNode<Hurtbox>("Hurtbox");
+        animatedSprite = GetNode<AnimatedSprite>("AnimatedSpriteE");
 
         lineOfSight.TargetPosition = new Vector2(ShootingRange/lineOfSight.Scale.X, 0);
 
@@ -66,6 +68,7 @@ public partial class ActiveTestEnemy : Entity
         {
             waitDeactivation = false;
             EmitSignal("Deactivation");
+            return;
         }
 
         fireTimer -= delta;
@@ -141,7 +144,7 @@ public partial class ActiveTestEnemy : Entity
                 ShootAtPlayer();
                 break;
             case "Ability":
-                ability.TriggerAbility();
+                AbilityAtPlayer();
                 break;
             case "Nothing":
                 GD.Print("I will do nothing");
@@ -158,6 +161,7 @@ public partial class ActiveTestEnemy : Entity
 
         for (int i = 0; i < FireTimes; i++)
         {
+            if (Dead) break;
             gun.Shoot();
 
             FireRateTimer.Start(FireRate);
@@ -165,6 +169,28 @@ public partial class ActiveTestEnemy : Entity
         }
 
         isShooting = false;
+    }
+    private async void AbilityAtPlayer()
+    {
+        if (animatedSprite != null && !Dead)
+        {
+            animatedSprite.PlayAnimation("AbilityStart", 8);
+
+            await ToSignal(animatedSprite, "animation_finished");
+        }
+        
+        if (!Dead) animatedSprite.PlayAnimation("Ability", 8);
+
+        for (int i = 0; i < FireTimes; i++)
+        {
+            if (Dead) break;
+            ability.TriggerAbility();
+
+            FireRateTimer.Start(FireRate);
+            await ToSignal(FireRateTimer, "timeout");
+        }
+
+        if (!Dead) animatedSprite.PlayAnimation("AbilityEnd", 8);
     }
 
     public void Activate()
@@ -200,8 +226,8 @@ public partial class ActiveTestEnemy : Entity
         EventBus.OnEnemyDied();
         //ZIndex = -1;
 
-        hurtbox.animationSprite.Deactivate();
-        hurtbox.animationSprite.PlayAnimation("Death", 10);
+        animatedSprite.Deactivate();
+        animatedSprite.PlayAnimation("Death", 10);
 
         if (gun != null) gun.Visible = false;
     }

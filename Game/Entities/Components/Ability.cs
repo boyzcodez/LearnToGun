@@ -12,6 +12,8 @@ public partial class Ability : Node2D
     [Export] public float RepeatWait = 0.5f;
     [Export] public float ShotWait = 0.1f;
 
+    //private CancellationTokenSource _abilityCancelSource;
+
     private List<Guns> guns = new();
     private Timer timer;
 
@@ -34,24 +36,11 @@ public partial class Ability : Node2D
     }
 
 
-    public async void TriggerAbility()
+    public void TriggerAbility()
     {
-        if (animatedSprite != null)
+        foreach (var gun in guns)
         {
-           animatedSprite.PlayAnimation("Ability", 8);
-
-            await ToSignal(animatedSprite, "animation_finished"); 
-        }
-        
-        for (int i = 0; i < Times; i++)
-        {
-            foreach (var gun in guns)
-            {
-                gun.Shoot();
-            }
-
-            timer.Start(RepeatWait);
-            await ToSignal(timer, "timeout");
+            gun.Shoot();
         }
     }
 
