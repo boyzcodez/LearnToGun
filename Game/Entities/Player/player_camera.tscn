@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bqtng3dp4vtsa"]
+[gd_scene load_steps=15 format=3 uid="uid://bqtng3dp4vtsa"]
 
 [ext_resource type="Script" uid="uid://c6vbo4viabeax" path="res://Game/Entities/Player/PlayerCamera.cs" id="1_cm6ya"]
 [ext_resource type="Script" uid="uid://bmkmywagf3m2b" path="res://Game/GUI/Ui.cs" id="2_0lmko"]
@@ -9,7 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://wjrg1fp3rtxj" path="res://Assets/GUI/HealthbarFull.png" id="5_llfvn"]
 [ext_resource type="Script" uid="uid://bbqxj6dq4iqxm" path="res://Game/GUI/Mouse.cs" id="5_mlwuw"]
 [ext_resource type="Material" uid="uid://cx5bh10h2ko2n" path="res://Game/Shaders/TrueSmooth.tres" id="6_ib0iv"]
+[ext_resource type="Script" uid="uid://dx43iset2ayc8" path="res://Game/GUI/WeaponWheel/Wheel.cs" id="6_xvah5"]
 [ext_resource type="Texture2D" uid="uid://i3l4af486wj" path="res://Assets/GUI/WeaponWheel/gun slot.png" id="7_no03y"]
+[ext_resource type="Texture2D" uid="uid://c5ndf6ekhph7" path="res://Assets/orb.png" id="8_no03y"]
+[ext_resource type="Texture2D" uid="uid://cpjd3f7y71168" path="res://Assets/orb2.png" id="9_bomse"]
+[ext_resource type="Texture2D" uid="uid://x2osdkdhfbuu" path="res://Assets/Effects/Sparks.png" id="10_dscfm"]
 
 [node name="PlayerCamera" type="Camera2D"]
 limit_enabled = false
@@ -88,7 +92,16 @@ text = "10/10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control" type="Control" parent="UI/UIManager"]
+[node name="Wheel" type="Control" parent="UI/UIManager"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_xvah5")
+
+[node name="WeaponWheel1" type="Control" parent="UI/UIManager/Wheel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -96,7 +109,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="weapon" type="TextureRect" parent="UI/UIManager/Control"]
+[node name="WeaponContainer" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel1"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -108,7 +121,16 @@ offset_bottom = 72.0
 grow_horizontal = 2
 texture = ExtResource("7_no03y")
 
-[node name="weapon2" type="TextureRect" parent="UI/UIManager/Control"]
+[node name="Icon" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel1/WeaponContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_no03y")
+
+[node name="WeaponContainer2" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel1"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -120,7 +142,15 @@ offset_bottom = 87.0
 grow_horizontal = 0
 texture = ExtResource("7_no03y")
 
-[node name="weapon3" type="TextureRect" parent="UI/UIManager/Control"]
+[node name="Icon" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel1/WeaponContainer2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WeaponContainer3" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel1"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -135,7 +165,15 @@ grow_horizontal = 0
 grow_vertical = 2
 texture = ExtResource("7_no03y")
 
-[node name="weapon4" type="TextureRect" parent="UI/UIManager/Control"]
+[node name="Icon" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel1/WeaponContainer3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WeaponContainer4" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel1"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -150,7 +188,15 @@ grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("7_no03y")
 
-[node name="weapon5" type="TextureRect" parent="UI/UIManager/Control"]
+[node name="Icon" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel1/WeaponContainer4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WeaponContainer5" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel1"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -165,7 +211,15 @@ grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("7_no03y")
 
-[node name="weapon6" type="TextureRect" parent="UI/UIManager/Control"]
+[node name="Icon" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel1/WeaponContainer5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WeaponContainer6" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel1"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -177,7 +231,15 @@ offset_bottom = -39.0
 grow_vertical = 0
 texture = ExtResource("7_no03y")
 
-[node name="weapon7" type="TextureRect" parent="UI/UIManager/Control"]
+[node name="Icon" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel1/WeaponContainer6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WeaponContainer7" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel1"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -189,13 +251,377 @@ offset_bottom = 24.0
 grow_vertical = 2
 texture = ExtResource("7_no03y")
 
-[node name="weapon8" type="TextureRect" parent="UI/UIManager/Control"]
+[node name="Icon" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel1/WeaponContainer7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WeaponContainer8" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel1"]
 layout_mode = 1
 offset_left = 120.0
 offset_top = 39.0
 offset_right = 168.0
 offset_bottom = 87.0
 texture = ExtResource("7_no03y")
+
+[node name="Icon" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel1/WeaponContainer8"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WeaponWheel2" type="Control" parent="UI/UIManager/Wheel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WeaponContainer" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -24.0
+offset_top = 24.0
+offset_right = 24.0
+offset_bottom = 72.0
+grow_horizontal = 2
+texture = ExtResource("7_no03y")
+
+[node name="Icon" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel2/WeaponContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_bomse")
+
+[node name="WeaponContainer2" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel2"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -168.0
+offset_top = 39.0
+offset_right = -120.0
+offset_bottom = 87.0
+grow_horizontal = 0
+texture = ExtResource("7_no03y")
+
+[node name="Icon" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel2/WeaponContainer2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WeaponContainer3" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel2"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -138.0
+offset_top = -24.0
+offset_right = -90.0
+offset_bottom = 24.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("7_no03y")
+
+[node name="Icon" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel2/WeaponContainer3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WeaponContainer4" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel2"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -168.0
+offset_top = -87.0
+offset_right = -120.0
+offset_bottom = -39.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("7_no03y")
+
+[node name="Icon" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel2/WeaponContainer4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WeaponContainer5" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel2"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -72.0
+offset_right = 24.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("7_no03y")
+
+[node name="Icon" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel2/WeaponContainer5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WeaponContainer6" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel2"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 120.0
+offset_top = -87.0
+offset_right = 168.0
+offset_bottom = -39.0
+grow_vertical = 0
+texture = ExtResource("7_no03y")
+
+[node name="Icon" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel2/WeaponContainer6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WeaponContainer7" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel2"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 90.0
+offset_top = -24.0
+offset_right = 138.0
+offset_bottom = 24.0
+grow_vertical = 2
+texture = ExtResource("7_no03y")
+
+[node name="Icon" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel2/WeaponContainer7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WeaponContainer8" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel2"]
+layout_mode = 1
+offset_left = 120.0
+offset_top = 39.0
+offset_right = 168.0
+offset_bottom = 87.0
+texture = ExtResource("7_no03y")
+
+[node name="Icon" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel2/WeaponContainer8"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WeaponWheel3" type="Control" parent="UI/UIManager/Wheel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WeaponContainer" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel3"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -24.0
+offset_top = 24.0
+offset_right = 24.0
+offset_bottom = 72.0
+grow_horizontal = 2
+texture = ExtResource("7_no03y")
+
+[node name="Icon" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel3/WeaponContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_dscfm")
+
+[node name="WeaponContainer2" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel3"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -168.0
+offset_top = 39.0
+offset_right = -120.0
+offset_bottom = 87.0
+grow_horizontal = 0
+texture = ExtResource("7_no03y")
+
+[node name="Icon" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel3/WeaponContainer2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WeaponContainer3" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel3"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -138.0
+offset_top = -24.0
+offset_right = -90.0
+offset_bottom = 24.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("7_no03y")
+
+[node name="Icon" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel3/WeaponContainer3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WeaponContainer4" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel3"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -168.0
+offset_top = -87.0
+offset_right = -120.0
+offset_bottom = -39.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("7_no03y")
+
+[node name="Icon" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel3/WeaponContainer4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WeaponContainer5" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel3"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -72.0
+offset_right = 24.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("7_no03y")
+
+[node name="Icon" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel3/WeaponContainer5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WeaponContainer6" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel3"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 120.0
+offset_top = -87.0
+offset_right = 168.0
+offset_bottom = -39.0
+grow_vertical = 0
+texture = ExtResource("7_no03y")
+
+[node name="Icon" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel3/WeaponContainer6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WeaponContainer7" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel3"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 90.0
+offset_top = -24.0
+offset_right = 138.0
+offset_bottom = 24.0
+grow_vertical = 2
+texture = ExtResource("7_no03y")
+
+[node name="Icon" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel3/WeaponContainer7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WeaponContainer8" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel3"]
+layout_mode = 1
+offset_left = 120.0
+offset_top = 39.0
+offset_right = 168.0
+offset_bottom = 87.0
+texture = ExtResource("7_no03y")
+
+[node name="Icon" type="TextureRect" parent="UI/UIManager/Wheel/WeaponWheel3/WeaponContainer8"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="FPS" type="Label" parent="UI"]
 offset_right = 47.0
