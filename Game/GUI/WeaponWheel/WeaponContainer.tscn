@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://otjdapunbruo"]
+
+[ext_resource type="Texture2D" uid="uid://i3l4af486wj" path="res://Assets/GUI/WeaponWheel/gun slot.png" id="1_ehek2"]
+[ext_resource type="Script" uid="uid://bc12i5vu5774t" path="res://Game/GUI/WeaponWheel/WeaponContainer.cs" id="2_42qaf"]
+
+[node name="WeaponContainer" type="TextureRect"]
+offset_right = 48.0
+offset_bottom = 48.0
+texture = ExtResource("1_ehek2")
+script = ExtResource("2_42qaf")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

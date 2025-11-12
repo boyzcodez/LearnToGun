@@ -1,12 +1,15 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 public partial class Wheel : Control
 {
 	private Control[] wheels = new Control[3];
 	private int currentWheel = 0;
 	private TextureRect highlighted = null;
+	private List<WeaponContainer> icons = new();
 
 	// highlight color and normal color
 	private readonly Color normalColor = new Color(1, 1, 1, 1);
@@ -18,6 +21,14 @@ public partial class Wheel : Control
 		wheels[0] = GetNodeOrNull<Control>("WeaponWheel1");
 		wheels[1] = GetNodeOrNull<Control>("WeaponWheel2");
 		wheels[2] = GetNodeOrNull<Control>("WeaponWheel3");
+
+		foreach (var wheel in wheels)
+		{
+			foreach (WeaponContainer icon in wheel.GetChildren())
+			{
+				icons.Add(icon);
+			}
+		}
 
 		// Start hidden; we'll show while Tab is held
 		Visible = false;
@@ -162,6 +173,9 @@ public partial class Wheel : Control
 		if (highlighted != null && IsInstanceValid(highlighted))
 		{
 			GD.Print($"Selected: {highlighted.Name}");
+
+			if (icons.Contains(highlighted)) GD.Print("this worked 11111");
+			else GD.Print("this worked 2");
 		}
 		else
 		{
