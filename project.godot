@@ -53,6 +53,7 @@ BulletPool=""
 YSort=""
 Spawner=""
 GunsHandler=""
+UIManager=""
 
 [input]
 

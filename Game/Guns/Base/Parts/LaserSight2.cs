@@ -7,14 +7,14 @@ public partial class LaserSight2 : Node2D
     [Export] private float visualOffsetPx = 0.0f;
 
     private ShaderMaterial shaderMaterial;
-    private AnimatedSprite2D reddot;
-    private Sprite2D lineSprite;
+    [Export] private AnimatedSprite2D reddot;
+    [Export] private Sprite2D lineSprite;
     private RayCast2D raycast;
 
     public override void _Ready()
     {
-        reddot = GetNode<AnimatedSprite2D>("Reddot");
-        lineSprite = GetNode<Sprite2D>("LineSprite");
+        //reddot = GetNode<AnimatedSprite2D>("Reddot");
+        //lineSprite = GetNode<Sprite2D>("LineSprite");
         raycast = GetNode<RayCast2D>("Raycast");
         shaderMaterial = lineSprite.Material as ShaderMaterial;
 

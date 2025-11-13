@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://e2jpk6hxn1ls"]
+
+[ext_resource type="Script" uid="uid://cjdsjaml44rs2" path="res://Game/Entities/Player/LookAt.cs" id="1_tjuch"]
+
+[node name="LookAt" type="Marker2D"]
+script = ExtResource("1_tjuch")
+SnapDegrees = 9.0

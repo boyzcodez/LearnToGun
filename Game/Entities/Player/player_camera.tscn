@@ -19,7 +19,7 @@ script = ExtResource("1_cm6ya")
 [node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource("2_0lmko")
 
-[node name="UIManager" type="Control" parent="UI"]
+[node name="UIManager" type="Control" parent="UI" groups=["UIManager"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

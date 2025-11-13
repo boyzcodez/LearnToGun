@@ -49,8 +49,10 @@ animations = [{
 "speed": 14.0
 }]
 
-[node name="LaserSight" type="Node2D"]
+[node name="LaserSight" type="Node2D" node_paths=PackedStringArray("reddot", "lineSprite")]
 script = ExtResource("1_q5o2i")
+reddot = NodePath("Reddot")
+lineSprite = NodePath("LineSprite")
 
 [node name="Raycast" type="RayCast2D" parent="."]
 target_position = Vector2(500, 0)

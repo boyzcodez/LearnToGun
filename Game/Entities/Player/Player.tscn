@@ -6,12 +6,12 @@
 [ext_resource type="Material" uid="uid://w5yw3e3gudc3" path="res://Game/Entities/Player/HitFlash.tres" id="3_akrrf"]
 [ext_resource type="Script" uid="uid://b1ak4u4c4cm3j" path="res://Game/Entities/Player/Direction.cs" id="4_vytja"]
 [ext_resource type="Script" uid="uid://c76e6opdvi84r" path="res://Game/Entities/Player/AnimatedSpriteC.cs" id="5_wg23h"]
-[ext_resource type="Script" uid="uid://cjdsjaml44rs2" path="res://Game/Entities/Player/LookAt.cs" id="6_4ddeg"]
 [ext_resource type="PackedScene" uid="uid://bp3lx4f7c5wd1" path="res://Components/Etc/hit_flash.tscn" id="7_akrrf"]
 [ext_resource type="PackedScene" uid="uid://vmtiw08cr30b" path="res://Components/DamageComps/hurtbox.tscn" id="7_vh1aq"]
 [ext_resource type="Script" uid="uid://bgxp42213x1kw" path="res://Game/Entities/Player/GunsHandler.cs" id="8_3ylnx"]
 [ext_resource type="Script" uid="uid://nqkf4jrg61gb" path="res://Game/Entities/Player/LookAtSharp.cs" id="9_vpkgm"]
 [ext_resource type="Resource" uid="uid://du4ihic1fxweh" path="res://Game/Guns/Player/Pistol/Levels/PistolData.tres" id="10_iwdm0"]
+[ext_resource type="PackedScene" uid="uid://e2jpk6hxn1ls" path="res://Game/Entities/Player/LookAt.tscn" id="11_vpkgm"]
 [ext_resource type="Resource" uid="uid://sfukcc8s84k4" path="res://Game/Guns/Player/Shotgun/Levels/ShotgunDataLVL3.tres" id="12_2gvph"]
 [ext_resource type="Script" uid="uid://c73kpxw2e5ynj" path="res://Game/Entities/Player/WarpDash.cs" id="12_qwver"]
 [ext_resource type="PackedScene" uid="uid://mg8q0xeodew0" path="res://Game/Guns/Base/Guns.tscn" id="13_2gvph"]
@@ -1025,19 +1025,21 @@ z_index = -1
 position = Vector2(0, -8)
 script = ExtResource("9_vpkgm")
 
-[node name="LaserSight" parent="LookAtSharp" instance=ExtResource("14_esr38")]
+[node name="LookAt2" parent="." instance=ExtResource("11_vpkgm")]
+position = Vector2(0, -8)
+SnapDegrees = 2.0
+
+[node name="LaserSight" parent="LookAt2" instance=ExtResource("14_esr38")]
 position = Vector2(17, 0)
 
-[node name="LookAt" type="Marker2D" parent="."]
+[node name="LookAt" parent="." instance=ExtResource("11_vpkgm")]
 position = Vector2(0, -6)
-script = ExtResource("6_4ddeg")
-SnapDegrees = 9.0
 
 [node name="Guns" parent="LookAt" node_paths=PackedStringArray("laserSight") instance=ExtResource("13_2gvph")]
 position = Vector2(6, 0)
 guns = Array[Object]([ExtResource("10_iwdm0"), ExtResource("12_2gvph"), ExtResource("13_vcc71"), ExtResource("16_0xjwd")])
 active = true
-laserSight = NodePath("../../LookAtSharp/LaserSight")
+laserSight = NodePath("../../LookAt2/LaserSight")
 
 [node name="Hurtbox" parent="." node_paths=PackedStringArray("hitFlash", "animationSprite") instance=ExtResource("7_vh1aq")]
 position = Vector2(0, -9)

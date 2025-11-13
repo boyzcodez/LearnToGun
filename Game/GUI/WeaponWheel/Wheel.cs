@@ -15,6 +15,7 @@ public partial class Wheel : Control
 	private readonly Color highlightColor = new Color(1, 1, 0.6f, 1);
 
 	private Guns playerGuns;
+	public bool tabPressed = false;
 
 	public override void _Ready()
 	{
@@ -47,8 +48,6 @@ public partial class Wheel : Control
 
 	public override void _Process(double delta)
 	{
-		bool tabPressed = Input.IsActionPressed("tab");
-
 		if (tabPressed)
 		{
 			// show while held
@@ -120,7 +119,7 @@ public partial class Wheel : Control
 		}
 	}
 
-	private void UpdateHighlight()
+	public void UpdateHighlight()
 	{
 		var wheel = wheels[currentWheel];
 		if (wheel == null)
@@ -170,7 +169,7 @@ public partial class Wheel : Control
 		}
 	}
 
-	private void ClearHighlight()
+	public void ClearHighlight()
 	{
 		if (highlighted != null && IsInstanceValid(highlighted))
 			highlighted.Modulate = normalColor;
@@ -178,7 +177,7 @@ public partial class Wheel : Control
 		highlighted = null;
 	}
 
-	private void OnTabReleased()
+	public void OnTabReleased()
 	{
 		if (highlighted != null && IsInstanceValid(highlighted) && highlighted.gunData != null)
 		{

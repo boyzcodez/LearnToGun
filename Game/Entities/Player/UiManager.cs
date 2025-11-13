@@ -3,6 +3,7 @@ using System;
 
 public partial class UiManager : Control
 {
+    public Wheel wheel;
     private Label ammo;
     private Label health;
     private Label money;
@@ -13,6 +14,8 @@ public partial class UiManager : Control
     {
         ammo = GetNode<Label>("Ammo");
         money = GetNode<Label>("Money");
+
+        wheel = GetNode<Wheel>("Wheel");
 
         EventBus.UpdateAmmo += UpdateAmmo;
         EventBus.GainMoney += UpdateMoney;
