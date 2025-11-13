@@ -1012,7 +1012,7 @@ animatedSprite = NodePath("..")
 
 [node name="HitFlash" parent="AnimatedSprite" instance=ExtResource("7_akrrf")]
 
-[node name="GunsHandler" type="Node" parent="." node_paths=PackedStringArray("guns")]
+[node name="GunsHandler" type="Node" parent="." node_paths=PackedStringArray("guns") groups=["GunsHandler"]]
 script = ExtResource("8_3ylnx")
 guns = NodePath("../LookAt/Guns")
 

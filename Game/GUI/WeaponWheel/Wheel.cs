@@ -2,21 +2,24 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 
 public partial class Wheel : Control
 {
 	private Control[] wheels = new Control[3];
 	private int currentWheel = 0;
-	private TextureRect highlighted = null;
+	private WeaponContainer highlighted = null;
 	private List<WeaponContainer> icons = new();
 
 	// highlight color and normal color
 	private readonly Color normalColor = new Color(1, 1, 1, 1);
 	private readonly Color highlightColor = new Color(1, 1, 0.6f, 1);
 
+	private Guns playerGuns;
+
 	public override void _Ready()
 	{
+		var gunsHandler = GetTree().GetFirstNodeInGroup("GunsHandler") as GunsHandler;
+		playerGuns = gunsHandler.guns;
 		// Try to load the three child wheels by name. If a node is missing, leave null.
 		wheels[0] = GetNodeOrNull<Control>("WeaponWheel1");
 		wheels[1] = GetNodeOrNull<Control>("WeaponWheel2");
@@ -33,6 +36,13 @@ public partial class Wheel : Control
 		// Start hidden; we'll show while Tab is held
 		Visible = false;
 		UpdateWheelVisibility();
+
+		var guns = playerGuns.guns;
+
+		for (int i = 0; i < guns.Length; i++)
+        {
+			icons[i].SetContainerData(guns[i], i);
+        }
 	}
 
 	public override void _Process(double delta)
@@ -117,7 +127,7 @@ public partial class Wheel : Control
 			return;
 
 		// collect TextureRect children (the weapon containers are TextureRect nodes)
-		var texRects = wheel.GetChildren().OfType<TextureRect>().ToArray();
+		var texRects = wheel.GetChildren().OfType<WeaponContainer>().ToArray();
 
 		if (texRects.Length == 0)
 			return;
@@ -125,7 +135,7 @@ public partial class Wheel : Control
 		Vector2 mousePos = GetViewport().GetMousePosition();
 
 		// prefer exact hover (mouse inside rect) otherwise use closest center
-		TextureRect best = null;
+		WeaponContainer best = null;
 		float bestDist = float.MaxValue;
 
 		foreach (var tr in texRects)
@@ -170,12 +180,11 @@ public partial class Wheel : Control
 
 	private void OnTabReleased()
 	{
-		if (highlighted != null && IsInstanceValid(highlighted))
+		if (highlighted != null && IsInstanceValid(highlighted) && highlighted.gunData != null)
 		{
-			GD.Print($"Selected: {highlighted.Name}");
-
-			if (icons.Contains(highlighted)) GD.Print("this worked 11111");
-			else GD.Print("this worked 2");
+			GD.Print($"Selected: {highlighted.gunData.GunName}");
+			
+			playerGuns.EquipGun(highlighted.index);
 		}
 		else
 		{

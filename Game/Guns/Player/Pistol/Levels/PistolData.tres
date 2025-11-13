@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="GunData" load_steps=3 format=3 uid="uid://du4ihic1fxweh"]
+[gd_resource type="Resource" script_class="GunData" load_steps=4 format=3 uid="uid://du4ihic1fxweh"]
 
 [ext_resource type="Script" uid="uid://bf05vlwwwrvul" path="res://Game/Guns/Base/Parts/GunData.cs" id="1_1ql6e"]
 [ext_resource type="PackedScene" uid="uid://c2lf3revdfxi0" path="res://Game/Guns/Player/Pistol/NewBulletBase.tscn" id="1_y8e7k"]
+[ext_resource type="Texture2D" uid="uid://dhqljjks25ay0" path="res://Assets/Guns/Guns/Pistol/early weapon icons_1.png" id="2_s8fxx"]
 
 [resource]
 script = ExtResource("1_1ql6e")
@@ -14,5 +15,6 @@ CurrentAmmo = 30
 MaxAmmo = 30
 FireRate = 0.3
 RandomFactor = 0.1
+icon = ExtResource("2_s8fxx")
 rotate = true
 metadata/_custom_type_script = "uid://bf05vlwwwrvul"

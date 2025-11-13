@@ -3,7 +3,7 @@ using System;
 
 public partial class GunsHandler : Node
 {
-    [Export] private Guns guns;
+    [Export] public Guns guns;
     private Timer timer;
     private bool canSwitch = true;
 
@@ -42,6 +42,11 @@ public partial class GunsHandler : Node
         {
             guns.shooting = false;
         }
+    }
+    
+    public void AddNewGun()
+    {
+        GD.Print("here will added a new gun?");
     }
 
 

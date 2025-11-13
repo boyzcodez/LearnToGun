@@ -23,7 +23,7 @@ public partial class GunData : Resource
     [Export] public int BulletCount { get; set; } = 1;
     [Export] public float SpreadAngle { get; set; } = 0f;
     [Export] public float RandomFactor { get; set; } = 0f;
-    [Export] public Texture2D GunSprite { get; set; }
+    [Export] public Texture2D icon { get; set; }
     [Export] public bool isEnemy { get; set; } = false;
     [Export] public bool rotate { get; set; } = false;
     [Export] public bool LaserSight { get; set; } = false;

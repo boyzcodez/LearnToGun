@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="GunData" load_steps=3 format=3 uid="uid://ieag318h1oao"]
+[gd_resource type="Resource" script_class="GunData" load_steps=4 format=3 uid="uid://ieag318h1oao"]
 
 [ext_resource type="Script" uid="uid://bf05vlwwwrvul" path="res://Game/Guns/Base/Parts/GunData.cs" id="1_4ei4g"]
 [ext_resource type="PackedScene" uid="uid://dw6p3nxi5jpux" path="res://Game/Guns/Player/Rifle/RifleBullet.tscn" id="1_fyjhw"]
+[ext_resource type="Texture2D" uid="uid://dj103twqxd1b4" path="res://Assets/Guns/Guns/Rifle/early weapon icons_4.png" id="2_n4775"]
 
 [resource]
 script = ExtResource("1_4ei4g")
@@ -15,5 +16,6 @@ CurrentAmmo = 100
 MaxAmmo = 100
 FireRate = 0.1
 RandomFactor = 0.2
+icon = ExtResource("2_n4775")
 rotate = true
 metadata/_custom_type_script = "uid://bf05vlwwwrvul"
