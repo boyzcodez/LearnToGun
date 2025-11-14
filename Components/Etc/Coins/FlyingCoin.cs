@@ -27,7 +27,7 @@ public partial class FlyingCoin : AnimatedSprite2D
         GlobalPosition += vel * (float)delta;
 
         float distanceToPlayer = GlobalPosition.DistanceTo(playr.GlobalPosition);
-        if (distanceToPlayer < 20f)
+        if (distanceToPlayer < 8f)
         {
             active = false;
             end();

@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=4 uid="uid://x3152krac0fs"]
+[gd_scene load_steps=5 format=4 uid="uid://x3152krac0fs"]
 
 [ext_resource type="TileSet" uid="uid://bqp2lecli7mx7" path="res://Game/Map/TilsetData/Testsite.tres" id="1_2ufwp"]
 [ext_resource type="Script" uid="uid://beyvg3tfxd6cr" path="res://Game/Map/AutoCollisionWalls.cs" id="2_owkgx"]
 [ext_resource type="PackedScene" uid="uid://dtl2ydqrnh23i" path="res://Components/WarpEffects/portal_machine.tscn" id="4_2ufwp"]
-[ext_resource type="PackedScene" uid="uid://c03wc70tgc418" path="res://Components/Etc/Crate/DestructibleCrate.tscn" id="4_84hcq"]
 [ext_resource type="PackedScene" uid="uid://u1aqua33b3uc" path="res://Game/Entities/TestEnemies/scarecrow.tscn" id="6_wk4oc"]
 
 [node name="StartingMap" type="Node2D"]
@@ -25,33 +24,6 @@ tile_set = ExtResource("1_2ufwp")
 
 [node name="Crates" type="Node2D" parent="."]
 y_sort_enabled = true
-
-[node name="DestructibleCrate" parent="Crates" instance=ExtResource("4_84hcq")]
-position = Vector2(118, -93)
-
-[node name="DestructibleCrate2" parent="Crates" instance=ExtResource("4_84hcq")]
-position = Vector2(118, -81)
-
-[node name="DestructibleCrate3" parent="Crates" instance=ExtResource("4_84hcq")]
-position = Vector2(118, -69)
-
-[node name="DestructibleCrate4" parent="Crates" instance=ExtResource("4_84hcq")]
-position = Vector2(-110, -37)
-
-[node name="DestructibleCrate5" parent="Crates" instance=ExtResource("4_84hcq")]
-position = Vector2(-110, -25)
-
-[node name="DestructibleCrate6" parent="Crates" instance=ExtResource("4_84hcq")]
-position = Vector2(120, 68)
-
-[node name="DestructibleCrate7" parent="Crates" instance=ExtResource("4_84hcq")]
-position = Vector2(120, 56)
-
-[node name="DestructibleCrate8" parent="Crates" instance=ExtResource("4_84hcq")]
-position = Vector2(104, 68)
-
-[node name="DestructibleCrate9" parent="Crates" instance=ExtResource("4_84hcq")]
-position = Vector2(104, 56)
 
 [node name="PortalMachine" parent="." instance=ExtResource("4_2ufwp")]
 position = Vector2(0, -120)
