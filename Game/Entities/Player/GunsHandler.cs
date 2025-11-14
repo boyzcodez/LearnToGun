@@ -55,6 +55,8 @@ public partial class GunsHandler : Node
     }
     public override void _Input(InputEvent @event)
     {
+        if (locked) return;
+        
         if (@event.IsActionPressed("attack") & guns != null)
         {
             guns.shooting = true;

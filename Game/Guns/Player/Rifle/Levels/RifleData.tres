@@ -7,6 +7,8 @@
 [resource]
 script = ExtResource("1_4ei4g")
 GunName = "Rifle"
+currentXP = 20
+maxXP = 100
 Knockback = 30.0
 BulletSpeed = 500.0
 ShootPosition = Vector2(21, -3)

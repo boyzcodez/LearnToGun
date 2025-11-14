@@ -14,6 +14,7 @@ public partial class Wheel : Control
 	private readonly Color normalColor = new Color(1, 1, 1, 1);
 	private readonly Color highlightColor = new Color(1, 1, 0.6f, 1);
 
+	private InfoPanel infoPanel;
 	private Guns playerGuns;
 	public bool tabPressed = false;
 
@@ -25,6 +26,9 @@ public partial class Wheel : Control
 		wheels[0] = GetNodeOrNull<Control>("WeaponWheel1");
 		wheels[1] = GetNodeOrNull<Control>("WeaponWheel2");
 		wheels[2] = GetNodeOrNull<Control>("WeaponWheel3");
+
+		infoPanel = GetNode<InfoPanel>("InfoPanel");
+		infoPanel.Visible = false;
 
 		foreach (var wheel in wheels)
 		{
@@ -167,6 +171,16 @@ public partial class Wheel : Control
 			if (highlighted != null && IsInstanceValid(highlighted))
 				highlighted.Modulate = highlightColor;
 		}
+
+		if (highlighted.gunData != null)
+        {
+			infoPanel.Visible = true;
+            infoPanel.UpdateInfo(highlighted.gunData);
+        }
+		else
+        {
+            infoPanel.Visible = false;
+        }
 	}
 
 	public void ClearHighlight()
