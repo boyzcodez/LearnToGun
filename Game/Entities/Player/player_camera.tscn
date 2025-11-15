@@ -484,7 +484,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.051970966, 0.05197096, 0.05197095, 1)
+color = Color(0.050980393, 0.047058824, 0.13725491, 1)
 
 [node name="MouseLayer" type="CanvasLayer" parent="."]
 layer = 50

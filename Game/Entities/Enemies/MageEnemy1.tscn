@@ -562,7 +562,7 @@ position = Vector2(0, -1)
 material = ExtResource("3_aupr6")
 position = Vector2(0, -15)
 sprite_frames = SubResource("SpriteFrames_b3ga6")
-animation = &"DeathBack"
+animation = &"RunFront"
 script = ExtResource("5_bgaue")
 
 [node name="Look" type="Marker2D" parent="AnimatedSpriteE"]
@@ -579,7 +579,7 @@ hit_from_inside = true
 
 [node name="Ability" parent="." node_paths=PackedStringArray("animatedSprite") instance=ExtResource("9_pocl1")]
 visible = false
-position = Vector2(0, -15)
+position = Vector2(-5, 0)
 animatedSprite = NodePath("../AnimatedSpriteE")
 Times = 2
 
