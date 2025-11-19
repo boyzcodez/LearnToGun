@@ -1,10 +1,7 @@
-[gd_scene load_steps=9 format=4 uid="uid://dij2unasvwyoh"]
+[gd_scene load_steps=6 format=4 uid="uid://dij2unasvwyoh"]
 
 [ext_resource type="TileSet" uid="uid://bqp2lecli7mx7" path="res://Game/Map/TilsetData/Testsite.tres" id="1_wq4m2"]
 [ext_resource type="PackedScene" uid="uid://c03wc70tgc418" path="res://Components/Etc/Crate/DestructibleCrate.tscn" id="2_wq4m2"]
-[ext_resource type="PackedScene" uid="uid://8b0q45ntah7g" path="res://Components/Etc/Spawner/Spawnpoint.tscn" id="3_264xr"]
-[ext_resource type="Script" uid="uid://7bvcy80ljd54" path="res://Game/Map/Rooms/Rounds.cs" id="3_wq4m2"]
-[ext_resource type="PackedScene" uid="uid://chw3mi6a4pbhu" path="res://Game/Map/Rooms/Spawnpoints.tscn" id="4_1mht2"]
 [ext_resource type="PackedScene" uid="uid://dtl2ydqrnh23i" path="res://Components/WarpEffects/portal_machine.tscn" id="5_1mht2"]
 [ext_resource type="Script" uid="uid://dbg1hnfcj5p07" path="res://Game/Map/Rooms/Spawners.cs" id="7_myuwv"]
 
@@ -76,45 +73,6 @@ position = Vector2(-40, 85)
 
 [node name="DestructibleCrate4" parent="Crates" instance=ExtResource("2_wq4m2")]
 position = Vector2(-40, 73)
-
-[node name="Rounds" type="Node2D" parent="."]
-script = ExtResource("3_wq4m2")
-
-[node name="Spawnpoints" parent="Rounds" instance=ExtResource("4_1mht2")]
-
-[node name="Spawnpoint" parent="Rounds/Spawnpoints" instance=ExtResource("3_264xr")]
-z_index = -1
-position = Vector2(15, -89)
-
-[node name="Spawnpoint2" parent="Rounds/Spawnpoints" instance=ExtResource("3_264xr")]
-z_index = -1
-position = Vector2(94, 89)
-
-[node name="Spawnpoint3" parent="Rounds/Spawnpoints" instance=ExtResource("3_264xr")]
-z_index = -1
-position = Vector2(-83, 18)
-Enemy = "MageEnemy1"
-
-[node name="Spawnpoints2" parent="Rounds" instance=ExtResource("4_1mht2")]
-
-[node name="Spawnpoint" parent="Rounds/Spawnpoints2" instance=ExtResource("3_264xr")]
-z_index = -1
-position = Vector2(-94, -94)
-Enemy = "ShotgunEnemy"
-
-[node name="Spawnpoint2" parent="Rounds/Spawnpoints2" instance=ExtResource("3_264xr")]
-z_index = -1
-position = Vector2(100, 52)
-
-[node name="Spawnpoints3" parent="Rounds" instance=ExtResource("4_1mht2")]
-
-[node name="Spawnpoint" parent="Rounds/Spawnpoints3" instance=ExtResource("3_264xr")]
-z_index = -1
-position = Vector2(79, -97)
-
-[node name="Spawnpoint2" parent="Rounds/Spawnpoints3" instance=ExtResource("3_264xr")]
-z_index = -1
-position = Vector2(45, 88)
 
 [node name="PortalMachine" parent="." instance=ExtResource("5_1mht2")]
 
