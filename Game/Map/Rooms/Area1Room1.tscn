@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://dij2unasvwyoh"]
+[gd_scene load_steps=9 format=4 uid="uid://dij2unasvwyoh"]
 
 [ext_resource type="TileSet" uid="uid://bqp2lecli7mx7" path="res://Game/Map/TilsetData/Testsite.tres" id="1_wq4m2"]
 [ext_resource type="PackedScene" uid="uid://c03wc70tgc418" path="res://Components/Etc/Crate/DestructibleCrate.tscn" id="2_wq4m2"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://7bvcy80ljd54" path="res://Game/Map/Rooms/Rounds.cs" id="3_wq4m2"]
 [ext_resource type="PackedScene" uid="uid://chw3mi6a4pbhu" path="res://Game/Map/Rooms/Spawnpoints.tscn" id="4_1mht2"]
 [ext_resource type="PackedScene" uid="uid://dtl2ydqrnh23i" path="res://Components/WarpEffects/portal_machine.tscn" id="5_1mht2"]
+[ext_resource type="Script" uid="uid://dbg1hnfcj5p07" path="res://Game/Map/Rooms/Spawners.cs" id="7_myuwv"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ru6ok"]
 vertices = PackedVector2Array(1, -1, 95, -1, 153, 145, 145, 145, -49, 111, -49, 41, 153, -153, 95, -87, -153, -153, 1, -87, -81, -119, -81, -49, -143, -119, -153, 153, -143, -49, -111, 41, -111, 111, 145, 153)
@@ -116,4 +117,24 @@ z_index = -1
 position = Vector2(45, 88)
 
 [node name="PortalMachine" parent="." instance=ExtResource("5_1mht2")]
-active = false
+
+[node name="Spawners" type="Node2D" parent="."]
+script = ExtResource("7_myuwv")
+
+[node name="SpawnpointMarker" type="Marker2D" parent="Spawners"]
+position = Vector2(115, 0)
+
+[node name="SpawnpointMarker2" type="Marker2D" parent="Spawners"]
+position = Vector2(115, -50)
+
+[node name="SpawnpointMarker3" type="Marker2D" parent="Spawners"]
+position = Vector2(-33, 133)
+
+[node name="SpawnpointMarker4" type="Marker2D" parent="Spawners"]
+position = Vector2(-111, -25)
+
+[node name="SpawnpointMarker5" type="Marker2D" parent="Spawners"]
+position = Vector2(1, -138)
+
+[node name="SpawnpointMarker6" type="Marker2D" parent="Spawners"]
+position = Vector2(103, 137)

@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Numerics;
 
 public static class EventBus
 {
@@ -15,6 +17,8 @@ public static class EventBus
     public static event Action<int> GainMoney;
     public static event Action<int, int> UpdateAmmo;
     public static event Action<float> ScreenShake;
+
+    public static event Action<List<Godot.Vector2>> StartRound;
 
     public static int dangerValue = 0;
     public static bool gameOn = false;
@@ -34,6 +38,8 @@ public static class EventBus
         Transition?.Invoke();
     public static void TriggerMapSwitch() =>
         MapSwitch?.Invoke();
+    public static void TriggerRound(List<Godot.Vector2> spots) =>
+        StartRound?.Invoke(spots);
     public static void TriggerWave() =>
         StartWave?.Invoke();
     public static void TriggerEndOfWave() =>

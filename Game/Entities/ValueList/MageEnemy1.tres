@@ -7,5 +7,5 @@
 script = ExtResource("1_1jl4n")
 name = "MageEnemy1"
 enemyScene = ExtResource("1_l3vtq")
-value = 5
+value = 4
 metadata/_custom_type_script = "uid://bosj4dr7i34es"

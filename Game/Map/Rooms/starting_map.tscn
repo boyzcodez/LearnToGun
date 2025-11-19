@@ -27,6 +27,7 @@ y_sort_enabled = true
 
 [node name="PortalMachine" parent="." instance=ExtResource("4_2ufwp")]
 position = Vector2(0, -120)
+active = true
 
 [node name="Scarecrow" parent="." instance=ExtResource("6_wk4oc")]
 position = Vector2(192, -25)

@@ -2,7 +2,7 @@ using Godot;
 
 public partial class PortalMachine : Node2D
 {
-    [Export] private bool active = true;
+    [Export] private bool active = false;
 
     private bool triggered = false;
     private CanvasGroup sprite;
