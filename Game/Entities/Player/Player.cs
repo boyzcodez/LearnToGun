@@ -5,7 +5,6 @@ using Godot;
 [GlobalClass]
 public partial class Player : Entity
 {
-    //[Export] public PlayerWeaponManager weaponManager;
     private const float SPEED = 120f;
     private const float DODGE_SPEED = 200f;
     private const float DODGE_DURATION = 0.4f;
@@ -62,8 +61,6 @@ public partial class Player : Entity
             }
         }
 
-        //GlobalPosition.Round();
-
         MoveAndSlide();
     }
 
@@ -98,8 +95,7 @@ public partial class Player : Entity
         {
             var dodgeSpeed = Mathf.Lerp(currentSpeed, SPEED, delta * 8f);
             Velocity = dodgeDirection * dodgeSpeed;
-            // Velocity = Vector2.Zero; // Stop movement after dodge
-            // dodgeDirection = Vector2.Zero;
+            
             hurtbox.immune = false;
             warpDashNode.CallDeferred("Deactivated");
             dashTimer.Start(dashCooldown);
