@@ -147,7 +147,10 @@ public partial class EnemySpawner : Node2D
     private void OnEnemyDied()
     {
         activeEnemies -= 1;
-        if (currentRound >= rounds) EventBus.TriggerEndOfRound();
+
+        GD.Print(activeEnemies);
+
+        if (currentRound >= rounds && activeEnemies <= 0) EventBus.TriggerEndOfRound();
         else if  (activeEnemies == 0) BeginRound();
     }
 
