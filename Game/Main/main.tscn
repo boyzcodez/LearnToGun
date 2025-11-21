@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://clqw4um34fajs"]
+[gd_scene load_steps=13 format=3 uid="uid://clqw4um34fajs"]
 
+[ext_resource type="Script" uid="uid://cdlnphhio2rp2" path="res://Game/Main/Main.cs" id="1_1r4f6"]
 [ext_resource type="Script" uid="uid://xdubo0fshbcy" path="res://Game/Main/MapHandler.cs" id="3_mxdch"]
 [ext_resource type="PackedScene" uid="uid://x3152krac0fs" path="res://Game/Map/Rooms/starting_map.tscn" id="4_gk2dm"]
 [ext_resource type="Resource" uid="uid://dl4o1la662ajg" path="res://Game/Entities/ValueList/ChaseEnemy.tres" id="4_vmwgv"]
@@ -13,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bqtng3dp4vtsa" path="res://Game/Entities/Player/player_camera.tscn" id="11_bhrp5"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_1r4f6")
 
 [node name="EnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("ysort") groups=["Spawner"]]
 position = Vector2(500, 0)
