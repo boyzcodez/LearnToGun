@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dw6p3nxi5jpux"]
+[gd_scene load_steps=17 format=3 uid="uid://dw6p3nxi5jpux"]
 
 [ext_resource type="Script" uid="uid://de44iwnl6kvq1" path="res://Game/Guns/Base/Bullets/Bullet.cs" id="1_2re2k"]
 [ext_resource type="Script" uid="uid://bvmvokgsgqp04" path="res://Components/BulletComps/BulletBehaviors/Scripts/SingleHit.cs" id="2_o4ioj"]
@@ -23,7 +23,11 @@ size = Vector2(8, 6)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_56boo"]
 atlas = ExtResource("2_srlgj")
-region = Rect2(0, 384, 64, 64)
+region = Rect2(0, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amcmt"]
+atlas = ExtResource("2_srlgj")
+region = Rect2(64, 320, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o4ioj"]
 atlas = ExtResource("2_srlgj")
@@ -46,10 +50,13 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_56boo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amcmt")
 }],
-"loop": false,
+"loop": true,
 "name": &"default",
-"speed": 0.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -81,3 +88,4 @@ shape = SubResource("RectangleShape2D_o4ioj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fexg8")
+frame_progress = 0.6059642

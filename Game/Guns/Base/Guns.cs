@@ -83,7 +83,7 @@ public partial class Guns : Node2D
         if (currentGun == null) return;
         if (sprite != null)
         {
-            //sprite.FireAnimation();
+            sprite.FireAnimation();
             PlayAnimation();
         }
 

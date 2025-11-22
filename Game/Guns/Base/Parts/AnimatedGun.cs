@@ -14,18 +14,18 @@ public partial class AnimatedGun : AnimatedSprite2D
 
     public void FireAnimation()
     {
-        if (tween != null && tween.IsRunning())
-            tween.Kill();
+        // if (tween != null && tween.IsRunning())
+        //     tween.Kill();
         if (tween2 != null && tween2.IsRunning())
             tween2.Kill();
 
-        tween = CreateTween();
+        //tween = CreateTween();
         tween2 = CreateTween();
 
-        tween.TweenProperty(this, "rotation_degrees", -25, 0.05f).SetEase(Tween.EaseType.Out);
+        //tween.TweenProperty(this, "rotation_degrees", -25, 0.05f).SetEase(Tween.EaseType.Out);
         tween2.TweenProperty(this, "position", spot + Vector2.Left * 5, 0.1f).SetEase(Tween.EaseType.Out);
 
-        tween.TweenProperty(this, "rotation_degrees", 0, 0.1f);
+        //tween.TweenProperty(this, "rotation_degrees", 0, 0.1f);
         tween2.TweenProperty(this, "position", spot, 0.1f);
     }
 

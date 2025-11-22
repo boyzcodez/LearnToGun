@@ -600,3 +600,5 @@ material = ExtResource("2_nw0vf")
 sprite_frames = SubResource("SpriteFrames_yy3x0")
 animation = &"EnemyShotgun_LV1_"
 script = ExtResource("7_rpglb")
+
+[node name="AudioStreamGun" type="AudioStreamPlayer" parent="."]
