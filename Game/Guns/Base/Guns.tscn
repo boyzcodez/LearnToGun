@@ -602,3 +602,4 @@ animation = &"EnemyShotgun_LV1_"
 script = ExtResource("7_rpglb")
 
 [node name="AudioStreamGun" type="AudioStreamPlayer" parent="."]
+bus = &"Guns"
