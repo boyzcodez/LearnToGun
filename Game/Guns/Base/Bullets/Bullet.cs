@@ -42,7 +42,7 @@ public partial class Bullet : Area2D
         BodyEntered += WallHit;
     }
 
-    public override void _Process(double delta)
+    public override void _PhysicsProcess(double delta)
     {
         if (_pendingActivation)
         {
