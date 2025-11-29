@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://clqw4um34fajs"]
+[gd_scene load_steps=14 format=3 uid="uid://clqw4um34fajs"]
 
 [ext_resource type="Script" uid="uid://cdlnphhio2rp2" path="res://Game/Main/Main.cs" id="1_1r4f6"]
 [ext_resource type="Script" uid="uid://xdubo0fshbcy" path="res://Game/Main/MapHandler.cs" id="3_mxdch"]
@@ -12,6 +12,7 @@
 [ext_resource type="Resource" uid="uid://deq3e1hpm875b" path="res://Game/Entities/ValueList/ShotgunEnemy.tres" id="9_oab63"]
 [ext_resource type="Resource" uid="uid://dwtg3n443mbrh" path="res://Game/Entities/ValueList/PistolEnemy.tres" id="10_bhrp5"]
 [ext_resource type="PackedScene" uid="uid://bqtng3dp4vtsa" path="res://Game/Entities/Player/player_camera.tscn" id="11_bhrp5"]
+[ext_resource type="Script" uid="uid://cjf8q3rv0mem7" path="res://Game/Main/Audio/Music.cs" id="13_vp847"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_1r4f6")
@@ -46,3 +47,4 @@ target = NodePath("../YSort/Player")
 [node name="MusicHandler" type="Node" parent="."]
 
 [node name="Music" type="AudioStreamPlayer" parent="MusicHandler"]
+script = ExtResource("13_vp847")
