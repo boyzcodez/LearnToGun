@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://wwlphrqr2wml"
+path="res://.godot/imported/heavy hit.wav-292c99d0db7e7381e5969e1f120ad078.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Hits/heavy hit.wav"
+dest_files=["res://.godot/imported/heavy hit.wav-292c99d0db7e7381e5969e1f120ad078.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

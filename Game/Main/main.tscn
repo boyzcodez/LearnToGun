@@ -42,3 +42,7 @@ script = ExtResource("7_vmwgv")
 
 [node name="PlayerCamera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("11_bhrp5")]
 target = NodePath("../YSort/Player")
+
+[node name="MusicHandler" type="Node" parent="."]
+
+[node name="Music" type="AudioStreamPlayer" parent="MusicHandler"]

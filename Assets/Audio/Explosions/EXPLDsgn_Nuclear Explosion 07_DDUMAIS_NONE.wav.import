@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://4tg7k5bosb0b"
+path="res://.godot/imported/EXPLDsgn_Nuclear Explosion 07_DDUMAIS_NONE.wav-0a9b5e193bf7d01ccb850ce99037ac3b.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Explosions/EXPLDsgn_Nuclear Explosion 07_DDUMAIS_NONE.wav"
+dest_files=["res://.godot/imported/EXPLDsgn_Nuclear Explosion 07_DDUMAIS_NONE.wav-0a9b5e193bf7d01ccb850ce99037ac3b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

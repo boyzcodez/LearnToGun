@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://3wt0u62vd1s0"
+path="res://.godot/imported/Potato Gun Shot Apples Heavy Blast AB.wav-8380f52ca6784df5a069a9247819c706.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Guns/Potato Gun Shot Apples Heavy Blast AB.wav"
+dest_files=["res://.godot/imported/Potato Gun Shot Apples Heavy Blast AB.wav-8380f52ca6784df5a069a9247819c706.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

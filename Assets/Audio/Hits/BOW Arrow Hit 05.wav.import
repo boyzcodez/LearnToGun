@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ykg6tbtn3nu3"
+path="res://.godot/imported/BOW Arrow Hit 05.wav-97caac780070c4a9335cf8684ae5c982.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Hits/BOW Arrow Hit 05.wav"
+dest_files=["res://.godot/imported/BOW Arrow Hit 05.wav-97caac780070c4a9335cf8684ae5c982.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
