@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class Guns : Node2D
 {
@@ -7,6 +8,9 @@ public partial class Guns : Node2D
     [Export] public bool active = false;
     [Export] public LaserSight2 laserSight;
     public AnimatedGun sprite { get; set; }
+
+    private Dictionary<string, AudioStream> AudioLibrary = new ();
+    private AudioStreamPlayer audioSystem;
 
     private BulletPool pool;
     private GunData currentGun;
@@ -24,6 +28,7 @@ public partial class Guns : Node2D
         sprite = GetNode<AnimatedGun>("GunAnimation");
         muzzleFlash = GetNode<AnimatedSprite2D>("MuzzleFlash");
         shaderMaterial = sprite.Material as ShaderMaterial;
+        audioSystem = GetNode<AudioStreamPlayer>("AudioStreamGun");
 
         EventBus.Reset += ReFillGuns;
 
@@ -31,6 +36,8 @@ public partial class Guns : Node2D
         {
             type = gunData.GunName + gunData.LVL + GetInstanceId();
             pool?.PreparePool(type, gunData, gunData.MaxAmmo);
+            
+            if (gunData.Sound != null) AudioLibrary.Add(gunData.GunName, gunData.Sound);
 
             if (gunData.UsesAnimations)
             {
@@ -60,7 +67,8 @@ public partial class Guns : Node2D
 
         sprite?.Play(currentGun.GunName);
         muzzleFlash.Position = currentGun.ShootPosition;
-        Position = new Vector2(currentGun.GunX, 0); 
+        Position = new Vector2(currentGun.GunX, 0);
+        if (AudioLibrary.ContainsKey(currentGun.GunName)) audioSystem.Stream = AudioLibrary[currentGun.GunName];
 
         if (active) EventBus.Ammo(currentGun.CurrentAmmo, currentGun.MaxAmmo);
         if (laserSight != null) laserSight.ToggleLaser(currentGun.LaserSight);
@@ -89,11 +97,12 @@ public partial class Guns : Node2D
         else currentGun.UseBullet();
 
         if (currentGun == null) return;
-        if (sprite != null)
-        {
-            sprite.FireAnimation();
-            PlayAnimation();
-        }
+        
+        sprite.FireAnimation();
+        PlayAnimation();
+        if (AudioLibrary.ContainsKey(currentGun.GunName)) audioSystem.Play();
+        else GD.Print("This gun has no Sound");
+
 
         Vector2 baseDirection = Vector2.Right.Rotated(GlobalRotation);
 

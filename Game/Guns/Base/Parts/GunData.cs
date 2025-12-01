@@ -30,6 +30,7 @@ public partial class GunData : Resource
     [Export] public bool rotate { get; set; } = false;
     [Export] public bool LaserSight { get; set; } = false;
     [Export] public GunData NextLevelData { get; set; }
+    [Export] public AudioStream Sound {get;set;}
 
     public void UseBullet()
     {

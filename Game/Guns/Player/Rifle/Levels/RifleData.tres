@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="GunData" load_steps=9 format=3 uid="uid://ieag318h1oao"]
+[gd_resource type="Resource" script_class="GunData" load_steps=10 format=3 uid="uid://ieag318h1oao"]
 
 [ext_resource type="Script" uid="uid://bf05vlwwwrvul" path="res://Game/Guns/Base/Parts/GunData.cs" id="1_4ei4g"]
 [ext_resource type="PackedScene" uid="uid://dw6p3nxi5jpux" path="res://Game/Guns/Player/Rifle/RifleBullet.tscn" id="1_fyjhw"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dj103twqxd1b4" path="res://Assets/Guns/Guns/Rifle/early weapon icons_4.png" id="2_n4775"]
 [ext_resource type="Script" uid="uid://bdg13md1nmn13" path="res://Game/Guns/Base/AnimationData.cs" id="3_1bui0"]
 [ext_resource type="Texture2D" uid="uid://davem62ppmpy1" path="res://Assets/Guns/Guns/Rifle/RifleShoot.png" id="4_1bui0"]
+[ext_resource type="AudioStream" uid="uid://bpan4uc33mfug" path="res://Assets/Audio/Guns/GUNRif_SVD Dragunov 7.62×54R DESIGNED Single Shot Core Long_DRCA_DRAG_Stereo_05.wav" id="5_777gy"]
 
 [sub_resource type="Resource" id="Resource_777gy"]
 script = ExtResource("3_1bui0")
@@ -39,4 +40,5 @@ icon = ExtResource("2_n4775")
 NormalAnimationData = SubResource("Resource_777gy")
 ShootAnimationData = SubResource("Resource_32c4j")
 rotate = true
+Sound = ExtResource("5_777gy")
 metadata/_custom_type_script = "uid://bf05vlwwwrvul"
