@@ -9,7 +9,7 @@ public partial class Guns : Node2D
     [Export] public LaserSight2 laserSight;
     public AnimatedGun sprite { get; set; }
 
-    private Dictionary<string, AudioStream> AudioLibrary = new ();
+    private Dictionary<string, AudioStreamRandomizer> AudioLibrary = new ();
     private AudioStreamPlayer audioSystem;
 
     private BulletPool pool;

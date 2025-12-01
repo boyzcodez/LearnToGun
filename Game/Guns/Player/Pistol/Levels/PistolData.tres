@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="GunData" load_steps=8 format=3 uid="uid://du4ihic1fxweh"]
+[gd_resource type="Resource" script_class="GunData" load_steps=9 format=3 uid="uid://du4ihic1fxweh"]
 
 [ext_resource type="Script" uid="uid://bf05vlwwwrvul" path="res://Game/Guns/Base/Parts/GunData.cs" id="1_1ql6e"]
 [ext_resource type="PackedScene" uid="uid://c2lf3revdfxi0" path="res://Game/Guns/Player/Pistol/NewBulletBase.tscn" id="1_y8e7k"]
@@ -15,6 +15,12 @@ VerticalFrames = 1
 FrameRate = 0
 metadata/_custom_type_script = "uid://bdg13md1nmn13"
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_sccs4"]
+random_pitch = 1.2
+random_volume_offset_db = 0.1
+streams_count = 1
+stream_0/stream = ExtResource("4_sccs4")
+
 [resource]
 script = ExtResource("1_1ql6e")
 GunName = "Pistol"
@@ -30,5 +36,5 @@ icon = ExtResource("2_s8fxx")
 NormalAnimationData = SubResource("Resource_gwavu")
 ShootAnimationData = SubResource("Resource_gwavu")
 rotate = true
-Sound = ExtResource("4_sccs4")
+Sound = SubResource("AudioStreamRandomizer_sccs4")
 metadata/_custom_type_script = "uid://bf05vlwwwrvul"

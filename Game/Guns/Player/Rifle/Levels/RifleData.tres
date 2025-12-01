@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="GunData" load_steps=10 format=3 uid="uid://ieag318h1oao"]
+[gd_resource type="Resource" script_class="GunData" load_steps=11 format=3 uid="uid://ieag318h1oao"]
 
 [ext_resource type="Script" uid="uid://bf05vlwwwrvul" path="res://Game/Guns/Base/Parts/GunData.cs" id="1_4ei4g"]
 [ext_resource type="PackedScene" uid="uid://dw6p3nxi5jpux" path="res://Game/Guns/Player/Rifle/RifleBullet.tscn" id="1_fyjhw"]
@@ -23,6 +23,11 @@ HorizontalFrames = 4
 VerticalFrames = 1
 metadata/_custom_type_script = "uid://bdg13md1nmn13"
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_777gy"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("5_777gy")
+
 [resource]
 script = ExtResource("1_4ei4g")
 GunName = "Rifle"
@@ -40,5 +45,5 @@ icon = ExtResource("2_n4775")
 NormalAnimationData = SubResource("Resource_777gy")
 ShootAnimationData = SubResource("Resource_32c4j")
 rotate = true
-Sound = ExtResource("5_777gy")
+Sound = SubResource("AudioStreamRandomizer_777gy")
 metadata/_custom_type_script = "uid://bf05vlwwwrvul"
