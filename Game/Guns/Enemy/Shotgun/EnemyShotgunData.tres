@@ -1,8 +1,17 @@
-[gd_resource type="Resource" script_class="GunData" load_steps=4 format=3 uid="uid://d1ps46siei1u"]
+[gd_resource type="Resource" script_class="GunData" load_steps=6 format=3 uid="uid://d1ps46siei1u"]
 
 [ext_resource type="Script" uid="uid://bf05vlwwwrvul" path="res://Game/Guns/Base/Parts/GunData.cs" id="1_1gm1d"]
 [ext_resource type="PackedScene" uid="uid://dxjpg6l46xs3y" path="res://Game/Guns/Enemy/Pistol/EnemyPistolBullet.tscn" id="1_04s0y"]
-[ext_resource type="Texture2D" uid="uid://diet8ij7y2hpc" path="res://Assets/Guns/Guns/basic_weapon_shotgun1.png" id="2_mvwql"]
+[ext_resource type="Texture2D" uid="uid://dja0ghsr3gw8u" path="res://Assets/Guns/Guns/EnemyShotgun/EliteEnemyShotgun.png" id="2_mvwql"]
+[ext_resource type="Script" uid="uid://bdg13md1nmn13" path="res://Game/Guns/Base/AnimationData.cs" id="3_tl6li"]
+
+[sub_resource type="Resource" id="Resource_5pww5"]
+script = ExtResource("3_tl6li")
+SpriteSheet = ExtResource("2_mvwql")
+HorizontalFrames = 1
+VerticalFrames = 1
+FrameRate = 0
+metadata/_custom_type_script = "uid://bdg13md1nmn13"
 
 [resource]
 script = ExtResource("1_1gm1d")
@@ -16,6 +25,7 @@ UsesAmmo = false
 FireRate = 0.0
 BulletCount = 5
 SpreadAngle = 60.0
-GunSprite = ExtResource("2_mvwql")
+NormalAnimationData = SubResource("Resource_5pww5")
+ShootAnimationData = SubResource("Resource_5pww5")
 isEnemy = true
 metadata/_custom_type_script = "uid://bf05vlwwwrvul"

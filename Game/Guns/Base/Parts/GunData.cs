@@ -15,7 +15,6 @@ public partial class GunData : Resource
     [Export] public int GunX { get; set; } = 6;
     [Export] public Vector2 ShootPosition { get; set; }
     [Export] public PackedScene BulletScene { get; set; }
-    [Export] public int SpawnAmount { get; set; } = 30;
     [Export] public int CurrentAmmo { get; set; } = 10;
     [Export] public int MaxAmmo { get; set; } = 10;
     [Export] public bool UsesAmmo { get; set; } = true;
@@ -26,6 +25,7 @@ public partial class GunData : Resource
     [Export] public Texture2D icon { get; set; }
     [Export] public AnimationData NormalAnimationData {get;set;}
     [Export] public AnimationData ShootAnimationData {get;set;}
+    [Export] public bool UsesAnimations {get;set;} = true;
     [Export] public bool isEnemy { get; set; } = false;
     [Export] public bool rotate { get; set; } = false;
     [Export] public bool LaserSight { get; set; } = false;

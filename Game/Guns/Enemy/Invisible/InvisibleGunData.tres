@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_wwalm")
-GunName = "Invisible"
+GunName = "default"
 Knockback = 200.0
 ShootPosition = Vector2(10, 0)
 BulletScene = ExtResource("1_hs0t4")

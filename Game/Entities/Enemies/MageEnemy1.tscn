@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://dei551llww1lc"]
+[gd_scene load_steps=77 format=3 uid="uid://dei551llww1lc"]
 
 [ext_resource type="Script" uid="uid://dexb3awvsef8d" path="res://Game/Entities/TestEnemies/ActiveTestEnemy.cs" id="1_fkd7y"]
 [ext_resource type="PackedScene" uid="uid://dyqbl4s13wnxg" path="res://Game/Entities/Components/shadow.tscn" id="2_6c8rq"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://0s32cl0oa2f3" path="res://Game/Entities/Components/Ability.tscn" id="9_pocl1"]
 [ext_resource type="PackedScene" uid="uid://bp3lx4f7c5wd1" path="res://Components/Etc/hit_flash.tscn" id="10_yh12u"]
 [ext_resource type="PackedScene" uid="uid://vmtiw08cr30b" path="res://Components/DamageComps/hurtbox.tscn" id="11_yplly"]
-[ext_resource type="PackedScene" uid="uid://bcgkxc4mvklfp" path="res://Game/Entities/Components/HitRange.tscn" id="12_ggsg1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_htgvw"]
 radius = 8.0
@@ -533,9 +532,6 @@ animations = [{
 radius = 8.0
 height = 22.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_jyark"]
-radius = 13.0
-
 [node name="ActiveTestEnemy" type="CharacterBody2D" node_paths=PackedStringArray("ability", "lineOfSight")]
 motion_mode = 1
 wall_min_slide_angle = 0.08726646
@@ -615,13 +611,5 @@ one_shot = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 radius = 15.0
-
-[node name="HitRange" parent="." instance=ExtResource("12_ggsg1")]
-monitoring = false
-monitorable = false
-knockback = 200.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitRange"]
-shape = SubResource("CircleShape2D_jyark")
 
 [connection signal="animation_finished" from="AnimatedSpriteE" to="AnimatedSpriteE" method="_on_animation_finished"]

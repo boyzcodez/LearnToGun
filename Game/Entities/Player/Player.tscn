@@ -1,4 +1,4 @@
-[gd_scene load_steps=139 format=3 uid="uid://bbjw3fvxlq53q"]
+[gd_scene load_steps=137 format=3 uid="uid://bbjw3fvxlq53q"]
 
 [ext_resource type="Script" uid="uid://cccauuo7nkwjv" path="res://Game/Entities/Player/Player.cs" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://dyqbl4s13wnxg" path="res://Game/Entities/Components/shadow.tscn" id="2_nfw5o"]
@@ -12,11 +12,9 @@
 [ext_resource type="Script" uid="uid://nqkf4jrg61gb" path="res://Game/Entities/Player/LookAtSharp.cs" id="9_vpkgm"]
 [ext_resource type="Resource" uid="uid://du4ihic1fxweh" path="res://Game/Guns/Player/Pistol/Levels/PistolData.tres" id="10_iwdm0"]
 [ext_resource type="PackedScene" uid="uid://e2jpk6hxn1ls" path="res://Game/Entities/Player/LookAt.tscn" id="11_vpkgm"]
-[ext_resource type="Resource" uid="uid://sfukcc8s84k4" path="res://Game/Guns/Player/Shotgun/Levels/ShotgunDataLVL3.tres" id="12_2gvph"]
 [ext_resource type="Script" uid="uid://c73kpxw2e5ynj" path="res://Game/Entities/Player/WarpDash.cs" id="12_qwver"]
 [ext_resource type="PackedScene" uid="uid://mg8q0xeodew0" path="res://Game/Guns/Base/Guns.tscn" id="13_2gvph"]
 [ext_resource type="PackedScene" uid="uid://bxyy5vw0eiy5e" path="res://Game/Entities/Player/ghost_sprite.tscn" id="13_nfw5o"]
-[ext_resource type="Resource" uid="uid://c3qu7r4vny8f" path="res://Game/Guns/Player/Nailgun/Levels/NailgunDataLVL1.tres" id="13_vcc71"]
 [ext_resource type="PackedScene" uid="uid://mxrkr1wy2wt6" path="res://Game/Guns/Base/Parts/LaserSight2.tscn" id="14_esr38"]
 [ext_resource type="PackedScene" uid="uid://haqfsuv5fmc3" path="res://Components/InteractComp/interact_component.tscn" id="14_wlpas"]
 [ext_resource type="Resource" uid="uid://ieag318h1oao" path="res://Game/Guns/Player/Rifle/Levels/RifleData.tres" id="16_0xjwd"]
@@ -1037,7 +1035,7 @@ position = Vector2(0, -6)
 
 [node name="Guns" parent="LookAt" node_paths=PackedStringArray("laserSight") instance=ExtResource("13_2gvph")]
 position = Vector2(6, 0)
-guns = Array[Object]([ExtResource("10_iwdm0"), ExtResource("12_2gvph"), ExtResource("13_vcc71"), ExtResource("16_0xjwd")])
+guns = Array[Object]([ExtResource("10_iwdm0"), ExtResource("16_0xjwd")])
 active = true
 laserSight = NodePath("../../LookAt2/LaserSight")
 

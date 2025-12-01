@@ -16,7 +16,7 @@ public partial class Gun : Node2D
     {
         pool = GetTree().GetFirstNodeInGroup("BulletPool") as BulletPool;
         type = type + GetInstanceId();
-        pool?.PreparePool(type, gunData, gunData.SpawnAmount);
+        pool?.PreparePool(type, gunData, gunData.MaxAmmo);
 
         sprite?.Play(gunData.LVL + "default");
         if (!gunData.isEnemy) XpHandler.AddGun(gunData.GunName, this);
@@ -83,7 +83,7 @@ public partial class Gun : Node2D
         gunData.currentXP = xp;
         EventBus.Ammo(gunData.CurrentAmmo, gunData.MaxAmmo);
 
-        pool.NewBullets(type, gunData, gunData.SpawnAmount);
+        pool.NewBullets(type, gunData, gunData.MaxAmmo);
 
         sprite.Play(gunData.LVL + "default");
 

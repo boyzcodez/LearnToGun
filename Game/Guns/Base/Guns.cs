@@ -30,11 +30,19 @@ public partial class Guns : Node2D
         foreach (var gunData in guns)
         {
             type = gunData.GunName + gunData.LVL + GetInstanceId();
-            pool?.PreparePool(type, gunData, gunData.SpawnAmount);
+            pool?.PreparePool(type, gunData, gunData.MaxAmmo);
+
+            if (gunData.UsesAnimations)
+            {
+                AddAnimation(gunData.NormalAnimationData, gunData.GunName);
+                AddAnimation(gunData.ShootAnimationData, gunData.GunName + "Shoot");
+            }
         }
 
         EquipGun(0);
-        sprite?.Play(currentGun.GunName + "_" + currentGun.LVL);
+        sprite?.Play(currentGun.GunName);
+
+        // add to exp list so that when an enemy dies the correct gun will the the exp
         //if (!guns[_currentGunIndex].isEnemy) XpHandler.AddGun(guns[_currentGunIndex].GunName, this);
     }
 
@@ -50,7 +58,7 @@ public partial class Guns : Node2D
         currentGun = guns[index];
         type = currentGun.GunName + currentGun.LVL + GetInstanceId();
 
-        sprite?.Play(currentGun.GunName + "_" + currentGun.LVL);
+        sprite?.Play(currentGun.GunName);
         muzzleFlash.Position = currentGun.ShootPosition;
         Position = new Vector2(currentGun.GunX, 0); 
 
@@ -112,11 +120,11 @@ public partial class Guns : Node2D
     private async void PlayAnimation()
     {
         muzzleFlash.Play("default");
-        sprite.Play(currentGun.GunName + "_" + currentGun.LVL + "Shoot");
+        sprite.Play(currentGun.GunName + "Shoot");
 
         await ToSignal(sprite, "animation_finished");
 
-        sprite.Play(currentGun.GunName + "_" + currentGun.LVL);
+        sprite.Play(currentGun.GunName);
     }
     private float NumBet(double bet)
     {
@@ -132,44 +140,34 @@ public partial class Guns : Node2D
         if (active) EventBus.Ammo(currentGun.CurrentAmmo, currentGun.MaxAmmo);
     }
 
-    public void ApplyAnimationData(AnimationData AnimationData, string name)
-{
-    var frames = new SpriteFrames();
-
-    int fullWidth = AnimationData.SpriteSheet.GetWidth();
-    int fullHeight = AnimationData.SpriteSheet.GetHeight();
-
-    int frameWidth = fullWidth / AnimationData.HorizontalFrames;
-    int frameHeight = fullHeight / AnimationData.VerticalFrames;
-
-    int totalFrames = AnimationData.HorizontalFrames * AnimationData.VerticalFrames;
-
-    frames.AddAnimation(name);
-    frames.SetAnimationSpeed(name, AnimationData.FrameRate);
-
-    for (int i = 0; i < totalFrames; i++)
+    public void AddAnimation(AnimationData AnimationData, string name)
     {
-        int x = i % AnimationData.HorizontalFrames;
-        int y = i / AnimationData.HorizontalFrames;
+        if (sprite.SpriteFrames.HasAnimation(name)) return;
 
-        var region = new Rect2I(
-            x * frameWidth,
-            y * frameHeight,
-            frameWidth,
-            frameHeight
-        );
+        sprite.SpriteFrames.AddAnimation(name);
 
-        var atlas = new AtlasTexture
+        int totalFrames = AnimationData.HorizontalFrames * AnimationData.VerticalFrames;
+
+        for (int frameIndex = 0; frameIndex < totalFrames; frameIndex++)
         {
-            Atlas = AnimationData.SpriteSheet,
-            Region = region
-        };
+            int x = frameIndex % AnimationData.HorizontalFrames;
+            int y = frameIndex / AnimationData.HorizontalFrames;
 
-        frames.AddFrame(name, atlas);
+            var region = new Rect2I(
+                x * (AnimationData.SpriteSheet.GetWidth() / AnimationData.HorizontalFrames),
+                y * (AnimationData.SpriteSheet.GetHeight() / AnimationData.VerticalFrames),
+                AnimationData.SpriteSheet.GetWidth() / AnimationData.HorizontalFrames,
+                AnimationData.SpriteSheet.GetHeight() / AnimationData.VerticalFrames
+            );
+
+            var frameTexture = AnimationData.SpriteSheet.GetImage().GetRegion(region);
+            var tex = ImageTexture.CreateFromImage(frameTexture);
+
+            sprite.SpriteFrames.AddFrame(name, tex);
+        }
+        
+        sprite.SpriteFrames.SetAnimationSpeed(name, AnimationData.FrameRate);
+        sprite.SpriteFrames.SetAnimationLoop(name, AnimationData.Looping);
     }
-
-    sprite.SpriteFrames = frames;
-    sprite.Play(name);
-}
 
 }
