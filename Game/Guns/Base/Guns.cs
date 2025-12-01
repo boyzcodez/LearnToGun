@@ -132,4 +132,44 @@ public partial class Guns : Node2D
         if (active) EventBus.Ammo(currentGun.CurrentAmmo, currentGun.MaxAmmo);
     }
 
+    public void ApplyAnimationData(AnimationData AnimationData, string name)
+{
+    var frames = new SpriteFrames();
+
+    int fullWidth = AnimationData.SpriteSheet.GetWidth();
+    int fullHeight = AnimationData.SpriteSheet.GetHeight();
+
+    int frameWidth = fullWidth / AnimationData.HorizontalFrames;
+    int frameHeight = fullHeight / AnimationData.VerticalFrames;
+
+    int totalFrames = AnimationData.HorizontalFrames * AnimationData.VerticalFrames;
+
+    frames.AddAnimation(name);
+    frames.SetAnimationSpeed(name, AnimationData.FrameRate);
+
+    for (int i = 0; i < totalFrames; i++)
+    {
+        int x = i % AnimationData.HorizontalFrames;
+        int y = i / AnimationData.HorizontalFrames;
+
+        var region = new Rect2I(
+            x * frameWidth,
+            y * frameHeight,
+            frameWidth,
+            frameHeight
+        );
+
+        var atlas = new AtlasTexture
+        {
+            Atlas = AnimationData.SpriteSheet,
+            Region = region
+        };
+
+        frames.AddFrame(name, atlas);
+    }
+
+    sprite.SpriteFrames = frames;
+    sprite.Play(name);
+}
+
 }
