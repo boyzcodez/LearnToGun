@@ -35,7 +35,7 @@ public partial class Bullet : Area2D
     public override void _Ready()
     {
         collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
-        SetProcess(false);
+        SetPhysicsProcess(false);
         Visible = false;
 
         Animation.AnimationFinished += Hide;
@@ -47,6 +47,7 @@ public partial class Bullet : Area2D
         if (_pendingActivation)
         {
             _pendingActivation = false;
+            collisionShape.Disabled = false;
             Monitoring = true;
             Monitorable = true;
             Active = true;
@@ -119,7 +120,7 @@ public partial class Bullet : Area2D
         hasHit = false;
 
         // Defer enabling physics process for safety
-        CallDeferred("set_process", true);
+        CallDeferred("set_physics_process", true);
         _pendingActivation = true;
 
         Visible = true;
@@ -133,10 +134,12 @@ public partial class Bullet : Area2D
         Active = false;
         _pendingActivation = false;
         Speed = BaseSpeed;
-        CallDeferred("set_process", false);
+        CallDeferred("set_physics_process", false);
 
         SetDeferred("monitoring", false);
         SetDeferred("monitorable", false);
+
+        collisionShape.SetDeferred("disabled", true);
 
         _pool.ReturnBullet(Key, this);
 

@@ -130,6 +130,7 @@ particles = NodePath("Pixeltrail")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_epq31")
+disabled = true
 
 [node name="Pixeltrail" type="CPUParticles2D" parent="."]
 emitting = false

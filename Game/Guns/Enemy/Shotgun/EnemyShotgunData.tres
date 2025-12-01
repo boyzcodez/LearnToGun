@@ -20,7 +20,6 @@ Knockback = 50.0
 GunX = 5
 ShootPosition = Vector2(20, -1)
 BulletScene = ExtResource("1_04s0y")
-SpawnAmount = 15
 UsesAmmo = false
 FireRate = 0.0
 BulletCount = 5

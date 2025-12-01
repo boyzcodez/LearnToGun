@@ -1,4 +1,4 @@
-[gd_scene load_steps=137 format=3 uid="uid://bbjw3fvxlq53q"]
+[gd_scene load_steps=136 format=3 uid="uid://bbjw3fvxlq53q"]
 
 [ext_resource type="Script" uid="uid://cccauuo7nkwjv" path="res://Game/Entities/Player/Player.cs" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://dyqbl4s13wnxg" path="res://Game/Entities/Components/shadow.tscn" id="2_nfw5o"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://bp3lx4f7c5wd1" path="res://Components/Etc/hit_flash.tscn" id="7_akrrf"]
 [ext_resource type="PackedScene" uid="uid://vmtiw08cr30b" path="res://Components/DamageComps/hurtbox.tscn" id="7_vh1aq"]
 [ext_resource type="Script" uid="uid://bgxp42213x1kw" path="res://Game/Entities/Player/GunsHandler.cs" id="8_3ylnx"]
-[ext_resource type="Script" uid="uid://nqkf4jrg61gb" path="res://Game/Entities/Player/LookAtSharp.cs" id="9_vpkgm"]
 [ext_resource type="Resource" uid="uid://du4ihic1fxweh" path="res://Game/Guns/Player/Pistol/Levels/PistolData.tres" id="10_iwdm0"]
 [ext_resource type="PackedScene" uid="uid://e2jpk6hxn1ls" path="res://Game/Entities/Player/LookAt.tscn" id="11_vpkgm"]
 [ext_resource type="Script" uid="uid://c73kpxw2e5ynj" path="res://Game/Entities/Player/WarpDash.cs" id="12_qwver"]
@@ -834,8 +833,8 @@ script = ExtResource("18_0xjwd")
 metadata/_custom_type_script = "uid://e1jle0vnwo3p"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ch4ko"]
-radius = 5.0
-height = 14.0
+radius = 4.0
+height = 12.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lglki"]
 atlas = ExtResource("17_6v7ly")
@@ -1017,11 +1016,6 @@ guns = NodePath("../LookAt/Guns")
 [node name="Timer" type="Timer" parent="GunsHandler"]
 wait_time = 0.1
 one_shot = true
-
-[node name="LookAtSharp" type="Marker2D" parent="."]
-z_index = -1
-position = Vector2(0, -8)
-script = ExtResource("9_vpkgm")
 
 [node name="LookAt2" parent="." instance=ExtResource("11_vpkgm")]
 position = Vector2(0, -8)
