@@ -18,6 +18,7 @@ public partial class Bullet : Area2D
 
     private float BaseSpeed { get; set; } = 80f;
     public float Speed { get; set; } = 80f;
+    public float LifeTime = 4f;
     public Vector2 Direction { get; set; }
     public float rotation { get; set; }
     public string Key { get; private set; }
@@ -62,7 +63,7 @@ public partial class Bullet : Area2D
         }
 
         _timer += (float)delta;
-        if (_timer >= 4f) Deactivate();
+        if (_timer >= LifeTime) Deactivate();
 
         if (Monitoring)
         {
@@ -86,7 +87,7 @@ public partial class Bullet : Area2D
         }
     }
 
-    public void Init(DamageData damageData, string type, float newSpeed, bool rotate, BulletPool newPool)
+    public void Init(DamageData damageData, string type, float newSpeed, bool rotate, float lifeTime, BulletPool newPool)
     {
         DamageData = damageData;
         Key = type;
@@ -94,6 +95,7 @@ public partial class Bullet : Area2D
         Speed = BaseSpeed;
         _pool = newPool;
         doesRotate = rotate;
+        LifeTime = lifeTime;
     }
 
     public void Activate(float newRotation)

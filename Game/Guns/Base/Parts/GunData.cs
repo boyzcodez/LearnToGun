@@ -12,6 +12,7 @@ public partial class GunData : Resource
     [Export] public int Damage { get; set; } = 1;
     [Export] public float Knockback { get; set; } = 0f;
     [Export] public float BulletSpeed { get; set; } = 140f;
+    [Export] public float BulletLifeTime {get;set;} = 4f;
     [Export] public int GunX { get; set; } = 6;
     [Export] public Vector2 ShootPosition { get; set; }
     [Export] public PackedScene BulletScene { get; set; }
