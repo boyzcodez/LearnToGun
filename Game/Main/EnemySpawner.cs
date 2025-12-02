@@ -21,20 +21,7 @@ public partial class EnemySpawner : Node2D
     private int currentRound = 0;
     private int rounds = 0;
 
-    private List<Enemy> BuildWeightedPool()
-    {
-        List<Enemy> pool = new List<Enemy>();
-
-        foreach (Enemy e in DifficultyOne)
-        {
-            int weight = Mathf.Max(1, 10 - e.value);
-
-            for (int i = 0; i < weight; i++)
-                pool.Add(e);
-        } 
-
-        return pool;
-    }
+    
 
 
     public override void _Ready()
@@ -126,7 +113,21 @@ public partial class EnemySpawner : Node2D
 
         currentRound++;
     }
+    
+    private List<Enemy> BuildWeightedPool()
+    {
+        List<Enemy> pool = new List<Enemy>();
 
+        foreach (Enemy e in DifficultyOne)
+        {
+            int weight = Mathf.Max(1, 10 - e.value);
+
+            for (int i = 0; i < weight; i++)
+                pool.Add(e);
+        } 
+
+        return pool;
+    }
 
 
     public void SummonEnemy(Vector2 spot, string enemy)

@@ -16,7 +16,7 @@ public partial class Gun : Node2D
     {
         pool = GetTree().GetFirstNodeInGroup("BulletPool") as BulletPool;
         type = type + GetInstanceId();
-        pool?.PreparePool(type, gunData, gunData.MaxAmmo);
+        pool?.PreparePool(type, gunData);
 
         sprite?.Play(gunData.LVL + "default");
         if (!gunData.isEnemy) XpHandler.AddGun(gunData.GunName, this);

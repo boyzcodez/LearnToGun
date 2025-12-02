@@ -26,6 +26,8 @@ public partial class HitFlash : Node
             0.0f,   // to
             0.3f    // duration
         );
+
+        ImpactShake();
     }
 
     private void SetShader_BlinkIntensity(float newValue)
@@ -35,4 +37,29 @@ public partial class HitFlash : Node
             shaderMaterial.SetShaderParameter("blink_intensity", newValue);
         }
     }
+   
+    public void ImpactShake()
+    {
+        if (parent == null) return;
+
+        Vector2 originalPosition = parent.Position;
+        tween = CreateTween();
+        tween.SetTrans(Tween.TransitionType.Linear);
+        tween.SetEase(Tween.EaseType.InOut);
+
+        for (int i = 0; i < 4; i++)
+        {
+            tween.TweenCallback(Callable.From(() =>
+            {
+                parent.Position = originalPosition + (Vector2.Right * GD.Randf() - Vector2.Right * 1.0f) * 3f;
+            }));
+            tween.TweenInterval(0.05f);
+        }
+
+        tween.TweenCallback(Callable.From(() =>
+        {
+            parent.Position = originalPosition;
+        }));
+    }
+
 }

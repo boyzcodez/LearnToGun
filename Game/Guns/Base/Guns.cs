@@ -35,7 +35,7 @@ public partial class Guns : Node2D
         foreach (var gunData in guns)
         {
             type = gunData.GunName + gunData.LVL + GetInstanceId();
-            pool?.PreparePool(type, gunData, gunData.MaxAmmo);
+            pool?.PreparePool(type, gunData);
             
             if (gunData.Sound != null) AudioLibrary.Add(gunData.GunName, gunData.Sound);
 

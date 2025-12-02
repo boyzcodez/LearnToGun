@@ -5,6 +5,9 @@ public partial class BulletPool : Node2D
 {
     public Dictionary<string, Queue<Bullet>> _pools = new();
     public List<Bullet> _enemyBullets = new();
+    private int TotalBulletAmount = 0;
+
+    
 
     public override void _Ready()
     {
@@ -12,7 +15,7 @@ public partial class BulletPool : Node2D
         EventBus.Reset += ClearBullets;
     }
 
-    public void PreparePool(string key, GunData gunData, int amount)
+    public void PreparePool(string key, GunData gunData)
     {
         if (_pools.TryGetValue(key, out var pool))
         {
@@ -32,6 +35,11 @@ public partial class BulletPool : Node2D
             _pools[key] = pool;
         }
 
+        var amount = CalculatePoolSize(gunData.BulletLifeTime, gunData.FireRate, gunData.MaxAmmo);
+        //var amount = gunData.MaxAmmo;
+        GD.Print("Added bullets " + amount);
+        TotalBulletAmount += amount;
+        GD.Print("total amount of bullets " + TotalBulletAmount);
 
         for (int i = pool.Count; i < amount; i++)
         {
@@ -43,12 +51,20 @@ public partial class BulletPool : Node2D
             if (gunData.isEnemy) _enemyBullets.Add(bullet);
         }
     }
+
+    private int CalculatePoolSize(float lifetime, float firerate, int maxammo)
+    {
+        int theoretical = Mathf.CeilToInt(lifetime/ Mathf.Max(firerate, 0.0001f));
+        return Mathf.Min(maxammo, Mathf.CeilToInt(theoretical * 1.1f));
+    }
+
+
     public Bullet GetBullet(string key, GunData gunData)
     {
         if (!_pools.TryGetValue(key, out var pool) || pool.Count == 0)
         {
-            GD.PrintErr("No Bullets to use");
-            PreparePool(key, gunData, 5);
+            GD.PrintErr("Ran out of Bullets to use");
+            //PreparePool(key, gunData);
         }
 
         var bullet = _pools[key].Dequeue();
@@ -76,7 +92,7 @@ public partial class BulletPool : Node2D
             _pools.Remove(key);
         }
 
-        PreparePool(key, gunData, amount);
+        PreparePool(key, gunData);
     }
     public void ClearBullets()
     {
