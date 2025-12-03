@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsy81ahpolxd5"]
+
+[ext_resource type="Script" uid="uid://b2b6i34k3pvik" path="res://Game/Entities/Components/EnemyHurtbox.cs" id="1_cctux"]
+
+[node name="EnemyHurtbox" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_cctux")

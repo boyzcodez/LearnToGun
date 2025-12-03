@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://mg8q0xeodew0" path="res://Game/Guns/Base/Guns.tscn" id="8_oh53k"]
 [ext_resource type="PackedScene" uid="uid://bp3lx4f7c5wd1" path="res://Components/Etc/hit_flash.tscn" id="9_3wam0"]
 [ext_resource type="Resource" uid="uid://0mow7g6u66nf" path="res://Game/Guns/Enemy/Pistol/EnemyPistolData.tres" id="9_ofxb3"]
-[ext_resource type="PackedScene" uid="uid://vmtiw08cr30b" path="res://Components/DamageComps/hurtbox.tscn" id="10_xs1h7"]
+[ext_resource type="PackedScene" uid="uid://dsy81ahpolxd5" path="res://Game/Entities/Components/EnemyHurtbox.tscn" id="11_oh53k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_htgvw"]
 radius = 8.0
@@ -351,7 +351,7 @@ animations = [{
 "speed": 7.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ccun0"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ofxb3"]
 radius = 8.0
 height = 22.0
 
@@ -401,17 +401,14 @@ hit_from_inside = true
 
 [node name="HitFlash" parent="AnimatedSpriteE" instance=ExtResource("9_3wam0")]
 
-[node name="Hurtbox" parent="." node_paths=PackedStringArray("hitFlash", "animationSprite") instance=ExtResource("10_xs1h7")]
+[node name="EnemyHurtbox" parent="." node_paths=PackedStringArray("hitFlash", "animationSprite") instance=ExtResource("11_oh53k")]
 position = Vector2(0, -11)
-collision_layer = 4
-monitoring = false
-monitorable = false
 maxHealth = 3
 hitFlash = NodePath("../AnimatedSpriteE/HitFlash")
 animationSprite = NodePath("../AnimatedSpriteE")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-shape = SubResource("CapsuleShape2D_ccun0")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHurtbox"]
+shape = SubResource("CapsuleShape2D_ofxb3")
 
 [node name="FireRate" type="Timer" parent="."]
 one_shot = true

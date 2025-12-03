@@ -9,7 +9,7 @@ public partial class HitRange : Area2D
     private Hurtbox ownerHurtbox;
     public override void _Ready()
     {
-        ownerHurtbox = GetOwner<Entity>().GetNode<Hurtbox>("Hurtbox");
+        ownerHurtbox = GetOwner<ActiveTestEnemy>().hurtbox;
         AreaEntered += RangeEntered;
 
         damageData = new DamageData(Damage, knockback, "");

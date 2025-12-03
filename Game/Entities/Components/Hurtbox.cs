@@ -8,16 +8,13 @@ public partial class Hurtbox : Area2D
 
     [Export] private BaseHitEffect[] hitEffects = [];
     [Export] private bool isImmune = false;
-    [Export] private int maxHealth = 100;
+    [Export] public int maxHealth = 100;
     [Export] private float knockbackResist = 0f;
     [Export] private HitFlash hitFlash;
     [Export] public AnimatedSprite animationSprite;
     [Export] private int xpAmount = 1;
 
-    private CpuParticles2D particles;
-    private AnimatedSprite2D animation;
-
-    private int currentHealth;
+    public int currentHealth;
     public bool immune = false;
     private Entity owner;
 
@@ -25,11 +22,10 @@ public partial class Hurtbox : Area2D
     {
         owner = GetOwner<Entity>();
 
-        particles = GetNode<CpuParticles2D>("HitParticle");
-        animation = GetNode<AnimatedSprite2D>("HitAnimation");
-
         currentHealth = maxHealth;
         immune = isImmune;
+
+        OnInit();
     }
 
     public void TakeDamage(DamageData damageData, Vector2 direction = default)
@@ -46,31 +42,34 @@ public partial class Hurtbox : Area2D
         if (currentHealth <= 0)
         {
             immune = true;
-            owner.Death();
+            OnDeath();
         }
         else
         {
+            OnHit();
             Effects();
-            foreach (var effect in hitEffects)
-            {
-                effect.Trigger();
-            }
         }
+    }
+
+    public virtual void OnInit()
+    {
+    }
+    public virtual void OnHit()
+    {
+    }
+    public virtual void OnDeath()
+    {
+        owner.Death();
+    }
+    public virtual void ResetHealth()
+    {
+        immune = false;
+        currentHealth = maxHealth;
     }
 
     private void Effects()
     {
-        // animation.Rotation = (float)GD.RandRange(0, Mathf.Tau);
-
-        // animation.Play("default");
-        
-        particles.Emitting = true;
         if (hitFlash != null) hitFlash.Blink();
         if (animationSprite != null) animationSprite.PlayAnimation("Hit", 2);
-    }
-    public void ResetHealth()
-    {
-        immune = false;
-        currentHealth = maxHealth;
     }
 }

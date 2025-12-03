@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bskvhomxdhrhy" path="res://Game/Entities/TestEnemies/Scarecrow.cs" id="1_j5bqv"]
 [ext_resource type="Texture2D" uid="uid://bumavqdsqd44w" path="res://Assets/Entity/Enemy/PunchingBag.png" id="2_j5bqv"]
 [ext_resource type="Material" uid="uid://w5yw3e3gudc3" path="res://Game/Entities/Player/HitFlash.tres" id="2_vyfxq"]
-[ext_resource type="PackedScene" uid="uid://vmtiw08cr30b" path="res://Components/DamageComps/hurtbox.tscn" id="3_7idsq"]
+[ext_resource type="PackedScene" uid="uid://vmtiw08cr30b" path="res://Game/Entities/Components/hurtbox.tscn" id="3_7idsq"]
 [ext_resource type="PackedScene" uid="uid://bp3lx4f7c5wd1" path="res://Components/Etc/hit_flash.tscn" id="4_7idsq"]
 [ext_resource type="Script" uid="uid://6tyv10vknvme" path="res://Game/Entities/TestEnemies/AnimatedSpriteT.cs" id="4_vw1ok"]
 

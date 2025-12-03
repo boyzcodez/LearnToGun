@@ -9,7 +9,7 @@
 [ext_resource type="Resource" uid="uid://d1ps46siei1u" path="res://Game/Guns/Enemy/Shotgun/EnemyShotgunData.tres" id="8_g1due"]
 [ext_resource type="PackedScene" uid="uid://mg8q0xeodew0" path="res://Game/Guns/Base/Guns.tscn" id="8_pb4tq"]
 [ext_resource type="PackedScene" uid="uid://bp3lx4f7c5wd1" path="res://Components/Etc/hit_flash.tscn" id="10_pja5j"]
-[ext_resource type="PackedScene" uid="uid://vmtiw08cr30b" path="res://Components/DamageComps/hurtbox.tscn" id="11_ntmpc"]
+[ext_resource type="PackedScene" uid="uid://dsy81ahpolxd5" path="res://Game/Entities/Components/EnemyHurtbox.tscn" id="11_k7a81"]
 [ext_resource type="PackedScene" uid="uid://bcgkxc4mvklfp" path="res://Game/Entities/Components/HitRange.tscn" id="12_0o6dg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_htgvw"]
@@ -310,7 +310,7 @@ animations = [{
 "speed": 9.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g1due"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s3jmn"]
 size = Vector2(20, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g1due"]
@@ -361,18 +361,14 @@ guns = Array[Object]([ExtResource("8_g1due")])
 
 [node name="HitFlash" parent="AnimatedSpriteE" instance=ExtResource("10_pja5j")]
 
-[node name="Hurtbox" parent="." node_paths=PackedStringArray("hitFlash", "animationSprite") instance=ExtResource("11_ntmpc")]
-position = Vector2(0, -7)
-collision_layer = 4
-monitoring = false
-monitorable = false
-maxHealth = 3
+[node name="EnemyHurtbox" parent="." node_paths=PackedStringArray("hitFlash", "animationSprite") instance=ExtResource("11_k7a81")]
+position = Vector2(0, -9)
+maxHealth = 2
 hitFlash = NodePath("../AnimatedSpriteE/HitFlash")
 animationSprite = NodePath("../AnimatedSpriteE")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_g1due")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHurtbox"]
+shape = SubResource("RectangleShape2D_s3jmn")
 
 [node name="FireRate" type="Timer" parent="."]
 one_shot = true

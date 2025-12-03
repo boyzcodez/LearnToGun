@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bm5su8unmtdyu" path="res://Assets/icon.svg" id="1_4gisi"]
 [ext_resource type="Script" uid="uid://nvfnf30y8x8a" path="res://Game/Entities/TestEnemies/TestEnemy.cs" id="1_l6u0g"]
-[ext_resource type="PackedScene" uid="uid://vmtiw08cr30b" path="res://Components/DamageComps/hurtbox.tscn" id="2_w0xgd"]
+[ext_resource type="PackedScene" uid="uid://vmtiw08cr30b" path="res://Game/Entities/Components/hurtbox.tscn" id="2_w0xgd"]
 [ext_resource type="PackedScene" uid="uid://cokma6r7qkbkm" path="res://Components/DamageComps/health.tscn" id="3_ccun0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_htgvw"]

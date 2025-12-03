@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=4 uid="uid://x3152krac0fs"]
+[gd_scene load_steps=6 format=4 uid="uid://x3152krac0fs"]
 
 [ext_resource type="TileSet" uid="uid://bqp2lecli7mx7" path="res://Game/Map/TilsetData/Testsite.tres" id="1_2ufwp"]
 [ext_resource type="Script" uid="uid://beyvg3tfxd6cr" path="res://Game/Map/AutoCollisionWalls.cs" id="2_owkgx"]
 [ext_resource type="PackedScene" uid="uid://dtl2ydqrnh23i" path="res://Components/WarpEffects/portal_machine.tscn" id="4_2ufwp"]
+[ext_resource type="PackedScene" uid="uid://c03wc70tgc418" path="res://Components/Etc/Crate/DestructibleCrate.tscn" id="5_2ufwp"]
 [ext_resource type="PackedScene" uid="uid://u1aqua33b3uc" path="res://Game/Entities/TestEnemies/scarecrow.tscn" id="6_wk4oc"]
 
 [node name="StartingMap" type="Node2D"]
@@ -31,3 +32,36 @@ active = true
 
 [node name="Scarecrow" parent="." instance=ExtResource("6_wk4oc")]
 position = Vector2(192, -25)
+
+[node name="crates" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="DestructibleCrate" parent="crates" instance=ExtResource("5_2ufwp")]
+position = Vector2(-123, -62)
+
+[node name="DestructibleCrate2" parent="crates" instance=ExtResource("5_2ufwp")]
+position = Vector2(-123, -51)
+
+[node name="DestructibleCrate3" parent="crates" instance=ExtResource("5_2ufwp")]
+position = Vector2(-108, -62)
+
+[node name="DestructibleCrate4" parent="crates" instance=ExtResource("5_2ufwp")]
+position = Vector2(-88, 84)
+
+[node name="DestructibleCrate5" parent="crates" instance=ExtResource("5_2ufwp")]
+position = Vector2(-73, 84)
+
+[node name="DestructibleCrate6" parent="crates" instance=ExtResource("5_2ufwp")]
+position = Vector2(-73, 73)
+
+[node name="DestructibleCrate7" parent="crates" instance=ExtResource("5_2ufwp")]
+position = Vector2(-88, 73)
+
+[node name="DestructibleCrate8" parent="crates" instance=ExtResource("5_2ufwp")]
+position = Vector2(120, 87)
+
+[node name="DestructibleCrate9" parent="crates" instance=ExtResource("5_2ufwp")]
+position = Vector2(135, 87)
+
+[node name="DestructibleCrate10" parent="crates" instance=ExtResource("5_2ufwp")]
+position = Vector2(150, 87)

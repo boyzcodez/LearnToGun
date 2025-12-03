@@ -14,7 +14,7 @@ public partial class Player : Entity
     public float dodgeTime = 0f;
     private float dashCooldown = 0.5f;
 
-    private Hurtbox hurtbox;
+    private PlayerHurtbox hurtbox;
     private Node2D warpDashNode;
     private CpuParticles2D dashParticles;
     private Timer dashTimer;
@@ -26,7 +26,7 @@ public partial class Player : Entity
     {
 
         dashTimer = GetNode<Timer>("DashCooldown");
-        hurtbox = GetNode<Hurtbox>("Hurtbox");
+        hurtbox = GetNode<PlayerHurtbox>("PlayerHurtbox");
         warpDashNode = GetNode<Node2D>("WarpDash");
         lookAt = GetNode<LookAt>("LookAt");
         //Input.SetMouseMode(Input.MouseModeEnum.Hidden);
@@ -113,7 +113,7 @@ public partial class Player : Entity
 
         await ToSignal(GetTree().CreateTimer(3f), "timeout");
         
-        GetNode<Hurtbox>("Hurtbox").ResetHealth();
+        hurtbox.ResetHealth();
 
         GlobalPosition = new Vector2(0, 0);
         Dead = false;

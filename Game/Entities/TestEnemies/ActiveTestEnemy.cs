@@ -21,7 +21,7 @@ public partial class ActiveTestEnemy : Entity
 
     private AnimatedSprite animatedSprite;
     private CollisionShape2D collisionShape;
-    private Hurtbox hurtbox;
+    public EnemyHurtbox hurtbox;
     private Timer FireRateTimer;
     private Node2D player;
     private double fireTimer = 3.0;
@@ -34,7 +34,7 @@ public partial class ActiveTestEnemy : Entity
         FireRateTimer = GetNode<Timer>("FireRate");
         NavAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");
         collisionShape = GetNode<CollisionShape2D>("CollisionShape");
-        hurtbox = GetNode<Hurtbox>("Hurtbox");
+        hurtbox = GetNode<EnemyHurtbox>("EnemyHurtbox");
         animatedSprite = GetNode<AnimatedSprite>("AnimatedSpriteE");
 
         lineOfSight.TargetPosition = new Vector2(ShootingRange/lineOfSight.Scale.X, 0);

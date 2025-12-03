@@ -1,4 +1,4 @@
-[gd_scene load_steps=136 format=3 uid="uid://bbjw3fvxlq53q"]
+[gd_scene load_steps=133 format=3 uid="uid://bbjw3fvxlq53q"]
 
 [ext_resource type="Script" uid="uid://cccauuo7nkwjv" path="res://Game/Entities/Player/Player.cs" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://dyqbl4s13wnxg" path="res://Game/Entities/Components/shadow.tscn" id="2_nfw5o"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://b1ak4u4c4cm3j" path="res://Game/Entities/Player/Direction.cs" id="4_vytja"]
 [ext_resource type="Script" uid="uid://c76e6opdvi84r" path="res://Game/Entities/Player/AnimatedSpriteC.cs" id="5_wg23h"]
 [ext_resource type="PackedScene" uid="uid://bp3lx4f7c5wd1" path="res://Components/Etc/hit_flash.tscn" id="7_akrrf"]
-[ext_resource type="PackedScene" uid="uid://vmtiw08cr30b" path="res://Components/DamageComps/hurtbox.tscn" id="7_vh1aq"]
 [ext_resource type="Script" uid="uid://bgxp42213x1kw" path="res://Game/Entities/Player/GunsHandler.cs" id="8_3ylnx"]
 [ext_resource type="Resource" uid="uid://du4ihic1fxweh" path="res://Game/Guns/Player/Pistol/Levels/PistolData.tres" id="10_iwdm0"]
 [ext_resource type="PackedScene" uid="uid://e2jpk6hxn1ls" path="res://Game/Entities/Player/LookAt.tscn" id="11_vpkgm"]
@@ -17,8 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://mxrkr1wy2wt6" path="res://Game/Guns/Base/Parts/LaserSight2.tscn" id="14_esr38"]
 [ext_resource type="PackedScene" uid="uid://haqfsuv5fmc3" path="res://Components/InteractComp/interact_component.tscn" id="14_wlpas"]
 [ext_resource type="Resource" uid="uid://ieag318h1oao" path="res://Game/Guns/Player/Rifle/Levels/RifleData.tres" id="16_0xjwd"]
+[ext_resource type="PackedScene" uid="uid://dh0m6pcik7hby" path="res://Game/Entities/Components/PlayerHurtbox.tscn" id="16_vcc71"]
 [ext_resource type="Texture2D" uid="uid://c48h0yfxwlgc6" path="res://Assets/Effects/ParticleEffects.png" id="17_6v7ly"]
-[ext_resource type="Script" uid="uid://e1jle0vnwo3p" path="res://Components/DamageComps/OnHitEffects/Scripts/Shake.cs" id="18_0xjwd"]
 [ext_resource type="Script" uid="uid://wvm80ckdaxft" path="res://Game/Entities/Player/Effects.cs" id="18_86ark"]
 [ext_resource type="Shader" uid="uid://cd5qo1r5p7bct" path="res://Game/Shaders/Shockwave.gdshader" id="21_vcc71"]
 
@@ -828,14 +827,6 @@ animations = [{
 "speed": 9.0
 }]
 
-[sub_resource type="Resource" id="Resource_lbtsn"]
-script = ExtResource("18_0xjwd")
-metadata/_custom_type_script = "uid://e1jle0vnwo3p"
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ch4ko"]
-radius = 4.0
-height = 12.0
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_lglki"]
 atlas = ExtResource("17_6v7ly")
 region = Rect2(0, 0, 128, 128)
@@ -1033,17 +1024,11 @@ guns = Array[Object]([ExtResource("10_iwdm0"), ExtResource("16_0xjwd")])
 active = true
 laserSight = NodePath("../../LookAt2/LaserSight")
 
-[node name="Hurtbox" parent="." node_paths=PackedStringArray("hitFlash", "animationSprite") instance=ExtResource("7_vh1aq")]
+[node name="PlayerHurtbox" parent="." node_paths=PackedStringArray("hitFlash", "animationSprite") instance=ExtResource("16_vcc71")]
 position = Vector2(0, -9)
-collision_layer = 2
-hitEffects = [SubResource("Resource_lbtsn")]
 maxHealth = 10
 hitFlash = NodePath("../AnimatedSprite/HitFlash")
 animationSprite = NodePath("../AnimatedSprite")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-shape = SubResource("CapsuleShape2D_ch4ko")
-debug_color = Color(0.883969, 0.263477, 0.526173, 0.42)
 
 [node name="WarpDash" type="Node2D" parent="." groups=["PlayerCenter"]]
 position = Vector2(0, -9)
