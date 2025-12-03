@@ -7,12 +7,11 @@
 script = ExtResource("1_wwalm")
 GunName = "default"
 Knockback = 200.0
-ShootPosition = Vector2(10, 0)
 BulletScene = ExtResource("1_hs0t4")
-SpawnAmount = 10
 UsesAmmo = false
 FireRate = 0.1
 BulletCount = 3
 SpreadAngle = 45.0
+ShootPosition = Vector2(10, 0)
 isEnemy = true
 metadata/_custom_type_script = "uid://bf05vlwwwrvul"

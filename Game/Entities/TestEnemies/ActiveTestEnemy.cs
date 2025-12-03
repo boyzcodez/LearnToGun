@@ -44,6 +44,8 @@ public partial class ActiveTestEnemy : Entity
 
         SetProcess(false);
         Visible = false;
+        hurtbox.SetDeferred("monitoring", false);
+        hurtbox.SetDeferred("monitorable", false);
     }
 
     public override void _Process(double delta)

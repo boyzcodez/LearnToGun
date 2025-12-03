@@ -9,6 +9,7 @@ public static class EventBus
     public static event Action Lock;
     public static event Action ClearBullets;
     public static event Action<float> ScreenShake;
+    public static event Action SwitchGameState;
 
     // Map and room stuff
     public static event Action Transition;
@@ -30,8 +31,8 @@ public static class EventBus
     
     // Game tracker and stuff
     public static int dangerValue = 0;
-    public static bool gameOn = false;
     public static int room = 0;
+    public static bool gameOn = false;
 
 
     // Player and game stuff
@@ -41,7 +42,15 @@ public static class EventBus
         ScreenShake?.Invoke(amount);
     public static void TriggerClearBullets() =>
         ClearBullets?.Invoke();
-    
+    public static void TriggerSwitchGameState()
+    {
+        if (gameOn == true) gameOn = false;
+        else gameOn = true;
+
+        SwitchGameState?.Invoke();
+    }
+        
+
 
     // Map and room stuff
     public static void TriggerLock() =>

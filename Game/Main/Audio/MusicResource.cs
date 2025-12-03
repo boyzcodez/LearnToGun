@@ -4,6 +4,6 @@ using System;
 [GlobalClass]
 public partial class MusicResource : Resource
 {
-    [Export] string tag {get;set;}
-    [Export] AudioStream stream {get;set;}
+    [Export] public string tag {get;set;}
+    [Export] public AudioStream stream {get;set;}
 }

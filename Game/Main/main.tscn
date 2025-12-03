@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://clqw4um34fajs"]
+[gd_scene load_steps=27 format=3 uid="uid://clqw4um34fajs"]
 
 [ext_resource type="Script" uid="uid://cdlnphhio2rp2" path="res://Game/Main/Main.cs" id="1_1r4f6"]
 [ext_resource type="Script" uid="uid://xdubo0fshbcy" path="res://Game/Main/MapHandler.cs" id="3_mxdch"]
@@ -12,7 +12,20 @@
 [ext_resource type="Resource" uid="uid://deq3e1hpm875b" path="res://Game/Entities/ValueList/ShotgunEnemy.tres" id="9_oab63"]
 [ext_resource type="Resource" uid="uid://dwtg3n443mbrh" path="res://Game/Entities/ValueList/PistolEnemy.tres" id="10_bhrp5"]
 [ext_resource type="PackedScene" uid="uid://bqtng3dp4vtsa" path="res://Game/Entities/Player/player_camera.tscn" id="11_bhrp5"]
-[ext_resource type="Script" uid="uid://cjf8q3rv0mem7" path="res://Game/Main/Audio/Music.cs" id="13_vp847"]
+[ext_resource type="Script" uid="uid://ib1ifao5dbj6" path="res://Game/Main/MusicHandler.cs" id="13_7crck"]
+[ext_resource type="AudioStream" uid="uid://pvx4nwdfd4vo" path="res://Assets/Audio/Music/Hub/787557__kontraamusic__zodiac-hiphop-instrumental.mp3" id="14_47yjy"]
+[ext_resource type="AudioStream" uid="uid://eak235eig1d2" path="res://Assets/Audio/Music/788631__kontraamusic__favor-hiphop-instrumental.mp3" id="15_5setp"]
+[ext_resource type="AudioStream" uid="uid://syjrar88jq24" path="res://Assets/Audio/Music/Hub/787565__kontraamusic__self-control-rb-soul-instrumental.mp3" id="15_fsdd5"]
+[ext_resource type="AudioStream" uid="uid://cuqx6wi23yhw2" path="res://Assets/Audio/Music/Hub/787697__kontraamusic__1999-hiphop-instrumental.mp3" id="16_ry1jc"]
+[ext_resource type="AudioStream" uid="uid://kjt3lyotbhre" path="res://Assets/Audio/Music/788641__kontraamusic__samurai-hiphop-instrumental.mp3" id="16_v4ssv"]
+[ext_resource type="AudioStream" uid="uid://dcgbfoxbj64he" path="res://Assets/Audio/Music/788646__kontraamusic__uzi-trap-instrumental.mp3" id="17_8pcyv"]
+[ext_resource type="AudioStream" uid="uid://cgmyk07i2muqp" path="res://Assets/Audio/Music/Hub/787726__kontraamusic__goodbye-hiphop-instrumental.mp3" id="17_uqsqp"]
+[ext_resource type="AudioStream" uid="uid://8csc7pjyh8t" path="res://Assets/Audio/Music/Hub/788442__kontraamusic__palace-hiphop-instrumental.mp3" id="18_aiymc"]
+[ext_resource type="AudioStream" uid="uid://duq74qlcspjs3" path="res://Assets/Audio/Music/788680__kontraamusic__drip-trap-instrumental.mp3" id="22_yncym"]
+[ext_resource type="AudioStream" uid="uid://cwnnav8w0s6n" path="res://Assets/Audio/Music/790006__kontraamusic__victor-hiphop-instrumental.mp3" id="23_810rx"]
+[ext_resource type="AudioStream" uid="uid://m85baqiw46xq" path="res://Assets/Audio/Music/790926__kontraamusic__lullaby-hiphop-instrumental.mp3" id="24_xvuku"]
+[ext_resource type="AudioStream" uid="uid://djhgxxuasmau5" path="res://Assets/Audio/Music/790932__kontraamusic__wattage-hiphop-instrumental.mp3" id="25_mfgqm"]
+[ext_resource type="AudioStream" uid="uid://op5h5e3opa6k" path="res://Assets/Audio/Music/790936__kontraamusic__battleground-uk-drill-instrumental.mp3" id="26_f6nio"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_1r4f6")
@@ -45,6 +58,12 @@ script = ExtResource("7_vmwgv")
 target = NodePath("../YSort/Player")
 
 [node name="MusicHandler" type="Node" parent="."]
+script = ExtResource("13_7crck")
+HubAlbum = Array[AudioStream]([ExtResource("14_47yjy"), ExtResource("15_fsdd5"), ExtResource("16_ry1jc"), ExtResource("17_uqsqp"), ExtResource("18_aiymc")])
+CombatAlbum = Array[AudioStream]([ExtResource("15_5setp"), ExtResource("16_v4ssv"), ExtResource("17_8pcyv"), ExtResource("22_yncym"), ExtResource("23_810rx"), ExtResource("24_xvuku"), ExtResource("25_mfgqm"), ExtResource("26_f6nio")])
 
-[node name="Music" type="AudioStreamPlayer" parent="MusicHandler"]
-script = ExtResource("13_vp847")
+[node name="PlayerA" type="AudioStreamPlayer" parent="MusicHandler"]
+bus = &"Music"
+
+[node name="PlayerB" type="AudioStreamPlayer" parent="MusicHandler"]
+bus = &"Music"

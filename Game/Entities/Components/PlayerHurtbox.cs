@@ -11,6 +11,7 @@ public partial class PlayerHurtbox : Hurtbox
     public override void OnHit()
     {
         EventBus.Health(currentHealth, maxHealth);
+        EventBus.TriggerScreenShake(0.2f);
     }
     public override void ResetHealth()
     {

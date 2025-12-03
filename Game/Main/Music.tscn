@@ -1,0 +1,49 @@
+[gd_scene load_steps=15 format=3 uid="uid://btsd31q58r6k"]
+
+[ext_resource type="Script" uid="uid://cjf8q3rv0mem7" path="res://Game/Main/Audio/Music.cs" id="1_j2d2a"]
+[ext_resource type="Script" uid="uid://birgk3tj66r0v" path="res://Game/Main/Audio/MusicResource.cs" id="2_vu72k"]
+[ext_resource type="AudioStream" uid="uid://eak235eig1d2" path="res://Assets/Audio/Music/788631__kontraamusic__favor-hiphop-instrumental.mp3" id="3_cvqvw"]
+[ext_resource type="AudioStream" uid="uid://kjt3lyotbhre" path="res://Assets/Audio/Music/788641__kontraamusic__samurai-hiphop-instrumental.mp3" id="4_1peyp"]
+[ext_resource type="AudioStream" uid="uid://dcgbfoxbj64he" path="res://Assets/Audio/Music/788646__kontraamusic__uzi-trap-instrumental.mp3" id="5_8gkq4"]
+[ext_resource type="AudioStream" uid="uid://syjrar88jq24" path="res://Assets/Audio/Music/Hub/787565__kontraamusic__self-control-rb-soul-instrumental.mp3" id="6_hpd0i"]
+[ext_resource type="AudioStream" uid="uid://cuqx6wi23yhw2" path="res://Assets/Audio/Music/Hub/787697__kontraamusic__1999-hiphop-instrumental.mp3" id="7_gkma0"]
+[ext_resource type="AudioStream" uid="uid://cgmyk07i2muqp" path="res://Assets/Audio/Music/Hub/787726__kontraamusic__goodbye-hiphop-instrumental.mp3" id="8_4dumo"]
+
+[sub_resource type="Resource" id="Resource_pq7k5"]
+script = ExtResource("2_vu72k")
+stream = ExtResource("3_cvqvw")
+metadata/_custom_type_script = "uid://birgk3tj66r0v"
+
+[sub_resource type="Resource" id="Resource_baqxr"]
+script = ExtResource("2_vu72k")
+stream = ExtResource("4_1peyp")
+metadata/_custom_type_script = "uid://birgk3tj66r0v"
+
+[sub_resource type="Resource" id="Resource_1fjhr"]
+script = ExtResource("2_vu72k")
+stream = ExtResource("5_8gkq4")
+metadata/_custom_type_script = "uid://birgk3tj66r0v"
+
+[sub_resource type="Resource" id="Resource_u8y8r"]
+script = ExtResource("2_vu72k")
+tag = "hub1"
+stream = ExtResource("6_hpd0i")
+metadata/_custom_type_script = "uid://birgk3tj66r0v"
+
+[sub_resource type="Resource" id="Resource_5setp"]
+script = ExtResource("2_vu72k")
+tag = "hub2"
+stream = ExtResource("7_gkma0")
+metadata/_custom_type_script = "uid://birgk3tj66r0v"
+
+[sub_resource type="Resource" id="Resource_v4ssv"]
+script = ExtResource("2_vu72k")
+tag = "hub3"
+stream = ExtResource("8_4dumo")
+metadata/_custom_type_script = "uid://birgk3tj66r0v"
+
+[node name="Music" type="AudioStreamPlayer"]
+bus = &"Music"
+script = ExtResource("1_j2d2a")
+CombatAlbum = Array[Object]([SubResource("Resource_pq7k5"), SubResource("Resource_baqxr"), SubResource("Resource_1fjhr")])
+HubAlbum = Array[Object]([SubResource("Resource_u8y8r"), SubResource("Resource_5setp"), SubResource("Resource_v4ssv")])

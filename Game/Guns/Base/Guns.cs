@@ -67,7 +67,7 @@ public partial class Guns : Node2D
 
         sprite?.Play(currentGun.GunName);
         muzzleFlash.Position = currentGun.ShootPosition;
-        Position = new Vector2(currentGun.GunX, 0);
+        Position = new Vector2(currentGun.GunSpot_X_axis, 0);
         if (AudioLibrary.ContainsKey(currentGun.GunName)) audioSystem.Stream = AudioLibrary[currentGun.GunName];
 
         if (active) EventBus.Ammo(currentGun.CurrentAmmo, currentGun.MaxAmmo);

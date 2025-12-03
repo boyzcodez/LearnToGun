@@ -103,7 +103,7 @@ public partial class Player : Entity
     }
     public override async void Death()
     {
-        EventBus.gameOn = false;
+        EventBus.TriggerSwitchGameState();
 
         Dead = true;
         KnockbackTime = 0f;

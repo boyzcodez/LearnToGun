@@ -27,7 +27,7 @@ public partial class HitFlash : Node
             0.3f    // duration
         );
 
-        ImpactShake();
+        //ImpactShake();
     }
 
     private void SetShader_BlinkIntensity(float newValue)
@@ -41,6 +41,9 @@ public partial class HitFlash : Node
     public void ImpactShake()
     {
         if (parent == null) return;
+
+        if (tween != null && tween.IsValid())
+            tween.Kill();
 
         Vector2 originalPosition = parent.Position;
         tween = CreateTween();

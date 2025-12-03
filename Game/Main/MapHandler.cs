@@ -82,7 +82,6 @@ public partial class MapHandler : Node2D
     private void SpawnStartingMap()
     {
         ClearMap();
-
         EventBus.room = 0;
     }
     private void SpawnRoom()
@@ -91,7 +90,7 @@ public partial class MapHandler : Node2D
 
         EventBus.room += 1;
 
-        if (EventBus.room == 1) EventBus.gameOn = true;
+        if (EventBus.room == 1) EventBus.TriggerSwitchGameState();
 
         Node2D nextRoom = SpawnNextRoom();
         nextRoom.GlobalPosition = new Vector2(0, -1000);
