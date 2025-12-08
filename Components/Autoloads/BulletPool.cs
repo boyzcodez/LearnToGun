@@ -44,7 +44,7 @@ public partial class BulletPool : Node2D
         for (int i = pool.Count; i < amount; i++)
         {
             var bullet = gunData.BulletScene.Instantiate<Bullet>();
-            bullet.Init(new DamageData(gunData.Damage, gunData.Knockback, gunData.GunName), key, gunData.BulletSpeed, gunData.rotate, gunData.BulletLifeTime, this);
+            bullet.Init(new DamageData(gunData.Damage, gunData.Knockback, gunData.GunName), key, gunData.BulletSpeed, gunData.rotate, gunData.BulletLifeTime, gunData.BounceAmount, this);
             CallDeferred("add_child", bullet);
             pool.Enqueue(bullet);
 

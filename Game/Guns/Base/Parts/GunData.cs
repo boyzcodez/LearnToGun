@@ -13,6 +13,7 @@ public partial class GunData : Resource
     [Export] public float Knockback { get; set; } = 0f;
     [Export] public float BulletSpeed { get; set; } = 140f;
     [Export] public float BulletLifeTime {get;set;} = 4f;
+    [Export] public int BounceAmount {get;set;} = 0;
 
     [ExportGroup("XP")]
     [Export] public int currentXP { get; set; } = 0;

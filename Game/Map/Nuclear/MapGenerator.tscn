@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1cbpf4rxqd2u"]
+
+[ext_resource type="Script" uid="uid://bcqwax24weusn" path="res://Game/Map/Nuclear/MapGenerator.cs" id="1_yf7wh"]
+[ext_resource type="TileSet" uid="uid://ccfm38hf6gxph" path="res://Game/Map/Nuclear/MapGenerator.tres" id="2_4vkqo"]
+
+[node name="MapGenerator" type="Node" node_paths=PackedStringArray("FloorLayer", "WallLayer", "UnderWallLayer")]
+script = ExtResource("1_yf7wh")
+FloorLayer = NodePath("Floor")
+WallLayer = NodePath("Walls")
+UnderWallLayer = NodePath("WallFloor")
+
+[node name="Floor" type="TileMapLayer" parent="."]
+tile_set = ExtResource("2_4vkqo")
+
+[node name="WallFloor" type="TileMapLayer" parent="."]
+tile_set = ExtResource("2_4vkqo")
+
+[node name="Walls" type="TileMapLayer" parent="."]
+tile_set = ExtResource("2_4vkqo")
+
+[node name="Camera2D" type="Camera2D" parent="."]

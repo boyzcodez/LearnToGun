@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Godot;
 
 [GlobalClass]
@@ -19,6 +19,8 @@ public partial class Bullet : Area2D
     private float BaseSpeed { get; set; } = 80f;
     public float Speed { get; set; } = 80f;
     public float LifeTime = 4f;
+    public int BounceAmount = 0;
+    private int BouncesLeft = 0;
     public Vector2 Direction { get; set; }
     public float rotation { get; set; }
     public string Key { get; private set; }
@@ -87,16 +89,7 @@ public partial class Bullet : Area2D
         }
     }
 
-    public void Init(DamageData damageData, string type, float newSpeed, bool rotate, float lifeTime, BulletPool newPool)
-    {
-        DamageData = damageData;
-        Key = type;
-        BaseSpeed = newSpeed;
-        Speed = BaseSpeed;
-        _pool = newPool;
-        doesRotate = rotate;
-        LifeTime = lifeTime;
-    }
+    
 
     public void Activate(float newRotation)
     {
@@ -105,9 +98,7 @@ public partial class Bullet : Area2D
         rotation = newRotation;
         if (doesRotate)
         {
-            Animation.Rotation = newRotation;
-            collisionShape.Rotation = newRotation;
-            if (shadow != null) shadow.Rotation = newRotation;
+            VisualRotation(newRotation);
             
         }
         if (particles != null)
@@ -120,6 +111,7 @@ public partial class Bullet : Area2D
         Initialize();
         _timer = 0f;
         hasHit = false;
+        BouncesLeft = BounceAmount;
 
         // Defer enabling physics process for safety
         CallDeferred("set_physics_process", true);
@@ -153,8 +145,48 @@ public partial class Bullet : Area2D
     }
     private void WallHit(Node body)
     {
-        Deactivate();
+        if (BouncesLeft <= 0) Deactivate();
+        else
+        {
+            BouncesLeft -= 1;
+
+            Vector2 movement = Direction.Abs();
+
+            if (movement.X > movement.Y)
+            {
+                Direction = new Vector2(-Direction.X, Direction.Y);
+            }
+            else
+            {
+                Direction = new Vector2(Direction.X, -Direction.Y);
+            }
+            VisualRotation(Direction.Angle());
+
+        }
     }
+
+    #region Setup
+
+    public void Init(DamageData damageData, string type, float newSpeed, bool rotate, float lifeTime, int Bounces, BulletPool newPool)
+    {
+        DamageData = damageData;
+        Key = type;
+        BaseSpeed = newSpeed;
+        Speed = BaseSpeed;
+        _pool = newPool;
+        doesRotate = rotate;
+        LifeTime = lifeTime;
+        BounceAmount = Bounces;
+    }
+
+    private void VisualRotation(float rot)
+    {
+        Animation.Rotation = rot;
+        collisionShape.Rotation = rot;
+        if (shadow != null) shadow.Rotation = rot;
+    }
+
+    #endregion
 
     #endregion
 
