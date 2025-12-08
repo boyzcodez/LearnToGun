@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpk0ax65uv72r"]
+
+[ext_resource type="Script" uid="uid://dpcqiq7ji42i2" path="res://Game/Map/Nuclear/WalkerUnit.cs" id="1_vyhep"]
+
+[node name="WalkerUnit" type="Node2D"]
+script = ExtResource("1_vyhep")
