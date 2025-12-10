@@ -60,7 +60,7 @@ public partial class WalkerHead : Node2D
     {
         if (input.IsActionPressed("space"))
         {
-            Explosion(5, player.GlobalPosition);
+            Explosion(2, player.GlobalPosition);
         }
     }
 
@@ -86,7 +86,7 @@ public partial class WalkerHead : Node2D
         WallMap.EraseCell(pos);
 
         var newDust = dust.Instantiate() as CpuParticles2D;
-        newDust.GlobalPosition = pos * 32;
+        newDust.GlobalPosition = pos * 32 + new Vector2(16,16);
         AddChild(newDust);
     }
 }
