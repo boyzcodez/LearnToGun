@@ -4,12 +4,17 @@ using System.Collections.Generic;
 public partial class WalkerUnit : Node2D
 {
     public enum Dirs{LEFT,RIGHT,UP,DOWN}
-    private int PathLength = 100;
-    const int tileSize = 32;
+    private Vector2 floorTile = new Vector2I(0, 0);
+    public List<Vector2I> carvedTiles;
     
 
     public void CalcPaht()
     {
+        carvedTiles = new();
+
+        var parent = GetParent<WalkerHead>();
+        var PathLength = parent.PathLength;
+
         List<int> PathSteps = new();
         for (int i = 0; i < PathLength; i++)
         {
@@ -17,8 +22,8 @@ public partial class WalkerUnit : Node2D
             PathSteps.Add(stepsi);
         }
 
-        Vector2I location = (Vector2I)GetParent<WalkerHead>().GlobalPosition;
-        TileMapLayer tm = GetParent<WalkerHead>().map;
+        Vector2I location = (Vector2I)parent.GlobalPosition;
+        TileMapLayer tm = parent.FloorMap;
 
         foreach (int dir in PathSteps)
         {
@@ -41,6 +46,7 @@ public partial class WalkerUnit : Node2D
             }
             location += ModifierDirection;
             tm.SetCell(location, 0, new Vector2I(0, 0));
+            carvedTiles.Add(location);
         }
 
     }

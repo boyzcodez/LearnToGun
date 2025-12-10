@@ -1,27 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1cbpf4rxqd2u"]
+[gd_scene load_steps=4 format=3 uid="uid://b1cbpf4rxqd2u"]
 
-[ext_resource type="Texture2D" uid="uid://d2sehjcuqoayr" path="res://Assets/Map/Tilesets/MapTest.png" id="1_yf7wh"]
+[ext_resource type="TileSet" uid="uid://7xl1xof0k2cl" path="res://Game/Map/Nuclear/NuclearMap.tres" id="1_s88c4"]
 [ext_resource type="PackedScene" uid="uid://bpk0ax65uv72r" path="res://Game/Map/Nuclear/WalkerUnit.tscn" id="2_4vkqo"]
 [ext_resource type="Script" uid="uid://c087o5e4sg0l1" path="res://Game/Map/Nuclear/WalkerHead.cs" id="2_s88c4"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4vkqo"]
-texture = ExtResource("1_yf7wh")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-1:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_qic4r"]
-tile_size = Vector2i(32, 32)
-sources/0 = SubResource("TileSetAtlasSource_4vkqo")
-
 [node name="MapGenerator" type="Node2D"]
 
-[node name="Map" type="TileMapLayer" parent="."]
-tile_set = SubResource("TileSet_qic4r")
+[node name="Floor" type="TileMapLayer" parent="."]
+tile_set = ExtResource("1_s88c4")
 
-[node name="WalkerHead" type="Node2D" parent="." node_paths=PackedStringArray("map")]
+[node name="Wall" type="TileMapLayer" parent="."]
+tile_set = ExtResource("1_s88c4")
+
+[node name="WalkerHead" type="Node2D" parent="." node_paths=PackedStringArray("FloorMap", "WallMap")]
 script = ExtResource("2_s88c4")
-map = NodePath("../Map")
+PathLength = 150
+FloorMap = NodePath("../Floor")
+WallMap = NodePath("../Wall")
 
 [node name="WalkerUnit" parent="WalkerHead" instance=ExtResource("2_4vkqo")]
 
@@ -31,5 +26,9 @@ map = NodePath("../Map")
 
 [node name="WalkerUnit4" parent="WalkerHead" instance=ExtResource("2_4vkqo")]
 
+[node name="WalkerUnit5" parent="WalkerHead" instance=ExtResource("2_4vkqo")]
+
+[node name="WalkerUnit6" parent="WalkerHead" instance=ExtResource("2_4vkqo")]
+
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.5, 0.5)
+zoom = Vector2(0.1, 0.1)
