@@ -7,9 +7,12 @@ public partial class WalkerHead : Node2D
     [Export] public int PathLength = 100;
     [Export] public TileMapLayer FloorMap;
     [Export] public TileMapLayer WallMap;
+    [Export] public PackedScene dust;
+    private Player player;
 
     public override void _Ready()
     {
+        player = GetTree().GetFirstNodeInGroup("Player") as Player;
         GenerateMap();
     }
 
@@ -43,7 +46,12 @@ public partial class WalkerHead : Node2D
             for (int y = -MapLength; y < MapLength; y++)
             {
                 var location = new Vector2I(x, y);
-                if (!floorSet.Contains(location)) WallMap.SetCell(location, 0, new Vector2I(1, 0));
+                if (!floorSet.Contains(location))
+                {
+                    WallMap.SetCell(location, 0, new Vector2I(1, 0));
+                    FloorMap.SetCell(location, 0, new Vector2I(2,1));
+                }
+                 
             }
         }
     }
@@ -52,14 +60,33 @@ public partial class WalkerHead : Node2D
     {
         if (input.IsActionPressed("space"))
         {
-            GenerateMap();
+            Explosion(5, player.GlobalPosition);
         }
     }
 
+    public void Explosion(int size, Vector2 position)
+    {
+        Vector2I centerPos = FloorMap.LocalToMap(position);
 
+        for (int x = -size; x <= size; x++)
+        {
+            for (int y = -size; y <= size; y++)
+            {
+                Vector2I wallPos = centerPos + new Vector2I(x, y);
+                if (Mathf.Sqrt(x * x + y * y) <= size && WallMap.GetCellSourceId(wallPos) != -1)
+                {
+                    DestroyWall(wallPos);
+                }
+            }
+        }
+    }
 
     public void DestroyWall(Vector2I pos)
     {
         WallMap.EraseCell(pos);
+
+        var newDust = dust.Instantiate() as CpuParticles2D;
+        newDust.GlobalPosition = pos * 32;
+        AddChild(newDust);
     }
 }

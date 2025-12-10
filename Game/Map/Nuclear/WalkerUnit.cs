@@ -45,7 +45,7 @@ public partial class WalkerUnit : Node2D
                     break;
             }
             location += ModifierDirection;
-            tm.SetCell(location, 0, new Vector2I(0, 0));
+            tm.SetCell(location, 0, new Vector2I(0, 1));
             carvedTiles.Add(location);
         }
 

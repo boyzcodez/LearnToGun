@@ -43,10 +43,10 @@ startingMap = ExtResource("4_gk2dm")
 maps = [ExtResource("7_bhrp5"), ExtResource("7_bhrp5"), ExtResource("7_bhrp5")]
 ysort = NodePath("../YSort")
 
-[node name="MapGenerator" parent="." instance=ExtResource("10_47yjy")]
-
 [node name="YSort" type="Node2D" parent="." groups=["YSort"]]
 y_sort_enabled = true
+
+[node name="MapGenerator" parent="YSort" instance=ExtResource("10_47yjy")]
 
 [node name="BulletPool" type="Node2D" parent="YSort" groups=["BulletPool"]]
 y_sort_enabled = true
@@ -54,8 +54,6 @@ position = Vector2(-500, 0)
 script = ExtResource("7_vmwgv")
 
 [node name="Player" parent="YSort" instance=ExtResource("5_gk2dm")]
-
-[node name="StartingMap" parent="YSort" instance=ExtResource("4_gk2dm")]
 
 [node name="PlayerCamera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("11_bhrp5")]
 target = NodePath("../YSort/Player")

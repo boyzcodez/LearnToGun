@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dx7mjhmqbv2ma"]
+
+[ext_resource type="Texture2D" uid="uid://dxbpd3e0i6biv" path="res://Assets/Effects/ExplosionDust.png" id="1_uoe0l"]
+[ext_resource type="Script" uid="uid://ck5lb2d40e2m" path="res://Components/Etc/Particles/Dust.cs" id="2_gx3ur"]
+
+[sub_resource type="Curve" id="Curve_uoe0l"]
+_data = [Vector2(0, 0.15730333), 0.0, 0.0, 0, 0, Vector2(0.26382977, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.5505618), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_ht4dr"]
+colors = PackedColorArray(1, 1, 1, 1, 0.24840015, 0.24840018, 0.24840015, 1)
+
+[node name="Dust" type="CPUParticles2D"]
+emitting = false
+amount = 10
+texture = ExtResource("1_uoe0l")
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.8
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 15.0
+initial_velocity_max = 30.0
+angular_velocity_min = 50.0
+angular_velocity_max = 100.0
+scale_amount_curve = SubResource("Curve_uoe0l")
+color_ramp = SubResource("Gradient_ht4dr")
+script = ExtResource("2_gx3ur")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
