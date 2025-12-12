@@ -11,6 +11,7 @@ point_count = 3
 colors = PackedColorArray(1, 1, 1, 1, 0.24840015, 0.24840018, 0.24840015, 1)
 
 [node name="Dust" type="CPUParticles2D"]
+y_sort_enabled = true
 emitting = false
 amount = 10
 texture = ExtResource("1_uoe0l")

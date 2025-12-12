@@ -10,9 +10,9 @@
 [ext_resource type="Script" uid="uid://cmj0dd4e41aj2" path="res://Components/Autoloads/BulletPool.cs" id="7_vmwgv"]
 [ext_resource type="Script" uid="uid://dfkmxtii76h6l" path="res://Game/Main/EnemySpawner.cs" id="8_ln7nw"]
 [ext_resource type="Resource" uid="uid://deq3e1hpm875b" path="res://Game/Entities/ValueList/ShotgunEnemy.tres" id="9_oab63"]
-[ext_resource type="PackedScene" uid="uid://b1cbpf4rxqd2u" path="res://Game/Map/Nuclear/MapGenerator.tscn" id="10_47yjy"]
 [ext_resource type="Resource" uid="uid://dwtg3n443mbrh" path="res://Game/Entities/ValueList/PistolEnemy.tres" id="10_bhrp5"]
 [ext_resource type="PackedScene" uid="uid://bqtng3dp4vtsa" path="res://Game/Entities/Player/player_camera.tscn" id="11_bhrp5"]
+[ext_resource type="PackedScene" uid="uid://b1cbpf4rxqd2u" path="res://Game/Map/Nuclear/MapGenerator.tscn" id="12_47yjy"]
 [ext_resource type="Script" uid="uid://ib1ifao5dbj6" path="res://Game/Main/MusicHandler.cs" id="13_7crck"]
 [ext_resource type="AudioStream" uid="uid://pvx4nwdfd4vo" path="res://Assets/Audio/Music/Hub/787557__kontraamusic__zodiac-hiphop-instrumental.mp3" id="14_47yjy"]
 [ext_resource type="AudioStream" uid="uid://eak235eig1d2" path="res://Assets/Audio/Music/788631__kontraamusic__favor-hiphop-instrumental.mp3" id="15_5setp"]
@@ -46,14 +46,14 @@ ysort = NodePath("../YSort")
 [node name="YSort" type="Node2D" parent="." groups=["YSort"]]
 y_sort_enabled = true
 
-[node name="MapGenerator" parent="YSort" instance=ExtResource("10_47yjy")]
-
 [node name="BulletPool" type="Node2D" parent="YSort" groups=["BulletPool"]]
 y_sort_enabled = true
 position = Vector2(-500, 0)
 script = ExtResource("7_vmwgv")
 
 [node name="Player" parent="YSort" instance=ExtResource("5_gk2dm")]
+
+[node name="MapGenerator" parent="YSort" instance=ExtResource("12_47yjy")]
 
 [node name="PlayerCamera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("11_bhrp5")]
 target = NodePath("../YSort/Player")
