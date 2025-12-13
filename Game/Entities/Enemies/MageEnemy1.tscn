@@ -1,7 +1,6 @@
-[gd_scene load_steps=77 format=3 uid="uid://dei551llww1lc"]
+[gd_scene load_steps=76 format=3 uid="uid://dei551llww1lc"]
 
 [ext_resource type="Script" uid="uid://dexb3awvsef8d" path="res://Game/Entities/TestEnemies/ActiveTestEnemy.cs" id="1_fkd7y"]
-[ext_resource type="PackedScene" uid="uid://dyqbl4s13wnxg" path="res://Game/Entities/Components/shadow.tscn" id="2_6c8rq"]
 [ext_resource type="Material" uid="uid://w5yw3e3gudc3" path="res://Game/Entities/Player/HitFlash.tres" id="3_aupr6"]
 [ext_resource type="Texture2D" uid="uid://w5rsrhqgmwpj" path="res://Assets/Entity/Enemy/MageEnemy1.png" id="4_25k4x"]
 [ext_resource type="Script" uid="uid://jqlj5orjwgch" path="res://Game/Entities/TestEnemies/AnimatedSpriteE.cs" id="5_bgaue"]
@@ -550,9 +549,6 @@ lineOfSight = NodePath("AnimatedSpriteE/Look/sight")
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_htgvw")
 disabled = true
-
-[node name="Shadow" parent="." instance=ExtResource("2_6c8rq")]
-position = Vector2(0, -1)
 
 [node name="AnimatedSpriteE" type="AnimatedSprite2D" parent="."]
 material = ExtResource("3_aupr6")
