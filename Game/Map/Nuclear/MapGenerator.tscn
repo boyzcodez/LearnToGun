@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1cbpf4rxqd2u"]
+[gd_scene load_steps=7 format=3 uid="uid://b1cbpf4rxqd2u"]
 
 [ext_resource type="TileSet" uid="uid://7xl1xof0k2cl" path="res://Game/Map/Nuclear/NuclearMap.tres" id="1_s88c4"]
 [ext_resource type="PackedScene" uid="uid://bpk0ax65uv72r" path="res://Game/Map/Nuclear/WalkerUnit.tscn" id="2_4vkqo"]
 [ext_resource type="Script" uid="uid://c087o5e4sg0l1" path="res://Game/Map/Nuclear/WalkerHead.cs" id="2_s88c4"]
-[ext_resource type="PackedScene" uid="uid://dx7mjhmqbv2ma" path="res://Components/Etc/Particles/Dust.tscn" id="3_2cjrw"]
+[ext_resource type="PackedScene" uid="uid://bnqu3f8p31t30" path="res://Game/Main/EnemySpawner.tscn" id="4_2cjrw"]
+[ext_resource type="PackedScene" uid="uid://dtl2ydqrnh23i" path="res://Components/WarpEffects/portal_machine.tscn" id="5_voh33"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_2cjrw"]
+vertices = PackedVector2Array(979.96875, 668.96875, -875.96094, 664.02344, -872.02344, -644.03125, 977.02344, -650.96094)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-882, -654, 987, -661, 990, 679, -886, 674)])
 
 [node name="MapGenerator" type="Node2D"]
 y_sort_enabled = true
@@ -12,16 +18,21 @@ y_sort_enabled = true
 z_index = -1
 tile_set = ExtResource("1_s88c4")
 
-[node name="Wall" type="TileMapLayer" parent="."]
+[node name="NavRegion" type="NavigationRegion2D" parent="."]
+y_sort_enabled = true
+navigation_polygon = SubResource("NavigationPolygon_2cjrw")
+
+[node name="Wall" type="TileMapLayer" parent="NavRegion"]
 y_sort_enabled = true
 tile_set = ExtResource("1_s88c4")
 
-[node name="WalkerHead" type="Node2D" parent="." node_paths=PackedStringArray("FloorMap", "WallMap")]
+[node name="WalkerHead" type="Node2D" parent="." node_paths=PackedStringArray("NavRegion", "Spawner", "FloorMap", "WallMap")]
 script = ExtResource("2_s88c4")
 PathLength = 150
+NavRegion = NodePath("../NavRegion")
+Spawner = NodePath("../EnemySpawner")
 FloorMap = NodePath("../Floor")
-WallMap = NodePath("../Wall")
-dust = ExtResource("3_2cjrw")
+WallMap = NodePath("../NavRegion/Wall")
 
 [node name="WalkerUnit" parent="WalkerHead" instance=ExtResource("2_4vkqo")]
 
@@ -34,3 +45,13 @@ dust = ExtResource("3_2cjrw")
 [node name="WalkerUnit5" parent="WalkerHead" instance=ExtResource("2_4vkqo")]
 
 [node name="WalkerUnit6" parent="WalkerHead" instance=ExtResource("2_4vkqo")]
+
+[node name="EnemySpawner" parent="." node_paths=PackedStringArray("portal", "Head") instance=ExtResource("4_2cjrw")]
+y_sort_enabled = true
+portal = NodePath("../PortalMachine")
+Head = NodePath("../WalkerHead")
+
+[node name="PortalMachine" parent="." node_paths=PackedStringArray("Head") instance=ExtResource("5_voh33")]
+position = Vector2(0, -50)
+Head = NodePath("../WalkerHead")
+active = true

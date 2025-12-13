@@ -199,13 +199,12 @@ public partial class ActiveTestEnemy : Entity
     {
         //ZIndex = 0;
 
-        collisionShape.Disabled = false;
+        collisionShape.SetDeferred("disabled", false);
         SetProcess(true);
         Visible = true;
         if (gun != null) gun.Visible = true;
 
-        hurtbox.Monitorable = true;
-        hurtbox.Monitoring = true;
+        hurtbox.Activate();
 
         hurtbox.ResetHealth();
 
@@ -217,8 +216,7 @@ public partial class ActiveTestEnemy : Entity
         collisionShape.SetDeferred("disabled", true);
         SetProcess(false);
 
-        hurtbox.SetDeferred("monitoring", false);
-        hurtbox.SetDeferred("monitorable", false);
+        hurtbox.Deactivate();
     }
 
     public override void Death()

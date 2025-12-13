@@ -19,8 +19,6 @@ public partial class Bullet : Area2D
     private float BaseSpeed { get; set; } = 80f;
     public float Speed { get; set; } = 80f;
     public float LifeTime = 4f;
-    public int BounceAmount = 0;
-    private int BouncesLeft = 0;
     public Vector2 Direction { get; set; }
     public float rotation { get; set; }
     public string Key { get; private set; }
@@ -111,7 +109,6 @@ public partial class Bullet : Area2D
         Initialize();
         _timer = 0f;
         hasHit = false;
-        BouncesLeft = BounceAmount;
 
         // Defer enabling physics process for safety
         CallDeferred("set_physics_process", true);
@@ -145,29 +142,12 @@ public partial class Bullet : Area2D
     }
     private void WallHit(Node body)
     {
-        if (BouncesLeft <= 0) Deactivate();
-        else
-        {
-            BouncesLeft -= 1;
-
-            Vector2 movement = Direction.Abs();
-
-            if (movement.X > movement.Y)
-            {
-                Direction = new Vector2(-Direction.X, Direction.Y);
-            }
-            else
-            {
-                Direction = new Vector2(Direction.X, -Direction.Y);
-            }
-            VisualRotation(Direction.Angle());
-
-        }
+        Deactivate();
     }
 
     #region Setup
 
-    public void Init(DamageData damageData, string type, float newSpeed, bool rotate, float lifeTime, int Bounces, BulletPool newPool)
+    public void Init(DamageData damageData, string type, float newSpeed, bool rotate, float lifeTime, BulletPool newPool)
     {
         DamageData = damageData;
         Key = type;
@@ -176,7 +156,6 @@ public partial class Bullet : Area2D
         _pool = newPool;
         doesRotate = rotate;
         LifeTime = lifeTime;
-        BounceAmount = Bounces;
     }
 
     private void VisualRotation(float rot)

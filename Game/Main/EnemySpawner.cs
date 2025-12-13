@@ -4,7 +4,8 @@ using System.Linq;
 
 public partial class EnemySpawner : Node2D
 {
-    [Export] private Node2D ysort;
+    [Export] private PortalMachine portal;
+    [Export] private WalkerHead Head;
 
     [Export] private Enemy[] DifficultyOne = [];
     [Export] private Enemy[] DifficultyTwo = [];
@@ -16,7 +17,7 @@ public partial class EnemySpawner : Node2D
     private int activeEnemies = 0;
 
     private RandomNumberGenerator rng = new RandomNumberGenerator();
-    private List<Vector2> spawnpoints;
+    private List<Vector2I> spawnpoints;
     private List<int> enemiesPerRound = new ();
     private int currentRound = 0;
     private int rounds = 0;
@@ -32,8 +33,7 @@ public partial class EnemySpawner : Node2D
         EventBus.Reset += FullReset;
         EventBus.MapSwitch += Reset;
 
-        EventBus.StartRound += CalcRound;
-
+        //EventBus.StartRound += CalcRound;
     }
 
 
@@ -50,7 +50,7 @@ public partial class EnemySpawner : Node2D
 
                 instance.name = enemy.name;
 
-                ysort.CallDeferred("add_child", instance);
+                CallDeferred("add_child", instance);
 
                 pool.Enqueue(instance);
             }
@@ -59,16 +59,16 @@ public partial class EnemySpawner : Node2D
 
 
 
-    private void CalcRound(List<Vector2> spots)
+    public void CalcRound()
     {
         int room = EventBus.room;
         currentRound = 0;
 
-        spawnpoints = spots;
+        spawnpoints = Head.floorSet;
 
         int totalEnemies = room * 3 + 5;
 
-        int maxPerRound = Mathf.Max(1, spots.Count);
+        int maxPerRound = Mathf.Max(1, spawnpoints.Count);
 
         rounds = Mathf.CeilToInt((float)totalEnemies / maxPerRound);
 
@@ -92,7 +92,7 @@ public partial class EnemySpawner : Node2D
 
         int enemyCount = enemiesPerRound[currentRound];
 
-        List<Vector2> availableSpots = new List<Vector2>(spawnpoints);
+        List<Vector2I> availableSpots = new List<Vector2I>(spawnpoints);
         availableSpots = availableSpots.OrderBy(_ => rng.Randi()).ToList();
 
         List<Enemy> weightedPool = BuildWeightedPool();
@@ -142,7 +142,7 @@ public partial class EnemySpawner : Node2D
 
         currentEnemies.Add(selected);
 
-        selected.GlobalPosition = spot;
+        selected.GlobalPosition = spot * 32 + new Vector2(16,16);
         selected.EmitSignal("Activation");
     }
     private void OnEnemyDied()
@@ -152,10 +152,8 @@ public partial class EnemySpawner : Node2D
         GD.Print(activeEnemies);
 
         if (currentRound >= rounds && activeEnemies <= 0) EventBus.TriggerEndOfRound();
-        else if  (activeEnemies == 0) BeginRound();
+        else if  (activeEnemies == 0) portal.Activate();
     }
-
-
 
 
 
@@ -171,6 +169,7 @@ public partial class EnemySpawner : Node2D
         }
 
         currentEnemies.Clear();
+        CalcRound();
     }
     private void FullReset()
     {

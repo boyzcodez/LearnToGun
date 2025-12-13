@@ -5,15 +5,21 @@ public partial class WalkerHead : Node2D
 {
     [Export] public int MapLength = 100;
     [Export] public int PathLength = 100;
+    [Export] public NavigationRegion2D NavRegion;
+
+    [Export] public EnemySpawner Spawner;
     [Export] public TileMapLayer FloorMap;
     [Export] public TileMapLayer WallMap;
-    [Export] public PackedScene dust;
     private Player player;
+
+    public List<Vector2I> floorSet;
 
     public override void _Ready()
     {
         player = GetTree().GetFirstNodeInGroup("Player") as Player;
         GenerateMap();
+
+        EventBus.MapSwitch += GenerateMap;
     }
 
     public void GenerateMap()
@@ -31,7 +37,8 @@ public partial class WalkerHead : Node2D
 
     public void BuildWalls()
     {
-        List<Vector2I> floorSet = new();
+        floorSet = new();
+
         foreach (WalkerUnit walker in GetChildren())
         {
             foreach (var pos in walker.carvedTiles)
@@ -54,15 +61,19 @@ public partial class WalkerHead : Node2D
                  
             }
         }
+
+        player.GlobalPosition = floorSet[floorSet.Count - 1] * 32 + new Vector2(16,16);
+
+        NavRegion.BakeNavigationPolygon();
     }
 
-    public override void _Input(InputEvent input)
-    {
-        if (input.IsActionPressed("space"))
-        {
-            Explosion(2, player.GlobalPosition);
-        }
-    }
+    // public override void _Input(InputEvent input)
+    // {
+    //     if (input.IsActionPressed("space"))
+    //     {
+    //         Spawner.CalcRound();
+    //     }
+    // }
 
     public void Explosion(int size, Vector2 position)
     {
@@ -84,9 +95,5 @@ public partial class WalkerHead : Node2D
     public void DestroyWall(Vector2I pos)
     {
         WallMap.EraseCell(pos);
-
-        var newDust = dust.Instantiate() as CpuParticles2D;
-        newDust.GlobalPosition = pos * 32 + new Vector2(16,16);
-        AddChild(newDust);
     }
 }

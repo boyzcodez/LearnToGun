@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://dw18llhjcyw6v"]
+
+[ext_resource type="Script" uid="uid://xdubo0fshbcy" path="res://Game/Main/MapHandler.cs" id="1_0ll5u"]
+[ext_resource type="PackedScene" uid="uid://x3152krac0fs" path="res://Game/Map/Rooms/starting_map.tscn" id="2_1m4ct"]
+[ext_resource type="PackedScene" uid="uid://dij2unasvwyoh" path="res://Game/Map/Rooms/Area1Room1.tscn" id="3_3lmhi"]
+
+[node name="MapHandler" type="Node2D" node_paths=PackedStringArray("ysort")]
+script = ExtResource("1_0ll5u")
+startingMap = ExtResource("2_1m4ct")
+maps = [ExtResource("3_3lmhi"), ExtResource("3_3lmhi"), ExtResource("3_3lmhi")]
+ysort = NodePath("")

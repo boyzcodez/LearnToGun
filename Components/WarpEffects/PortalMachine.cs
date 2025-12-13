@@ -2,6 +2,7 @@ using Godot;
 
 public partial class PortalMachine : Node2D
 {
+    [Export] public WalkerHead Head;
     [Export] private bool active = false;
 
     private bool triggered = false;
@@ -21,30 +22,37 @@ public partial class PortalMachine : Node2D
             area.SetDeferred("monitoring", false);
             area.SetDeferred("monitorable", false);
         }
+
+        Head.Explosion(1, GlobalPosition);
     }
 
 
     private void Trigger(Node body)
     {
-        if (!active)
-            return;
+        if (!active) return;
 
-        triggered = true;
-        //EventBus.TriggerLock();
+        Deactivate();
+        
         EventBus.TriggerScreenShake(0.6f);
-
         EventBus.TriggerMapSwitch();
-
-        // var portal = FindChild("Portal") as Portal2;
-        // portal.GrowPortal();
     }
-    private void Activate()
+    public void Activate()
     {
         sprite.Show();
         active = true;
 
         area.SetDeferred("monitoring", true);
         area.SetDeferred("monitorable", true);
+
+        Head.Explosion(1, GlobalPosition);
+    }
+    public void Deactivate()
+    {
+        sprite.Hide();
+        active = false;
+
+        area.SetDeferred("monitoring", false);
+        area.SetDeferred("monitorable", false);
     }
     public override void _ExitTree()
     {

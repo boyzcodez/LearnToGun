@@ -1031,7 +1031,7 @@ hitFlash = NodePath("../AnimatedSprite/HitFlash")
 animationSprite = NodePath("../AnimatedSprite")
 
 [node name="WarpDash" type="Node2D" parent="." groups=["PlayerCenter"]]
-position = Vector2(0, -9)
+position = Vector2(0, -1)
 script = ExtResource("12_qwver")
 ghostScene = ExtResource("13_nfw5o")
 

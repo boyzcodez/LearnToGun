@@ -20,7 +20,7 @@ public static class EventBus
     public static event Action EndWave;
     public static event Action EndRound;
     public static event Action EnemyDied;
-    public static event Action<List<Godot.Vector2>> StartRound;
+    public static event Action StartRound;
 
     // Numbers for ui and level ups
     public static event Action<int> GainExp;
@@ -64,8 +64,8 @@ public static class EventBus
     // Enemy and Waves
     public static void OnEnemyDied() =>
         EnemyDied?.Invoke();
-    public static void TriggerRound(List<Godot.Vector2> spots) =>
-        StartRound?.Invoke(spots);
+    public static void TriggerRound() =>
+        StartRound?.Invoke();
     public static void TriggerWave() =>
         StartWave?.Invoke();    
     public static void TriggerEndOfRound() =>
