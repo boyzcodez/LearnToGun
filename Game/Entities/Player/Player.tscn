@@ -1,7 +1,6 @@
-[gd_scene load_steps=133 format=3 uid="uid://bbjw3fvxlq53q"]
+[gd_scene load_steps=132 format=3 uid="uid://bbjw3fvxlq53q"]
 
 [ext_resource type="Script" uid="uid://cccauuo7nkwjv" path="res://Game/Entities/Player/Player.cs" id="1_onrkg"]
-[ext_resource type="PackedScene" uid="uid://dyqbl4s13wnxg" path="res://Game/Entities/Components/shadow.tscn" id="2_nfw5o"]
 [ext_resource type="Texture2D" uid="uid://drnvmxh1e2u5u" path="res://Assets/Entity/NewRobot.png" id="2_qwver"]
 [ext_resource type="Material" uid="uid://w5yw3e3gudc3" path="res://Game/Entities/Player/HitFlash.tres" id="3_akrrf"]
 [ext_resource type="Script" uid="uid://b1ak4u4c4cm3j" path="res://Game/Entities/Player/Direction.cs" id="4_vytja"]
@@ -979,9 +978,6 @@ one_shot = true
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_onrkg")
-
-[node name="Shadow" parent="." instance=ExtResource("2_nfw5o")]
-position = Vector2(0, -1)
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("warpDash")]
 light_mask = 2
