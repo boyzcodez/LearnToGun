@@ -33,7 +33,6 @@ script = ExtResource("1_4ei4g")
 GunName = "Rifle"
 Knockback = 30.0
 BulletSpeed = 500.0
-BounceAmount = 3
 currentXP = 20
 maxXP = 100
 BulletScene = ExtResource("1_fyjhw")
